@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>王子的博客</title>
+  
+  <subtitle>因为你的到来, 世界更美了</subtitle>
+  <link href="https://wang-qz.gitee.io/crystal-blog/atom.xml" rel="self"/>
+  
+  <link href="https://wang-qz.gitee.io/crystal-blog/"/>
+  <updated>2021-08-24T13:01:58.597Z</updated>
+  <id>https://wang-qz.gitee.io/crystal-blog/</id>
+  
+  <author>
+    <name>王子</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021/082416107.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021/082416107.html</id>
+    <published>2021-08-24T11:53:44.540Z</published>
+    <updated>2021-08-24T13:01:58.597Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
