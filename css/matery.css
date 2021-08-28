@@ -240,8 +240,10 @@ mark {
     margin-bottom: 0;
 }
 
+/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    /**background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);**/
+    background-image: linear-gradient(to right, #7371BC 0%, #284D95 100%);
 }
 
 .text-color {
@@ -594,7 +596,7 @@ header .go-back i {
 }
 
 @-webkit-keyframes rainbow {
-
+    /* 动态切换背景颜色.即滤镜颜色，不想要可以全部注释，或者换成你喜欢的颜色 */
     0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
@@ -640,7 +642,7 @@ header .go-back i {
 }
 
 @keyframes rainbow {
-
+    /* 动态切换背景颜色.，不想要可以全部注释，或者换成你喜欢的颜色 */
     0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
@@ -2137,4 +2139,18 @@ footer .copy-right {
     height: 50px;
     padding: 0;
     margin: 0;
+}
+
+/*文章链接超长部分隐藏*/
+.reprint__type {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}
+
+/*有时候请求busuanzi数据比较慢，然后浏览量和访问人数就会隐藏，可能是默认的，在matery.css中增加以下代码可以让它一直显示*/
+#busuanzi_container_site_pv,
+#busuanzi_value_site_pv,
+#busuanzi_container_site_uv {
+    display: inline !important;
 }
