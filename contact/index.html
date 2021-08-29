@@ -38,11 +38,12 @@
 
 
    <style>
-    body{
-       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
-       background-repeat:no-repeat;
-       background-size:cover;
-       background-attachment:fixed;
+    body {
+        /*background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/0.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/1.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/2.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/3.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/4.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/5.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/6.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/6.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/8.jpg );*/
+        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
     }
 </style>
 
@@ -149,9 +150,18 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/galleries">
+        <a href="/crystal-blog/gallery">
           
           <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>壁纸</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/galleries">
+          
+          <i class="fas fa-camera" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>相册</span>
         </a>
@@ -341,9 +351,19 @@
               
                 <li>
 
-                  <a href="/crystal-blog/galleries " style="margin-left:75px">
+                  <a href="/crystal-blog/gallery " style="margin-left:75px">
 				  
 				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>壁纸</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-camera" style="position: absolute;left:50px" ></i>
 			      
 		          <span>相册</span>
                   </a>
@@ -496,7 +516,7 @@
 
 </header>
 
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 <link rel="stylesheet" type="text/css" href="/css/barrager.css">
 <script src="/libs/valine/av-min.js"></script>
 <script src="/libs/jquery/jquery.min.js"></script>
@@ -509,7 +529,7 @@
         <div class="brand">
             <div class="title center-align">
                 
-                    你的到来 , 世界更美了！
+                    be yourself , be better！
                 
             </div>
 
@@ -536,19 +556,30 @@
 </div>
 
 <style>
-    #send{
+    #send {
         margin-bottom: 10px;
         width: 49%;
         background-color: #0ba360;
     }
-    #clear{
+
+    #clear {
         margin-bottom: 10px;
         width: 49%;
         background-color: #e7c65c;
     }
-    p{
+
+    p {
         text-align: center;
     }
+
+    .bulletboxmin {
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+        height: calc(100% - 130px);
+    }
+
 </style>
 <main class="content">
     <div id="contact" class="container chip-container">
@@ -557,9 +588,152 @@
                 <div class="tag-title center-align">
                     <i class="fas fa-comments"></i>&nbsp;&nbsp;留言板
                 </div>
-                
+                <link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script>
             </div>
             <!--valine评论弹幕-->
+            
+                <div style="padding-left: 50px;">
+                    <h4>欢迎</h4>
+                    <span>欢迎各位大佬们来到小站, 在这里可以留下你的足迹</span>
+                    <hr/>
+                    <h4>如果需要交换友链,请留言</h4>
+                    <hr/>
+                    <h5 style="margin-bottom: 10px;">申请友链须知</h5>
+                    <span>1. 本站原则上只和技术类博客互换友链，且具有原创高质量文章、经常更新的站优先。</span><br/>
+                    <span>2. 不与含有色情、暴力、政治敏感或其他法律法规禁止的网站互换。</span><br/>
+                    <span>3. 申请友链请确保贵站文章在20篇以上， 且平均更新频率不得低于每月1篇，每年更新文章不得低于12篇。</span><br/>
+                    <span>4. 申请链接前请先添加本博链接，通过本友链页面留言或邮件告知。</span><br/>
+                    <span>5. 请提供网站名称、网站链接、网站描述（12字以内）、网站图标或头像。</span><br/>
+                    <span>6. 本站会定期对所有友链进行检查，如果发现一月内不能访问或者六个月内没有内容更新可能会单方面取消该友链，请悉知。</span>
+                    <h5 style="margin-bottom: 10px;">友链信息</h5>
+                    <b>博客名称: 王子的博客</b><br>
+                    <b>博客地址: https://wang-qz.gitee.io/crystal-blog</b><br>
+                    <b>博客头像: https://wang-qz.gitee.io/crystal-blog/medias/avatar.jpg</b><br>
+                    <b>博客介绍: 越努力，越幸运！</b><br>
+
+                    <br/>
+                    <!--弹幕-->
+                    <div class="bulletboxmin" id="bulletboxmin"></div>
+
+                    <div id="custom" class="row">
+                        <form id="concatForm" class="form-inline">
+                            <div class="form-group">
+                                <b>文字：</b><input class="form-control" name="info" type="text"
+                                                 placeholder="王子的博客"/>
+                            </div>
+                            <div class="form-group">
+                                <b>链接：</b><input class="form-control" name="href" type="text"
+                                                 placeholder="https://wang-qz.gitee.io/crystal-blog"/>
+                            </div>
+                            <div class="form-group" style="display: none">
+                                速度：<input class="form-control" name="speed" type="hidden" placeholder="5~20"
+                                          value="16"/>
+                            </div>
+                        </form>
+
+                        <div>
+                            <button id="send" class="btn" onclick="run()">留言</button>
+                            <button id="clear" class="btn " onclick="clear_barrage()"> 清除</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    AV.init({
+                        appId: '',
+                        appKey: ''
+                    });
+
+                    $(function () {
+                        do_barrager();
+
+                        async function do_barrager() {
+                            let lists = [];
+                            //查询弹幕
+                            const query = new AV.Query('barrager');
+                            const barrager = await query.find().then((barrager) => {
+                                lists = barrager;
+                            })
+                            let length = lists.length;
+                            let index = 0;
+                            const timer = setInterval(() => {
+                                if (index === length) {
+                                    clearInterval(timer);
+                                    do_barrager()
+                                } else {
+                                    let obj = lists[index]
+                                    let jsonObject = eval('(' + JSON.stringify(obj) + ')');
+                                    $('body').barrager({
+                                        'img': '/medias/barrager/' + Math.floor(Math.random() * 3) + ".png",
+                                        'href': jsonObject.href,
+                                        'info': jsonObject.info,
+                                        'speed': jsonObject.speed
+                                    });
+                                    index++;
+                                }
+                            }, 500)
+                        }
+                    });
+
+                    //发送弹幕
+                    function run() {
+                        let info = $('input[name=info]').val();
+                        (info === '') ? info = 'hexo blog' : info = info;
+                        let href = $('input[name=href]').val();
+                        (href === '') ? href = 'https://wang-qz.gitee.io/crystal-blog' : href = href;
+                        let speed = parseInt($('input[name=speed]').val());
+                        if (speed > 20 || speed < 5) speed = Math.floor(Math.random() * 10) + 5;
+
+                        // 原来逻辑
+                        /*const Barrager = AV.Object.extend('barrager');
+                        const barrager = new Barrager();
+                        barrager.set('href', href);
+                        barrager.set('info', info);
+                        barrager.set('speed', speed);
+                        barrager.save().then((todo) => {
+                            $(" input[ name='info' ] ").val("")
+                            $(" input[ name='href' ] ").val("")
+                            $(" input[ name='speed' ] ").val("")
+                        });*/
+                        /**添加弹幕效果***/
+                            //弹幕产生的随机高度
+                        var pageH = parseInt(Math.random() * 10);
+                        //创建span元素（弹幕条）
+                        var newSpan = $("<span></span>");
+                        //获取用户输入的字符串 info href
+                        let str = info + " : " + href;
+                        //每次发表后清空输入框
+                        clear_barrage();
+                        //为新元素赋值
+                        newSpan.text(str);
+                        //设置弹幕出现位置
+                        newSpan.css("left", "1400px");
+                        newSpan.css("top", pageH);
+                        //设置弹幕颜色
+                        newSpan.css("color", randomColor());
+                        //弹幕动画
+                        newSpan.animate({"left": parseInt($(document).width())}, 2000, "linear", function () {
+                            $(this).remove();
+                        })
+                        //弹幕添加
+                        newSpan.appendTo("#bulletboxmin");
+                    }
+
+                    function clear_barrage() {
+                        $("#concatForm").find("input").each(function () {
+                            this.value = "";
+                        });
+                    }
+
+                    //定义一个随机生成颜色的方法
+                    function randomColor() {
+                        var colorArr = ['pink', 'red', 'blue', 'puper', 'orange', 'black', 'DarkMagenta', 'DoderBlue', 'DeepSkyBlue', 'CadetBlue', 'DarkSlateGray', 'Yellow', 'Tomato', '	RosyBrown'];
+                        var color = parseInt(Math.random() * colorArr.length);
+                        return colorArr[color];
+                    }
+
+                </script>
             
         </div>
 
@@ -668,7 +842,8 @@ gitment.render('gitment-content');
 
     
 
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -680,32 +855,40 @@ gitment.render('gitment-content');
             |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
 
+            <!--站点总字数-->
             
-                <span style="margin-left: -20px; display: inline">
-                &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span  class="white-color">73</span>
+            <span style="margin-left: -20px; display: inline">
+                &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">9.2k</span>
                 <span/>
-            
-
-            
-            
                 
-            
-            
-                <span id="busuanzi_container_site_pv" style="display: inline">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>
-                </span>
-            
-            
-                <span id="busuanzi_container_site_uv" style="display: inline">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>
-                </span>
-            
-            <br>
 
-            <!-- 运行天数提醒. -->
-            
-                <span id="sitetime"> Loading ...</span>
-                <script>
+                
+                
+                    
+                
+
+                <!--总访问量-->
+                
+                    <span id="busuanzi_container_site_pv" style="display: inline">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span
+                                id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+
+                <!--总访问人数-->
+                
+                    <span id="busuanzi_container_site_uv" style="display: inline">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span
+                                id="busuanzi_value_site_uv" class="white-color"></span>
+                </span>
+                
+                <br>
+
+                <!-- 运行天数提醒. -->
+                
+                    <span id="sitetime"> Loading ...</span>
+                    <script>
                     var calcSiteTime = function () {
                         var seconds = 1000;
                         var minutes = seconds * 60;
@@ -760,14 +943,16 @@ gitment.render('gitment-content');
                     var timer = setInterval(calcSiteTime);
                     // calcSiteTime();
                 </script>
-            
-                    &nbsp;|&nbsp;
-            
-                <span id="icp">
-                    <img src="/crystal-blog/medias/icp.png" style="vertical-align: text-bottom;"/>
+                
+                &nbsp;|&nbsp;
+                
+                    <span id="icp">
+                    <img src="/crystal-blog/medias/icp.png"
+                         style="vertical-align: text-bottom;"/>
+
                     <a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备20002708号-8</a>
                 </span>
-            
+                
         </div>
 
         <div class="col s12 m4 l4 social-link social-statis">
@@ -823,6 +1008,17 @@ gitment.render('gitment-content');
 </footer>
 
 <div class="progress-bar"></div>
+
+<script>
+    let _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?147475454185ebcf440a27cc35e793ef";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
 
 
     <!-- 搜索遮罩框 -->

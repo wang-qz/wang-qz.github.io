@@ -38,11 +38,12 @@
 
 
    <style>
-    body{
-       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
-       background-repeat:no-repeat;
-       background-size:cover;
-       background-attachment:fixed;
+    body {
+        /*background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/0.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/1.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/2.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/3.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/4.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/5.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/6.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/6.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/8.jpg );*/
+        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
     }
 </style>
 
@@ -149,9 +150,18 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/galleries">
+        <a href="/crystal-blog/gallery">
           
           <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>壁纸</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/galleries">
+          
+          <i class="fas fa-camera" style="margin-top: -20px; zoom: 0.6;"></i>
           
           <span>相册</span>
         </a>
@@ -341,9 +351,19 @@
               
                 <li>
 
-                  <a href="/crystal-blog/galleries " style="margin-left:75px">
+                  <a href="/crystal-blog/gallery " style="margin-left:75px">
 				  
 				   <i class="fa fas fa-image" style="position: absolute;left:50px" ></i>
+			      
+		          <span>壁纸</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/galleries " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-camera" style="position: absolute;left:50px" ></i>
 			      
 		          <span>相册</span>
                   </a>
@@ -503,7 +523,7 @@
         <div class="brand">
             <div class="title center-align">
                 
-                    你的到来 , 世界更美了！
+                    be yourself , be better！
                 
             </div>
 
@@ -542,19 +562,19 @@
             <div class="tag-chips">
                 
                 
-                <a href="/crystal-blog/tags/blog/" title="blog: 1">
+                <a href="/crystal-blog/tags/hexo/" title="hexo: 2">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="blog" style="background-color: #F9EBEA;">blog
-                        <span class="tag-length">1</span>
+                             chip-active "
+                            data-tagname="hexo" style="background-color: #F9EBEA;">hexo
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/crystal-blog/tags/hexo/" title="hexo: 1">
+                <a href="/crystal-blog/tags/matery/" title="matery: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="hexo" style="background-color: #F5EEF8;">hexo
+                             chip-default "
+                            data-tagname="matery" style="background-color: #F5EEF8;">matery
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -570,7 +590,39 @@
         <div class="row tags-posts">
             
             
-            <div class="article tag-post col s12 m6 l4" data-tags="blog, hexo" data-aos="fade-up">
+            <div class="article tag-post col s12 m6 l4" data-tags="hexo" data-aos="fade-up">
+                <div class="card">
+                    <a href="/crystal-blog/2021/082938932.html">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/crystal-blog/medias/featureimages/12.jpg" class="responsive-img" alt="hexo博客搭建及主题优化">
+                            
+                            <span class="card-title">hexo博客搭建及主题优化</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                hexo博客
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="hexo, matery" data-aos="fade-up">
                 <div class="card">
                     <a href="/crystal-blog/2021/080316107.html">
                         <div class="card-image tag-image">
@@ -590,8 +642,8 @@
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/crystal-blog/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="post-category">
-                                博客搭建
+                                <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                hexo博客
                                 </a>
                                 
                                 
@@ -665,7 +717,8 @@
 
     
 
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -677,32 +730,40 @@
             |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
 
+            <!--站点总字数-->
             
-                <span style="margin-left: -20px; display: inline">
-                &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span  class="white-color">73</span>
+            <span style="margin-left: -20px; display: inline">
+                &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">9.2k</span>
                 <span/>
-            
-
-            
-            
                 
-            
-            
-                <span id="busuanzi_container_site_pv" style="display: inline">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>
-                </span>
-            
-            
-                <span id="busuanzi_container_site_uv" style="display: inline">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>
-                </span>
-            
-            <br>
 
-            <!-- 运行天数提醒. -->
-            
-                <span id="sitetime"> Loading ...</span>
-                <script>
+                
+                
+                    
+                
+
+                <!--总访问量-->
+                
+                    <span id="busuanzi_container_site_pv" style="display: inline">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span
+                                id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+
+                <!--总访问人数-->
+                
+                    <span id="busuanzi_container_site_uv" style="display: inline">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span
+                                id="busuanzi_value_site_uv" class="white-color"></span>
+                </span>
+                
+                <br>
+
+                <!-- 运行天数提醒. -->
+                
+                    <span id="sitetime"> Loading ...</span>
+                    <script>
                     var calcSiteTime = function () {
                         var seconds = 1000;
                         var minutes = seconds * 60;
@@ -757,14 +818,16 @@
                     var timer = setInterval(calcSiteTime);
                     // calcSiteTime();
                 </script>
-            
-                    &nbsp;|&nbsp;
-            
-                <span id="icp">
-                    <img src="/crystal-blog/medias/icp.png" style="vertical-align: text-bottom;"/>
+                
+                &nbsp;|&nbsp;
+                
+                    <span id="icp">
+                    <img src="/crystal-blog/medias/icp.png"
+                         style="vertical-align: text-bottom;"/>
+
                     <a href="https://beian.miit.gov.cn/" target="_blank">闽ICP备20002708号-8</a>
                 </span>
-            
+                
         </div>
 
         <div class="col s12 m4 l4 social-link social-statis">
@@ -820,6 +883,17 @@
 </footer>
 
 <div class="progress-bar"></div>
+
+<script>
+    let _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?147475454185ebcf440a27cc35e793ef";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
 
 
     <!-- 搜索遮罩框 -->

@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>王子的博客</title>
   
-  <subtitle>你的到来 , 世界更美了！</subtitle>
+  <subtitle>be yourself , be better！</subtitle>
   <link href="https://wang-qz.gitee.io/crystal-blog/atom.xml" rel="self"/>
   
   <link href="https://wang-qz.gitee.io/crystal-blog/"/>
-  <updated>2021-08-28T09:45:44.817Z</updated>
+  <updated>2021-08-29T12:50:38.553Z</updated>
   <id>https://wang-qz.gitee.io/crystal-blog/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo博客搭建及主题优化</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021/082938932.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021/082938932.html</id>
+    <published>2021-08-29T12:13:21.000Z</published>
+    <updated>2021-08-29T12:50:38.553Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;crystalBlog&quot;&gt;&lt;a href=&quot;#crystalBlog&quot; class=&quot;headerlink&quot; title=&quot;crystalBlog&quot;&gt;&lt;/a&gt;crystalBlog&lt;/h1&gt;&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="hexo博客" scheme="https://wang-qz.gitee.io/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+    <category term="hexo" scheme="https://wang-qz.gitee.io/crystal-blog/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://wang-qz.gitee.io/crystal-blog/2021/080316107.html"/>
     <id>https://wang-qz.gitee.io/crystal-blog/2021/080316107.html</id>
     <published>2021-08-03T06:25:00.000Z</published>
-    <updated>2021-08-28T09:45:44.817Z</updated>
+    <updated>2021-08-29T12:43:20.734Z</updated>
     
     
       
@@ -34,12 +59,12 @@
     
     
     
-    <category term="博客搭建" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <category term="hexo博客" scheme="https://wang-qz.gitee.io/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/"/>
     
-    
-    <category term="blog" scheme="https://wang-qz.gitee.io/crystal-blog/tags/blog/"/>
     
     <category term="hexo" scheme="https://wang-qz.gitee.io/crystal-blog/tags/hexo/"/>
+    
+    <category term="matery" scheme="https://wang-qz.gitee.io/crystal-blog/tags/matery/"/>
     
   </entry>
   
