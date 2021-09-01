@@ -53,7 +53,7 @@
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
+            <div class="brand-logo" style="margin-left: -50px;">
                 <a href="/crystal-blog/" class="waves-effect waves-light">
                     
                     <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO">
@@ -64,7 +64,7 @@
             
 
 <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+<ul class="right nav-menu" style="margin-left: 100px">
   
   <li class="hide-on-med-and-down nav-item">
     
@@ -145,7 +145,7 @@
           
           <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>影报</span>
+          <span>影集</span>
         </a>
       </li>
       
@@ -159,7 +159,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/gallery">
+        <a href="/crystal-blog/wallpaper">
           
           <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -243,6 +243,17 @@
       <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
       
       <span>快捷导航</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+      
+      <i class="fas fa-rss" style="zoom: 0.6;"></i>
+      
+      <span>RSS</span>
     </a>
     
   </li>
@@ -354,7 +365,7 @@
 				  
 				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
 			      
-		          <span>影报</span>
+		          <span>影集</span>
                   </a>
                 </li>
               
@@ -370,7 +381,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/gallery " style="margin-left:50px">
+                  <a href="/crystal-blog/wallpaper " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
 			      
@@ -456,6 +467,17 @@
 			    <i class="fa-fw fas fa-location-arrow"></i>
 			
 			快捷导航
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-rss"></i>
+			
+			RSS
 		</a>
           
         </li>
@@ -585,21 +607,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/crystal-blog/">2</a></span>
+    <span class="count"><a href="/crystal-blog/">4</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/crystal-blog/categories">1</a></span>
+    <span class="count"><a href="/crystal-blog/categories">2</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/crystal-blog/tags">2</a></span>
+    <span class="count"><a href="/crystal-blog/tags">3</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -615,21 +637,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/crystal-blog/">2</a></span>
+    <span class="count"><a href="/crystal-blog/">4</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/crystal-blog/categories">1</a></span>
+    <span class="count"><a href="/crystal-blog/categories">2</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/crystal-blog/tags">2</a></span>
+    <span class="count"><a href="/crystal-blog/tags">3</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -802,7 +824,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08"]
+            data: ["2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09"]
         },
         yAxis: {
             type: 'value',
@@ -812,7 +834,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,2],
+                data: [0,0,0,0,0,0,0,0,0,0,0,2,2],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -854,7 +876,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"hexo博客","value":2}],
+                data: [{"name":"hexo博客","value":2},{"name":"成年人的故事","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -878,7 +900,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["hexo","matery"]
+                data: ["hexo","心路历程","matery"]
             }
         ],
         yAxis: [
@@ -891,7 +913,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [2,1],
+                data: [2,2,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -922,7 +944,7 @@
 
 
                 
-                
+                    
 <div class="my-projects">
     <div class="title center-align" data-aos="zoom-in-up">
         <i class="fas fa-gift"></i>&nbsp;&nbsp;我的项目
@@ -976,7 +998,7 @@
                 
 
                 
-                
+                    
 <div class="my-skills">
     <div class="title center-align" data-aos="zoom-in-up">
         <i class="fas fa-wrench"></i>&nbsp;&nbsp;我的技能
@@ -1072,6 +1094,12 @@
             </a>
             
             
+            
+            <a href="/crystal-blog/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/">
+                <span class="chip center-align waves-effect waves-light chip-default">心路历程</span>
+            </a>
+            
+            
         </div>
     </div>
     
@@ -1150,7 +1178,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2020-2021</span>
             
             <i class="fa fa-heart" style="color: #ff71a8"></i>
             <a href="/crystal-blog/about" target="_blank">王子</a>
@@ -1199,7 +1227,7 @@
                         var days = hours * 24;
                         var years = days * 365;
                         var today = new Date();
-                        var startYear = "2021";
+                        var startYear = "2020";
                         var startMonth = "8";
                         var startDate = "8";
                         var startHour = "8";

@@ -53,7 +53,7 @@
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
+            <div class="brand-logo" style="margin-left: -50px;">
                 <a href="/crystal-blog/" class="waves-effect waves-light">
                     
                     <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO">
@@ -64,7 +64,7 @@
             
 
 <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+<ul class="right nav-menu" style="margin-left: 100px">
   
   <li class="hide-on-med-and-down nav-item">
     
@@ -145,7 +145,7 @@
           
           <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>影报</span>
+          <span>影集</span>
         </a>
       </li>
       
@@ -159,7 +159,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/gallery">
+        <a href="/crystal-blog/wallpaper">
           
           <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -243,6 +243,17 @@
       <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
       
       <span>快捷导航</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+      
+      <i class="fas fa-rss" style="zoom: 0.6;"></i>
+      
+      <span>RSS</span>
     </a>
     
   </li>
@@ -354,7 +365,7 @@
 				  
 				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
 			      
-		          <span>影报</span>
+		          <span>影集</span>
                   </a>
                 </li>
               
@@ -370,7 +381,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/gallery " style="margin-left:50px">
+                  <a href="/crystal-blog/wallpaper " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
 			      
@@ -460,6 +471,17 @@
           
         </li>
         
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-rss"></i>
+			
+			RSS
+		</a>
+          
+        </li>
+        
         
         <li><div class="divider"></div></li>
         <li>
@@ -538,11 +560,11 @@
 <div class="navi-height bg-cover pd-header">
     <div class="link-box container">
         <div class="baidu baidu-2 large-screen">
-            <form name="f" action="https://www.baidu.com/" target="_blank">
+            <form name="f" action="https://cn.bing.com/" target="_blank">
                 <div id="Select-2">
                     <div class="Select-box-2" id="baidu">
                         <ul style="height:46px">
-                            <li class="this_s">百 度</li>
+                            <li class="this_s">必 应</li>
                             <li class="bing_s">必 应</li>
                             <li class="google_s">谷 歌</li>
                             <li class="baidu_s">百 度</li>
@@ -793,7 +815,7 @@
 
             setTimeout(function () {
                 // 获取 [0~Object.keys(theme.background.url).length)的随机数, 根据数组下标获取快捷导航页面的背景图url
-                $("body").css("background-image", "url(https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/8.jpg");
+                $("body").css("background-image", "url(https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/07.jpg");
             }, 3000);
 
         </script>
@@ -858,6 +880,11 @@
 
 </div>
 <style>
+    /* don't remove. */
+    .about-cover {
+        height: 75vh;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -1206,7 +1233,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2020-2021</span>
             
             <i class="fa fa-heart" style="color: #ff71a8"></i>
             <a href="/crystal-blog/about" target="_blank">王子</a>
@@ -1255,7 +1282,7 @@
                         var days = hours * 24;
                         var years = days * 365;
                         var today = new Date();
-                        var startYear = "2021";
+                        var startYear = "2020";
                         var startMonth = "8";
                         var startDate = "8";
                         var startHour = "8";
