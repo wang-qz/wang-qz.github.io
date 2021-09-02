@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -602,7 +602,7 @@
                     <div class="col s6 m4 l4 xl3 gallery-box">
                         <a href="./2018" class="gallery-item" data-aos="zoom-in-up">
                             <div class="gallery-cover-box"
-                                 style="background-image: url(https://z3.ax1x.com/2021/05/05/gMfrIx.md.jpg);">
+                                 style="background-image: url(https://images.liyangzone.com/gallery_tiny/2018/IMG_20181124_125818.jpg);">
                             </div>
                             <p class="gallery-name">
                                 2018
@@ -614,7 +614,7 @@
                     <div class="col s6 m4 l4 xl3 gallery-box">
                         <a href="./2019" class="gallery-item" data-aos="zoom-in-up">
                             <div class="gallery-cover-box"
-                                 style="background-image: url(https://z3.ax1x.com/2021/05/05/gMfrIx.md.jpg);">
+                                 style="background-image: url(https://images.liyangzone.com/gallery_tiny/2019/IMG_20190331_165713_1.jpg);">
                             </div>
                             <p class="gallery-name">
                                 2019
@@ -626,7 +626,15 @@
         
     </div>
 </main>
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -862,7 +870,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -973,6 +980,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

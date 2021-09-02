@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -815,7 +815,7 @@
 
             setTimeout(function () {
                 // 获取 [0~Object.keys(theme.background.url).length)的随机数, 根据数组下标获取快捷导航页面的背景图url
-                $("body").css("background-image", "url(https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/07.jpg");
+                $("body").css("background-image", "url(https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/5.jpg");
             }, 3000);
 
         </script>
@@ -1170,7 +1170,15 @@
     }
 </style>
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -1406,7 +1414,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1517,6 +1524,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

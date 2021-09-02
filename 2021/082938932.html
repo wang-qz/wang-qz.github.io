@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -699,6 +699,10 @@
                                 <span class="chip bg-color">hexo</span>
                             </a>
                         
+                            <a href="/crystal-blog/tags/matery/">
+                                <span class="chip bg-color">matery</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -727,7 +731,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-01
+                    2021-09-02
                 </div>
                 
 
@@ -2632,6 +2636,10 @@ date: 2021-08-25 19:55:53
                                     <span class="chip bg-color">hexo</span>
                                 </a>
                             
+                                <a href="/crystal-blog/tags/matery/">
+                                    <span class="chip bg-color">matery</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -3097,45 +3105,51 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/crystal-blog/2021/09013827.html">
+                <a href="/crystal-blog/2021/082938932.html">
                     <div class="card-image">
                         
-                        <img src="https://www.bing.com/th?id=OHR.Porcini_ZH-CN0462290460_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="那年在南宁">
+                        <img src="https://www.bing.com/th?id=OHR.LittleBlueHeron_ZH-CN0892428603_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="hexo博客搭建及主题优化">
                         
-                        <span class="card-title">那年在南宁</span>
+                        <span class="card-title">hexo博客搭建及主题优化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            心酸事儿
+                            添加音乐, 电影, 快捷导航等
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/crystal-blog/categories/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E6%95%85%E4%BA%8B/" class="post-category">
-                                    成年人的故事
+                            <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    hexo博客
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/crystal-blog/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/">
-                        <span class="chip bg-color">心路历程</span>
+                    <a href="/crystal-blog/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/crystal-blog/tags/matery/">
+                        <span class="chip bg-color">matery</span>
                     </a>
                     
                 </div>
@@ -3184,10 +3198,6 @@ gitment.render('gitment-content');
                     
                     <a href="/crystal-blog/tags/hexo/">
                         <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                    <a href="/crystal-blog/tags/matery/">
-                        <span class="chip bg-color">matery</span>
                     </a>
                     
                 </div>
@@ -3357,7 +3367,15 @@ gitment.render('gitment-content');
 
 
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -3593,7 +3611,6 @@ gitment.render('gitment-content');
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -3704,6 +3721,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

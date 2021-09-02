@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -767,8 +767,16 @@
 
                 <div class="introduction center-align" data-aos="fade-up">你就是我的唯一</div>
 
+                <p style="text-align: left; margin-left: 30.5%;">
+                    <i style="color: #e9469a;">曾经有一份真挚的爱情摆在我面前 , 我没有好好珍惜 , 直到失去的时候才追悔莫及 , </i>
+                    <br/>
+                    <i style="color: #d0e972;">如果上天再给我一次机会 , 我一定对那个女孩说: 我爱你 ! </i>
+                    <br/>
+                    <i style="color: #0e881a;">如果一定要给这段感情加上期限 , 我希望是一万年 .</i>
+                </p>
+
                 <iframe
-                        style="margin-left: 35%;"
+                        style="margin-left: 30%;"
                         frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86
                         src="//music.163.com/outchain/player?type=2&id=254574&auto=1&height=66">
                 </iframe>
@@ -828,7 +836,15 @@
     </div>
 </main>
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -1064,7 +1080,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1175,6 +1190,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

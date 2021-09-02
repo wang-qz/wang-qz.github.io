@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -613,10 +613,10 @@
                 </a>
                 
                 
-                <a href="/crystal-blog/categories/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E6%95%85%E4%BA%8B/" title="成年人的故事: 2">
+                <a href="/crystal-blog/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/" title="成年故事: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">成年人的故事
+                            style="background-color: #F5EEF8;">成年故事
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -664,7 +664,7 @@
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"hexo博客","max":4},{"name":"成年人的故事","max":4}],
+            indicator: [{"name":"hexo博客","max":4},{"name":"成年故事","max":4}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -689,7 +689,15 @@
 
 </main>
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -925,7 +933,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1036,6 +1043,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

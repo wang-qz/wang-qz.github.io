@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -834,7 +834,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,2,2],
+                data: [0,0,0,0,0,0,0,0,0,0,0,4,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -876,7 +876,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"hexo博客","value":2},{"name":"成年人的故事","value":2}],
+                data: [{"name":"hexo博客","value":2},{"name":"成年故事","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -900,7 +900,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["hexo","心路历程","matery"]
+                data: ["hexo","成长","matery"]
             }
         ],
         yAxis: [
@@ -1089,14 +1089,14 @@
             
             
             
-            <a href="/crystal-blog/tags/matery/">
-                <span class="chip center-align waves-effect waves-light chip-default">matery</span>
+            <a href="/crystal-blog/tags/%E6%88%90%E9%95%BF/">
+                <span class="chip center-align waves-effect waves-light chip-default">成长</span>
             </a>
             
             
             
-            <a href="/crystal-blog/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/">
-                <span class="chip center-align waves-effect waves-light chip-default">心路历程</span>
+            <a href="/crystal-blog/tags/matery/">
+                <span class="chip center-align waves-effect waves-light chip-default">matery</span>
             </a>
             
             
@@ -1115,7 +1115,15 @@
     </div>
 </main>
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -1351,7 +1359,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1462,6 +1469,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

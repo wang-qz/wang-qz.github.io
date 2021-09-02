@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -580,9 +580,10 @@
 <div class="container">
     <div class="photo-wrapper">
         <div class="waterfall" id="mygallery">
-            <a href=photo     class="photo-item" rel="example_group"     data-fancybox="images">      <img src= photo       alt=https://images.liyangzone.com/medias/banner/3.jpg>
-    </a><a href=photo     class="photo-item" rel="example_group"     data-fancybox="images">      <img src= photo       alt=https://z3.ax1x.com/2021/05/05/gMfrIx.md.jpg>
-    </a><a href=photo     class="photo-item" rel="example_group"     data-fancybox="images">      <img src= photo       alt=https://images.liyangzone.com/medias/featureimages/12764918073_21b21449be_k.jpg>
+            <a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113055.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113055.jpg"       alt=2018/IMG_20180204_113055.jpg>
+    </a><a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113302.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113302.jpg"       alt=2018/IMG_20180204_113302.jpg>
+    </a><a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113442.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113442.jpg"       alt=2018/IMG_20180204_113442.jpg>
+    </a><a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180208_083336.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180208_083336.jpg"       alt=2018/IMG_20180208_083336.jpg>
     </a>
 
         </div>
@@ -598,7 +599,15 @@
     $("#mygallery").justifiedGallery({margins: 5, rowHeight: 150});
 
 </script>
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -834,7 +843,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -945,6 +953,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

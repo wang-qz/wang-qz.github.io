@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -612,20 +612,20 @@
                 </a>
                 
                 
-                <a href="/crystal-blog/tags/matery/" title="matery: 1">
+                <a href="/crystal-blog/tags/%E6%88%90%E9%95%BF/" title="成长: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="matery" style="background-color: #F5EEF8;">matery
-                        <span class="tag-length">1</span>
+                            data-tagname="成长" style="background-color: #F5EEF8;">成长
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/crystal-blog/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" title="心路历程: 2">
+                <a href="/crystal-blog/tags/matery/" title="matery: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="心路历程" style="background-color: #D5F5E3;">心路历程
-                        <span class="tag-length">2</span>
+                            data-tagname="matery" style="background-color: #D5F5E3;">matery
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -653,7 +653,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"hexo","weight":2,"link":"/crystal-blog/tags/hexo/"},{"text":"matery","weight":1,"link":"/crystal-blog/tags/matery/"},{"text":"心路历程","weight":2,"link":"/crystal-blog/tags/心路历程/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"hexo","weight":2,"link":"/crystal-blog/tags/hexo/"},{"text":"成长","weight":2,"link":"/crystal-blog/tags/成长/"},{"text":"matery","weight":1,"link":"/crystal-blog/tags/matery/"}], {
         autoResize: true
     });
 </script>
@@ -662,7 +662,15 @@
 
 </main>
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -898,7 +906,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1009,6 +1016,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

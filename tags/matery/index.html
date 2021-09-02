@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -612,20 +612,20 @@
                 </a>
                 
                 
-                <a href="/crystal-blog/tags/matery/" title="matery: 1">
+                <a href="/crystal-blog/tags/%E6%88%90%E9%95%BF/" title="成长: 2">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="matery" style="background-color: #F5EEF8;">matery
-                        <span class="tag-length">1</span>
+                             chip-default "
+                            data-tagname="成长" style="background-color: #F5EEF8;">成长
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/crystal-blog/tags/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" title="心路历程: 2">
+                <a href="/crystal-blog/tags/matery/" title="matery: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="心路历程" style="background-color: #D5F5E3;">心路历程
-                        <span class="tag-length">2</span>
+                             chip-active "
+                            data-tagname="matery" style="background-color: #D5F5E3;">matery
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -642,18 +642,18 @@
             
             <div class="article tag-post col s12 m6 l4" data-tags="hexo, matery" data-aos="fade-up">
                 <div class="card">
-                    <a href="/crystal-blog/2021/080316107.html">
+                    <a href="/crystal-blog/2021/082938932.html">
                         <div class="card-image tag-image">
                             
-                            <img src="https://www.bing.com/th?id=OHR.Mpumalanga_ZH-CN9666962271_tmb.jpg&rf=" class="responsive-img" alt="hexo搭建个人博客">
+                            <img src="https://www.bing.com/th?id=OHR.LittleBlueHeron_ZH-CN0892428603_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="hexo博客搭建及主题优化">
                             
-                            <span class="card-title">hexo搭建个人博客</span>
+                            <span class="card-title">hexo博客搭建及主题优化</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
                             </span>
                             <span class="publish-author">
                                 
@@ -676,7 +676,15 @@
 
 
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -912,7 +920,6 @@
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1023,6 +1030,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>

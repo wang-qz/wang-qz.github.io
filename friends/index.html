@@ -112,7 +112,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -182,7 +182,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/" class="waves-effect waves-light">
+    <a href="/crystal-blog" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -879,7 +879,28 @@
                             <div class="card frind-card5">
                                 <div class="frind-ship">
                                     <div class="title">
-                                        <img src="http://image.luokangyuan.com/avatar.jpg" alt="img">
+                                        <img src="https://godweiyang.com/medias/avatars/avatar.jpg" alt="img">
+                                        <div>
+                                            <h1 class="friend-name">星空无限</h1>
+                                            <p style="position: relative;top: -35px;">路漫漫其修远兮,吾将上下而求索。</p>
+                                        </div>
+                                    </div>
+                                    <div class="friend-button">
+                                        <a href="https://liyangzone.com/" target="_blank"
+                                            class="button button-glow button-rounded button-caution">
+                                            前去学习
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
+                            <div class="card frind-card6">
+                                <div class="frind-ship">
+                                    <div class="title">
+                                        <img src="https://lruihao.cn/images/site-meta.jpg" alt="img">
                                         <div>
                                             <h1 class="friend-name">ja_rome</h1>
                                             <p style="position: relative;top: -35px;">平凡的脚步也可以走出伟大的行程</p>
@@ -897,7 +918,7 @@
                         
                         
                         <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card6">
+                            <div class="card frind-card7">
                                 <div class="frind-ship">
                                     <div class="title">
                                         <img src="https://www.bootcdn.cn/assets/img/maoyun.svg" alt="img">
@@ -1249,7 +1270,15 @@ gitment.render('gitment-content');
     });
 </script>
 
-
+<!-- 切换夜间/白天模式按钮 -->
+<script> if (localStorage.getItem('dark') === '1') {
+        document.body.classList.add('dark');
+    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+        document.body.classList.add('dark');
+    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    } </script>
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
         <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
@@ -1485,7 +1514,6 @@ gitment.render('gitment-content');
 </script>
 
 
-
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1596,6 +1624,7 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
+
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>
