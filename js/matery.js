@@ -171,18 +171,29 @@ $(function () {
     $('.tooltipped').tooltip();
 });
 
+// 深色模式按钮设置
+if (localStorage.getItem('dark') === '1') {
+    document.body.classList.add('dark');
+} else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
+    /*定时开启暗色模式<默认晚22点至早6点默认开启>*/
+    // document.body.classList.add('dark');
+    // $("#nightMode").removeClass("fa-moon-o").addClass("fa-lightbulb");
+} else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.add('dark');
+}
+
 // 深色模式设置
 function switchNightMode() {
     var body = document.body;
     if (body.classList.contains('dark')) {
         document.body.classList.remove('dark');
         localStorage.setItem('dark', '0');
-        $('#nightMode').removeClass("fa-lightbulb-o").addClass("fa-moon-o");
+        $('#nightMode').removeClass("fa-lightbulb").addClass("fa-moon-o");
         return;
     } else {
         document.body.classList.add('dark');
         localStorage.setItem('dark', '1');
-        $('#nightMode').removeClass("fa-moon-o").addClass("fa-lightbulb-o");
+        $('#nightMode').removeClass("fa-moon-o").addClass("fa-lightbulb");
         return;
     }
 }

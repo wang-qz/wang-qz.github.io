@@ -1271,13 +1271,6 @@ gitment.render('gitment-content');
 </script>
 
 <!-- 切换夜间/白天模式按钮 -->
-<script> if (localStorage.getItem('dark') === '1') {
-        document.body.classList.add('dark');
-    } else if (new Date().getHours() >= 22 || new Date().getHours() < 7) {
-        document.body.classList.add('dark');
-    } else if (matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    } </script>
 <a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <footer class="page-footer bg-color">
     
@@ -1514,6 +1507,7 @@ gitment.render('gitment-content');
 </script>
 
 
+
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1624,7 +1618,6 @@ $(function () {
         <i class="fas fa-arrow-up"></i>
     </a>
 </div>
-
 
 
 <script src="/crystal-blog/libs/materialize/materialize.min.js"></script>
