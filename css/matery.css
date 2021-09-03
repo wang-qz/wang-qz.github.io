@@ -2244,6 +2244,7 @@ body.dark .modal,
 body.dark header .side-nav,
 body.dark header .side-nav .menu-list .m-nav-show {
     background-color: #12121c;
+    background-image: url(#); /**因为我的背景图导致部分页面无法全部切换成深色背景, 需要取消背景图片**/
 }
 
 /* 改变透明度 */
