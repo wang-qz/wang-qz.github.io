@@ -42,6 +42,7 @@
     <style>
     body {
         /*background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/0.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/1.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/2.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/3.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/4.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/5.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/6.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/8.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/01.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/05.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/06.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/07.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/08.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/09.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/11.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/12.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/15.jpg );*/
+        /*我将background.url配置为数组,配置了多个背景图,在navigate.ejs中做了随机切换背景图*/
         background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
         background-repeat: no-repeat;
         background-size: cover;
@@ -223,11 +224,11 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/shuoshuo">
+        <a href="/crystal-blog/bb">
           
           <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
           
-          <span>说说咯</span>
+          <span>bbtalk</span>
         </a>
       </li>
       
@@ -467,11 +468,11 @@
               
                 <li>
 
-                  <a href="/crystal-blog/shuoshuo " style="margin-left:50px">
+                  <a href="/crystal-blog/bb " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-comments" style="position: absolute;left:28px" ></i>
 			      
-		          <span>说说咯</span>
+		          <span>bbtalk</span>
                   </a>
                 </li>
               
@@ -1041,33 +1042,6 @@
     
 
     
-        <link rel="stylesheet" href="/crystal-blog/libs/gitment/gitment-default.css">
-<link rel="stylesheet" href="/crystal-blog/css/gitment.css">
-
-<div class="gitment-card card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="gitment-content" class="card-content"></div>
-</div>
-
-<script src="/crystal-blog/libs/gitment/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Tue Aug 03 2021 14:25:00 GMT+0800',
-    owner: '',
-    repo: '',
-    oauth: {
-        client_id: '',
-        client_secret: ''
-    }
-});
-
-gitment.render('gitment-content');
-</script>
-
-    
 
     
 
@@ -1311,7 +1285,8 @@ gitment.render('gitment-content');
 </style>
 
 <div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+    <div class="comment_headling"
+         style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
         <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
         <span>评论</span>
     </div>
@@ -1321,20 +1296,57 @@ gitment.render('gitment-content');
 
 <script src="/crystal-blog/libs/valine/av-min.js"></script>
 <script src="/crystal-blog/libs/valine/Valine.min.js"></script>
+<!--<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI',
+        appKey: 'P7BGA1hMeBAFbHYz3dKY8doJ',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go',
+
+
+    });
+</script>-->
+
+<!--Valine优化版本 wang-qz start-->
 <script>
     new Valine({
         el: '#vcomments',
-        appId: '',
-        appKey: '',
+        admin_email: '1848276756@qq.com',
+        appId: 'NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI',
+        appKey: 'P7BGA1hMeBAFbHYz3dKY8doJ',
+        path: window.location.pathname,
+        comment_count: true,
         notify: 'false' === 'true',
-        verify: 'false' === 'true',
+        verify: 'true' === 'true',
         visitor: 'true' === 'true',
-        avatar: 'mm',
+        avatar: 'monsterid',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go'
+        placeholder: 'just go go',
+
+    });
+    $(document).ready(function () {
+        $("#vcomments").on('click', 'span.vat', function () {
+            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
+            $('textarea#veditor').focus();
+        })
+    })
+</script>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    // 评论输入框提示语改为: 今日诗词
+    jinrishici.load(function (result) {placeholder
+        var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author
+        document.getElementById("veditor").setAttribute("placeholder", jrsc_plac);
     });
 </script>
+<!--Valine优化版本 wang-qz end-->
 
 <!--酷Q推送-->
 
@@ -1690,7 +1702,7 @@ gitment.render('gitment-content');
             
             <span style="margin-left: -20px; display: inline">
                 &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">10.8k</span>
+                        class="white-color">14.4k</span>
                 <span/>
                 
 
