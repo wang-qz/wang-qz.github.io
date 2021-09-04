@@ -1004,18 +1004,68 @@
             
 
             
-            <style>
-    .valine-card {
+            <style> .valine-card {
         margin: 1.5rem auto;
     }
 
+    /*卡片式背景*/
+    #vcomments .vcards .vcard {
+        padding: 15px 20px 0 20px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 4px 1px rgba(0, 0, 0, .12);
+        transition: all .3s
+    }
+
+    #vcomments .vcards .vcard:hover {
+        box-shadow: 0 0 8px 3px rgba(0, 0, 0, .12)
+    }
+
+    #vcomments .vcards .vcard .vh .vcard {
+        border: none;
+        box-shadow: none;
+    }
+
+    /*鼠标放置头像旋转*/
+    img.vimg {
+        transition: all 1s /* 旋转时间为 1s */
+    }
+
+    img.vimg:hover {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+    }
+
+    /*===========背景图输入判断=========*/
+    #veditor:focus {
+        background-position-y: 200px;
+        transition: all 0.2s ease-in-out 0s;
+    }
+
+    /*==========修改评论框样式===========start====*/
+    .v .vwrap {
+        padding: 0 0 20px;
+    }
+
+    /*内容框高度*/
+    .v .veditor {
+        min-height: 7rem;
+        resize: none;
+    }
+
+    /*==========修改评论框样式===========end======*/ /*头部空白栏高度*/
     .valine-card .card-content {
         padding: 20px 20px 5px 20px;
     }
 
-    #vcomments textarea {
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea { /*背景图贴边*/
+        margin-top: -30px;
         box-sizing: border-box;
-        background: url("/crystal-blog/medias/comment_bg.png") 100% 100% no-repeat;
+        background: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp") 100% 100% no-repeat;
     }
 
     #vcomments p {
@@ -1028,6 +1078,7 @@
         text-indent: 0.2rem;
     }
 
+    /*回复颜色*/
     #vcomments a {
         padding: 0 2px;
         color: #4cbf30;
@@ -1045,15 +1096,13 @@
         list-style-type: decimal;
     }
 
-    #vcomments ol,
-    ul {
+    #vcomments ol, ul {
         display: block;
         padding-left: 2em;
         word-spacing: 0.05rem;
     }
 
-    #vcomments ul li,
-    ol li {
+    #vcomments ul li, ol li {
         display: list-item;
         line-height: 1.8rem;
         font-size: 1rem;
@@ -1174,8 +1223,7 @@
         margin: .5em 0;
     }
 
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
+    #vcomments code[class*="language-"], pre[class*="language-"] {
         color: #e8eaf6;
     }
 
@@ -1189,8 +1237,7 @@
         visibility: visible;
     }
 
-    #vcomments b,
-    strong {
+    #vcomments b, strong {
         font-weight: bold;
     }
 
@@ -1237,74 +1284,55 @@
         vertical-align: middle;
         left: unset;
         visibility: visible;
-    }
-</style>
-
+    } </style>
 <div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling"
-         style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
+    <div id="vcomments" class="card-content" style="display: grid"></div>
 </div>
-
 <script src="/crystal-blog/libs/valine/av-min.js"></script>
 <script src="/crystal-blog/libs/valine/Valine.min.js"></script>
-<!--<script>
-    new Valine({
-        el: '#vcomments',
-        appId: 'NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI',
-        appKey: 'P7BGA1hMeBAFbHYz3dKY8doJ',
-        notify: 'false' === 'true',
-        verify: 'true' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'monsterid',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: 'just go go',
-
-
-    });
-</script>-->
-
-<!--Valine优化版本 wang-qz start-->
 <script>
     new Valine({
         el: '#vcomments',
-        admin_email: '1848276756@qq.com',
         appId: 'NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI',
         appKey: 'P7BGA1hMeBAFbHYz3dKY8doJ',
-        path: window.location.pathname,
-        comment_count: true,
+        tagMeta: ["博主", "小伙伴", "访客"],
+        master: 'e4de1f6da602d22e423d6dfb24611b6b',
+        enableQQ: 'true' === false,
         notify: 'false' === 'true',
         verify: 'true' === 'true',
         visitor: 'true' === 'true',
         avatar: 'monsterid',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go',
-
+        placeholder: '填写QQ号就能评论，快来一发吧~',
+        requiredFields: ['nick', 'mail', 'link']
     });
+    // 点击回复直接评论
     $(document).ready(function () {
+        $('.vemoji-btn').text('😀');
         $("#vcomments").on('click', 'span.vat', function () {
             $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
             $('textarea#veditor').focus();
         })
-    })
-</script>
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-<script type="text/javascript">
-    // 评论输入框提示语改为: 今日诗词
-    jinrishici.load(function (result) {placeholder
-        var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author
-        document.getElementById("veditor").setAttribute("placeholder", jrsc_plac);
     });
-</script>
-<!--Valine优化版本 wang-qz end-->
-
-<!--酷Q推送-->
+    // 自定义邮箱审核规则
+    document.body.addEventListener('click', function (e) {
+        if (e.target.classList.contains('vsubmit')) {
+            const email = document.querySelector('input[type=email]');
+            const nick = document.querySelector('input[name=nick]');
+            const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!email.value || !nick.value || !reg.test(email.value)) {
+                const str = `<div class="valert text-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
+                const vmark = document.querySelector('.vmark');
+                vmark.innerHTML = str;
+                vmark.style.display = 'block';
+                setTimeout(function () {
+                    vmark.style.display = 'none';
+                    vmark.innerHTML = '';
+                }, 2500);
+            }
+        }
+    }) </script>
 
 
             
@@ -1499,10 +1527,6 @@
         <div class="col s12 m4 l4 social-link social-statis">
             
 
-
-    <a href="http://m.qpic.cn/psc?/V50OtA2T2xEMeC3VFfoO3VUhFI3oh5um/45NBuzDIW489QBoVep5mcXL*g*.qBToggfzMXpC8XTSpgjt1XpVI1XUBBHusF5MqTh4nvZXGl5ME0ym8fiG01g6NQiWil3dDNrWoPLLP1qs!/b&amp;bo=PgMyAwAAAAABFzw!&amp;rf=viewer_4" class="tooltipped" target="_blank" data-tooltip="微信联系我" data-position="top" data-delay="50">
-        <i class="fab fa-weixin"></i>
-    </a>
 
 
 

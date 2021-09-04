@@ -842,7 +842,7 @@
 
     #vcomments textarea {
         box-sizing: border-box;
-        background: url("/crystal-blog/medias/comment_bg.png") 100% 100% no-repeat;
+        background: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp") 100% 100% no-repeat;
     }
 
     #vcomments p {
@@ -1065,6 +1065,8 @@
         left: unset;
         visibility: visible;
     }
+
+    /*添加评论框美化*/
 </style>
 
 <div class="card valine-card" data-aos="fade-up">
@@ -1090,7 +1092,7 @@
         avatar: 'monsterid',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go',
+        placeholder: '填写QQ号就能评论，快来一发吧~',
 
 
     });
@@ -1104,14 +1106,18 @@
         appId: 'NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI',
         appKey: 'P7BGA1hMeBAFbHYz3dKY8doJ',
         path: window.location.pathname,
-        comment_count: true,
         notify: 'false' === 'true',
         verify: 'true' === 'true',
         visitor: 'true' === 'true',
         avatar: 'monsterid',
         pageSize: '10',
         lang: 'zh-cn',
-        placeholder: 'just go go',
+        placeholder: '填写QQ号就能评论，快来一发吧~',
+
+        comment_count: true,
+        enableQQ: 'true',
+        meta: ['nick', 'mail'],
+        requiredFields: ['nick', 'mail'],
 
     });
     $(document).ready(function () {
@@ -1124,7 +1130,7 @@
 <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <script type="text/javascript">
     // 评论输入框提示语改为: 今日诗词
-    jinrishici.load(function (result) {placeholder
+    jinrishici.load(function (result) {
         var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author
         document.getElementById("veditor").setAttribute("placeholder", jrsc_plac);
     });
@@ -1320,10 +1326,6 @@
         <div class="col s12 m4 l4 social-link social-statis">
             
 
-
-    <a href="http://m.qpic.cn/psc?/V50OtA2T2xEMeC3VFfoO3VUhFI3oh5um/45NBuzDIW489QBoVep5mcXL*g*.qBToggfzMXpC8XTSpgjt1XpVI1XUBBHusF5MqTh4nvZXGl5ME0ym8fiG01g6NQiWil3dDNrWoPLLP1qs!/b&amp;bo=PgMyAwAAAAABFzw!&amp;rf=viewer_4" class="tooltipped" target="_blank" data-tooltip="微信联系我" data-position="top" data-delay="50">
-        <i class="fab fa-weixin"></i>
-    </a>
 
 
 
