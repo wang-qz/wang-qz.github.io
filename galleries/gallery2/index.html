@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="2018, 王子的博客,HTML,CSS,JavaScript,JQuery,java,linux等">
+    <meta name="keywords" content="博客背景图, 王子的博客,HTML,CSS,JavaScript,JQuery,java,linux等">
     <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>2018 | 王子的博客</title>
+    <title>博客背景图 | 王子的博客</title>
     <link rel="icon" type="image/png" href="/crystal-blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css">
@@ -32,9 +32,9 @@
     <script src="/crystal-blog/libs/jquery/jquery.min.js"></script>
 
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/crystal-blog/atom.xml" title="王子的博客" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/crystal-blog/atom.xml" title="王子的博客" type="application/atom+xml">
 <link rel="stylesheet" href="/crystal-blog/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -600,48 +600,106 @@
 
 </header>
 
-<link rel="stylesheet" href="/css/gallery.css">
-<link type="text/css" href="/libs/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link type="text/css" href="/libs/justifiedGallery/justifiedGallery.min.css" rel="stylesheet">
+<div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    be yourself , be better
+                
+            </div>
 
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/crystal-blog/medias/featureimages/5.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">2018</h1>
-                </div>
+            <div class="description center-align">
+                
+                    <!--本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景-->
+                        <span id="jinrishici-sentence">正在加载今日诗词....</span>
+                        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+                
             </div>
         </div>
     </div>
 </div>
 
 
+    <script>
+        // 每天切换 banner 图.  Switch banner image every day.
+        var bannerUrl = "/crystal-blog/medias/banner/" + new Date().getDay() + '.jpg';
+        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    </script>
 
-<div class="container">
-    <div class="photo-wrapper">
-        <div class="waterfall" id="mygallery">
-            <a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113055.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113055.jpg"       alt=2018/IMG_20180204_113055.jpg>
-    </a><a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113302.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113302.jpg"       alt=2018/IMG_20180204_113302.jpg>
-    </a><a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113442.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180204_113442.jpg"       alt=2018/IMG_20180204_113442.jpg>
-    </a><a target="_blank" href="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180208_083336.jpg"     class="photo-item" rel="example_group noopener"     data-fancybox="images">      <img src="https://images.liyangzone.com/gallery_tiny/2018/IMG_20180208_083336.jpg"       alt=2018/IMG_20180208_083336.jpg>
-    </a>
 
-        </div>
     </div>
 </div>
 
+<div id="myGallery" class="my-gallery">
+    <div class="title center-align" data-aos="zoom-in-up">
+        <p class="gallery-name">
+            <b style="font-size: 35px;">博客背景图</b>
+        </p>
+    </div>
 
-<script src="/libs/fancybox/fancybox.js"></script>
-<script src="/libs/justifiedGallery/justifiedGallery.min.js"></script>
+    <div class="row">
+        
+            
+                <div class="photo col s12 m6 l4" data-aos="fade-up">
+                    <div class="img-item" data-src="https://www.bing.com/th?id=OHR.Mpumalanga_ZH-CN9666962271_tmb.jpg&rf=">
+                        <img src="https://www.bing.com/th?id=OHR.Mpumalanga_ZH-CN9666962271_tmb.jpg&rf=" class="responsive-img">
+                    </div>
+                </div>
+            
+                <div class="photo col s12 m6 l4" data-aos="fade-up">
+                    <div class="img-item" data-src="https://www.bing.com/th?id=OHR.Porcini_ZH-CN0462290460_1920x1080.jpg&rf=LaDigue_1920x1080.jpg">
+                        <img src="https://www.bing.com/th?id=OHR.Porcini_ZH-CN0462290460_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img">
+                    </div>
+                </div>
+            
+                <div class="photo col s12 m6 l4" data-aos="fade-up">
+                    <div class="img-item" data-src="https://www.bing.com/th?id=OHR.AnnasHummingbird_ZH-CN0832228710_1920x1080.jpg&rf=LaDigue_1920x1080.jpg">
+                        <img src="https://www.bing.com/th?id=OHR.AnnasHummingbird_ZH-CN0832228710_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img">
+                    </div>
+                </div>
+            
+                <div class="photo col s12 m6 l4" data-aos="fade-up">
+                    <div class="img-item" data-src="https://www.bing.com/th?id=OHR.PortoFlavia_ZH-CN0573894597_1920x1080.jpg&rf=LaDigue_1920x1080.jpg">
+                        <img src="https://www.bing.com/th?id=OHR.PortoFlavia_ZH-CN0573894597_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img">
+                    </div>
+                </div>
+            
+                <div class="photo col s12 m6 l4" data-aos="fade-up">
+                    <div class="img-item" data-src="https://www.bing.com/th?id=OHR.AlienEggs_ZH-CN0732640719_1920x1080.jpg&rf=LaDigue_1920x1080.jpg">
+                        <img src="https://www.bing.com/th?id=OHR.AlienEggs_ZH-CN0732640719_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img">
+                    </div>
+                </div>
+            
+                <div class="photo col s12 m6 l4" data-aos="fade-up">
+                    <div class="img-item" data-src="https://cn.bing.com/th?id=OHR.GCVenice_ZH-CN0993336331_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg">
+                        <img src="https://cn.bing.com/th?id=OHR.GCVenice_ZH-CN0993336331_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg" class="responsive-img">
+                    </div>
+                </div>
+            
+                <div class="photo col s12 m6 l4" data-aos="fade-up">
+                    <div class="img-item" data-src="https://www.bing.com/th?id=OHR.LittleBlueHeron_ZH-CN0892428603_1920x1080.jpg&rf=LaDigue_1920x1080.jpg">
+                        <img src="https://www.bing.com/th?id=OHR.LittleBlueHeron_ZH-CN0892428603_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img">
+                    </div>
+                </div>
+            
+        
+    </div>
+</div>
+
 <script>
-
-    $("a[rel=example_group]").fancybox();
-    $("#mygallery").justifiedGallery({margins: 5, rowHeight: 150});
-
+    $(function () {
+        let animateClass = 'animated pulse';
+        $('#myGallery .photo').hover(function () {
+            $(this).addClass(animateClass);
+        }, function () {
+            $(this).removeClass(animateClass);
+        });
+    });
 </script>
+
 <!-- 切换夜间/白天模式按钮 -->
 <a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
 <!--添加尾部-->
