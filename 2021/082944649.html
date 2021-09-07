@@ -1,0 +1,2554 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<!--设置头-->
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="hexo博客搭建,hexo博客主题,matery主题">
+    <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>hexo博客搭建及主题优化(一) | 王子的博客</title>
+    <link rel="icon" type="image/png" href="/crystal-blog/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/artitalk/artitalk.min.css">
+
+    <script src="/crystal-blog/libs/jquery/jquery.min.js"></script>
+
+
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/crystal-blog/atom.xml" title="王子的博客" type="application/atom+xml">
+<link rel="stylesheet" href="/crystal-blog/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<!--设置背景图-->
+
+    <style>
+    body {
+        /*background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/0.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/1.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/2.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/3.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/4.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/5.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/6.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/8.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/01.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/05.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/06.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/07.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/08.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/09.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/11.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/12.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/15.jpg );*/
+        /*我将background.url配置为数组,配置了多个背景图,在navigate.ejs中做了随机切换背景图*/
+        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+
+
+
+<body>
+<!--添加头部导航栏部分-->
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo" style="margin-left: -50px;">
+                <a href="/crystal-blog/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">王子的博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu" style="margin-left: 100px">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>清单</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/crystal-blog/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>音乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/videos">
+          
+          <i class="fas fa-video" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>视频</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/movies">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>影集</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>阅读</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/wallpaper">
+          
+          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>壁纸</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/galleries">
+          
+          <i class="fas fa-camera" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>相册</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-rocket" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/crystal-blog/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/aboutgirl">
+          
+          <i class="fa fa-user-secret" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于她</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/artitalk">
+          
+          <i class="fas fa-pen-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>artitalk</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/crystal-blog/bb">
+          
+          <i class="fas fa-comment" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>bbtalk</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/navigate" class="waves-effect waves-light">
+      
+      <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
+      
+      <span>快捷导航</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+      
+      <i class="fas fa-rss" style="zoom: 0.6;"></i>
+      
+      <span>RSS</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">王子的博客</div>
+        <div class="logo-desc">
+            
+            本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			清单
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/crystal-blog/musics " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:28px" ></i>
+			      
+		          <span>音乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/videos " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-video" style="position: absolute;left:28px" ></i>
+			      
+		          <span>视频</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/movies " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
+			      
+		          <span>影集</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/books " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
+			      
+		          <span>阅读</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/wallpaper " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
+			      
+		          <span>壁纸</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/galleries " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-camera" style="position: absolute;left:28px" ></i>
+			      
+		          <span>相册</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-rocket"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/crystal-blog/about " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/aboutgirl " style="margin-left:50px">
+				  
+				   <i class="fa fa fa-user-secret" style="position: absolute;left:28px" ></i>
+			      
+		          <span>关于她</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/artitalk " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-pen-alt" style="position: absolute;left:28px" ></i>
+			      
+		          <span>artitalk</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/crystal-blog/bb " style="margin-left:50px">
+				  
+				   <i class="fa fas fa-comment" style="position: absolute;left:28px" ></i>
+			      
+		          <span>bbtalk</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/navigate" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-location-arrow"></i>
+			
+			快捷导航
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-rss"></i>
+			
+			RSS
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+
+<script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/crystal-blog/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.bing.com/th?id=OHR.LittleBlueHeron_ZH-CN0892428603_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">hexo博客搭建及主题优化(一)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/crystal-blog/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/crystal-blog/tags/hexo/">
+                                <span class="chip bg-color">hexo</span>
+                            </a>
+                        
+                            <a href="/crystal-blog/tags/matery/">
+                                <span class="chip bg-color">matery</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                hexo博客
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-08-29
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2021-09-07
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="crystalBlog"><a href="#crystalBlog" class="headerlink" title="crystalBlog"></a>crystalBlog</h1><p>下篇<a href="https://wang-qz.gitee.io/crystal-blog/2021/082917116.html">hexo博客搭建及主题优化(二)</a></p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>个人博客,  站点地址 <a href="https://wang-qz.gitee.io/crystal-blog/">https://wang-qz.gitee.io/crystal-blog/</a></p>
+<h2 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h2><p>基于<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">hexo</a>框架, <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">hexo-theme-matery</a>主题搭建的个人博客网站,  其他主题选择请进入<a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo-theme</a>查看.</p>
+<h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><h3 id="1-安装js-hexo-git"><a href="#1-安装js-hexo-git" class="headerlink" title="1. 安装js, hexo, git"></a>1. 安装<code>js</code>, <code>hexo</code>,<code> git</code></h3><p>网上很多环境安装教程, 此处省略…., 参考<a target="_blank" rel="noopener" href="https://easyhexo.com/">Easy Hexo</a></p>
+<h3 id="2-设置npm全局下载目录"><a href="#2-设置npm全局下载目录" class="headerlink" title="2. 设置npm全局下载目录"></a>2. 设置npm全局下载目录</h3><pre class=" language-shell"><code class="language-shell">npm config set prefix "D:\softwareInstalled\nodeJs\node_global"
+npm config set cache "D:\softwareInstalled\nodeJs\node_cache"
+</code></pre>
+<h3 id="3-cnpm安装"><a href="#3-cnpm安装" class="headerlink" title="3. cnpm安装"></a>3. cnpm安装</h3><p><code>cnpm</code>读取的是国内的镜像站, 比国外镜像站访问快很多.</p>
+<pre class=" language-shell"><code class="language-shell">npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm -v
+</code></pre>
+<h3 id="4-安装hexo-两种方式"><a href="#4-安装hexo-两种方式" class="headerlink" title="4 .安装hexo(两种方式)"></a>4 .安装hexo(两种方式)</h3><pre class=" language-shell"><code class="language-shell">npm install -g hexo-cli
+cnpm install -g hexo-cli
+##查看hexo版本
+hexo -v
+</code></pre>
+<h3 id="5-hexo初始化"><a href="#5-hexo初始化" class="headerlink" title="5. hexo初始化"></a>5. hexo初始化</h3><p>创建MyBlog博客目录, 进入目录进行hexo初始化: </p>
+<pre class=" language-shell"><code class="language-shell">cd MyBlog
+hexo init
+</code></pre>
+<h3 id="6-清除博客缓存"><a href="#6-清除博客缓存" class="headerlink" title="6. 清除博客缓存"></a>6. 清除博客缓存</h3><p>会清除博客<code>public</code>目录下生成的html等静态文件</p>
+<pre class=" language-shell"><code class="language-shell">hexo clean
+</code></pre>
+<h3 id="7-md文件生成html页面"><a href="#7-md文件生成html页面" class="headerlink" title="7. md文件生成html页面"></a>7. md文件生成html页面</h3><pre class=" language-shell"><code class="language-shell">hexo g
+hexo generate
+</code></pre>
+<h3 id="8-本地部署hexo"><a href="#8-本地部署hexo" class="headerlink" title="8. 本地部署hexo"></a>8. 本地部署hexo</h3><p>部署后访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a>, 就可以进入搭建的博客主页.</p>
+<pre class=" language-shell"><code class="language-shell">hexo s
+hexo serve
+</code></pre>
+<h3 id="9-新建分类-categories-页"><a href="#9-新建分类-categories-页" class="headerlink" title="9. 新建分类 categories 页"></a>9. 新建分类<code> categories</code> 页</h3><p><code>categories</code> 页是用来展示所有的分类，如果 <code>source</code> 目录下还没有 <code>/categories/index.md</code> 文件，那么就需要新建一个，命令如下：</p>
+<pre class=" language-bash"><code class="language-bash">hexo new page <span class="token string">"categories"</span>
+</code></pre>
+<h3 id="10-新增标签tags页"><a href="#10-新增标签tags页" class="headerlink" title="10. 新增标签tags页"></a>10. 新增标签<code>tags</code>页</h3><p>会生成 <code>/source/tags/index.md</code> , 其他page页也是一样的新增.</p>
+<pre class=" language-bash"><code class="language-bash">hexo new page <span class="token string">"tags"</span>
+</code></pre>
+<h3 id="11-新增博客"><a href="#11-新增博客" class="headerlink" title="11. 新增博客"></a>11. 新增博客</h3><p>创建一个博客文章, 就可以写文章了, 文章的一些属性设置详见<a href="#Front">Front-matter</a></p>
+<pre class=" language-shell"><code class="language-shell">hexo new 'myblog'
+</code></pre>
+<h3 id="12-发布到远程仓库"><a href="#12-发布到远程仓库" class="headerlink" title="12. 发布到远程仓库"></a>12. 发布到远程仓库</h3><p>需要先安装插件hexo-deployer-git</p>
+<pre class=" language-bash"><code class="language-bash">cnpm <span class="token function">install</span> --save hexo-deployer-git
+</code></pre>
+<p>hexo根目录下面_config.yml关联仓库文件配置</p>
+<pre class=" language-yml"><code class="language-yml">deploy:
+  type: git
+  repository: git@gitee.com:wang-qz/crystal-blog.git
+  branch: master  
+</code></pre>
+<p>开启域名url, 在博客根目录 <code>_config.yml</code> 文件中:</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//wang<span class="token punctuation">-</span>qz.gitee.io/crystal<span class="token punctuation">-</span>blog <span class="token comment" spellcheck="true">#后期修改为域名</span>
+</code></pre>
+<p>发布到远程仓库</p>
+<pre class=" language-bash"><code class="language-bash">hexo d
+hexo deploy
+</code></pre>
+<h3 id="13-切换主题"><a href="#13-切换主题" class="headerlink" title="13. 切换主题"></a>13. 切换主题</h3><p>博客根目录下配置文件<code>_config.yml</code>配置:</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">## landscape matery next butterfly sakura yilia</span>
+<span class="token key atrule">theme</span><span class="token punctuation">:</span> hexo<span class="token punctuation">-</span>theme<span class="token punctuation">-</span>matery
+</code></pre>
+<h3 id="14-博客站点相关信息"><a href="#14-博客站点相关信息" class="headerlink" title="14. 博客站点相关信息"></a>14. 博客站点相关信息</h3><p>在博客根目录下的 <code>_config.yml</code> 配置文件中:</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Site</span>
+<span class="token key atrule">title</span><span class="token punctuation">:</span> 王子的博客 <span class="token comment" spellcheck="true">#网站标题</span>
+<span class="token key atrule">subtitle</span><span class="token punctuation">:</span> be yourself<span class="token punctuation">,</span> be better <span class="token comment" spellcheck="true">#网站副标题</span>
+<span class="token comment" spellcheck="true">#网站描述description 主要用于5E0，告诉搜索引擎一个关于您站点的简单描述</span>
+<span class="token key atrule">description</span><span class="token punctuation">:</span> 本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台
+ <span class="token comment" spellcheck="true">#网站的关键词。使用半角逗号“，”分隔多个关键词</span>
+<span class="token key atrule">keywords</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>王子的博客<span class="token punctuation">,</span>HTML<span class="token punctuation">,</span> CSS<span class="token punctuation">,</span> JavaScript<span class="token punctuation">,</span> JQuery<span class="token punctuation">,</span> java<span class="token punctuation">,</span> linux等<span class="token punctuation">]</span>
+<span class="token key atrule">author</span><span class="token punctuation">:</span> 王子 <span class="token comment" spellcheck="true">#您的名字</span>
+<span class="token key atrule">language</span><span class="token punctuation">:</span> zh<span class="token punctuation">-</span>CN <span class="token comment" spellcheck="true">#网站使用的语言。建议修改为zh-CN</span>
+<span class="token key atrule">timezone</span><span class="token punctuation">:</span> Asia/Shanghai <span class="token comment" spellcheck="true">#网站时区。Hexo默认使用您电脑的时区。</span>
+</code></pre>
+<h2 id="主题优化"><a href="#主题优化" class="headerlink" title="主题优化"></a>主题优化</h2><h3 id="1-代码高亮配置"><a href="#1-代码高亮配置" class="headerlink" title="1.  代码高亮配置"></a>1.  代码高亮配置</h3><p>安装hexo代码高亮插件</p>
+<pre class=" language-shell"><code class="language-shell">cnpm i -S hexo-prism-plugin
+</code></pre>
+<p>修改 Hexo 根目录下 <code>_config.yml</code> 文件中 <code>highlight.enable</code> 的值为 <code>false</code>，并新增 <code>prism</code> 插件相关的配置，主要配置如下：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">highlight</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+
+<span class="token key atrule">prism_plugin</span><span class="token punctuation">:</span>
+  <span class="token key atrule">mode</span><span class="token punctuation">:</span> <span class="token string">'preprocess'</span>    <span class="token comment" spellcheck="true"># realtime/preprocess</span>
+  <span class="token key atrule">theme</span><span class="token punctuation">:</span> <span class="token string">'tomorrow'</span>
+  <span class="token key atrule">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">false    </span><span class="token comment" spellcheck="true"># default false</span>
+  <span class="token key atrule">custom_css</span><span class="token punctuation">:</span>
+</code></pre>
+<h3 id="2-添加搜索功能"><a href="#2-添加搜索功能" class="headerlink" title="2. 添加搜索功能"></a>2. 添加搜索功能</h3><p>安装<a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search">hexo-generator-search</a> 搜索插件</p>
+<pre class=" language-bash"><code class="language-bash">cnpm <span class="token function">install</span> hexo-generator-search --save
+</code></pre>
+<p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">search</span><span class="token punctuation">:</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> search.xml
+  <span class="token key atrule">field</span><span class="token punctuation">:</span> post
+</code></pre>
+<h3 id="3-社交链接修改"><a href="#3-社交链接修改" class="headerlink" title="3.  社交链接修改"></a>3.  社交链接修改</h3><p>在主题的 <code>_config.yml</code> 文件中，默认支持 <code>QQ</code>、<code>GitHub</code> 和邮箱的配置，</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 首页 banner 中的第二行个人信息配置，留空即不启用</span>
+<span class="token key atrule">socialLink</span><span class="token punctuation">:</span>
+  <span class="token key atrule">github</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true">#https://github.com/wang-qz</span>
+  <span class="token key atrule">wechat</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true">#实际替换为cdn路径</span>
+  <span class="token key atrule">qq</span><span class="token punctuation">:</span> <span class="token number">1848276756</span>
+  <span class="token key atrule">email</span><span class="token punctuation">:</span> wang<span class="token punctuation">-</span>qz@foxmail.com
+  <span class="token key atrule">gitee</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//gitee.com/wang<span class="token punctuation">-</span>qz
+  <span class="token key atrule">csdn</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//blog.csdn.net/u013044713
+  <span class="token key atrule">facebook</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># https://www.facebook.com/xxx</span>
+  <span class="token key atrule">twitter</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># https://twitter.com/xxx</span>
+  <span class="token key atrule">weibo</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># https://weibo.com/xxx</span>
+  <span class="token key atrule">zhihu</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># https://www.zhihu.com/xxx</span>
+  <span class="token key atrule">rss</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># true、false</span>
+</code></pre>
+<p>可以在主题文件的 <code>/layout/_partial/social-link.ejs</code> 文件中，新增、修改需要的社交链接地址，增加链接可参考如下代码：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(theme.socialLink.gitee)</span> <span class="token attr-name">{</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>&lt;%<span class="token punctuation">=</span> theme.socialLink.gitee %<span class="token punctuation">></span><span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltipped<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">data-tooltip</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>码云<span class="token punctuation">"</span></span> <span class="token attr-name">data-position</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span> <span class="token attr-name">data-delay</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fab fa-github-alt<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(theme.socialLink.csdn)</span> <span class="token attr-name">{</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>&lt;%<span class="token punctuation">=</span> theme.socialLink.csdn %<span class="token punctuation">></span><span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tooltipped<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span> 
+       <span class="token attr-name">data-tooltip</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>关注我的CSDN<span class="token punctuation">"</span></span> <span class="token attr-name">data-position</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>top<span class="token punctuation">"</span></span> <span class="token attr-name">data-delay</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fab fa-csdn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>其中，社交图标（如：fa-github）可以在 Font Awesome 中搜索找到。以下是常用社交图标的标识，供参考：</p>
+<pre class=" language-yml"><code class="language-yml">Facebook: fab fa-facebook
+Twitter: fab fa-twitter
+Google-plus: fab fa-google-plus
+Linkedin: fab fa-linkedin
+Tumblr: fab fa-tumblr
+Linkedin: fab fa-linkedin
+Slack: fab fa-slack
+新浪微博: fab fa-weibo
+微信: fab fa-wechat 或 fab fa-weixin
+QQ: fab fa-qq
+知乎: fab fa-zhihu
+</code></pre>
+<h3 id="5-打赏二维码修改"><a href="#5-打赏二维码修改" class="headerlink" title="5. 打赏二维码修改"></a>5. 打赏二维码修改</h3><p>在主题文件的 <code>source/medias/reward</code> 文件中，可以替换成你的的微信和支付宝的打赏二维码图片。</p>
+<p>主题目录下的<code>_config.yml</code>文件中打赏设置</p>
+<pre class=" language-yml"><code class="language-yml"># 是否激活文章末尾的打赏功能，默认激活
+#（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
+reward:
+  enable: true
+  title: 你的赏识是我前进的动力
+  wechat: /medias/reward/wechatPay.jpg
+  alipay: /medias/reward/alipay.jpg
+</code></pre>
+<h3 id="6-文章链接转静态短地址"><a href="#6-文章链接转静态短地址" class="headerlink" title="6. 文章链接转静态短地址"></a>6. 文章链接转静态短地址</h3><p>如果文章名称是中文的，那么 Hexo 默认生成的永久链接也会有中文，这样不利于 SEO，且 gitment 评论对中文链接也不支持。我们可以用<code>hexo-permalink-pinyin</code>插件生成文章时生成中文拼音的永久链接，或者用hexo-abbrlink 生成静态文章链接。以下结合hexo-abbrlink生成类似 /yyyy/mmdd+随机数.html 的文章链接地址。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-permalink-pinyin --save
+<span class="token function">npm</span> <span class="token function">install</span> hexo-abbrlink --save
+</code></pre>
+<p>在 <em>Hexo</em> 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">permalink_pinyin</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">separator</span><span class="token punctuation">:</span> <span class="token string">'-'</span> <span class="token comment" spellcheck="true"># default: '-'</span>
+</code></pre>
+<p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，修改 <code>permalink:</code> ，并在文件末尾新增 <code>abbrlink:</code>配置项：</p>
+<pre class=" language-yml"><code class="language-yml">permalink: :year/:month:day:abbrlink.html
+abbrlink: 
+  alg: crc16 #算法选项：crc16丨crc32
+  rep: dec #输出进制：dec为十进制，hex为十六进制
+</code></pre>
+<h3 id="7-文章字数统计插件"><a href="#7-文章字数统计插件" class="headerlink" title="7. 文章字数统计插件"></a>7. 文章字数统计插件</h3><p>如果你想要在文章中显示文章字数、阅读时长信息，可以安装 <a target="_blank" rel="noopener" href="https://github.com/willin/hexo-wordcount">hexo-wordcount</a>插件。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> i --save hexo-wordcount
+</code></pre>
+<p>然后只需在本主题下的 <code>_config.yml</code> 文件中，激活以下配置项即可：</p>
+<pre class=" language-yml"><code class="language-yml">postInfo:
+  date: true # 发布日期
+  update: true # 更新日期
+  wordCount: true # 文章字数统计
+  totalCount: true # 站点总文章字数
+  min2read: true # 文章阅读时长
+  readCount: true # 文章阅读次数
+</code></pre>
+<h3 id="8-添加-RSS-订阅支持"><a href="#8-添加-RSS-订阅支持" class="headerlink" title="8. 添加 RSS 订阅支持"></a>8. 添加 RSS 订阅支持</h3><p>本主题中还使用到了 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-feed">hexo-generator-feed</a> 的 Hexo 插件来做 <code>RSS</code>，安装命令如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-generator-feed --save
+</code></pre>
+<p>在 Hexo 根目录下的 <code>_config.yml</code> 文件中，新增以下的配置项：</p>
+<pre class=" language-yml"><code class="language-yml">feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+</code></pre>
+<p>执行 <code>hexo clean &amp;&amp; hexo g</code> 重新生成博客文件，然后在 <code>public</code> 文件夹中即可看到 <code>atom.xml</code> 文件，说明已经安装成功了。</p>
+<h3 id="9-导航栏-标签页-尾页颜色修改"><a href="#9-导航栏-标签页-尾页颜色修改" class="headerlink" title="9. 导航栏/标签页/尾页颜色修改"></a>9. 导航栏/标签页/尾页颜色修改</h3><p>主题目录 <code>/source/css/matery.css</code>文件中修改:</p>
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */</span>
+<span class="token selector"><span class="token class">.bg-color</span> </span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);**/</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right, <span class="token hexcode">#7371BC</span> <span class="token number">0%</span>, <span class="token hexcode">#284D95</span> <span class="token number">100%</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="10-主题背景颜色修改"><a href="#10-主题背景颜色修改" class="headerlink" title="10. 主题背景颜色修改"></a>10. 主题背景颜色修改</h3><p>在主题文件的 <code>/source/css/matery.css</code> 文件中：</p>
+<pre class=" language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@-webkit-keyframes</span> rainbow</span> <span class="token punctuation">{</span>
+   <span class="token comment" spellcheck="true">/* 动态切换背景颜色.即滤镜颜色，不想要可以全部注释，或者换成你喜欢的颜色 */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> rainbow</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/* 动态切换背景颜色.，不想要可以全部注释，或者换成你喜欢的颜色 */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="11-banner-图和文章特色图修改"><a href="#11-banner-图和文章特色图修改" class="headerlink" title="11.  banner 图和文章特色图修改"></a>11.  banner 图和文章特色图修改</h3><p>可以直接在<code>/source/medias/banner</code>文件夹中更换喜欢的 banner 图片，主题代码中是每天动态切换一张，只需 7 张即可。如果会 JavaScript 代码，可以修改成自己喜欢切换逻辑，如：随机切换等，banner 切换的代码位置在 <code>/layout/_partial/bg-cover-content.ejs </code>文件的<code> &lt;script&gt;&lt;/script&gt;</code> 代码中：</p>
+<pre class=" language-ejs"><code class="language-ejs"><% if (theme.banner.enable) { %>
+    <script>
+        // 每天切换 banner 图.  Switch banner image every day. 可以修改切换逻辑
+        var bannerUrl = "<%- theme.jsDelivr.url %><%- url_for('/medias/banner/') %>" + 
+       new Date().getDay() + '.jpg';
+        $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    </script>
+<% } else { %>
+    <script>
+        $('.bg-cover').css('background-image', 'url(<%- theme.jsDelivr.url %><%- url_for('/medias/banner/0.jpg') %>)');
+    </script>
+<% } %>
+</code></pre>
+<h3 id="12-整体布局的背景图设置"><a href="#12-整体布局的背景图设置" class="headerlink" title="12. 整体布局的背景图设置"></a>12. 整体布局的背景图设置</h3><p>在主题目录下的<code>/layout/layout.ejs</code>文件中, 找到下面的代码就是设置背景图的地方:</p>
+<pre class=" language-ejs"><code class="language-ejs"><% if (theme.background.enable) { %>
+    <%- partial('_partial/background') %>
+<% } %>
+</code></pre>
+<p>上面代码会加载主题目录下的背景图设置文件<code>/layout/_partial/background.ejs</code>:</p>
+<pre class=" language-css"><code class="language-css"><span class="token selector">&lt;style>
+    body </span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/*background-image: url(&lt;%- theme.background.url %> );*/</span>
+       <span class="token comment" spellcheck="true">/*我将background.url配置为数组,配置了多个背景图,在navigate.ejs中做了随机切换背景图*/</span>
+        <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url(&lt;%- theme.background.url[0]%>)</span><span class="token punctuation">;</span>
+        <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span>
+        <span class="token property">background-size</span><span class="token punctuation">:</span> cover<span class="token punctuation">;</span>
+        <span class="token property">background-attachment</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+&lt;/style>
+</code></pre>
+<h3 id="13-取消背景色蒙版特效"><a href="#13-取消背景色蒙版特效" class="headerlink" title="13. 取消背景色蒙版特效"></a>13. 取消背景色蒙版特效</h3><p>默认情况下<code>banner</code>图上面感觉覆盖了一层雾色 ,其实是给banner部分设置了背景色变化, 给人朦胧的特效感觉 , 在主题目录下的<code> /source/css/matery.css</code> 文件中可以取消朦胧特效设置，搜索 <code>.bg-cover:after</code> 注释它：</p>
+<pre class=" language-css"><code class="language-css"><span class="token comment" spellcheck="true">/**注释后, 取消背景色蒙版特效**/</span>
+<span class="token selector"><span class="token class">.bg-cover</span><span class="token pseudo-element">:after</span> </span><span class="token punctuation">{</span>
+   <span class="token comment" spellcheck="true">/* -webkit-animation: rainbow 60s infinite;
+    animation: rainbow 60s infinite;*/</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="14-添加emoji表情支持"><a href="#14-添加emoji表情支持" class="headerlink" title="14. 添加emoji表情支持"></a>14. 添加emoji表情支持</h3><p><em>Matery</em> 主题新增了对<code>emoji</code>表情的支持，使用到了 <a target="_blank" rel="noopener" href="https://npm.taobao.org/package/hexo-filter-github-emojis">hexo-filter-github-emojis</a> 的 Hexo 插件来支持 <code>emoji</code>表情的生成，把对应的<code>markdown emoji</code>语法（<code>::</code>,例如：<code>:smile:</code>）转变成会跳跃的<code>emoji</code>表情，安装命令如下：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> hexo-filter-github-emojis --save
+</code></pre>
+<h3 id="15-站点侧边配置音乐播放器"><a href="#15-站点侧边配置音乐播放器" class="headerlink" title="15. 站点侧边配置音乐播放器"></a>15. 站点侧边配置音乐播放器</h3><p>音乐播放器的代码在主题目录下的<code>/layout/_widget/music.ejs</code>文件中.</p>
+<p>要支持音乐播放，在主题目录下的 <code>_config.yml</code> 配置文件中激活music配置即可：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Whether to display the musics.</span>
+<span class="token comment" spellcheck="true"># 是否在首页显示音乐.</span>
+<span class="token key atrule">music</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true">#非吸底模式有效</span>
+    <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">show</span><span class="token punctuation">:</span> 听听音乐
+  <span class="token key atrule">autoHide</span><span class="token punctuation">:</span> <span class="token boolean important">true    </span><span class="token comment" spellcheck="true"># hide automaticaly</span>
+  <span class="token key atrule">server</span><span class="token punctuation">:</span> netease   <span class="token comment" spellcheck="true">#require   music platform: netease, tencent, kugou, xiami, baidu</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> playlist    <span class="token comment" spellcheck="true">#require song, playlist, album, search, artist</span>
+  <span class="token key atrule">id</span><span class="token punctuation">:</span> <span class="token number">2888085740     </span><span class="token comment" spellcheck="true">#require  song id / playlist id / album id / search keyword</span>
+  <span class="token key atrule">fixed</span><span class="token punctuation">:</span> <span class="token boolean important">false       </span><span class="token comment" spellcheck="true"># 开启吸底模式  true 播放器会在站点侧边,点击会出现</span>
+  <span class="token key atrule">autoplay</span><span class="token punctuation">:</span> <span class="token boolean important">false   </span><span class="token comment" spellcheck="true"># 是否自动播放</span>
+  <span class="token key atrule">theme</span><span class="token punctuation">:</span> '<span class="token comment" spellcheck="true">#42b983'</span>
+  <span class="token key atrule">loop</span><span class="token punctuation">:</span> <span class="token string">'all'</span>       <span class="token comment" spellcheck="true"># 音频循环播放, 可选值: 'all', 'one', 'none'</span>
+  <span class="token key atrule">order</span><span class="token punctuation">:</span> <span class="token string">'random'</span>   <span class="token comment" spellcheck="true"># 音频循环顺序, 可选值: 'list', 'random'</span>
+  <span class="token key atrule">preload</span><span class="token punctuation">:</span> <span class="token string">'auto'</span>   <span class="token comment" spellcheck="true"># 预加载，可选值: 'none', 'metadata', 'auto'</span>
+  <span class="token key atrule">volume</span><span class="token punctuation">:</span> <span class="token number">0.7       </span><span class="token comment" spellcheck="true"># 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</span>
+  <span class="token key atrule">listFolded</span><span class="token punctuation">:</span> <span class="token boolean important">true  </span><span class="token comment" spellcheck="true"># 列表默认折叠</span>
+  <span class="token key atrule">hideLrc</span><span class="token punctuation">:</span> <span class="token boolean important">true     </span><span class="token comment" spellcheck="true"># 隐藏歌词</span>
+</code></pre>
+<p><code>server</code>可选<code>netease</code>（网易云音乐），<code>tencent</code>（QQ音乐），<code>kugou</code>（酷狗音乐），<code>xiami</code>（虾米音乐）， <code>baidu</code>（百度音乐）。 <code>type</code>可选<code>song</code>（歌曲），<code>playlist</code>（歌单），<code>album</code>（专辑），<code>search</code>（搜索关键字），<code>artist</code>（歌手） <code>id</code>获取示例: 打开手机版网易云音乐，选择喜欢的歌单，然后点击分享.</p>
+<p>我这里随便选了一个歌单，分享后的文字长这样：</p>
+<blockquote>
+<p> 分享真咸鱼饼干的歌单《青年节：致逐梦人，有志者事竟成》<a target="_blank" rel="noopener" href="http://music.163.com/playlist/4965675848/1548006936/?userid=120124365">http://music.163.com/playlist/4965675848/1548006936/?userid=120124365</a> (@网易云音乐)</p>
+<p><code>4965675848</code> 这就是歌单的id，文件里默认设置的歌单其实也还不错，歌挺多的，所以如果没什么特殊要求，使用默认歌单也不错。</p>
+</blockquote>
+<p>然后博客是在主题目录下的<code>/layout/index.ejs</code>文件中引用了<code>/layout/_widget/music.ejs</code>音乐文件:</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>indexCard<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index-card<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container <span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(theme.dream.enable)</span> <span class="token attr-name">{</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+                        &lt;%- partial('_widget/dream') %>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(theme.music.enable</span> <span class="token attr-name">&amp;&amp;</span> <span class="token attr-name">!theme.music.fixed)</span> <span class="token attr-name">{</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+                        &lt;%- partial('_widget/music') %>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">if</span> <span class="token attr-name">(theme.recommend.enable)</span> <span class="token attr-name">{</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>recommend-sections<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>recommend<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                        &lt;%- partial('_widget/recommend') %>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>%</span> <span class="token attr-name">}</span> <span class="token attr-name">%</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>上面代码中的<code>recommend</code>是主页的<code>文章推荐</code>,  <code>dream</code>是<code>我的梦想</code>, 在主题目录下的<code>_config.yml</code>文件中配置是否激活启用, 在编写MD博客时<a href="#top">设置<code>top</code>属性</a>为true即可在主页看到文章推荐.</p>
+<h3 id="16-主页网站标题及副标题"><a href="#16-主页网站标题及副标题" class="headerlink" title="16. 主页网站标题及副标题"></a>16. 主页网站标题及副标题</h3><p>在博客根目录下的 <code>_config.yml</code> 配置文件中:</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Site</span>
+<span class="token key atrule">title</span><span class="token punctuation">:</span> 王子的博客 <span class="token comment" spellcheck="true">#网站标题</span>
+<span class="token key atrule">subtitle</span><span class="token punctuation">:</span> be yourself<span class="token punctuation">,</span> be better <span class="token comment" spellcheck="true">#网站副标题</span>
+<span class="token key atrule">description</span><span class="token punctuation">:</span> 本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景 <span class="token comment" spellcheck="true">#网站描述description 主要用于5E0，告诉搜索引擎一个关于您站点的简单描述</span>
+<span class="token key atrule">keywords</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>王子的博客<span class="token punctuation">,</span>HTML<span class="token punctuation">,</span> CSS<span class="token punctuation">,</span> JavaScript<span class="token punctuation">,</span> JQuery<span class="token punctuation">,</span> java<span class="token punctuation">,</span> linux等<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#网站的关键词。使用半角逗号“，”分隔多个关键词</span>
+<span class="token key atrule">author</span><span class="token punctuation">:</span> 王子 <span class="token comment" spellcheck="true">#您的名字</span>
+<span class="token key atrule">language</span><span class="token punctuation">:</span> zh<span class="token punctuation">-</span>CN <span class="token comment" spellcheck="true">#网站使用的语言。建议修改为zh-CN</span>
+<span class="token key atrule">timezone</span><span class="token punctuation">:</span> Asia/Shanghai <span class="token comment" spellcheck="true">#网站时区。Hexo默认使用您电脑的时区。</span>
+</code></pre>
+<h3 id="17-主页网站副标题及打字效果"><a href="#17-主页网站副标题及打字效果" class="headerlink" title="17. 主页网站副标题及打字效果"></a>17. 主页网站副标题及打字效果</h3><p>在博客根目录 <code>_config.yml</code> 文件维护的副标题下方的打字效果, 在主题的 <code>_config.yml</code> 配置文件中配置如下:</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 打字效果副标题.</span>
+<span class="token comment" spellcheck="true"># 如果有符号 ‘ ，请在 ’ 前面加上 \</span>
+<span class="token key atrule">subtitle</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">loop</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># 是否循环</span>
+  <span class="token key atrule">showCursor</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># 是否显示光标</span>
+  <span class="token key atrule">startDelay</span><span class="token punctuation">:</span> <span class="token number">300 </span><span class="token comment" spellcheck="true"># 开始延迟</span>
+  <span class="token key atrule">typeSpeed</span><span class="token punctuation">:</span> <span class="token number">100 </span><span class="token comment" spellcheck="true"># 打字速度</span>
+  <span class="token key atrule">backSpeed</span><span class="token punctuation">:</span> <span class="token number">50 </span><span class="token comment" spellcheck="true"># 删除速度</span>
+  <span class="token key atrule">sub</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> 从来没有真正的绝境<span class="token punctuation">,</span> 只有心灵的迷途.
+    <span class="token punctuation">-</span> Never really desperate<span class="token punctuation">,</span> only the lost of the soul.
+    <span class="token punctuation">-</span> 如果放弃太早，你永远都不知道自己会错过什么.
+    <span class="token punctuation">-</span> 没有伞的孩子必须努力奔跑！
+    <span class="token punctuation">-</span> 花开不是为了花落，而是为了开的更加灿烂.
+    <span class="token punctuation">-</span> 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生.
+</code></pre>
+<p>获取sub打字内容的js代码在主题目录下<code>/layout/_partial/bg-cover-content.ejs</code></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"description center-align"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>enable<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"subtitle"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+        <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://cdn.jsdelivr.net/npm/typed.js@2.0.11"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+        <span class="token operator">&lt;</span>script<span class="token operator">></span>
+            <span class="token keyword">var</span> typed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Typed</span><span class="token punctuation">(</span><span class="token string">"#subtitle"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                strings<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                    <span class="token operator">&lt;</span><span class="token operator">%</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>sub<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
+                    <span class="token string">"&lt;%= item %>"</span><span class="token punctuation">,</span>
+                    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                startDelay<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>startDelay <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span>
+                typeSpeed<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>typeSpeed <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span>
+                loop<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>loop <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span>
+                backSpeed<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>backSpeed <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">,</span>
+                showCursor<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>showCursor <span class="token operator">%</span><span class="token operator">></span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> config<span class="token punctuation">.</span>description <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+</code></pre>
+<p>打字效果, 打印位置在根目录设置的副标题下面轮播打印主题目录设置的sub值</p>
+<p><img src="C:\Users\18482\AppData\Roaming\Typora\typora-user-images\image-20210828115746672.png" alt="副标题打字效果"></p>
+<h3 id="18-副标题打字效果改为展示今日诗词"><a href="#18-副标题打字效果改为展示今日诗词" class="headerlink" title="18. 副标题打字效果改为展示今日诗词"></a>18. 副标题打字效果改为展示今日诗词</h3><p>修改主题配置文件<code>_config.yml</code>, 将副标题的动态打字<code>enable</code>改为false</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 打字效果副标题.</span>
+<span class="token comment" spellcheck="true"># 如果有符号 ‘ ，请在 ’ 前面加上 \</span>
+<span class="token key atrule">subtitle</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">loop</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># 是否循环</span>
+  <span class="token key atrule">showCursor</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># 是否显示光标</span>
+  <span class="token key atrule">startDelay</span><span class="token punctuation">:</span> <span class="token number">300 </span><span class="token comment" spellcheck="true"># 开始延迟</span>
+  <span class="token key atrule">typeSpeed</span><span class="token punctuation">:</span> <span class="token number">100 </span><span class="token comment" spellcheck="true"># 打字速度</span>
+  <span class="token key atrule">backSpeed</span><span class="token punctuation">:</span> <span class="token number">50 </span><span class="token comment" spellcheck="true"># 删除速度</span>
+  <span class="token key atrule">sub</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> 从来没有真正的绝境<span class="token punctuation">,</span> 只有心灵的迷途.
+    <span class="token punctuation">-</span> Never really desperate<span class="token punctuation">,</span> only the lost of the soul.
+    <span class="token punctuation">-</span> 如果放弃太早，你永远都不知道自己会错过什么.
+    <span class="token punctuation">-</span> 没有伞的孩子必须努力奔跑！
+    <span class="token punctuation">-</span> 花开不是为了花落，而是为了开的更加灿烂.
+    <span class="token punctuation">-</span> 没有礁石，就没有美丽的浪花；没有挫折，就没有壮丽的人生.
+</code></pre>
+<p>在<code>/themes/hexo-theme-matery/layout/_partial/bg-cover-content.ejs</code>文件中将<code>&lt;%= config.description %&gt;</code>改为:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"jinrishici-sentence"</span><span class="token operator">></span>正在加载今日诗词<span class="token operator">...</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://sdk.jinrishici.com/v2/browser/jinrishici.js"</span> charset<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.jinrishici.com/doc/#json-fast">参考今日诗词接口官方资料</a></p>
+<h3 id="19-推荐文章设置"><a href="#19-推荐文章设置" class="headerlink" title="19. 推荐文章设置"></a>19. <span id="top">推荐文章设置</span></h3><p>主题目录下的<code>_config.yml</code> 配置文件中:</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 是否显示推荐文章的标题</span>
+<span class="token key atrule">recommend</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">showTitle</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">useConfig</span><span class="token punctuation">:</span> <span class="token boolean important">false </span><span class="token comment" spellcheck="true"># 是否使用配置文件, 在 _data/recommends.json 下配置推荐文章, false则会走主题配置的 top 属性</span>
+</code></pre>
+<p><a href="#Front">top 属性配置详见Front-matter</a></p>
+<h3 id="20-设置文章阅读密码"><a href="#20-设置文章阅读密码" class="headerlink" title="20. 设置文章阅读密码"></a>20. 设置文章阅读密码</h3><p>主题目录<code>_config.yml</code>配置如下:</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 阅读文章的密码验证功能，如要使用此功能请激活该配置项，并在对应文章的Front-matter中写上'password'的键和加密后的密文即可.</span>
+<span class="token comment" spellcheck="true"># 请注意：为了保证密码原文不会被泄露到网页中，文章的密码必须是通过'SHA256'加密的，这样就不会被破解.</span>
+<span class="token key atrule">verifyPassword</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">promptMessage</span><span class="token punctuation">:</span> 请输入访问本文章的密码
+  <span class="token key atrule">errorMessage</span><span class="token punctuation">:</span> 密码错误，将返回主页！
+</code></pre>
+<p>在博客文章中指定加密后的密文密码<code>password</code>  , 博客文件密码属性设置详情见<a href="#Front">Front-matter</a></p>
+<p> SHA256 加密的地址:   <a target="_blank" rel="noopener" href="http://tool.oschina.net/encrypt?type=2">开源中国在线工具</a>、<a target="_blank" rel="noopener" href="http://encode.chahuo.com/">chahuo</a>、<a target="_blank" rel="noopener" href="http://tool.chinaz.com/tools/hash.aspx">站长工具</a> 、<a target="_blank" rel="noopener" href="http://www.ttmd5.com/hash.php?type=9">TTmd5</a></p>
+<blockquote>
+<p>主题优化进阶看上篇<code>hexo博客搭建及主题优化(二)</code></p>
+</blockquote>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter "></a><span id="Front">Front-matter </span></h2><h3 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h3><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
+<table>
+<thead>
+<tr>
+<th>配置选项</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td><code>Markdown</code> 的文件标题</td>
+<td>文章标题，强烈建议填写此选项</td>
+</tr>
+<tr>
+<td>date</td>
+<td>文件创建时的日期时间</td>
+<td>发布时间，强烈建议填写此选项，且最好保证全局唯一</td>
+</tr>
+<tr>
+<td>author</td>
+<td>根 <code>_config.yml</code> 中的 <code>author</code></td>
+<td>文章作者</td>
+</tr>
+<tr>
+<td>img</td>
+<td><code>featureImages</code> 中的某个值</td>
+<td>文章特征图</td>
+</tr>
+<tr>
+<td>top</td>
+<td><code>true</code></td>
+<td>推荐文章（文章是否置顶），如果 <code>top</code> 值为 <code>true</code>，则会作为首页推荐文章</td>
+</tr>
+<tr>
+<td>cover</td>
+<td><code>false</code></td>
+<td>表示该文章是否需要加入到首页轮播封面中</td>
+</tr>
+<tr>
+<td>coverImg</td>
+<td>无</td>
+<td>表示该文章在首页轮播封面需要显示的图片路径，如果没有，则默认使用文章的特色图片</td>
+</tr>
+<tr>
+<td>password</td>
+<td>无</td>
+<td>文章阅读密码，如果要对文章设置阅读验证密码的话，就可以设置 <code>password</code> 的值，该值必须是用 <code>SHA256</code> 加密后的密码，防止被他人识破。前提是在主题的 <code>config.yml</code> 中激活了 <code>verifyPassword</code> 选项</td>
+</tr>
+<tr>
+<td>toc</td>
+<td><code>true</code></td>
+<td>是否开启 TOC，可以针对某篇文章单独关闭 TOC 的功能。前提是在主题的 <code>config.yml</code> 中激活了 <code>toc</code> 选项</td>
+</tr>
+<tr>
+<td>mathjax</td>
+<td><code>false</code></td>
+<td>是否开启数学公式支持 ，本文章是否开启 <code>mathjax</code>，且需要在主题的 <code>_config.yml</code> 文件中也需要开启才行</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>无</td>
+<td>文章摘要，自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>无</td>
+<td>文章标签，一篇文章可以多个标签</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>无</td>
+<td>文章分类，本主题的分类表示宏观上大的分类，只建议一篇文章一个分类</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>文章标题</td>
+<td>文章关键字，SEO 时需要</td>
+</tr>
+<tr>
+<td>reprintPolicy</td>
+<td>cc_by</td>
+<td>文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</td>
+</tr>
+</tbody></table>
+<p>注意:</p>
+<ol>
+<li><p>如果 img 属性不填写的话，文章特色图会根据文章标题的 hashcode 的值取余，然后选取主题中对应的特色图片，从而达到让所有文章都的特色图各有特色。</p>
+</li>
+<li><p>date 的值尽量保证每篇文章是唯一的，因为本主题中 Gitalk 和 Gitment 识别 id 是通过 date 的值来作为唯一标识的。</p>
+</li>
+<li><p>如果要对文章设置阅读验证密码的功能，不仅要在 Front-matter 中设置采用了 SHA256 加密的 password 的值，还需要在主题的 _config.yml 中激活了配置。有些在线的 SHA256 加密的地址，可供使用：开源中国在线工具、chahuo、站长工具。</p>
+</li>
+<li><p> 您可以在文章md文件的front-mater中指定reprintPolicy来给单个文章配置转载规则.</p>
+</li>
+</ol>
+<h3 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h3><pre class=" language-md"><code class="language-md">---
+title: 基于Hexo的hexo-theme-matery主题搭建博客并优化
+date: 2019-10-03 14:25:00
+author: 悟尘
+img: /source/images/xxx.jpg
+top: true
+cover: true
+coverImg: /images/1.jpg
+password: 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+toc: false
+mathjax: false
+summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+categories: 工具
+tags:
+  - blog
+  - hexo
+---
+</code></pre>
+<link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/crystal-blog/about" rel="external nofollow noreferrer">王子</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/2021/082944649.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/2021/082944649.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/crystal-blog/about" target="_blank">王子</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/crystal-blog/tags/hexo/">
+                                    <span class="chip bg-color">hexo</span>
+                                </a>
+                            
+                                <a href="/crystal-blog/tags/matery/">
+                                    <span class="chip bg-color">matery</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/crystal-blog/libs/share/js/social-share.min.js"></script>
+    
+
+    
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
+    <div class="addthis_inline_share_toolbox"></div>
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/crystal-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/crystal-blog/medias/reward/wechatPay.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    .v[data-class="v"] .vwrap .vheader .vinput {
+        width: 32%;
+        border-bottom: 1px dashed #dedede;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling"
+         style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/crystal-blog/libs/valine/av-min.js"></script>
+<script src="/crystal-blog/libs/valine2/Valine2.min.js"></script>
+<script>
+    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
+    //这里要换行
+    new Valine({
+        el: '#vcomments',
+        appId: 'NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI',
+        appKey: 'P7BGA1hMeBAFbHYz3dKY8doJ',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-CN',
+        placeholder: '填写QQ号就能评论，快来一发吧~',
+
+        meta: ["nick", "mail", "link"],
+        recordIP: 'true' === 'true',
+        enableQQ: 'monsterid',
+        requiredFields: ["nick", "mail", "link"],
+        master: ["e4de1f6da602d22e423d6dfb24611b6b"],
+        friends: ["410739a5ad278251b305dab085768c57", "410739a5ad278251b305dab085768c57", "410739a5ad278251b305dab085768c57"],
+        tagMeta: ["博主", "小伙伴", "访客"],
+        metaPlaceholder: metaPlaceholder,
+
+    });
+
+    document.body.addEventListener('click', function (e) {
+        if (e.target.classList.contains('vsubmit')) {
+            const email = document.querySelector('input[type=email]');
+            const nick = document.querySelector('input[name=nick]');
+            const reg = /^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!email.value || !nick.value || !reg.test(email.value)) {
+                const str = `<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
+                const vmark = document.querySelector('.vmark');
+                vmark.innerHTML = str;
+                vmark.style.display = 'block';
+
+                e.stopPropagation();
+
+                setTimeout(function () {
+                    vmark.style.display = 'none';
+                    vmark.innerHTML = '';
+                }, 2500);
+            }
+        }
+    }, true);
+</script>
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/crystal-blog/2021/082917116.html">
+                    <div class="card-image">
+                        
+                        <img src="https://cn.bing.com/th?id=OHR.GCVenice_ZH-CN0993336331_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="hexo博客搭建及主题优化(二)">
+                        
+                        <span class="card-title">hexo博客搭建及主题优化(二)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            添加音乐, 电影, 快捷导航等
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    hexo博客
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/crystal-blog/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/crystal-blog/tags/matery/">
+                        <span class="chip bg-color">matery</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/crystal-blog/2021/080318741.html">
+                    <div class="card-image">
+                        
+                        <img src="https://cn.bing.com/th?id=OHR.HowgillFells_ZH-CN1134328886_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="hexo搭建个人博客">
+                        
+                        <span class="card-title">hexo搭建个人博客</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            我的第一个blog
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    hexo博客
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/crystal-blog/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 王子的博客<br />'
+            + '文章作者: 王子<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/crystal-blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+<!-- 切换夜间/白天模式按钮 -->
+<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
+<!--添加尾部-->
+<footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="7278393642"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/crystal-blog/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2021</span>
+            
+            <i class="fa fa-heart" style="color: #ff71a8"></i>
+            <a href="/crystal-blog/about" target="_blank">王子</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+
+            <!--站点总字数-->
+            
+            <span style="margin-left: -20px; display: inline">
+                &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">24.1k</span>
+                <span/>
+                
+
+                
+                
+                    
+                
+
+                <!--总访问量-->
+                
+                    <span id="busuanzi_container_site_pv" style="display: inline">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span
+                                id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+
+                <!--总访问人数-->
+                
+                    <span id="busuanzi_container_site_uv" style="display: inline">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span
+                                id="busuanzi_value_site_uv" class="white-color"></span>
+                </span>
+                
+                <br>
+
+                <!-- 运行天数提醒. -->
+                
+                    <span id="sitetime"> Loading ...</span>
+                    <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2020";
+                        var startMonth = "8";
+                        var startDate = "8";
+                        var startHour = "8";
+                        var startMinute = "8";
+                        var startSecond = "8";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff / hours) - diffYears * 365 * 24 - diffDays * 24);
+                        var diffMinutes = Math.floor((diff / minutes) - diffYears * 365 * 24 * 60 - diffDays * 24 * 60 - diffHours * 60);
+                        var diffSeconds = Math.floor((diff / seconds) - diffYears * 365 * 24 * 60 * 60 - diffDays * 24 * 60 * 60 - diffHours * 60 * 60 - diffMinutes * 60);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天 ' + diffHours + ' 小时 ' + diffMinutes + ' 分钟 ' + diffSeconds + ' 秒';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+                    var timer = setInterval(calcSiteTime);
+                    // calcSiteTime();
+                </script>
+                
+                &nbsp;|&nbsp;
+                
+                    <span id="icp">
+                    <img src="/crystal-blog/medias/icp.png"
+                         style="vertical-align: text-bottom;"/>
+
+                    <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20002708号-8</a>
+                </span>
+                
+        </div>
+
+        <div class="col s12 m4 l4 social-link social-statis">
+            
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1848276756" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1848276756" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="mailto:wang-qz@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我: wang-qz@foxmail.com" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="https://gitee.com/wang-qz" class="tooltipped" target="_blank" data-tooltip="码云" data-position="top" data-delay="50">
+        <i class="fab fa-github-alt"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/u013044713" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
+    </a>
+
+
+
+    <a href="/crystal-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+
+
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script>
+    let _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?147475454185ebcf440a27cc35e793ef";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<!--添加搜索框-->
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/crystal-blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+<!--添加回到顶部按钮-->
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+<script src="/crystal-blog/libs/materialize/materialize.min.js"></script>
+<script src="/crystal-blog/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/crystal-blog/libs/aos/aos.js"></script>
+<script src="/crystal-blog/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/crystal-blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/crystal-blog/js/matery.js"></script>
+<script src="/crystal-blog/js/funnyTitle.js"></script>
+
+<!-- Baidu Analytics -->
+
+<!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+    <script src="/crystal-blog/libs/others/clicklove.js" async="async"></script>
+
+
+    <script async src="/crystal-blog/libs/others/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+<!--腾讯兔小巢-->
+
+
+<!--背景canvas-nest-->
+
+    <script type="text/javascript" color="0,0,255"
+            pointColor="0,0,255" opacity='0.7'
+            zIndex="-1" count="99"
+            src="/crystal-blog/libs/background/canvas-nest.js"></script>
+
+
+<!--背景静止彩带-->
+
+
+<!--背景动态彩带-->
+
+    <script type="text/javascript" src="/crystal-blog/libs/background/ribbon-dynamic.js"
+            async="async"></script>
+
+
+<!--网页预加载-->
+
+    <script src="/crystal-blog/libs/instantpage/instantpage.js" type="module"></script>
+
+
+<!-- 雪花特效 -->
+
+    <script src="/crystal-blog/js/snow.js"></script>
+
+
+<!-- 鼠标点击特效 -->
+
+    <script src="/crystal-blog/js/wenzi.js"></script>
+
+
+<!-- 樱花特效 -->
+
+    <script src="/crystal-blog/js/sakura.js"></script>
+
+
+<script src="/crystal-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/crystal-blog/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":190,"hOffset":50,"vOffset":-5},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+
+</html>
