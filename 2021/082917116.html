@@ -604,6 +604,7 @@
 <script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
+        /*pwd是博客中配置的sha256加密后的密码*/
         let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
@@ -774,21 +775,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-07
+                    2021-09-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    17.6k
+                    17.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    94 分
+                    95 分
                 </div>
                 
 
@@ -1927,6 +1928,26 @@ function getCurrentGallery(galleries, pageTitle) {
 </code></pre>
 <h4 id="相册列表效果"><a href="#相册列表效果" class="headerlink" title="相册列表效果"></a>相册列表效果</h4><p><img src="C:\Users\18482\Documents\360截图\360截图20210905191948605.jpg" alt="360截图20210905191948605"></p>
 <p><img src="C:\Users\18482\Documents\360截图\360截图20210905192024492.jpg" alt="360截图20210905192024492"></p>
+<p>给相册设置密码, 可以参考博客文章密码访问. 在主题目录下的<code>/layout/gallery.ejs</code>文件中添加如下代码:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>theme<span class="token punctuation">.</span>verifyPassword<span class="token punctuation">.</span>enable<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"&lt;%- theme.jsDelivr.url %>&lt;%- url_for(theme.libs.js.crypto) %>"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+    <span class="token operator">&lt;</span>script<span class="token operator">></span>
+        <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/*pwd是博客中配置的sha256加密后的密码*/</span>
+            <span class="token keyword">let</span> pwd <span class="token operator">=</span> <span class="token string">'&lt;%- page.password %>'</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>pwd <span class="token operator">&amp;&amp;</span> pwd<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>pwd <span class="token operator">!==</span> CryptoJS<span class="token punctuation">.</span><span class="token function">SHA256</span><span class="token punctuation">(</span><span class="token function">prompt</span><span class="token punctuation">(</span>'请输入访问本相册的密
+                                                   码'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Hex<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'密码错误！'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">'&lt;%- url_for("/galleries")  %>'</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span>
+</code></pre>
+<p>然后在需要设置密码的gallery3相册目录下的<code>/source/galleries/gallery3/index.md</code>文件中设置password即可. 密码需要使用SHA256加密.</p>
+<p><img src="C:\Users\18482\AppData\Roaming\Typora\typora-user-images\image-20210908213414259.png" alt="image-20210908213414259"></p>
 <h3 id="36-修改导航栏不透明"><a href="#36-修改导航栏不透明" class="headerlink" title="36. 修改导航栏不透明"></a>36. 修改导航栏不透明</h3><p>透明导航栏经常给我造成阅读障碍，可以设置不使用透明导航栏, 指定好看的颜色. 找到主题目录下的<code>/source/css/matery.css </code>文件，修改如下部分：</p>
 <pre class=" language-css"><code class="language-css"><span class="token selector">header <span class="token class">.nav-transparent</span> </span><span class="token punctuation">{</span>
     <span class="token property">background-color</span><span class="token punctuation">:</span> transparent <span class="token important">!important</span><span class="token punctuation">;</span>
@@ -6309,7 +6330,7 @@ tags:
             
             <span style="margin-left: -20px; display: inline">
                 &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.1k</span>
+                        class="white-color">24.2k</span>
                 <span/>
                 
 

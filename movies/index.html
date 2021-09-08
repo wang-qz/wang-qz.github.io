@@ -604,6 +604,7 @@
 <script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
+        /*pwd是博客中配置的sha256加密后的密码*/
         let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
@@ -1462,7 +1463,7 @@
             
             <span style="margin-left: -20px; display: inline">
                 &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.1k</span>
+                        class="white-color">24.2k</span>
                 <span/>
                 
 
