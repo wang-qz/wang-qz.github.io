@@ -117,7 +117,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/musics" class="waves-effect waves-light">
+    <a href="/" class="waves-effect waves-light">
 
       
       <i class="fas fa-list" style="zoom: 0.6;"></i>
@@ -187,7 +187,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/about" class="waves-effect waves-light">
+    <a href="/" class="waves-effect waves-light">
 
       
       <i class="fas fa-rocket" style="zoom: 0.6;"></i>
@@ -775,7 +775,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-08
+                    2021-09-11
                 </div>
                 
 
@@ -855,10 +855,16 @@ hexo serve
 <pre class=" language-yml"><code class="language-yml">deploy:
   type: git
   repository: git@gitee.com:wang-qz/crystal-blog.git
-  branch: master  
+#  repository: git@github.com:wang-qz/wang-qz.github.io.git
+  branch: master
 </code></pre>
 <p>开启域名url, 在博客根目录 <code>_config.yml</code> 文件中:</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//wang<span class="token punctuation">-</span>qz.gitee.io/crystal<span class="token punctuation">-</span>blog <span class="token comment" spellcheck="true">#后期修改为域名</span>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">## 自定义域名, 目前是部署到gitHub上面解析自定义域名的, gitee个人版不支持自定义域名</span>
+<span class="token comment" spellcheck="true">#url: https://www.crystalblog.xyz</span>
+<span class="token comment" spellcheck="true">## gitee</span>
+<span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//wang<span class="token punctuation">-</span>qz.gitee.io/crystal<span class="token punctuation">-</span>blog/
+<span class="token comment" spellcheck="true">## github</span>
+<span class="token comment" spellcheck="true">#url: https://wang-qz.github.io/</span>
 </code></pre>
 <p>发布到远程仓库</p>
 <pre class=" language-bash"><code class="language-bash">hexo d
@@ -1158,7 +1164,7 @@ abbrlink:
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
 </code></pre>
 <p>打字效果, 打印位置在根目录设置的副标题下面轮播打印主题目录设置的sub值</p>
-<p><img src="C:\Users\18482\AppData\Roaming\Typora\typora-user-images\image-20210828115746672.png" alt="副标题打字效果"></p>
+<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109112043420.png" alt="副标题打字效果"></p>
 <h3 id="18-副标题打字效果改为展示今日诗词"><a href="#18-副标题打字效果改为展示今日诗词" class="headerlink" title="18. 副标题打字效果改为展示今日诗词"></a>18. 副标题打字效果改为展示今日诗词</h3><p>修改主题配置文件<code>_config.yml</code>, 将副标题的动态打字<code>enable</code>改为false</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 打字效果副标题.</span>
 <span class="token comment" spellcheck="true"># 如果有符号 ‘ ，请在 ’ 前面加上 \</span>
@@ -2202,7 +2208,7 @@ tags:
             
             <span style="margin-left: -20px; display: inline">
                 &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.2k</span>
+                        class="white-color">23.2k</span>
                 <span/>
                 
 
