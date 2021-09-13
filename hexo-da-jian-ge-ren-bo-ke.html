@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git">
+    <meta name="keywords" content="王子 hexo">
     <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -14,28 +14,29 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="baidu-site-verification" content="code-Fqqme2bKQz" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>git常用命令整理 | 王子的博客</title>
-    <link rel="icon" type="image/png" href="/crystal-blog/favicon.png">
+    <title>hexo搭建个人博客 | 王子的博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/css/my.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/artitalk/artitalk.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/libs/artitalk/artitalk.min.css">
 
-    <script src="/crystal-blog/libs/jquery/jquery.min.js"></script>
+    <script src="/libs/jquery/jquery.min.js"></script>
 
 
 <meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/crystal-blog/atom.xml" title="王子的博客" type="application/atom+xml">
-<link rel="stylesheet" href="/crystal-blog/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="alternate" href="/atom.xml" title="王子的博客" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <!--设置背景图-->
@@ -59,7 +60,7 @@
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo" style="margin-left: -50px;">
-                <a href="/crystal-blog/" class="waves-effect waves-light">
+                <a href="/" class="waves-effect waves-light">
                     
                     <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO">
                     
@@ -73,7 +74,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/" class="waves-effect waves-light">
+    <a href="/" class="waves-effect waves-light">
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
@@ -84,7 +85,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/tags" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
       <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
@@ -95,7 +96,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/categories" class="waves-effect waves-light">
+    <a href="/categories" class="waves-effect waves-light">
       
       <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
       
@@ -106,7 +107,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/archives" class="waves-effect waves-light">
+    <a href="/archives" class="waves-effect waves-light">
       
       <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
@@ -128,7 +129,7 @@
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/crystal-blog/musics">
+        <a href="/musics">
           
           <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -137,7 +138,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/videos">
+        <a href="/videos">
           
           <i class="fas fa-video" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -146,7 +147,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/movies">
+        <a href="/movies">
           
           <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -155,7 +156,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/books">
+        <a href="/books">
           
           <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -164,7 +165,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/wallpaper">
+        <a href="/wallpaper">
           
           <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -173,7 +174,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/galleries">
+        <a href="/galleries">
           
           <i class="fas fa-camera" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -198,7 +199,7 @@
     <ul class="sub-nav menus_item_child ">
       
       <li>
-        <a href="/crystal-blog/about">
+        <a href="/about">
           
           <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -207,7 +208,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/aboutgirl">
+        <a href="/aboutgirl">
           
           <i class="fa fa-user-secret" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -216,7 +217,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/artitalk">
+        <a href="/artitalk">
           
           <i class="fas fa-pen-alt" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -225,7 +226,7 @@
       </li>
       
       <li>
-        <a href="/crystal-blog/bb">
+        <a href="/bb">
           
           <i class="fas fa-comment" style="margin-top: -20px; zoom: 0.6;"></i>
           
@@ -239,7 +240,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/contact" class="waves-effect waves-light">
+    <a href="/contact" class="waves-effect waves-light">
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
       
@@ -250,7 +251,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/friends" class="waves-effect waves-light">
+    <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
@@ -261,7 +262,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/navigate" class="waves-effect waves-light">
+    <a href="/navigate" class="waves-effect waves-light">
       
       <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
       
@@ -272,7 +273,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+    <a href="/atom.xml" class="waves-effect waves-light">
       
       <i class="fas fa-rss" style="zoom: 0.6;"></i>
       
@@ -309,7 +310,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/" class="waves-effect waves-light">
+		<a href="/" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
@@ -320,7 +321,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/tags" class="waves-effect waves-light">
+		<a href="/tags" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-tags"></i>
 			
@@ -331,7 +332,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/categories" class="waves-effect waves-light">
+		<a href="/categories" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-bookmark"></i>
 			
@@ -342,7 +343,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/archives" class="waves-effect waves-light">
+		<a href="/archives" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-archive"></i>
 			
@@ -364,7 +365,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/musics " style="margin-left:50px">
+                  <a href="/musics " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-music" style="position: absolute;left:28px" ></i>
 			      
@@ -374,7 +375,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/videos " style="margin-left:50px">
+                  <a href="/videos " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-video" style="position: absolute;left:28px" ></i>
 			      
@@ -384,7 +385,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/movies " style="margin-left:50px">
+                  <a href="/movies " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
 			      
@@ -394,7 +395,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/books " style="margin-left:50px">
+                  <a href="/books " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
 			      
@@ -404,7 +405,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/wallpaper " style="margin-left:50px">
+                  <a href="/wallpaper " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
 			      
@@ -414,7 +415,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/galleries " style="margin-left:50px">
+                  <a href="/galleries " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-camera" style="position: absolute;left:28px" ></i>
 			      
@@ -439,7 +440,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/about " style="margin-left:50px">
+                  <a href="/about " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
 			      
@@ -449,7 +450,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/aboutgirl " style="margin-left:50px">
+                  <a href="/aboutgirl " style="margin-left:50px">
 				  
 				   <i class="fa fa fa-user-secret" style="position: absolute;left:28px" ></i>
 			      
@@ -459,7 +460,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/artitalk " style="margin-left:50px">
+                  <a href="/artitalk " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-pen-alt" style="position: absolute;left:28px" ></i>
 			      
@@ -469,7 +470,7 @@
               
                 <li>
 
-                  <a href="/crystal-blog/bb " style="margin-left:50px">
+                  <a href="/bb " style="margin-left:50px">
 				  
 				   <i class="fa fas fa-comment" style="position: absolute;left:28px" ></i>
 			      
@@ -483,7 +484,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/contact" class="waves-effect waves-light">
+		<a href="/contact" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-comments"></i>
 			
@@ -494,7 +495,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/friends" class="waves-effect waves-light">
+		<a href="/friends" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-address-book"></i>
 			
@@ -505,7 +506,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/navigate" class="waves-effect waves-light">
+		<a href="/navigate" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-location-arrow"></i>
 			
@@ -516,7 +517,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
+		<a href="/atom.xml" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-rss"></i>
 			
@@ -601,7 +602,7 @@
 </header>
 
 
-<script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script>
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
         /*pwd是博客中配置的sha256加密后的密码*/
@@ -609,7 +610,7 @@
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
-                location.href = '/crystal-blog/';
+                location.href = '/';
             }
         }
     })();
@@ -618,12 +619,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.bing.com/th?id=OHR.AlienEggs_ZH-CN0732640719_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://cn.bing.com/th?id=OHR.HowgillFells_ZH-CN1134328886_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git常用命令整理</h1>
+                    <h1 class="description center-align post-title">hexo搭建个人博客</h1>
                 </div>
             </div>
         </div>
@@ -633,10 +634,104 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -645,8 +740,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/crystal-blog/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/hexo/">
+                                <span class="chip bg-color">hexo</span>
                             </a>
                         
                     </div>
@@ -657,8 +752,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/crystal-blog/categories/git/" class="post-category">
-                                git
+                            <a href="/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                hexo博客
                             </a>
                         
                     </div>
@@ -670,28 +765,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-07
+                    2021-08-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-07
+                    2021-09-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    83
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    1 分
                 </div>
                 
 
@@ -711,71 +806,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>git常用命令</p>
-<h2 id="查看git版本"><a href="#查看git版本" class="headerlink" title="查看git版本"></a>查看git版本</h2><p>git –version</p>
-<h2 id="生成公钥"><a href="#生成公钥" class="headerlink" title="生成公钥"></a>生成公钥</h2><p>ssh-keygen -t rsa -C “<a href="mailto:wang-qz@foxmail.com">wang-qz@foxmail.com</a>“</p>
-<h2 id="检查密匙是否成功绑定"><a href="#检查密匙是否成功绑定" class="headerlink" title="检查密匙是否成功绑定"></a>检查密匙是否成功绑定</h2><p>ssh -T <a href="mailto:git@github.com">git@github.com</a><br>ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a></p>
-<h2 id="测试ssh连接是否成功"><a href="#测试ssh连接是否成功" class="headerlink" title="测试ssh连接是否成功"></a>测试ssh连接是否成功</h2><p>ssh -v <a href="mailto:git@github.com">git@github.com</a></p>
-<h2 id="git配置用户和邮箱"><a href="#git配置用户和邮箱" class="headerlink" title="git配置用户和邮箱"></a>git配置用户和邮箱</h2><p>git config –global user.name “wang-qz”<br>git config –global user.email “<a href="mailto:wang-qz@qq.com">wang-qz@qq.com</a>“</p>
-<h2 id="查看git配置的用户和邮箱"><a href="#查看git配置的用户和邮箱" class="headerlink" title="查看git配置的用户和邮箱"></a>查看git配置的用户和邮箱</h2><p>git config user.name<br>git config user.email</p>
-<h2 id="将-color-ui-设置为-auto-可以让命令的输出拥有更高的可读性"><a href="#将-color-ui-设置为-auto-可以让命令的输出拥有更高的可读性" class="headerlink" title="将 color.ui 设置为 auto 可以让命令的输出拥有更高的可读性"></a>将 color.ui 设置为 auto 可以让命令的输出拥有更高的可读性</h2><p>git config –global color.ui auto</p>
-<h2 id="查看git配置信息"><a href="#查看git配置信息" class="headerlink" title="查看git配置信息"></a>查看git配置信息</h2><p>git config –list</p>
-<h2 id="把本地目录变成Git可以管理的仓库"><a href="#把本地目录变成Git可以管理的仓库" class="headerlink" title="把本地目录变成Git可以管理的仓库"></a>把本地目录变成Git可以管理的仓库</h2><p>git init</p>
-<h2 id="查看当前分支的状态-git-bash打开的目录必须是git管理的仓库目录"><a href="#查看当前分支的状态-git-bash打开的目录必须是git管理的仓库目录" class="headerlink" title="查看当前分支的状态(git bash打开的目录必须是git管理的仓库目录)"></a>查看当前分支的状态(git bash打开的目录必须是git管理的仓库目录)</h2><p>git status</p>
-<h2 id="添加远程仓库的关联-url为你的远程仓库的url，可采用http协议或ssh协议"><a href="#添加远程仓库的关联-url为你的远程仓库的url，可采用http协议或ssh协议" class="headerlink" title="添加远程仓库的关联,url为你的远程仓库的url，可采用http协议或ssh协议"></a>添加远程仓库的关联,url为你的远程仓库的url，可采用http协议或ssh协议</h2><h2 id="远程仓库的名称一般默认为origin-也可以自定义-下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名"><a href="#远程仓库的名称一般默认为origin-也可以自定义-下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名" class="headerlink" title="远程仓库的名称一般默认为origin,也可以自定义, 下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名"></a>远程仓库的名称一般默认为origin,也可以自定义, 下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名</h2><p>git remote add <name> <url><br>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:wang-qz/help-doc.git<br>git remote add origin <a href="mailto:git@gitee.com">git@gitee.com</a>:wang-qz/leangit.git<br>git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/wang-qz/leangit.git">https://gitee.com/wang-qz/leangit.git</a></url></name></p>
-<h2 id="查看关联的远程仓库的名称"><a href="#查看关联的远程仓库的名称" class="headerlink" title="查看关联的远程仓库的名称"></a>查看关联的远程仓库的名称</h2><p>git remote</p>
-<h2 id="查看关联的远程仓库的详细信息"><a href="#查看关联的远程仓库的详细信息" class="headerlink" title="查看关联的远程仓库的详细信息"></a>查看关联的远程仓库的详细信息</h2><p>git remote -v</p>
-<h2 id="第一次需要将本地分支关联到远程分支"><a href="#第一次需要将本地分支关联到远程分支" class="headerlink" title="第一次需要将本地分支关联到远程分支"></a>第一次需要将本地分支关联到远程分支</h2><h2 id="先将远程分支拉取下来"><a href="#先将远程分支拉取下来" class="headerlink" title="先将远程分支拉取下来"></a>先将远程分支拉取下来</h2><p>git pull origin master</p>
-<h2 id="然后关联本地分支和远程分支"><a href="#然后关联本地分支和远程分支" class="headerlink" title="然后关联本地分支和远程分支"></a>然后关联本地分支和远程分支</h2><p>git branch –set-upstream-to=origin/master master<br>git pull -–rebase  origin master<br>git push origin master </p>
-<h2 id="修改远程仓库的关联"><a href="#修改远程仓库的关联" class="headerlink" title="修改远程仓库的关联"></a>修改远程仓库的关联</h2><p>git remote set-url <name> <newurl><br>git remote set-url origin <a target="_blank" rel="noopener" href="https://gitee.com/wang-qz/leangit.git">https://gitee.com/wang-qz/leangit.git</a><br>git remote set-url origin <a href="mailto:git@gitee.com">git@gitee.com</a>:wang-qz/leangit.git</newurl></name></p>
-<h2 id="删除远程仓库的关联"><a href="#删除远程仓库的关联" class="headerlink" title="删除远程仓库的关联"></a>删除远程仓库的关联</h2><p>git remote remove <name><br>git remote remove origin<br>git remote rm origin </name></p>
-<h2 id="本地仓库同时关联gitee和GitHub的远程仓库及分支-分别远程仓库名称自定义-不能同时命名为origin"><a href="#本地仓库同时关联gitee和GitHub的远程仓库及分支-分别远程仓库名称自定义-不能同时命名为origin" class="headerlink" title="本地仓库同时关联gitee和GitHub的远程仓库及分支, 分别远程仓库名称自定义, 不能同时命名为origin"></a>本地仓库同时关联gitee和GitHub的远程仓库及分支, 分别远程仓库名称自定义, 不能同时命名为origin</h2><p>git remote add gitee  <a href="mailto:git@gitee.com">git@gitee.com</a>:wang-qz/leangit.git<br>git remote add github <a href="mailto:git@github.com">git@github.com</a>:wang-qz/learngit.git<br>git pull gitee master<br>git pull github master<br>git branch –set-upstream-to=gitee/master master<br>git branch –set-upstream-to=github/master master<br>git pull -–rebase  gitee master<br>git pull -–rebase  github master</p>
-<h2 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h2><h2 id="可以把-master-换成你想要推送的任何分支"><a href="#可以把-master-换成你想要推送的任何分支" class="headerlink" title="可以把 master 换成你想要推送的任何分支"></a>可以把 master 换成你想要推送的任何分支</h2><h2 id="u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令"><a href="#u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令" class="headerlink" title="-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令"></a>-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令</h2><p>git push -u origin 对应远程分支名<br>git push -u origin master</p>
-<h2 id="如果已经关联了远程分支-可以不加-u参数"><a href="#如果已经关联了远程分支-可以不加-u参数" class="headerlink" title="如果已经关联了远程分支,可以不加-u参数"></a>如果已经关联了远程分支,可以不加-u参数</h2><p>git push origin master</p>
-<h2 id="同步远程最新内容到本地"><a href="#同步远程最新内容到本地" class="headerlink" title="同步远程最新内容到本地"></a>同步远程最新内容到本地</h2><p>git pull </p>
-<h2 id="协同办公-远程仓库已有多次提交记录-可以使用rebase模式更新"><a href="#协同办公-远程仓库已有多次提交记录-可以使用rebase模式更新" class="headerlink" title="协同办公,远程仓库已有多次提交记录,可以使用rebase模式更新"></a>协同办公,远程仓库已有多次提交记录,可以使用rebase模式更新</h2><p>git pull –rebase</p>
-<h2 id="如果rebase异常-取消rebase"><a href="#如果rebase异常-取消rebase" class="headerlink" title="如果rebase异常,取消rebase"></a>如果rebase异常,取消rebase</h2><p>git reflog<br>git reset –hard HEAD@{1}<br>git rebase –abort</p>
-<h2 id="从远程仓库克隆工程-ssh或http"><a href="#从远程仓库克隆工程-ssh或http" class="headerlink" title="从远程仓库克隆工程 ssh或http"></a>从远程仓库克隆工程 ssh或http</h2><p>git clone <a href="mailto:git@github.com">git@github.com</a>:wang-qz/help-doc.git<br>git clone <a target="_blank" rel="noopener" href="https://github.com/YOUR-USERNAME/Spoon-Knife">https://github.com/YOUR-USERNAME/Spoon-Knife</a></p>
-<h2 id="添加文件到暂存区-stash"><a href="#添加文件到暂存区-stash" class="headerlink" title="添加文件到暂存区 stash"></a>添加文件到暂存区 stash</h2><p>git add fileName<br>git add filename1 filename2 filename3<br>git add .</p>
-<h2 id="commit文件到本地仓库-后面是提交的注释说明"><a href="#commit文件到本地仓库-后面是提交的注释说明" class="headerlink" title="commit文件到本地仓库 后面是提交的注释说明"></a>commit文件到本地仓库 后面是提交的注释说明</h2><p>git commit -m “first commit”</p>
-<h2 id="dev分支工作没做完不想提交-但需要在新的分支上修复bug-可以将dev分支没做完的工作暂存-等修复完bug再回到dev分支恢复暂存到工作区继续工作"><a href="#dev分支工作没做完不想提交-但需要在新的分支上修复bug-可以将dev分支没做完的工作暂存-等修复完bug再回到dev分支恢复暂存到工作区继续工作" class="headerlink" title="dev分支工作没做完不想提交, 但需要在新的分支上修复bug, 可以将dev分支没做完的工作暂存, 等修复完bug再回到dev分支恢复暂存到工作区继续工作"></a>dev分支工作没做完不想提交, 但需要在新的分支上修复bug, 可以将dev分支没做完的工作暂存, 等修复完bug再回到dev分支恢复暂存到工作区继续工作</h2><p>git stash</p>
-<h2 id="查看暂存的未提交内容"><a href="#查看暂存的未提交内容" class="headerlink" title="查看暂存的未提交内容"></a>查看暂存的未提交内容</h2><p>git stash list</p>
-<h2 id="恢复未提交内容到工作区-apply-恢复不删除暂存-drop-恢复并删除暂存"><a href="#恢复未提交内容到工作区-apply-恢复不删除暂存-drop-恢复并删除暂存" class="headerlink" title="恢复未提交内容到工作区 apply-恢复不删除暂存 drop-恢复并删除暂存"></a>恢复未提交内容到工作区 apply-恢复不删除暂存 drop-恢复并删除暂存</h2><p>git stash apply<br>git stash drop</p>
-<h2 id="将修复的bug-b5d5245-快速合并到dev分支"><a href="#将修复的bug-b5d5245-快速合并到dev分支" class="headerlink" title="将修复的bug(b5d5245)快速合并到dev分支"></a>将修复的bug(b5d5245)快速合并到dev分支</h2><p>git cherry-pick b5d5245</p>
-<h2 id="查看工作区和本地仓库最新版本的区别-HEAD是本地仓库最新版本"><a href="#查看工作区和本地仓库最新版本的区别-HEAD是本地仓库最新版本" class="headerlink" title="查看工作区和本地仓库最新版本的区别  HEAD是本地仓库最新版本"></a>查看工作区和本地仓库最新版本的区别  HEAD是本地仓库最新版本</h2><p>git diff HEAD – hello.txt</p>
-<h2 id="查看本地仓库提交的历史记录日志"><a href="#查看本地仓库提交的历史记录日志" class="headerlink" title="查看本地仓库提交的历史记录日志"></a>查看本地仓库提交的历史记录日志</h2><p>git log</p>
-<h2 id="每一条提交记录只占一行的输出"><a href="#每一条提交记录只占一行的输出" class="headerlink" title="每一条提交记录只占一行的输出"></a>每一条提交记录只占一行的输出</h2><p>git log –pretty=oneline</p>
-<h2 id="只看某一个人的提交记录"><a href="#只看某一个人的提交记录" class="headerlink" title="只看某一个人的提交记录"></a>只看某一个人的提交记录</h2><p>git log –author=wang-qz</p>
-<h2 id="树形结构来展示所有的分支提交日志记录"><a href="#树形结构来展示所有的分支提交日志记录" class="headerlink" title="树形结构来展示所有的分支提交日志记录"></a>树形结构来展示所有的分支提交日志记录</h2><p>git log –graph –oneline –decorate –all<br>git log –graph –pretty=oneline –abbrev-commit<br>git log –graph –oneline –abbrev-commit</p>
-<h2 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h2><p>git log –name-status</p>
-<h2 id="打开日志帮助文档"><a href="#打开日志帮助文档" class="headerlink" title="打开日志帮助文档"></a>打开日志帮助文档</h2><p>git log –help</p>
-<h2 id="在本地创建和远程分支对应的分支"><a href="#在本地创建和远程分支对应的分支" class="headerlink" title="在本地创建和远程分支对应的分支"></a>在本地创建和远程分支对应的分支</h2><p>git checkout -b branch-name origin/branch-name</p>
-<h2 id="创建-切换分支"><a href="#创建-切换分支" class="headerlink" title="创建+切换分支"></a>创建+切换分支</h2><p>git checkout -b feature_x<br>git switch -c feature_x</p>
-<h2 id="上面相当于下面两句"><a href="#上面相当于下面两句" class="headerlink" title="上面相当于下面两句"></a>上面相当于下面两句</h2><p>git branch feature_x<br>git checkout feature_x 或 git switch feature_x</p>
-<h2 id="查看本地分支"><a href="#查看本地分支" class="headerlink" title="查看本地分支"></a>查看本地分支</h2><p>git branch</p>
-<h2 id="查找本地分支"><a href="#查找本地分支" class="headerlink" title="查找本地分支"></a>查找本地分支</h2><p>git branch | grep branchName<br>git branch | findstr branchName</p>
-<h2 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h2><p>git branch -r<br>git branch –remote</p>
-<h2 id="查找远程分支-r-或-–remote"><a href="#查找远程分支-r-或-–remote" class="headerlink" title="查找远程分支 -r 或 –remote"></a>查找远程分支 -r 或 –remote</h2><p>git branch -r | grep branchName<br>git branch -r | findstr branchName</p>
-<h2 id="查看本地-远程分支"><a href="#查看本地-远程分支" class="headerlink" title="查看本地+远程分支"></a>查看本地+远程分支</h2><p>git branch -a<br>git branch -a | grep branchName<br>git branch -a | findstr branchName</p>
-<h2 id="切换回主分支"><a href="#切换回主分支" class="headerlink" title="切换回主分支"></a>切换回主分支</h2><p>git checkout master<br>git switch master</p>
-<h2 id="再把新建的feature-x分支删掉"><a href="#再把新建的feature-x分支删掉" class="headerlink" title="再把新建的feature_x分支删掉"></a>再把新建的feature_x分支删掉</h2><p>git branch -d feature_x<br>git branch –delete feature_x</p>
-<h2 id="强制删除"><a href="#强制删除" class="headerlink" title="强制删除"></a>强制删除</h2><p>git branch -D feature_x</p>
-<h2 id="删除本地分支和远程分支关联"><a href="#删除本地分支和远程分支关联" class="headerlink" title="删除本地分支和远程分支关联"></a>删除本地分支和远程分支关联</h2><p>git branch -r -D origin/feature_x</p>
-<h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><p>git push origin –delete feature_x</p>
-<h2 id="切换文件-可以丢弃工作区的修改"><a href="#切换文件-可以丢弃工作区的修改" class="headerlink" title="切换文件 可以丢弃工作区的修改"></a>切换文件 可以丢弃工作区的修改</h2><p>git checkout – filename<br>git restore – filename</p>
-<h2 id="把readme-txt文件在工作区的修改全部撤销"><a href="#把readme-txt文件在工作区的修改全部撤销" class="headerlink" title="把readme.txt文件在工作区的修改全部撤销"></a>把readme.txt文件在工作区的修改全部撤销</h2><p>git checkout – readme.txt<br>git restore – readme.txt</p>
-<h2 id="合并其他分支feature-x到你的当前分支master"><a href="#合并其他分支feature-x到你的当前分支master" class="headerlink" title="合并其他分支feature_x到你的当前分支master"></a>合并其他分支feature_x到你的当前分支master</h2><h2 id="先切换到master分支-再将其他分支合并进来"><a href="#先切换到master分支-再将其他分支合并进来" class="headerlink" title="先切换到master分支,再将其他分支合并进来"></a>先切换到master分支,再将其他分支合并进来</h2><p>git checkout master<br>git merge feature_x</p>
-<h2 id="禁用fast-forward模式合并"><a href="#禁用fast-forward模式合并" class="headerlink" title="禁用fast forward模式合并"></a>禁用fast forward模式合并</h2><p>git merge –no-ff -m “merge message” feature_x</p>
-<h2 id="如果merge过程中发生冲突报错-可以取消本次merge-后面重新合并"><a href="#如果merge过程中发生冲突报错-可以取消本次merge-后面重新合并" class="headerlink" title="如果merge过程中发生冲突报错, 可以取消本次merge,后面重新合并"></a>如果merge过程中发生冲突报错, 可以取消本次merge,后面重新合并</h2><p>git merge –abort</p>
-<h2 id="在合并改动之前，你可以使用如下命令预览差异"><a href="#在合并改动之前，你可以使用如下命令预览差异" class="headerlink" title="在合并改动之前，你可以使用如下命令预览差异"></a>在合并改动之前，你可以使用如下命令预览差异</h2><p>git diff <source_branch> <target_branch><br>git diff master feature_x</target_branch></source_branch></p>
-<h2 id="工作区的当前版本从本地仓库恢复到上一个版本-HEAD-表示上一个版本"><a href="#工作区的当前版本从本地仓库恢复到上一个版本-HEAD-表示上一个版本" class="headerlink" title="工作区的当前版本从本地仓库恢复到上一个版本 HEAD^表示上一个版本"></a>工作区的当前版本从本地仓库恢复到上一个版本 HEAD^表示上一个版本</h2><h2 id="HEAD-表示上上一个版本，HEAD-100上100个版本"><a href="#HEAD-表示上上一个版本，HEAD-100上100个版本" class="headerlink" title="HEAD^^表示上上一个版本，HEAD~100上100个版本"></a>HEAD^^表示上上一个版本，HEAD~100上100个版本</h2><p>git reset –hard HEAD^</p>
-<h2 id="从本地仓库恢复到工作区-可以直接用commitId指定"><a href="#从本地仓库恢复到工作区-可以直接用commitId指定" class="headerlink" title="从本地仓库恢复到工作区, 可以直接用commitId指定"></a>从本地仓库恢复到工作区, 可以直接用commitId指定</h2><p>git reset –hard commitID<br>git reset –hard 088bb37</p>
-<h2 id="可以把暂存区的修改撤销掉，重新放回工作区"><a href="#可以把暂存区的修改撤销掉，重新放回工作区" class="headerlink" title="可以把暂存区的修改撤销掉，重新放回工作区"></a>可以把暂存区的修改撤销掉，重新放回工作区</h2><h2 id="从暂存区恢复到工作区-没有commit到本地仓库"><a href="#从暂存区恢复到工作区-没有commit到本地仓库" class="headerlink" title="从暂存区恢复到工作区(没有commit到本地仓库)"></a>从暂存区恢复到工作区(没有commit到本地仓库)</h2><p>git reset – readme.text<br>git reset – HEAD readme.txt<br>git reset HEAD readme.txt<br>git restore –staged readme.txt</p>
-<h2 id="撤销工作区的修改"><a href="#撤销工作区的修改" class="headerlink" title="撤销工作区的修改"></a>撤销工作区的修改</h2><p>git restore – readme.txt<br>git checkout – readme.txt</p>
-<h2 id="直接将文件删除且添加到暂存区-staged"><a href="#直接将文件删除且添加到暂存区-staged" class="headerlink" title="直接将文件删除且添加到暂存区(staged)"></a>直接将文件删除且添加到暂存区(staged)</h2><p>git rm filename </p>
-<h2 id="上面删除操作可以用下面两步代替"><a href="#上面删除操作可以用下面两步代替" class="headerlink" title="上面删除操作可以用下面两步代替"></a>上面删除操作可以用下面两步代替</h2><p>rm filename<br>git add filename </p>
-<h2 id="文件内容中文乱码问题"><a href="#文件内容中文乱码问题" class="headerlink" title="文件内容中文乱码问题"></a>文件内容中文乱码问题</h2><h2 id="git默认utf-8编码-所以如果要上传的文件不是中文乱码-需要使用utf-8编码编辑文件内容"><a href="#git默认utf-8编码-所以如果要上传的文件不是中文乱码-需要使用utf-8编码编辑文件内容" class="headerlink" title="git默认utf-8编码,所以如果要上传的文件不是中文乱码,需要使用utf-8编码编辑文件内容"></a>git默认utf-8编码,所以如果要上传的文件不是中文乱码,需要使用utf-8编码编辑文件内容</h2><h2 id="git-bash-终端中文乱码"><a href="#git-bash-终端中文乱码" class="headerlink" title="git bash 终端中文乱码"></a>git bash 终端中文乱码</h2><p>git config –global core.quotepath false</p>
-<link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script>
+                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br><span class="github-emoji"><span>🆗</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f197.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>
+<p>先来放松一下,听听音乐….</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=1396602869&amp;auto=1&amp;height=66">
+</iframe>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109112032988.jpg" alt="my blog performance"></p>
+<link rel="stylesheet" href="/css/spoiler.css" type="text/css"><script src="/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>
@@ -791,7 +840,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/crystal-blog/about" rel="external nofollow noreferrer">王子</a>
+                    <a href="/about" rel="external nofollow noreferrer">王子</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -801,7 +850,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/2021/090755102.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/2021/090755102.html</a>
+                    <a href="https://www.crystalblog.xyz/hexo-da-jian-ge-ren-bo-ke.html">https://www.crystalblog.xyz/hexo-da-jian-ge-ren-bo-ke.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -814,7 +863,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/crystal-blog/about" target="_blank">王子</a>
+                    <a href="/about" target="_blank">王子</a>
                     !
                 </span>
             </div>
@@ -839,20 +888,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/crystal-blog/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/hexo/">
+                                    <span class="chip bg-color">hexo</span>
                                 </a>
                             
                         </div>
                     
                 </div>
                 <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/share/css/share.min.css">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
 
     
     <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/crystal-blog/libs/share/js/social-share.min.js"></script>
+    <script src="/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -973,10 +1022,10 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/crystal-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
-                        <img src="/crystal-blog/medias/reward/wechatPay.jpg" class="reward-img" alt="微信打赏二维码">
+                        <img src="/medias/reward/wechatPay.jpg" class="reward-img" alt="微信打赏二维码">
                     </div>
                 </div>
             </div>
@@ -1254,8 +1303,8 @@
     </div>
 </div>
 
-<script src="/crystal-blog/libs/valine/av-min.js"></script>
-<script src="/crystal-blog/libs/valine2/Valine2.min.js"></script>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine2/Valine2.min.js"></script>
 <script>
     let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
     //这里要换行
@@ -1323,30 +1372,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/crystal-blog/2021/091227449.html">
+                <a href="/hexo-bo-ke-da-jian-ji-zhu-ti-you-hua-yi.html">
                     <div class="card-image">
                         
-                        <img src="https://cn.bing.com/th?id=OHR.HainichBaumwipfelpfad_ZH-CN2635981561_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="EasyExcel学习笔记">
+                        <img src="https://www.bing.com/th?id=OHR.LittleBlueHeron_ZH-CN0892428603_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="hexo博客搭建及主题优化(一)">
                         
-                        <span class="card-title">EasyExcel学习笔记</span>
+                        <span class="card-title">hexo博客搭建及主题优化(一)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java实现Excel导入导出
+                            布局, 背景, 音乐, 今日诗词插件...
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-12
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/crystal-blog/categories/EasyExcel/" class="post-category">
-                                    EasyExcel
+                            <a href="/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
+                                    hexo博客
                                 </a>
                             
                             
@@ -1356,8 +1405,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/crystal-blog/tags/EasyExcel/">
-                        <span class="chip bg-color">EasyExcel</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/tags/matery/">
+                        <span class="chip bg-color">matery</span>
                     </a>
                     
                 </div>
@@ -1371,30 +1424,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/crystal-blog/2021/082917116.html">
+                <a href="/na-nian-luo-po-dao-peng-cheng.html">
                     <div class="card-image">
                         
-                        <img src="https://cn.bing.com/th?id=OHR.GCVenice_ZH-CN0993336331_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="hexo博客搭建及主题优化(二)">
                         
-                        <span class="card-title">hexo博客搭建及主题优化(二)</span>
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="那年落魄到鹏城">
+                        
+                        <span class="card-title">那年落魄到鹏城</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            相册,雪花特效,评论,说说...
+                            艰苦岁月
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    hexo博客
+                            <a href="/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/" class="post-category">
+                                    成年故事
                                 </a>
                             
                             
@@ -1404,12 +1458,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/crystal-blog/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                    <a href="/crystal-blog/tags/matery/">
-                        <span class="chip bg-color">matery</span>
+                    <a href="/tags/%E6%88%90%E9%95%BF/">
+                        <span class="chip bg-color">成长</span>
                     </a>
                     
                 </div>
@@ -1462,22 +1512,116 @@
 
 
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 <!-- 代码语言 -->
 
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeLang.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
 
 
 <!-- 代码块收缩 -->
 
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeShrink.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 
@@ -1490,7 +1634,7 @@
 <!--添加尾部-->
 <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
 <style>
     .aplayer .aplayer-lrc p {
         
@@ -1540,7 +1684,7 @@
     </div>
 </div>
 
-<script src="/crystal-blog/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
@@ -1553,7 +1697,7 @@
                 <span id="year">2020-2021</span>
             
             <i class="fa fa-heart" style="color: #ff71a8"></i>
-            <a href="/crystal-blog/about" target="_blank">王子</a>
+            <a href="/about" target="_blank">王子</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1650,7 +1794,7 @@
                 &nbsp;|&nbsp;
                 
                     <span id="icp">
-                    <img src="/crystal-blog/medias/icp.png"
+                    <img src="/medias/icp.png"
                          style="vertical-align: text-bottom;"/>
 
                     <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20002708号-8</a>
@@ -1696,7 +1840,7 @@
 
 
 
-    <a href="/crystal-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fas fa-rss"></i>
     </a>
 
@@ -1820,7 +1964,7 @@ $(function () {
         });
     };
 
-    searchFunc('/crystal-blog/search.xml', 'searchInput', 'searchResult');
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
 });
 </script>
 
@@ -1833,13 +1977,13 @@ $(function () {
 </div>
 
 
-<script src="/crystal-blog/libs/materialize/materialize.min.js"></script>
-<script src="/crystal-blog/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/crystal-blog/libs/aos/aos.js"></script>
-<script src="/crystal-blog/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/crystal-blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/crystal-blog/js/matery.js"></script>
-<script src="/crystal-blog/js/funnyTitle.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="/js/funnyTitle.js"></script>
 
 <!-- Baidu Analytics -->
 
@@ -1860,10 +2004,10 @@ $(function () {
 </script>
 
 
-    <script src="/crystal-blog/libs/others/clicklove.js" async="async"></script>
+    <script src="/libs/others/clicklove.js" async="async"></script>
 
 
-    <script async src="/crystal-blog/libs/others/busuanzi.pure.mini.js"></script>
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 
@@ -1878,7 +2022,7 @@ $(function () {
     <script type="text/javascript" color="0,0,255"
             pointColor="0,0,255" opacity='0.7'
             zIndex="-1" count="99"
-            src="/crystal-blog/libs/background/canvas-nest.js"></script>
+            src="/libs/background/canvas-nest.js"></script>
 
 
 <!--背景静止彩带-->
@@ -1886,30 +2030,30 @@ $(function () {
 
 <!--背景动态彩带-->
 
-    <script type="text/javascript" src="/crystal-blog/libs/background/ribbon-dynamic.js"
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js"
             async="async"></script>
 
 
 <!--网页预加载-->
 
-    <script src="/crystal-blog/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
 
 
 <!-- 雪花特效 -->
 
-    <script src="/crystal-blog/js/snow.js"></script>
+    <script src="/js/snow.js"></script>
 
 
 <!-- 鼠标点击特效 -->
 
-    <script src="/crystal-blog/js/wenzi.js"></script>
+    <script src="/js/wenzi.js"></script>
 
 
 <!-- 樱花特效 -->
 
-    <script src="/crystal-blog/js/sakura.js"></script>
+    <script src="/js/sakura.js"></script>
 
 
-<script src="/crystal-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/crystal-blog/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":190,"hOffset":50,"vOffset":-5},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":190,"hOffset":50,"vOffset":-5},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
 
 </html>
