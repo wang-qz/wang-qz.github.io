@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git">
+    <meta name="keywords" content="那年在邕城, 王子的博客,Hexo,个人博客,matery,hexo-theme-matery,Java">
     <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>git常用命令整理 | 王子的博客</title>
+    <title>那年在邕城 | 王子的博客</title>
     <link rel="icon" type="image/png" href="/crystal-blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css">
@@ -606,7 +606,7 @@
 <script>
     (function() {
         /*pwd是博客中配置的sha256加密后的密码*/
-        let pwd = '';
+        let pwd = '30814e440207ce5edae83431fb13a3d58355998de98fe626b1d1a272b2e749f7';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -619,12 +619,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.bing.com/th?id=OHR.AlienEggs_ZH-CN0732640719_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.bing.com/th?id=OHR.Porcini_ZH-CN0462290460_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git常用命令整理</h1>
+                    <h1 class="description center-align post-title">那年在邕城</h1>
                 </div>
             </div>
         </div>
@@ -646,8 +646,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/crystal-blog/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/crystal-blog/tags/%E6%88%90%E9%95%BF/">
+                                <span class="chip bg-color">成长</span>
                             </a>
                         
                     </div>
@@ -658,8 +658,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/crystal-blog/categories/git/" class="post-category">
-                                git
+                            <a href="/crystal-blog/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/" class="post-category">
+                                成年故事
                             </a>
                         
                     </div>
@@ -671,7 +671,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-07
+                    2021-08-01
                 </div>
                 
 
@@ -685,14 +685,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    1 分
                 </div>
                 
 
@@ -712,71 +712,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>git常用命令</p>
-<h2 id="查看git版本"><a href="#查看git版本" class="headerlink" title="查看git版本"></a>查看git版本</h2><p>git –version</p>
-<h2 id="生成公钥"><a href="#生成公钥" class="headerlink" title="生成公钥"></a>生成公钥</h2><p>ssh-keygen -t rsa -C “<a href="mailto:wang-qz@foxmail.com">wang-qz@foxmail.com</a>“</p>
-<h2 id="检查密匙是否成功绑定"><a href="#检查密匙是否成功绑定" class="headerlink" title="检查密匙是否成功绑定"></a>检查密匙是否成功绑定</h2><p>ssh -T <a href="mailto:git@github.com">git@github.com</a><br>ssh -T <a href="mailto:git@gitee.com">git@gitee.com</a></p>
-<h2 id="测试ssh连接是否成功"><a href="#测试ssh连接是否成功" class="headerlink" title="测试ssh连接是否成功"></a>测试ssh连接是否成功</h2><p>ssh -v <a href="mailto:git@github.com">git@github.com</a></p>
-<h2 id="git配置用户和邮箱"><a href="#git配置用户和邮箱" class="headerlink" title="git配置用户和邮箱"></a>git配置用户和邮箱</h2><p>git config –global user.name “wang-qz”<br>git config –global user.email “<a href="mailto:wang-qz@qq.com">wang-qz@qq.com</a>“</p>
-<h2 id="查看git配置的用户和邮箱"><a href="#查看git配置的用户和邮箱" class="headerlink" title="查看git配置的用户和邮箱"></a>查看git配置的用户和邮箱</h2><p>git config user.name<br>git config user.email</p>
-<h2 id="将-color-ui-设置为-auto-可以让命令的输出拥有更高的可读性"><a href="#将-color-ui-设置为-auto-可以让命令的输出拥有更高的可读性" class="headerlink" title="将 color.ui 设置为 auto 可以让命令的输出拥有更高的可读性"></a>将 color.ui 设置为 auto 可以让命令的输出拥有更高的可读性</h2><p>git config –global color.ui auto</p>
-<h2 id="查看git配置信息"><a href="#查看git配置信息" class="headerlink" title="查看git配置信息"></a>查看git配置信息</h2><p>git config –list</p>
-<h2 id="把本地目录变成Git可以管理的仓库"><a href="#把本地目录变成Git可以管理的仓库" class="headerlink" title="把本地目录变成Git可以管理的仓库"></a>把本地目录变成Git可以管理的仓库</h2><p>git init</p>
-<h2 id="查看当前分支的状态-git-bash打开的目录必须是git管理的仓库目录"><a href="#查看当前分支的状态-git-bash打开的目录必须是git管理的仓库目录" class="headerlink" title="查看当前分支的状态(git bash打开的目录必须是git管理的仓库目录)"></a>查看当前分支的状态(git bash打开的目录必须是git管理的仓库目录)</h2><p>git status</p>
-<h2 id="添加远程仓库的关联-url为你的远程仓库的url，可采用http协议或ssh协议"><a href="#添加远程仓库的关联-url为你的远程仓库的url，可采用http协议或ssh协议" class="headerlink" title="添加远程仓库的关联,url为你的远程仓库的url，可采用http协议或ssh协议"></a>添加远程仓库的关联,url为你的远程仓库的url，可采用http协议或ssh协议</h2><h2 id="远程仓库的名称一般默认为origin-也可以自定义-下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名"><a href="#远程仓库的名称一般默认为origin-也可以自定义-下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名" class="headerlink" title="远程仓库的名称一般默认为origin,也可以自定义, 下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名"></a>远程仓库的名称一般默认为origin,也可以自定义, 下面同时关联gitee和github时就自定义区分了不同平台的远程仓库名</h2><p>git remote add <name> <url><br>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:wang-qz/help-doc.git<br>git remote add origin <a href="mailto:git@gitee.com">git@gitee.com</a>:wang-qz/leangit.git<br>git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/wang-qz/leangit.git">https://gitee.com/wang-qz/leangit.git</a></url></name></p>
-<h2 id="查看关联的远程仓库的名称"><a href="#查看关联的远程仓库的名称" class="headerlink" title="查看关联的远程仓库的名称"></a>查看关联的远程仓库的名称</h2><p>git remote</p>
-<h2 id="查看关联的远程仓库的详细信息"><a href="#查看关联的远程仓库的详细信息" class="headerlink" title="查看关联的远程仓库的详细信息"></a>查看关联的远程仓库的详细信息</h2><p>git remote -v</p>
-<h2 id="第一次需要将本地分支关联到远程分支"><a href="#第一次需要将本地分支关联到远程分支" class="headerlink" title="第一次需要将本地分支关联到远程分支"></a>第一次需要将本地分支关联到远程分支</h2><h2 id="先将远程分支拉取下来"><a href="#先将远程分支拉取下来" class="headerlink" title="先将远程分支拉取下来"></a>先将远程分支拉取下来</h2><p>git pull origin master</p>
-<h2 id="然后关联本地分支和远程分支"><a href="#然后关联本地分支和远程分支" class="headerlink" title="然后关联本地分支和远程分支"></a>然后关联本地分支和远程分支</h2><p>git branch –set-upstream-to=origin/master master<br>git pull -–rebase  origin master<br>git push origin master </p>
-<h2 id="修改远程仓库的关联"><a href="#修改远程仓库的关联" class="headerlink" title="修改远程仓库的关联"></a>修改远程仓库的关联</h2><p>git remote set-url <name> <newurl><br>git remote set-url origin <a target="_blank" rel="noopener" href="https://gitee.com/wang-qz/leangit.git">https://gitee.com/wang-qz/leangit.git</a><br>git remote set-url origin <a href="mailto:git@gitee.com">git@gitee.com</a>:wang-qz/leangit.git</newurl></name></p>
-<h2 id="删除远程仓库的关联"><a href="#删除远程仓库的关联" class="headerlink" title="删除远程仓库的关联"></a>删除远程仓库的关联</h2><p>git remote remove <name><br>git remote remove origin<br>git remote rm origin </name></p>
-<h2 id="本地仓库同时关联gitee和GitHub的远程仓库及分支-分别远程仓库名称自定义-不能同时命名为origin"><a href="#本地仓库同时关联gitee和GitHub的远程仓库及分支-分别远程仓库名称自定义-不能同时命名为origin" class="headerlink" title="本地仓库同时关联gitee和GitHub的远程仓库及分支, 分别远程仓库名称自定义, 不能同时命名为origin"></a>本地仓库同时关联gitee和GitHub的远程仓库及分支, 分别远程仓库名称自定义, 不能同时命名为origin</h2><p>git remote add gitee  <a href="mailto:git@gitee.com">git@gitee.com</a>:wang-qz/leangit.git<br>git remote add github <a href="mailto:git@github.com">git@github.com</a>:wang-qz/learngit.git<br>git pull gitee master<br>git pull github master<br>git branch –set-upstream-to=gitee/master master<br>git branch –set-upstream-to=github/master master<br>git pull -–rebase  gitee master<br>git pull -–rebase  github master</p>
-<h2 id="推送到远程仓库"><a href="#推送到远程仓库" class="headerlink" title="推送到远程仓库"></a>推送到远程仓库</h2><h2 id="可以把-master-换成你想要推送的任何分支"><a href="#可以把-master-换成你想要推送的任何分支" class="headerlink" title="可以把 master 换成你想要推送的任何分支"></a>可以把 master 换成你想要推送的任何分支</h2><h2 id="u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令"><a href="#u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令" class="headerlink" title="-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令"></a>-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令</h2><p>git push -u origin 对应远程分支名<br>git push -u origin master</p>
-<h2 id="如果已经关联了远程分支-可以不加-u参数"><a href="#如果已经关联了远程分支-可以不加-u参数" class="headerlink" title="如果已经关联了远程分支,可以不加-u参数"></a>如果已经关联了远程分支,可以不加-u参数</h2><p>git push origin master</p>
-<h2 id="同步远程最新内容到本地"><a href="#同步远程最新内容到本地" class="headerlink" title="同步远程最新内容到本地"></a>同步远程最新内容到本地</h2><p>git pull </p>
-<h2 id="协同办公-远程仓库已有多次提交记录-可以使用rebase模式更新"><a href="#协同办公-远程仓库已有多次提交记录-可以使用rebase模式更新" class="headerlink" title="协同办公,远程仓库已有多次提交记录,可以使用rebase模式更新"></a>协同办公,远程仓库已有多次提交记录,可以使用rebase模式更新</h2><p>git pull –rebase</p>
-<h2 id="如果rebase异常-取消rebase"><a href="#如果rebase异常-取消rebase" class="headerlink" title="如果rebase异常,取消rebase"></a>如果rebase异常,取消rebase</h2><p>git reflog<br>git reset –hard HEAD@{1}<br>git rebase –abort</p>
-<h2 id="从远程仓库克隆工程-ssh或http"><a href="#从远程仓库克隆工程-ssh或http" class="headerlink" title="从远程仓库克隆工程 ssh或http"></a>从远程仓库克隆工程 ssh或http</h2><p>git clone <a href="mailto:git@github.com">git@github.com</a>:wang-qz/help-doc.git<br>git clone <a target="_blank" rel="noopener" href="https://github.com/YOUR-USERNAME/Spoon-Knife">https://github.com/YOUR-USERNAME/Spoon-Knife</a></p>
-<h2 id="添加文件到暂存区-stash"><a href="#添加文件到暂存区-stash" class="headerlink" title="添加文件到暂存区 stash"></a>添加文件到暂存区 stash</h2><p>git add fileName<br>git add filename1 filename2 filename3<br>git add .</p>
-<h2 id="commit文件到本地仓库-后面是提交的注释说明"><a href="#commit文件到本地仓库-后面是提交的注释说明" class="headerlink" title="commit文件到本地仓库 后面是提交的注释说明"></a>commit文件到本地仓库 后面是提交的注释说明</h2><p>git commit -m “first commit”</p>
-<h2 id="dev分支工作没做完不想提交-但需要在新的分支上修复bug-可以将dev分支没做完的工作暂存-等修复完bug再回到dev分支恢复暂存到工作区继续工作"><a href="#dev分支工作没做完不想提交-但需要在新的分支上修复bug-可以将dev分支没做完的工作暂存-等修复完bug再回到dev分支恢复暂存到工作区继续工作" class="headerlink" title="dev分支工作没做完不想提交, 但需要在新的分支上修复bug, 可以将dev分支没做完的工作暂存, 等修复完bug再回到dev分支恢复暂存到工作区继续工作"></a>dev分支工作没做完不想提交, 但需要在新的分支上修复bug, 可以将dev分支没做完的工作暂存, 等修复完bug再回到dev分支恢复暂存到工作区继续工作</h2><p>git stash</p>
-<h2 id="查看暂存的未提交内容"><a href="#查看暂存的未提交内容" class="headerlink" title="查看暂存的未提交内容"></a>查看暂存的未提交内容</h2><p>git stash list</p>
-<h2 id="恢复未提交内容到工作区-apply-恢复不删除暂存-drop-恢复并删除暂存"><a href="#恢复未提交内容到工作区-apply-恢复不删除暂存-drop-恢复并删除暂存" class="headerlink" title="恢复未提交内容到工作区 apply-恢复不删除暂存 drop-恢复并删除暂存"></a>恢复未提交内容到工作区 apply-恢复不删除暂存 drop-恢复并删除暂存</h2><p>git stash apply<br>git stash drop</p>
-<h2 id="将修复的bug-b5d5245-快速合并到dev分支"><a href="#将修复的bug-b5d5245-快速合并到dev分支" class="headerlink" title="将修复的bug(b5d5245)快速合并到dev分支"></a>将修复的bug(b5d5245)快速合并到dev分支</h2><p>git cherry-pick b5d5245</p>
-<h2 id="查看工作区和本地仓库最新版本的区别-HEAD是本地仓库最新版本"><a href="#查看工作区和本地仓库最新版本的区别-HEAD是本地仓库最新版本" class="headerlink" title="查看工作区和本地仓库最新版本的区别  HEAD是本地仓库最新版本"></a>查看工作区和本地仓库最新版本的区别  HEAD是本地仓库最新版本</h2><p>git diff HEAD – hello.txt</p>
-<h2 id="查看本地仓库提交的历史记录日志"><a href="#查看本地仓库提交的历史记录日志" class="headerlink" title="查看本地仓库提交的历史记录日志"></a>查看本地仓库提交的历史记录日志</h2><p>git log</p>
-<h2 id="每一条提交记录只占一行的输出"><a href="#每一条提交记录只占一行的输出" class="headerlink" title="每一条提交记录只占一行的输出"></a>每一条提交记录只占一行的输出</h2><p>git log –pretty=oneline</p>
-<h2 id="只看某一个人的提交记录"><a href="#只看某一个人的提交记录" class="headerlink" title="只看某一个人的提交记录"></a>只看某一个人的提交记录</h2><p>git log –author=wang-qz</p>
-<h2 id="树形结构来展示所有的分支提交日志记录"><a href="#树形结构来展示所有的分支提交日志记录" class="headerlink" title="树形结构来展示所有的分支提交日志记录"></a>树形结构来展示所有的分支提交日志记录</h2><p>git log –graph –oneline –decorate –all<br>git log –graph –pretty=oneline –abbrev-commit<br>git log –graph –oneline –abbrev-commit</p>
-<h2 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h2><p>git log –name-status</p>
-<h2 id="打开日志帮助文档"><a href="#打开日志帮助文档" class="headerlink" title="打开日志帮助文档"></a>打开日志帮助文档</h2><p>git log –help</p>
-<h2 id="在本地创建和远程分支对应的分支"><a href="#在本地创建和远程分支对应的分支" class="headerlink" title="在本地创建和远程分支对应的分支"></a>在本地创建和远程分支对应的分支</h2><p>git checkout -b branch-name origin/branch-name</p>
-<h2 id="创建-切换分支"><a href="#创建-切换分支" class="headerlink" title="创建+切换分支"></a>创建+切换分支</h2><p>git checkout -b feature_x<br>git switch -c feature_x</p>
-<h2 id="上面相当于下面两句"><a href="#上面相当于下面两句" class="headerlink" title="上面相当于下面两句"></a>上面相当于下面两句</h2><p>git branch feature_x<br>git checkout feature_x 或 git switch feature_x</p>
-<h2 id="查看本地分支"><a href="#查看本地分支" class="headerlink" title="查看本地分支"></a>查看本地分支</h2><p>git branch</p>
-<h2 id="查找本地分支"><a href="#查找本地分支" class="headerlink" title="查找本地分支"></a>查找本地分支</h2><p>git branch | grep branchName<br>git branch | findstr branchName</p>
-<h2 id="查看远程分支"><a href="#查看远程分支" class="headerlink" title="查看远程分支"></a>查看远程分支</h2><p>git branch -r<br>git branch –remote</p>
-<h2 id="查找远程分支-r-或-–remote"><a href="#查找远程分支-r-或-–remote" class="headerlink" title="查找远程分支 -r 或 –remote"></a>查找远程分支 -r 或 –remote</h2><p>git branch -r | grep branchName<br>git branch -r | findstr branchName</p>
-<h2 id="查看本地-远程分支"><a href="#查看本地-远程分支" class="headerlink" title="查看本地+远程分支"></a>查看本地+远程分支</h2><p>git branch -a<br>git branch -a | grep branchName<br>git branch -a | findstr branchName</p>
-<h2 id="切换回主分支"><a href="#切换回主分支" class="headerlink" title="切换回主分支"></a>切换回主分支</h2><p>git checkout master<br>git switch master</p>
-<h2 id="再把新建的feature-x分支删掉"><a href="#再把新建的feature-x分支删掉" class="headerlink" title="再把新建的feature_x分支删掉"></a>再把新建的feature_x分支删掉</h2><p>git branch -d feature_x<br>git branch –delete feature_x</p>
-<h2 id="强制删除"><a href="#强制删除" class="headerlink" title="强制删除"></a>强制删除</h2><p>git branch -D feature_x</p>
-<h2 id="删除本地分支和远程分支关联"><a href="#删除本地分支和远程分支关联" class="headerlink" title="删除本地分支和远程分支关联"></a>删除本地分支和远程分支关联</h2><p>git branch -r -D origin/feature_x</p>
-<h2 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h2><p>git push origin –delete feature_x</p>
-<h2 id="切换文件-可以丢弃工作区的修改"><a href="#切换文件-可以丢弃工作区的修改" class="headerlink" title="切换文件 可以丢弃工作区的修改"></a>切换文件 可以丢弃工作区的修改</h2><p>git checkout – filename<br>git restore – filename</p>
-<h2 id="把readme-txt文件在工作区的修改全部撤销"><a href="#把readme-txt文件在工作区的修改全部撤销" class="headerlink" title="把readme.txt文件在工作区的修改全部撤销"></a>把readme.txt文件在工作区的修改全部撤销</h2><p>git checkout – readme.txt<br>git restore – readme.txt</p>
-<h2 id="合并其他分支feature-x到你的当前分支master"><a href="#合并其他分支feature-x到你的当前分支master" class="headerlink" title="合并其他分支feature_x到你的当前分支master"></a>合并其他分支feature_x到你的当前分支master</h2><h2 id="先切换到master分支-再将其他分支合并进来"><a href="#先切换到master分支-再将其他分支合并进来" class="headerlink" title="先切换到master分支,再将其他分支合并进来"></a>先切换到master分支,再将其他分支合并进来</h2><p>git checkout master<br>git merge feature_x</p>
-<h2 id="禁用fast-forward模式合并"><a href="#禁用fast-forward模式合并" class="headerlink" title="禁用fast forward模式合并"></a>禁用fast forward模式合并</h2><p>git merge –no-ff -m “merge message” feature_x</p>
-<h2 id="如果merge过程中发生冲突报错-可以取消本次merge-后面重新合并"><a href="#如果merge过程中发生冲突报错-可以取消本次merge-后面重新合并" class="headerlink" title="如果merge过程中发生冲突报错, 可以取消本次merge,后面重新合并"></a>如果merge过程中发生冲突报错, 可以取消本次merge,后面重新合并</h2><p>git merge –abort</p>
-<h2 id="在合并改动之前，你可以使用如下命令预览差异"><a href="#在合并改动之前，你可以使用如下命令预览差异" class="headerlink" title="在合并改动之前，你可以使用如下命令预览差异"></a>在合并改动之前，你可以使用如下命令预览差异</h2><p>git diff <source_branch> <target_branch><br>git diff master feature_x</target_branch></source_branch></p>
-<h2 id="工作区的当前版本从本地仓库恢复到上一个版本-HEAD-表示上一个版本"><a href="#工作区的当前版本从本地仓库恢复到上一个版本-HEAD-表示上一个版本" class="headerlink" title="工作区的当前版本从本地仓库恢复到上一个版本 HEAD^表示上一个版本"></a>工作区的当前版本从本地仓库恢复到上一个版本 HEAD^表示上一个版本</h2><h2 id="HEAD-表示上上一个版本，HEAD-100上100个版本"><a href="#HEAD-表示上上一个版本，HEAD-100上100个版本" class="headerlink" title="HEAD^^表示上上一个版本，HEAD~100上100个版本"></a>HEAD^^表示上上一个版本，HEAD~100上100个版本</h2><p>git reset –hard HEAD^</p>
-<h2 id="从本地仓库恢复到工作区-可以直接用commitId指定"><a href="#从本地仓库恢复到工作区-可以直接用commitId指定" class="headerlink" title="从本地仓库恢复到工作区, 可以直接用commitId指定"></a>从本地仓库恢复到工作区, 可以直接用commitId指定</h2><p>git reset –hard commitID<br>git reset –hard 088bb37</p>
-<h2 id="可以把暂存区的修改撤销掉，重新放回工作区"><a href="#可以把暂存区的修改撤销掉，重新放回工作区" class="headerlink" title="可以把暂存区的修改撤销掉，重新放回工作区"></a>可以把暂存区的修改撤销掉，重新放回工作区</h2><h2 id="从暂存区恢复到工作区-没有commit到本地仓库"><a href="#从暂存区恢复到工作区-没有commit到本地仓库" class="headerlink" title="从暂存区恢复到工作区(没有commit到本地仓库)"></a>从暂存区恢复到工作区(没有commit到本地仓库)</h2><p>git reset – readme.text<br>git reset – HEAD readme.txt<br>git reset HEAD readme.txt<br>git restore –staged readme.txt</p>
-<h2 id="撤销工作区的修改"><a href="#撤销工作区的修改" class="headerlink" title="撤销工作区的修改"></a>撤销工作区的修改</h2><p>git restore – readme.txt<br>git checkout – readme.txt</p>
-<h2 id="直接将文件删除且添加到暂存区-staged"><a href="#直接将文件删除且添加到暂存区-staged" class="headerlink" title="直接将文件删除且添加到暂存区(staged)"></a>直接将文件删除且添加到暂存区(staged)</h2><p>git rm filename </p>
-<h2 id="上面删除操作可以用下面两步代替"><a href="#上面删除操作可以用下面两步代替" class="headerlink" title="上面删除操作可以用下面两步代替"></a>上面删除操作可以用下面两步代替</h2><p>rm filename<br>git add filename </p>
-<h2 id="文件内容中文乱码问题"><a href="#文件内容中文乱码问题" class="headerlink" title="文件内容中文乱码问题"></a>文件内容中文乱码问题</h2><h2 id="git默认utf-8编码-所以如果要上传的文件不是中文乱码-需要使用utf-8编码编辑文件内容"><a href="#git默认utf-8编码-所以如果要上传的文件不是中文乱码-需要使用utf-8编码编辑文件内容" class="headerlink" title="git默认utf-8编码,所以如果要上传的文件不是中文乱码,需要使用utf-8编码编辑文件内容"></a>git默认utf-8编码,所以如果要上传的文件不是中文乱码,需要使用utf-8编码编辑文件内容</h2><h2 id="git-bash-终端中文乱码"><a href="#git-bash-终端中文乱码" class="headerlink" title="git bash 终端中文乱码"></a>git bash 终端中文乱码</h2><p>git config –global core.quotepath false</p>
-<link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script>
+                <link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script>
                 
             </div>
             <hr/>
@@ -802,7 +738,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/git-chang-yong-ming-ling-zheng-li.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/git-chang-yong-ming-ling-zheng-li.html</a>
+                    <a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/080161427.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/080161427.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -840,8 +776,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/crystal-blog/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/crystal-blog/tags/%E6%88%90%E9%95%BF/">
+                                    <span class="chip bg-color">成长</span>
                                 </a>
                             
                         </div>
@@ -1324,30 +1260,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/crystal-blog/easyexcel-xue-xi-bi-ji.html">
+                <a href="/crystal-blog/080145119.html">
                     <div class="card-image">
                         
-                        <img src="https://cn.bing.com/th?id=OHR.HainichBaumwipfelpfad_ZH-CN2635981561_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="EasyExcel学习笔记">
                         
-                        <span class="card-title">EasyExcel学习笔记</span>
+                        <img src="/crystal-blog/medias/featureimages/17.jpg" class="responsive-img" alt="那年落魄到鹏城">
+                        
+                        <span class="card-title">那年落魄到鹏城</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java实现Excel导入导出
+                            艰苦岁月
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-12
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-01
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/crystal-blog/categories/EasyExcel/" class="post-category">
-                                    EasyExcel
+                            <a href="/crystal-blog/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/" class="post-category">
+                                    成年故事
                                 </a>
                             
                             
@@ -1357,8 +1294,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/crystal-blog/tags/EasyExcel/">
-                        <span class="chip bg-color">EasyExcel</span>
+                    <a href="/crystal-blog/tags/%E6%88%90%E9%95%BF/">
+                        <span class="chip bg-color">成长</span>
                     </a>
                     
                 </div>
@@ -1369,48 +1306,45 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/crystal-blog/hexo-bo-ke-da-jian-ji-zhu-ti-you-hua-er.html">
+                <a href="/crystal-blog/080161427.html">
                     <div class="card-image">
                         
-                        <img src="https://cn.bing.com/th?id=OHR.GCVenice_ZH-CN0993336331_1920x1080.jpg&amp;rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="hexo博客搭建及主题优化(二)">
+                        <img src="https://www.bing.com/th?id=OHR.Porcini_ZH-CN0462290460_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="那年在邕城">
                         
-                        <span class="card-title">hexo博客搭建及主题优化(二)</span>
+                        <span class="card-title">那年在邕城</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            相册,雪花特效,评论,说说...
+                            心路历程
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/" class="post-category">
-                                    hexo博客
+                            <a href="/crystal-blog/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/" class="post-category">
+                                    成年故事
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/crystal-blog/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                    <a href="/crystal-blog/tags/matery/">
-                        <span class="chip bg-color">matery</span>
+                    <a href="/crystal-blog/tags/%E6%88%90%E9%95%BF/">
+                        <span class="chip bg-color">成长</span>
                     </a>
                     
                 </div>
