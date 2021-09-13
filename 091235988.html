@@ -1,818 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
-<!--设置头-->
-
-
-<head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Java实现Excel导入导出">
-    <meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="baidu-site-verification" content="code-Fqqme2bKQz" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-    <title>EasyPoi学习笔记 | 王子的博客</title>
-    <link rel="icon" type="image/png" href="/crystal-blog/favicon.png">
-
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/css/my.css">
-    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/artitalk/artitalk.min.css">
-
-    <script src="/crystal-blog/libs/jquery/jquery.min.js"></script>
-
-
-<meta name="generator" content="Hexo 5.4.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/crystal-blog/atom.xml" title="王子的博客" type="application/atom+xml">
-<link rel="stylesheet" href="/crystal-blog/css/prism-tomorrow.css" type="text/css"></head>
-
-
-<!--设置背景图-->
-
-    <style>
-    body {
-        /*background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/0.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/1.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/2.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/3.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/4.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/5.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/6.jpg,https://cdn.jsdelivr.net/gh/small-rose/small-rose.github.io@master/medias/banner/8.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/01.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/05.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/06.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/07.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/08.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/09.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/11.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/12.jpg,https://cdn.jsdelivr.net/gh/LuckyZmj/imgbed/galleries/%E4%BA%8C%E6%AC%A1%E5%85%83%E9%A3%8E/15.jpg );*/
-        /*我将background.url配置为数组,配置了多个背景图,在navigate.ejs中做了随机切换背景图*/
-        background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-    }
-</style>
-
-
-
-<body>
-<!--添加头部导航栏部分-->
-<header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo" style="margin-left: -50px;">
-                <a href="/crystal-blog/" class="waves-effect waves-light">
-                    
-                    <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">王子的博客</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu" style="margin-left: 100px">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-list" style="zoom: 0.6;"></i>
-      
-      <span>清单</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/crystal-blog/musics">
-          
-          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>音乐</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/videos">
-          
-          <i class="fas fa-video" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>视频</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/movies">
-          
-          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>影集</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/books">
-          
-          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>阅读</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/wallpaper">
-          
-          <i class="fas fa-image" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>壁纸</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/galleries">
-          
-          <i class="fas fa-camera" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>相册</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-
-      
-      <i class="fas fa-rocket" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
-    </a>
-    <ul class="sub-nav menus_item_child ">
-      
-      <li>
-        <a href="/crystal-blog/about">
-          
-          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>关于我</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/aboutgirl">
-          
-          <i class="fa fa-user-secret" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>关于她</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/artitalk">
-          
-          <i class="fas fa-pen-alt" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>artitalk</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/crystal-blog/bb">
-          
-          <i class="fas fa-comment" style="margin-top: -20px; zoom: 0.6;"></i>
-          
-          <span>bbtalk</span>
-        </a>
-      </li>
-      
-    </ul>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/navigate" class="waves-effect waves-light">
-      
-      <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
-      
-      <span>快捷导航</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
-      
-      <i class="fas fa-rss" style="zoom: 0.6;"></i>
-      
-      <span>RSS</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">王子的博客</div>
-        <div class="logo-desc">
-            
-            本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景
-            
-        </div>
-    </div>
-
-    
-
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="javascript:;">
-			
-				<i class="fa-fw fas fa-list"></i>
-			
-			清单
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-		</a>
-            <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/crystal-blog/musics " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-music" style="position: absolute;left:28px" ></i>
-			      
-		          <span>音乐</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/videos " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-video" style="position: absolute;left:28px" ></i>
-			      
-		          <span>视频</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/movies " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-film" style="position: absolute;left:28px" ></i>
-			      
-		          <span>影集</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/books " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-book" style="position: absolute;left:28px" ></i>
-			      
-		          <span>阅读</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/wallpaper " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-image" style="position: absolute;left:28px" ></i>
-			      
-		          <span>壁纸</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/galleries " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-camera" style="position: absolute;left:28px" ></i>
-			      
-		          <span>相册</span>
-                  </a>
-                </li>
-              
-            </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="javascript:;">
-			
-				<i class="fa-fw fas fa-rocket"></i>
-			
-			关于
-			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
-		</a>
-            <ul  style="background:  ;" >
-              
-                <li>
-
-                  <a href="/crystal-blog/about " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-user-circle" style="position: absolute;left:28px" ></i>
-			      
-		          <span>关于我</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/aboutgirl " style="margin-left:50px">
-				  
-				   <i class="fa fa fa-user-secret" style="position: absolute;left:28px" ></i>
-			      
-		          <span>关于她</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/artitalk " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-pen-alt" style="position: absolute;left:28px" ></i>
-			      
-		          <span>artitalk</span>
-                  </a>
-                </li>
-              
-                <li>
-
-                  <a href="/crystal-blog/bb " style="margin-left:50px">
-				  
-				   <i class="fa fas fa-comment" style="position: absolute;left:28px" ></i>
-			      
-		          <span>bbtalk</span>
-                  </a>
-                </li>
-              
-            </ul>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/navigate" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-location-arrow"></i>
-			
-			快捷导航
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/crystal-blog/atom.xml" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-rss"></i>
-			
-			RSS
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
-
-<script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        /*pwd是博客中配置的sha256加密后的密码*/
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/crystal-blog/';
-            }
-        }
-    })();
-</script>
-
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.bing.com/th?id=OHR.SanJuanIslands_ZH-CN3763036819_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">EasyPoi学习笔记</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/crystal-blog/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/crystal-blog/tags/EasyPoi/">
-                                <span class="chip bg-color">EasyPoi</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/crystal-blog/categories/EasyPoi/" class="post-category">
-                                EasyPoi
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-12
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-12
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.6k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    32 分
-                </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
-        </div>
-        <hr class="clearfix">
-
-        
-
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h1 id="EasyPoi-学习实践"><a href="#EasyPoi-学习实践" class="headerlink" title="EasyPoi 学习实践"></a>EasyPoi 学习实践</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>easypoi功能如同名字easy,主打的功能就是容易,让一个没见接触过poi的人员 就可以方便的写出Excel导出,Excel模板导出,Excel导入,Word模板导出,通过简单的注解和模板 语言(熟悉的表达式语法),完成以前复杂的写法.</p>
-<p>gitee开源: <a target="_blank" rel="noopener" href="https://gitee.com/lemur/easypoi">https://gitee.com/lemur/easypoi</a></p>
-<p>官方文档1: <a target="_blank" rel="noopener" href="http://easypoi.mydoc.io/">http://easypoi.mydoc.io/</a></p>
-<p>官方文档2: <a target="_blank" rel="noopener" href="http://doc.wupaas.com/docs/easypoi/easypoi-1c0u4mo8p4ro8">http://doc.wupaas.com/docs/easypoi/easypoi-1c0u4mo8p4ro8</a></p>
-<p>B站视频:  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Uz4y1f7un">https://www.bilibili.com/video/BV1Uz4y1f7un</a></p>
-<h2 id="2-使用EasyPoi"><a href="#2-使用EasyPoi" class="headerlink" title="2 使用EasyPoi"></a>2 使用EasyPoi</h2><h3 id="2-1-环境搭建"><a href="#2-1-环境搭建" class="headerlink" title="2.1 环境搭建"></a>2.1 环境搭建</h3><p>引入相关依赖</p>
-<pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="keywords" content="Java实现Excel导入导出"><meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="renderer" content="webkit|ie-stand|ie-comp"><meta name="mobile-web-app-capable" content="yes"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="baidu-site-verification" content="code-Fqqme2bKQz"><title>EasyPoi学习笔记 | 王子的博客</title><link rel="icon" type="image/png" href="/crystal-blog/favicon.png"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/materialize/materialize.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/aos/aos.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/animate/animate.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/lightGallery/css/lightgallery.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/css/matery.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/css/my.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/artitalk/artitalk.min.css"><script src="/crystal-blog/libs/jquery/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><style>.github-emoji{position:relative;display:inline-block;width:1.2em;min-height:1.2em;overflow:hidden;vertical-align:top;color:transparent}.github-emoji>span{position:relative;z-index:10}.github-emoji .fancybox,.github-emoji img{margin:0!important;padding:0!important;border:none!important;outline:0!important;text-decoration:none!important;user-select:none!important;cursor:auto!important}.github-emoji img{height:1.2em!important;width:1.2em!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;user-select:none!important;cursor:auto!important}.github-emoji-fallback{color:inherit}.github-emoji-fallback img{opacity:0!important}</style><link rel="alternate" href="/crystal-blog/atom.xml" title="王子的博客" type="application/atom+xml"><link rel="stylesheet" href="/crystal-blog/css/prism-tomorrow.css" type="text/css"></head><style>body{background-image:url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);background-repeat:no-repeat;background-size:cover;background-attachment:fixed}</style><body><header class="navbar-fixed"><nav id="headNav" class="bg-color nav-transparent"><div id="navContainer" class="nav-wrapper container"><div class="brand-logo" style="margin-left:-50px"><a href="/crystal-blog/" class="waves-effect waves-light"><img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO"> <span class="logo-span">王子的博客</span></a></div><a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a><ul class="right nav-menu" style="margin-left:100px"><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/" class="waves-effect waves-light"><i class="fas fa-home" style="zoom:.6"></i> <span>首页</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/tags" class="waves-effect waves-light"><i class="fas fa-tags" style="zoom:.6"></i> <span>标签</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/categories" class="waves-effect waves-light"><i class="fas fa-bookmark" style="zoom:.6"></i> <span>分类</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/archives" class="waves-effect waves-light"><i class="fas fa-archive" style="zoom:.6"></i> <span>归档</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-list" style="zoom:.6"></i> <span>清单</span> <i class="fas fa-chevron-down" aria-hidden="true" style="zoom:.6"></i></a><ul class="sub-nav menus_item_child"><li><a href="/crystal-blog/musics"><i class="fas fa-music" style="margin-top:-20px;zoom:.6"></i> <span>音乐</span></a></li><li><a href="/crystal-blog/videos"><i class="fas fa-video" style="margin-top:-20px;zoom:.6"></i> <span>视频</span></a></li><li><a href="/crystal-blog/movies"><i class="fas fa-film" style="margin-top:-20px;zoom:.6"></i> <span>影集</span></a></li><li><a href="/crystal-blog/books"><i class="fas fa-book" style="margin-top:-20px;zoom:.6"></i> <span>阅读</span></a></li><li><a href="/crystal-blog/wallpaper"><i class="fas fa-image" style="margin-top:-20px;zoom:.6"></i> <span>壁纸</span></a></li><li><a href="/crystal-blog/galleries"><i class="fas fa-camera" style="margin-top:-20px;zoom:.6"></i> <span>相册</span></a></li></ul></li><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-rocket" style="zoom:.6"></i> <span>关于</span> <i class="fas fa-chevron-down" aria-hidden="true" style="zoom:.6"></i></a><ul class="sub-nav menus_item_child"><li><a href="/crystal-blog/about"><i class="fas fa-user-circle" style="margin-top:-20px;zoom:.6"></i> <span>关于我</span></a></li><li><a href="/crystal-blog/aboutgirl"><i class="fa fa-user-secret" style="margin-top:-20px;zoom:.6"></i> <span>关于她</span></a></li><li><a href="/crystal-blog/artitalk"><i class="fas fa-pen-alt" style="margin-top:-20px;zoom:.6"></i> <span>artitalk</span></a></li><li><a href="/crystal-blog/bb"><i class="fas fa-comment" style="margin-top:-20px;zoom:.6"></i> <span>bbtalk</span></a></li></ul></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/contact" class="waves-effect waves-light"><i class="fas fa-comments" style="zoom:.6"></i> <span>留言板</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/friends" class="waves-effect waves-light"><i class="fas fa-address-book" style="zoom:.6"></i> <span>友情链接</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/navigate" class="waves-effect waves-light"><i class="fas fa-location-arrow" style="zoom:.6"></i> <span>快捷导航</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/atom.xml" class="waves-effect waves-light"><i class="fas fa-rss" style="zoom:.6"></i> <span>RSS</span></a></li><li><a href="#searchModal" class="modal-trigger waves-effect waves-light"><i id="searchIcon" class="fas fa-search" title="搜索" style="zoom:.85"></i></a></li></ul><div id="mobile-nav" class="side-nav sidenav"><div class="mobile-head bg-color"><img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img circle responsive-img"><div class="logo-name">王子的博客</div><div class="logo-desc">本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景</div></div><ul class="menu-list mobile-menu-list"><li class="m-nav-item"><a href="/crystal-blog/" class="waves-effect waves-light"><i class="fa-fw fas fa-home"></i> 首页</a></li><li class="m-nav-item"><a href="/crystal-blog/tags" class="waves-effect waves-light"><i class="fa-fw fas fa-tags"></i> 标签</a></li><li class="m-nav-item"><a href="/crystal-blog/categories" class="waves-effect waves-light"><i class="fa-fw fas fa-bookmark"></i> 分类</a></li><li class="m-nav-item"><a href="/crystal-blog/archives" class="waves-effect waves-light"><i class="fa-fw fas fa-archive"></i> 归档</a></li><li class="m-nav-item"><a href="javascript:;"><i class="fa-fw fas fa-list"></i> 清单 <span class="m-icon"><i class="fas fa-chevron-right"></i></span></a><ul><li><a href="/crystal-blog/musics" style="margin-left:50px"><i class="fa fas fa-music" style="position:absolute;left:28px"></i> <span>音乐</span></a></li><li><a href="/crystal-blog/videos" style="margin-left:50px"><i class="fa fas fa-video" style="position:absolute;left:28px"></i> <span>视频</span></a></li><li><a href="/crystal-blog/movies" style="margin-left:50px"><i class="fa fas fa-film" style="position:absolute;left:28px"></i> <span>影集</span></a></li><li><a href="/crystal-blog/books" style="margin-left:50px"><i class="fa fas fa-book" style="position:absolute;left:28px"></i> <span>阅读</span></a></li><li><a href="/crystal-blog/wallpaper" style="margin-left:50px"><i class="fa fas fa-image" style="position:absolute;left:28px"></i> <span>壁纸</span></a></li><li><a href="/crystal-blog/galleries" style="margin-left:50px"><i class="fa fas fa-camera" style="position:absolute;left:28px"></i> <span>相册</span></a></li></ul></li><li class="m-nav-item"><a href="javascript:;"><i class="fa-fw fas fa-rocket"></i> 关于 <span class="m-icon"><i class="fas fa-chevron-right"></i></span></a><ul><li><a href="/crystal-blog/about" style="margin-left:50px"><i class="fa fas fa-user-circle" style="position:absolute;left:28px"></i> <span>关于我</span></a></li><li><a href="/crystal-blog/aboutgirl" style="margin-left:50px"><i class="fa fa fa-user-secret" style="position:absolute;left:28px"></i> <span>关于她</span></a></li><li><a href="/crystal-blog/artitalk" style="margin-left:50px"><i class="fa fas fa-pen-alt" style="position:absolute;left:28px"></i> <span>artitalk</span></a></li><li><a href="/crystal-blog/bb" style="margin-left:50px"><i class="fa fas fa-comment" style="position:absolute;left:28px"></i> <span>bbtalk</span></a></li></ul></li><li class="m-nav-item"><a href="/crystal-blog/contact" class="waves-effect waves-light"><i class="fa-fw fas fa-comments"></i> 留言板</a></li><li class="m-nav-item"><a href="/crystal-blog/friends" class="waves-effect waves-light"><i class="fa-fw fas fa-address-book"></i> 友情链接</a></li><li class="m-nav-item"><a href="/crystal-blog/navigate" class="waves-effect waves-light"><i class="fa-fw fas fa-location-arrow"></i> 快捷导航</a></li><li class="m-nav-item"><a href="/crystal-blog/atom.xml" class="waves-effect waves-light"><i class="fa-fw fas fa-rss"></i> RSS</a></li><li><div class="divider"></div></li><li><a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="waves-effect waves-light" target="_blank"><i class="fab fa-github-square fa-fw"></i>Fork Me</a></li></ul></div></div><style>.nav-transparent .github-corner{display:none!important}.github-corner{position:absolute;z-index:10;top:0;right:0;border:0;transform:scale(1.1)}.github-corner svg{color:#0f9d58;fill:#fff;height:64px;width:64px}.github-corner:hover .octo-arm{animation:a .56s ease-in-out}.github-corner .octo-arm{animation:none}@keyframes a{0%,to{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}</style><a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a></nav></header><script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script><script></script><div class="bg-cover pd-header post-cover" style="background-image:url(https://www.bing.com/th?id=OHR.SanJuanIslands_ZH-CN3763036819_1920x1080.jpg&rf=LaDigue_1920x1080.jpg)"><div class="container" style="right:0;left:0"><div class="row"><div class="col s12 m12 l12"><div class="brand"><h1 class="description center-align post-title">EasyPoi学习笔记</h1></div></div></div></div></div><main class="post-container content"><link rel="stylesheet" href="/crystal-blog/libs/tocbot/tocbot.css"><style>#articleContent h1::before,#articleContent h2::before,#articleContent h3::before,#articleContent h4::before,#articleContent h5::before,#articleContent h6::before{display:block;content:" ";height:100px;margin-top:-100px;visibility:hidden}#articleContent :focus{outline:0}.toc-fixed{position:fixed;top:64px}.toc-widget{width:345px;padding-left:20px}.toc-widget .toc-title{padding:35px 0 15px 17px;font-size:1.5rem;font-weight:700;line-height:1.5rem}.toc-widget ol{padding:0;list-style:none}#toc-content{padding-bottom:30px;overflow:auto}#toc-content ol{padding-left:10px}#toc-content ol li{padding-left:10px}#toc-content .toc-link:hover{color:#42b983;font-weight:700;text-decoration:underline}#toc-content .toc-link::before{background-color:transparent;max-height:25px;position:absolute;right:23.5vw;display:block}#toc-content .is-active-link{color:#42b983}#floating-toc-btn{position:fixed;right:15px;bottom:76px;padding-top:15px;margin-bottom:0;z-index:998}#floating-toc-btn .btn-floating{width:48px;height:48px}#floating-toc-btn .btn-floating i{line-height:48px;font-size:1.4rem}</style><div class="row"><div id="main-content" class="col s12 m12 l9"><div id="artDetail"><div class="card"><div class="card-content article-info"><div class="row tag-cate"><div class="col s7"><div class="article-tag"><a href="/crystal-blog/tags/EasyPoi/"><span class="chip bg-color">EasyPoi</span></a></div></div><div class="col s5 right-align"><div class="post-cate"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/EasyPoi/" class="post-category">EasyPoi</a></div></div></div><div class="post-info"><div class="post-date info-break-policy"><i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp; 2021-09-12</div><div class="post-date info-break-policy"><i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp; 2021-09-12</div><div class="info-break-policy"><i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp; 6.6k</div><div class="info-break-policy"><i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp; 32 分</div><div id="busuanzi_container_page_pv" class="info-break-policy"><i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv"></span></div></div></div><hr class="clearfix"><div class="card-content article-card-content"><div id="articleContent"><h1 id="EasyPoi-学习实践"><a href="#EasyPoi-学习实践" class="headerlink" title="EasyPoi 学习实践"></a>EasyPoi 学习实践</h1><h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>easypoi功能如同名字easy,主打的功能就是容易,让一个没见接触过poi的人员 就可以方便的写出Excel导出,Excel模板导出,Excel导入,Word模板导出,通过简单的注解和模板 语言(熟悉的表达式语法),完成以前复杂的写法.</p><p>gitee开源: <a target="_blank" rel="noopener" href="https://gitee.com/lemur/easypoi">https://gitee.com/lemur/easypoi</a></p><p>官方文档1: <a target="_blank" rel="noopener" href="http://easypoi.mydoc.io/">http://easypoi.mydoc.io/</a></p><p>官方文档2: <a target="_blank" rel="noopener" href="http://doc.wupaas.com/docs/easypoi/easypoi-1c0u4mo8p4ro8">http://doc.wupaas.com/docs/easypoi/easypoi-1c0u4mo8p4ro8</a></p><p>B站视频: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Uz4y1f7un">https://www.bilibili.com/video/BV1Uz4y1f7un</a></p><h2 id="2-使用EasyPoi"><a href="#2-使用EasyPoi" class="headerlink" title="2 使用EasyPoi"></a>2 使用EasyPoi</h2><h3 id="2-1-环境搭建"><a href="#2-1-环境搭建" class="headerlink" title="2.1 环境搭建"></a>2.1 环境搭建</h3><p>引入相关依赖</p><pre class="language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>cn<span class="token punctuation">.</span>afterturn<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>easypoi<span class="token operator">-</span>base<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
@@ -853,248 +39,7 @@
         <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
    
     <span class="token operator">&lt;</span><span class="token operator">/</span>dependencies<span class="token operator">></span>
-</code></pre>
-<h3 id="2-2-相关注解"><a href="#2-2-相关注解" class="headerlink" title="2.2 相关注解"></a>2.2 相关注解</h3><p>easypoi起因就是Excel的导入导出,最初的模板是实体和Excel的对应, model–row,filed–col 这样利用注解我们可以很容易做到excel的导入导出.  经过一段时间发展,现在注解有5个类分别是:</p>
-<ul>
-<li>@Excel 作用到filed上面, 是对Excel一列的一个描述</li>
-<li>@ExcelCollection 表示一个集合,主要针对一对多的导出,比如一个老师对应多个科目,科目就可以用集合表示</li>
-<li>@ExcelEntity 表示一个继续深入导出的实体,但他没有太多的实际意义,只是告诉系统这个对象里面同样有导出的字段</li>
-<li>@ExcelIgnore 和名字一样表示这个字段被忽略跳过这个导出</li>
-<li>@ExcelTarget 这个是作用于最外层的对象,描述这个对象的id,以便支持一个对象可以针对不同导出做出不同处理</li>
-</ul>
-<h4 id="ExcelTarget"><a href="#ExcelTarget" class="headerlink" title="@ExcelTarget"></a>@ExcelTarget</h4><p>用在实体类上标识一个可以通过EasyPoi导入导出的实体,相关属性:</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>类型</th>
-<th>默认值</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>value</td>
-<td>String</td>
-<td>null</td>
-<td>定义ID唯一标识,不能重复</td>
-</tr>
-<tr>
-<td>height</td>
-<td>double</td>
-<td>10</td>
-<td>设置行高</td>
-</tr>
-<tr>
-<td>fontSize</td>
-<td>short</td>
-<td>11</td>
-<td>设置文字大小</td>
-</tr>
-</tbody></table>
-<h4 id="Excel"><a href="#Excel" class="headerlink" title="@Excel"></a>@Excel</h4><p>这个是必须使用的注解,如果需求简单只使用这一个注解也是可以的,涵盖了常用的Excel需求, 主要分为基础,图片处理,时间处理,合并处理几块.</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>类型</th>
-<th>默认值</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>name</td>
-<td>String</td>
-<td>null</td>
-<td>列名,支持name_id</td>
-</tr>
-<tr>
-<td>needMerge</td>
-<td>boolean</td>
-<td>fasle</td>
-<td>是否需要纵向合并单元格(用于含有list中,单个的单元格,合并list创建的多个row)</td>
-</tr>
-<tr>
-<td>orderNum</td>
-<td>String</td>
-<td>“0”</td>
-<td>列的排序,按照数字自然排序</td>
-</tr>
-<tr>
-<td>replace</td>
-<td>String[]</td>
-<td>{}</td>
-<td>值得替换  导出是{a_id,b_id} 导入反过来</td>
-</tr>
-<tr>
-<td>savePath</td>
-<td>String</td>
-<td>“upload”</td>
-<td>导入文件保存路径,如果是图片可以填写,默认是upload/className/ IconEntity这个类对应的就是upload/Icon/</td>
-</tr>
-<tr>
-<td>type</td>
-<td>int</td>
-<td>1</td>
-<td>导出类型 1 是文本 2 是图片,3 是函数,10 是数字 默认是文本</td>
-</tr>
-<tr>
-<td>width</td>
-<td>double</td>
-<td>10</td>
-<td>列宽</td>
-</tr>
-<tr>
-<td>height</td>
-<td>double</td>
-<td>10</td>
-<td><strong>列高,后期打算统一使用@ExcelTarget的height,这个会被废弃,注意</strong></td>
-</tr>
-<tr>
-<td>isStatistics</td>
-<td>boolean</td>
-<td>fasle</td>
-<td>自动统计数据,在追加一行统计,把所有数据都和输出 <strong>这个处理会吞没异常,请注意这一点</strong></td>
-</tr>
-<tr>
-<td>isHyperlink</td>
-<td>boolean</td>
-<td>false</td>
-<td>超链接,如果是需要实现接口返回对象</td>
-</tr>
-<tr>
-<td>isImportField</td>
-<td>boolean</td>
-<td>true</td>
-<td>校验字段,看看这个字段是不是导入的Excel中有,如果没有说明是错误的Excel,读取失败,支持name_id</td>
-</tr>
-<tr>
-<td>exportFormat</td>
-<td>String</td>
-<td>“”</td>
-<td>导出的时间格式,以这个是否为空来判断是否需要格式化日期</td>
-</tr>
-<tr>
-<td>importFormat</td>
-<td>String</td>
-<td>“”</td>
-<td>导入的时间格式,以这个是否为空来判断是否需要格式化日期</td>
-</tr>
-<tr>
-<td>format</td>
-<td>String</td>
-<td>“”</td>
-<td>时间格式,相当于同时设置了exportFormat 和 importFormat</td>
-</tr>
-<tr>
-<td>databaseFormat</td>
-<td>String</td>
-<td>“yyyyMMddHHmmss”</td>
-<td>导出时间设置,如果字段是Date类型则不需要设置 数据库如果是string 类型,这个需要设置这个数据库格式,用以转换时间格式输出</td>
-</tr>
-<tr>
-<td>numFormat</td>
-<td>String</td>
-<td>“”</td>
-<td>数字格式化,参数是Pattern,使用的对象是DecimalFormat</td>
-</tr>
-<tr>
-<td>imageType</td>
-<td>int</td>
-<td>1</td>
-<td>导出类型 1 从file读取 2 是从数据库中读取 默认是文件 同样导入也是一样的</td>
-</tr>
-<tr>
-<td>suffix</td>
-<td>String</td>
-<td>“”</td>
-<td>文字后缀,如% 90 变成90%</td>
-</tr>
-<tr>
-<td>isWrap</td>
-<td>boolean</td>
-<td>true</td>
-<td>是否换行 即支持\n</td>
-</tr>
-<tr>
-<td>mergeRely</td>
-<td>int[]</td>
-<td>{}</td>
-<td>合并单元格依赖关系,比如第二列合并是基于第一列 则{0}就可以了</td>
-</tr>
-<tr>
-<td>mergeVertical</td>
-<td>boolean</td>
-<td>fasle</td>
-<td>纵向合并内容相同的单元格</td>
-</tr>
-<tr>
-<td>fixedIndex</td>
-<td>int</td>
-<td>-1</td>
-<td>对应excel的列,忽略名字</td>
-</tr>
-<tr>
-<td>isColumnHidden</td>
-<td>boolean</td>
-<td>false</td>
-<td>导出隐藏列</td>
-</tr>
-</tbody></table>
-<h4 id="ExcelEntity"><a href="#ExcelEntity" class="headerlink" title="@ExcelEntity"></a>@ExcelEntity</h4><p>标记是不是导出excel 标记为实体类,一遍是一个内部属性类,标记是否继续穿透,可以自定义内部id</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>类型</th>
-<th>默认值</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>String</td>
-<td>null</td>
-<td>定义ID</td>
-</tr>
-</tbody></table>
-<h4 id="ExcelCollection"><a href="#ExcelCollection" class="headerlink" title="@ExcelCollection"></a>@ExcelCollection</h4><p>一对多的集合注解,用以标记集合数据以及集合的整体排序</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>类型</th>
-<th>默认值</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>String</td>
-<td>null</td>
-<td>定义ID</td>
-</tr>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>null</td>
-<td>定义集合列名,支持nanm_id</td>
-</tr>
-<tr>
-<td>orderNum</td>
-<td>int</td>
-<td>0</td>
-<td>排序,支持name_id</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Class&lt;?&gt;</td>
-<td>ArrayList.class</td>
-<td>导入时创建对象使用</td>
-</tr>
-</tbody></table>
-<h4 id="ExcelIgnore"><a href="#ExcelIgnore" class="headerlink" title="@ExcelIgnore"></a>@ExcelIgnore</h4><p>忽略这个属性, 被标识的属性不会导出到Excel文件中 ,多使用需循环引用中</p>
-<h3 id="2-3-导出Excel"><a href="#2-3-导出Excel" class="headerlink" title="2.3 导出Excel"></a>2.3 导出Excel</h3><h4 id="2-3-1-导出基本数据"><a href="#2-3-1-导出基本数据" class="headerlink" title="2.3.1 导出基本数据"></a>2.3.1 导出基本数据</h4><p>定义对象, 数据模板必须实现序列化接口 Serializable</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><h3 id="2-2-相关注解"><a href="#2-2-相关注解" class="headerlink" title="2.2 相关注解"></a>2.2 相关注解</h3><p>easypoi起因就是Excel的导入导出,最初的模板是实体和Excel的对应, model–row,filed–col 这样利用注解我们可以很容易做到excel的导入导出. 经过一段时间发展,现在注解有5个类分别是:</p><ul><li>@Excel 作用到filed上面, 是对Excel一列的一个描述</li><li>@ExcelCollection 表示一个集合,主要针对一对多的导出,比如一个老师对应多个科目,科目就可以用集合表示</li><li>@ExcelEntity 表示一个继续深入导出的实体,但他没有太多的实际意义,只是告诉系统这个对象里面同样有导出的字段</li><li>@ExcelIgnore 和名字一样表示这个字段被忽略跳过这个导出</li><li>@ExcelTarget 这个是作用于最外层的对象,描述这个对象的id,以便支持一个对象可以针对不同导出做出不同处理</li></ul><h4 id="ExcelTarget"><a href="#ExcelTarget" class="headerlink" title="@ExcelTarget"></a>@ExcelTarget</h4><p>用在实体类上标识一个可以通过EasyPoi导入导出的实体,相关属性:</p><table><thead><tr><th>属性</th><th>类型</th><th>默认值</th><th>功能</th></tr></thead><tbody><tr><td>value</td><td>String</td><td>null</td><td>定义ID唯一标识,不能重复</td></tr><tr><td>height</td><td>double</td><td>10</td><td>设置行高</td></tr><tr><td>fontSize</td><td>short</td><td>11</td><td>设置文字大小</td></tr></tbody></table><h4 id="Excel"><a href="#Excel" class="headerlink" title="@Excel"></a>@Excel</h4><p>这个是必须使用的注解,如果需求简单只使用这一个注解也是可以的,涵盖了常用的Excel需求, 主要分为基础,图片处理,时间处理,合并处理几块.</p><table><thead><tr><th>属性</th><th>类型</th><th>默认值</th><th>功能</th></tr></thead><tbody><tr><td>name</td><td>String</td><td>null</td><td>列名,支持name_id</td></tr><tr><td>needMerge</td><td>boolean</td><td>fasle</td><td>是否需要纵向合并单元格(用于含有list中,单个的单元格,合并list创建的多个row)</td></tr><tr><td>orderNum</td><td>String</td><td>“0”</td><td>列的排序,按照数字自然排序</td></tr><tr><td>replace</td><td>String[]</td><td>{}</td><td>值得替换 导出是{a_id,b_id} 导入反过来</td></tr><tr><td>savePath</td><td>String</td><td>“upload”</td><td>导入文件保存路径,如果是图片可以填写,默认是upload/className/ IconEntity这个类对应的就是upload/Icon/</td></tr><tr><td>type</td><td>int</td><td>1</td><td>导出类型 1 是文本 2 是图片,3 是函数,10 是数字 默认是文本</td></tr><tr><td>width</td><td>double</td><td>10</td><td>列宽</td></tr><tr><td>height</td><td>double</td><td>10</td><td><strong>列高,后期打算统一使用@ExcelTarget的height,这个会被废弃,注意</strong></td></tr><tr><td>isStatistics</td><td>boolean</td><td>fasle</td><td>自动统计数据,在追加一行统计,把所有数据都和输出 <strong>这个处理会吞没异常,请注意这一点</strong></td></tr><tr><td>isHyperlink</td><td>boolean</td><td>false</td><td>超链接,如果是需要实现接口返回对象</td></tr><tr><td>isImportField</td><td>boolean</td><td>true</td><td>校验字段,看看这个字段是不是导入的Excel中有,如果没有说明是错误的Excel,读取失败,支持name_id</td></tr><tr><td>exportFormat</td><td>String</td><td>“”</td><td>导出的时间格式,以这个是否为空来判断是否需要格式化日期</td></tr><tr><td>importFormat</td><td>String</td><td>“”</td><td>导入的时间格式,以这个是否为空来判断是否需要格式化日期</td></tr><tr><td>format</td><td>String</td><td>“”</td><td>时间格式,相当于同时设置了exportFormat 和 importFormat</td></tr><tr><td>databaseFormat</td><td>String</td><td>“yyyyMMddHHmmss”</td><td>导出时间设置,如果字段是Date类型则不需要设置 数据库如果是string 类型,这个需要设置这个数据库格式,用以转换时间格式输出</td></tr><tr><td>numFormat</td><td>String</td><td>“”</td><td>数字格式化,参数是Pattern,使用的对象是DecimalFormat</td></tr><tr><td>imageType</td><td>int</td><td>1</td><td>导出类型 1 从file读取 2 是从数据库中读取 默认是文件 同样导入也是一样的</td></tr><tr><td>suffix</td><td>String</td><td>“”</td><td>文字后缀,如% 90 变成90%</td></tr><tr><td>isWrap</td><td>boolean</td><td>true</td><td>是否换行 即支持\n</td></tr><tr><td>mergeRely</td><td>int[]</td><td>{}</td><td>合并单元格依赖关系,比如第二列合并是基于第一列 则{0}就可以了</td></tr><tr><td>mergeVertical</td><td>boolean</td><td>fasle</td><td>纵向合并内容相同的单元格</td></tr><tr><td>fixedIndex</td><td>int</td><td>-1</td><td>对应excel的列,忽略名字</td></tr><tr><td>isColumnHidden</td><td>boolean</td><td>false</td><td>导出隐藏列</td></tr></tbody></table><h4 id="ExcelEntity"><a href="#ExcelEntity" class="headerlink" title="@ExcelEntity"></a>@ExcelEntity</h4><p>标记是不是导出excel 标记为实体类,一遍是一个内部属性类,标记是否继续穿透,可以自定义内部id</p><table><thead><tr><th>属性</th><th>类型</th><th>默认值</th><th>功能</th></tr></thead><tbody><tr><td>id</td><td>String</td><td>null</td><td>定义ID</td></tr></tbody></table><h4 id="ExcelCollection"><a href="#ExcelCollection" class="headerlink" title="@ExcelCollection"></a>@ExcelCollection</h4><p>一对多的集合注解,用以标记集合数据以及集合的整体排序</p><table><thead><tr><th>属性</th><th>类型</th><th>默认值</th><th>功能</th></tr></thead><tbody><tr><td>id</td><td>String</td><td>null</td><td>定义ID</td></tr><tr><td>name</td><td>String</td><td>null</td><td>定义集合列名,支持nanm_id</td></tr><tr><td>orderNum</td><td>int</td><td>0</td><td>排序,支持name_id</td></tr><tr><td>type</td><td>Class&lt;?&gt;</td><td>ArrayList.class</td><td>导入时创建对象使用</td></tr></tbody></table><h4 id="ExcelIgnore"><a href="#ExcelIgnore" class="headerlink" title="@ExcelIgnore"></a>@ExcelIgnore</h4><p>忽略这个属性, 被标识的属性不会导出到Excel文件中 ,多使用需循环引用中</p><h3 id="2-3-导出Excel"><a href="#2-3-导出Excel" class="headerlink" title="2.3 导出Excel"></a>2.3 导出Excel</h3><h4 id="2-3-1-导出基本数据"><a href="#2-3-1-导出基本数据" class="headerlink" title="2.3.1 导出基本数据"></a>2.3.1 导出基本数据</h4><p>定义对象, 数据模板必须实现序列化接口 Serializable</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1113,9 +58,7 @@
     <span class="token keyword">private</span> Date birthday<span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// lombok自动生成setter/getter方法</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>数据准备</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre><p>数据准备</p><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1131,9 +74,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> userExcels<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>导出Excel代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>导出Excel代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testWriteExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 准备数据</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1146,17 +87,9 @@
     FileOutputStream outputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"D:\\study\\excel\\easypoi.xlsx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>outputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果: <img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127519.png" alt="image-20210808091309489"></p>
-<h4 id="2-3-2-导出指定字段"><a href="#2-3-2-导出指定字段" class="headerlink" title="2.3.2 导出指定字段"></a>2.3.2 导出指定字段</h4><p>使用@ExcelIgnore注解可以忽略字段属性, 不导出到Excel中</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ExcelIgnore</span>
+</code></pre><p>效果: <img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127519.png" alt="image-20210808091309489"></p><h4 id="2-3-2-导出指定字段"><a href="#2-3-2-导出指定字段" class="headerlink" title="2.3.2 导出指定字段"></a>2.3.2 导出指定字段</h4><p>使用@ExcelIgnore注解可以忽略字段属性, 不导出到Excel中</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@ExcelIgnore</span>
 <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
-</code></pre>
-<p>导出Excel代码与上面一样.</p>
-<p>效果: <img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127521.png" alt="image-20210808095933629"></p>
-<h4 id="2-3-3-导出list集合"><a href="#2-3-3-导出list集合" class="headerlink" title="2.3.3 导出list集合"></a>2.3.3 导出list集合</h4><p>有时候导出的对象中含有数组或集合, 需要导出这样的数据可以直接使用@Excel进行导出. 此处是导出List&lt;String&gt;类型.</p>
-<p>定义属性模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>导出Excel代码与上面一样.</p><p>效果: <img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127521.png" alt="image-20210808095933629"></p><h4 id="2-3-3-导出list集合"><a href="#2-3-3-导出list集合" class="headerlink" title="2.3.3 导出list集合"></a>2.3.3 导出list集合</h4><p>有时候导出的对象中含有数组或集合, 需要导出这样的数据可以直接使用@Excel进行导出. 此处是导出List&lt;String&gt;类型.</p><p>定义属性模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1178,9 +111,7 @@
     <span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> hobbys<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 集合字段</span>
     <span class="token comment" spellcheck="true">// lombok自动生成setter/getter方法</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>数据准备</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre><p>数据准备</p><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         UserExcel user <span class="token operator">=</span> UserExcel<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1195,12 +126,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> userExcels<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>导出Excel代码与上面一样.</p>
-<p>效果:    <img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127522.png" alt="image-20210808100815040"></p>
-<p>上面的效果是默认格式, 我们可以自定义集合输出格式, 通过小技巧实现.</p>
-<p>修改数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//@Excel(name = "爱好", orderNum = "6", width = 20.0)</span>
+</code></pre><p>导出Excel代码与上面一样.</p><p>效果: <img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127522.png" alt="image-20210808100815040"></p><p>上面的效果是默认格式, 我们可以自定义集合输出格式, 通过小技巧实现.</p><p>修改数据模板</p><pre class="language-java"><code class="language-java"><span class="token comment" spellcheck="true">//@Excel(name = "爱好", orderNum = "6", width = 20.0)</span>
 <span class="token annotation punctuation">@ExcelIgnore</span>
 <span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> hobbys<span class="token punctuation">;</span>
 <span class="token annotation punctuation">@Excel</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"爱好"</span><span class="token punctuation">,</span> orderNum <span class="token operator">=</span> <span class="token string">"6"</span><span class="token punctuation">,</span> width <span class="token operator">=</span> <span class="token number">20.0</span><span class="token punctuation">)</span>
@@ -1214,12 +140,7 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果:</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121129171.png" alt="image-20210808101620794"></p>
-<h4 id="2-3-4-导出一对一关系-对象"><a href="#2-3-4-导出一对一关系-对象" class="headerlink" title="2.3.4 导出一对一关系(对象)"></a>2.3.4 导出一对一关系(对象)</h4><h5 id="案例1-导出用户-身份-信息"><a href="#案例1-导出用户-身份-信息" class="headerlink" title="案例1: 导出用户(身份)信息"></a>案例1: 导出用户(身份)信息</h5><p>用户-身份信息card-一对一关系</p>
-<p>用户信息数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>效果:</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121129171.png" alt="image-20210808101620794"></p><h4 id="2-3-4-导出一对一关系-对象"><a href="#2-3-4-导出一对一关系-对象" class="headerlink" title="2.3.4 导出一对一关系(对象)"></a>2.3.4 导出一对一关系(对象)</h4><h5 id="案例1-导出用户-身份-信息"><a href="#案例1-导出用户-身份-信息" class="headerlink" title="案例1: 导出用户(身份)信息"></a>案例1: 导出用户(身份)信息</h5><p>用户-身份信息card-一对一关系</p><p>用户信息数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1252,9 +173,7 @@
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-</code></pre>
-<p>身份信息数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>身份信息数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1265,9 +184,7 @@
     <span class="token annotation punctuation">@Excel</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"籍贯"</span><span class="token punctuation">,</span> orderNum <span class="token operator">=</span> <span class="token string">"8"</span><span class="token punctuation">,</span> needMerge <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> String address<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>数据准备</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre><p>数据准备</p><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         UserExcel user <span class="token operator">=</span> UserExcel<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1284,9 +201,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> userExcels<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>导出Excel代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>导出Excel代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testWriteExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 准备数据</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1299,12 +214,7 @@
     FileOutputStream outputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"D:\\study\\excel\\easypoi.xlsx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>outputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果:</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121130969.png" alt="image-20210808114218770"></p>
-<h5 id="案例2-导出课程-老师-信息"><a href="#案例2-导出课程-老师-信息" class="headerlink" title="案例2: 导出课程(老师)信息"></a>案例2: 导出课程(老师)信息</h5><p>课程-老师teacher-一对一关系</p>
-<p>课程信息数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>效果:</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121130969.png" alt="image-20210808114218770"></p><h5 id="案例2-导出课程-老师-信息"><a href="#案例2-导出课程-老师-信息" class="headerlink" title="案例2: 导出课程(老师)信息"></a>案例2: 导出课程(老师)信息</h5><p>课程-老师teacher-一对一关系</p><p>课程信息数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1320,9 +230,7 @@
    <span class="token comment" spellcheck="true">// @ExcelEntity(id = "major")// 主讲老师</span>
     <span class="token keyword">private</span> TeacherEntity mathTeacher<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>教课老师数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>教课老师数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1335,9 +243,7 @@
            isImportField <span class="token operator">=</span> <span class="token string">"true_major,true_absent"</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>数据准备</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>CourseEntity<span class="token operator">></span> <span class="token function">getCourseEntities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre><p>数据准备</p><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>CourseEntity<span class="token operator">></span> <span class="token function">getCourseEntities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         List<span class="token operator">&lt;</span>CourseEntity<span class="token operator">></span> courseEntities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             CourseEntity course <span class="token operator">=</span> CourseEntity<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1349,9 +255,7 @@
         <span class="token punctuation">}</span>
         <span class="token keyword">return</span> courseEntities<span class="token punctuation">;</span>
  <span class="token punctuation">}</span>
-</code></pre>
-<p>导出Excel代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>导出Excel代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testWriteExcel2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 准备数据</span>
     List<span class="token operator">&lt;</span>CourseEntity<span class="token operator">></span> courseEntities <span class="token operator">=</span> <span class="token function">getCourseEntities</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1365,12 +269,7 @@
     FileOutputStream outputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"D:\\study\\excel\\easypoi_course.xlsx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>outputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127538.png" alt="image-20210808120135842"></p>
-<h4 id="2-3-5-导出一对多关系-对象"><a href="#2-3-5-导出一对多关系-对象" class="headerlink" title="2.3.5 导出一对多关系(对象)"></a>2.3.5 导出一对多关系(对象)</h4><h5 id="案例1-导出用户-订单-信息"><a href="#案例1-导出用户-订单-信息" class="headerlink" title="案例1: 导出用户(订单)信息"></a>案例1: 导出用户(订单)信息</h5><p>用户-订单信息orders-一对多关系</p>
-<p>用户信息数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>效果</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127538.png" alt="image-20210808120135842"></p><h4 id="2-3-5-导出一对多关系-对象"><a href="#2-3-5-导出一对多关系-对象" class="headerlink" title="2.3.5 导出一对多关系(对象)"></a>2.3.5 导出一对多关系(对象)</h4><h5 id="案例1-导出用户-订单-信息"><a href="#案例1-导出用户-订单-信息" class="headerlink" title="案例1: 导出用户(订单)信息"></a>案例1: 导出用户(订单)信息</h5><p>用户-订单信息orders-一对多关系</p><p>用户信息数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1406,9 +305,7 @@
         <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>订单信息数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>订单信息数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1420,9 +317,7 @@
     <span class="token annotation punctuation">@Excel</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"订单名称"</span><span class="token punctuation">,</span> width <span class="token operator">=</span> <span class="token number">15.0</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>数据准备</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre><p>数据准备</p><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     List<span class="token operator">&lt;</span>Order<span class="token operator">></span> orders <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1444,13 +339,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> userExcels<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>导出Excel代码与上面一样.</p>
-<p>效果</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127329.png" alt="image-20210808115044512"></p>
-<h5 id="案例2-导出课程-学生-信息"><a href="#案例2-导出课程-学生-信息" class="headerlink" title="案例2: 导出课程(学生)信息"></a>案例2: 导出课程(学生)信息</h5><p>课程-学生student-一对多关系</p>
-<p>课程信息数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>导出Excel代码与上面一样.</p><p>效果</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127329.png" alt="image-20210808115044512"></p><h5 id="案例2-导出课程-学生-信息"><a href="#案例2-导出课程-学生-信息" class="headerlink" title="案例2: 导出课程(学生)信息"></a>案例2: 导出课程(学生)信息</h5><p>课程-学生student-一对多关系</p><p>课程信息数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1468,9 +357,7 @@
     <span class="token annotation punctuation">@ExcelCollection</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"学生"</span><span class="token punctuation">,</span> orderNum <span class="token operator">=</span> <span class="token string">"3"</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> List<span class="token operator">&lt;</span>StudentEntity<span class="token operator">></span> students<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>学生信息模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>学生信息模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1486,9 +373,7 @@
     <span class="token annotation punctuation">@Excel</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"进校日期"</span><span class="token punctuation">,</span> orderNum <span class="token operator">=</span> <span class="token string">"4"</span><span class="token punctuation">,</span> width <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">,</span> format <span class="token operator">=</span> <span class="token string">"yyyy-MM-dd"</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> Date eduDate<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>数据准备</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>CourseEntity<span class="token operator">></span> <span class="token function">getCourseEntities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre><p>数据准备</p><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>CourseEntity<span class="token operator">></span> <span class="token function">getCourseEntities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>CourseEntity<span class="token operator">></span> courseEntities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     List<span class="token operator">&lt;</span>StudentEntity<span class="token operator">></span> studentEntities <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1512,15 +397,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> courseEntities<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>导出Excel代码和上面一样.</p>
-<p>效果</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121131916.png" alt="image-20210808120833178"></p>
-<h4 id="2-3-6-导出图片"><a href="#2-3-6-导出图片" class="headerlink" title="2.3.6 导出图片"></a>2.3.6 导出图片</h4><p>往往随着业务不断变化, 可能需要在导出excel时将图片信息也一并导出, 如商品图标, 用户头像信息等数据.</p>
-<p>注意, 4.4.0版本easypoi的升级改动比较大, 导出图片会失败</p>
-<p>本次测试成功的是easypoi的4.4.0以下的版本且是2003版本Excel文件.</p>
-<p>包含图片属性的数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>导出Excel代码和上面一样.</p><p>效果</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121131916.png" alt="image-20210808120833178"></p><h4 id="2-3-6-导出图片"><a href="#2-3-6-导出图片" class="headerlink" title="2.3.6 导出图片"></a>2.3.6 导出图片</h4><p>往往随着业务不断变化, 可能需要在导出excel时将图片信息也一并导出, 如商品图标, 用户头像信息等数据.</p><p>注意, 4.4.0版本easypoi的升级改动比较大, 导出图片会失败</p><p>本次测试成功的是easypoi的4.4.0以下的版本且是2003版本Excel文件.</p><p>包含图片属性的数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1532,9 +409,7 @@
     <span class="token annotation punctuation">@Excel</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"公司名称"</span><span class="token punctuation">,</span> orderNum <span class="token operator">=</span> <span class="token string">"2"</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> String companyName<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>导出图片代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>导出图片代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testWriteImage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 准备数据</span>
     List<span class="token operator">&lt;</span>CompanyLogo<span class="token operator">></span> companyLogos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1548,14 +423,7 @@
                                                    CompanyLogo<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> companyLogos<span class="token punctuation">)</span><span class="token punctuation">;</span>
     workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"D:\\study\\excel\\image.xlsx"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127592.png" alt="image-20210808173847715"></p>
-<h4 id="2-3-7-大数据量导出"><a href="#2-3-7-大数据量导出" class="headerlink" title="2.3.7 大数据量导出"></a>2.3.7 大数据量导出</h4><p>大数据导出是当我们的数据量在几万-上百万数据时,一次从数据库查询这么多数据加载到内存后写入文件会对我们的内存和CPU产生压力, 需要分页一样处理分段写入Excel缓解压力.  <strong>强制使用 xssf版本的Excel</strong></p>
-<p>注意: 4.1.0版本easypoi的升级改动比较大, 小喵还没仔细研究新版本大数据量导出相关的api使用.</p>
-<p>此处使用的是3.0.3版本easypoi, 亲测可用. xls 和 xlsx都可以. </p>
-<p>数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>效果</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127592.png" alt="image-20210808173847715"></p><h4 id="2-3-7-大数据量导出"><a href="#2-3-7-大数据量导出" class="headerlink" title="2.3.7 大数据量导出"></a>2.3.7 大数据量导出</h4><p>大数据导出是当我们的数据量在几万-上百万数据时,一次从数据库查询这么多数据加载到内存后写入文件会对我们的内存和CPU产生压力, 需要分页一样处理分段写入Excel缓解压力. <strong>强制使用 xssf版本的Excel</strong></p><p>注意: 4.1.0版本easypoi的升级改动比较大, 小喵还没仔细研究新版本大数据量导出相关的api使用.</p><p>此处使用的是3.0.3版本easypoi, 亲测可用. xls 和 xlsx都可以.</p><p>数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1592,9 +460,7 @@
         <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>数据准备</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre><p>数据准备</p><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     List<span class="token operator">&lt;</span>Order<span class="token operator">></span> orders <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span><span class="token number">2</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1617,9 +483,7 @@
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> userExcels<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>导出Excel代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>导出Excel代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testWriteBigExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 准备数据</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userExcels <span class="token operator">=</span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1636,11 +500,7 @@
     workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>outputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
     ExcelExportUtil<span class="token punctuation">.</span><span class="token function">closeExportBigExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果, 不知为什么, 数据量稍微大一点, 就跑死了, 这个性能也绝了.  (非电脑配置问题)</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121132849.png" alt="image-20210808185840478"></p>
-<h4 id="2-3-8-导出多个sheet"><a href="#2-3-8-导出多个sheet" class="headerlink" title="2.3.8 导出多个sheet"></a>2.3.8 导出多个sheet</h4><p>核心代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>效果, 不知为什么, 数据量稍微大一点, 就跑死了, 这个性能也绝了. (非电脑配置问题)</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121132849.png" alt="image-20210808185840478"></p><h4 id="2-3-8-导出多个sheet"><a href="#2-3-8-导出多个sheet" class="headerlink" title="2.3.8 导出多个sheet"></a>2.3.8 导出多个sheet</h4><p>核心代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testBatchWriteExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">>></span> sheets <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     List<span class="token operator">&lt;</span>UserExcel<span class="token operator">></span> userDatas1 <span class="token operator">=</span> <span class="token function">getUserExcelData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1667,11 +527,7 @@
     Workbook workbook <span class="token operator">=</span> ExcelExportUtil<span class="token punctuation">.</span><span class="token function">exportExcel</span><span class="token punctuation">(</span>sheets<span class="token punctuation">,</span> ExcelType<span class="token punctuation">.</span>HSSF<span class="token punctuation">)</span><span class="token punctuation">;</span>
     workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"D:\\study\\excel\\easypoi2.xls"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<h3 id="2-4-导入Excel"><a href="#2-4-导入Excel" class="headerlink" title="2.4 导入Excel"></a>2.4 导入Excel</h3><h4 id="2-4-1-导入基本数据"><a href="#2-4-1-导入基本数据" class="headerlink" title="2.4.1 导入基本数据"></a>2.4.1 导入基本数据</h4><p>读取的Excel数据</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121133278.png" alt="image-20210808221801932"></p>
-<p>数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><h3 id="2-4-导入Excel"><a href="#2-4-导入Excel" class="headerlink" title="2.4 导入Excel"></a>2.4 导入Excel</h3><h4 id="2-4-1-导入基本数据"><a href="#2-4-1-导入基本数据" class="headerlink" title="2.4.1 导入基本数据"></a>2.4.1 导入基本数据</h4><p>读取的Excel数据</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121133278.png" alt="image-20210808221801932"></p><p>数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1688,9 +544,7 @@
     <span class="token annotation punctuation">@Excel</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"状态"</span><span class="token punctuation">,</span> replace <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"锁定_0"</span><span class="token punctuation">,</span> <span class="token string">"激活_1"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> String status<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>读取Excel的代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>读取Excel的代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testReadExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 加载Excel文件</span>
     FileInputStream inputStream <span class="token operator">=</span> <span class="token keyword">new</span> 
@@ -1712,26 +566,7 @@
                                                        params<span class="token punctuation">)</span><span class="token punctuation">;</span>
     resultList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>obj <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121133018.png" alt="image-20210808221712364"></p>
-<h4 id="2-4-2-导入小技巧"><a href="#2-4-2-导入小技巧" class="headerlink" title="2.4.2 导入小技巧"></a>2.4.2 导入小技巧</h4><ol>
-<li><p>读取指定的sheet, 比如要读取第二个sheet, 那么通过设置startSheetIndex=1实现;</p>
-</li>
-<li><p>读取几个sheet, 比如读取前2个sheet页, 通过设置 sheetNum=2实现;</p>
-</li>
-<li><p>读取第二个到第五个sheet,  设置 startSheet=1(索引从0开始), 然后设置sheetNum=4;</p>
-</li>
-<li><p>读取全部的sheet, sheetNum设置比较大的值就可以了;</p>
-</li>
-<li><p>判断一个Excel是不是合法的Excel, importFields设置, 表示表头必须至少包含的字段, 如果缺少一个就是不合法的excel, 不会导入.</p>
-</li>
-</ol>
-<h4 id="2-4-3-带图片导入"><a href="#2-4-3-带图片导入" class="headerlink" title="2.4.3 带图片导入"></a>2.4.3 带图片导入</h4><p>图片导入的配置和导出一样, 但是需要设置保存路径.</p>
-<p>带图片的Excel数据</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127108.png" alt="image-20210808230129936"></p>
-<p>导入数据模板</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><p>效果</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121133018.png" alt="image-20210808221712364"></p><h4 id="2-4-2-导入小技巧"><a href="#2-4-2-导入小技巧" class="headerlink" title="2.4.2 导入小技巧"></a>2.4.2 导入小技巧</h4><ol><li><p>读取指定的sheet, 比如要读取第二个sheet, 那么通过设置startSheetIndex=1实现;</p></li><li><p>读取几个sheet, 比如读取前2个sheet页, 通过设置 sheetNum=2实现;</p></li><li><p>读取第二个到第五个sheet, 设置 startSheet=1(索引从0开始), 然后设置sheetNum=4;</p></li><li><p>读取全部的sheet, sheetNum设置比较大的值就可以了;</p></li><li><p>判断一个Excel是不是合法的Excel, importFields设置, 表示表头必须至少包含的字段, 如果缺少一个就是不合法的excel, 不会导入.</p></li></ol><h4 id="2-4-3-带图片导入"><a href="#2-4-3-带图片导入" class="headerlink" title="2.4.3 带图片导入"></a>2.4.3 带图片导入</h4><p>图片导入的配置和导出一样, 但是需要设置保存路径.</p><p>带图片的Excel数据</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127108.png" alt="image-20210808230129936"></p><p>导入数据模板</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1750,9 +585,7 @@
     <span class="token annotation punctuation">@Excel</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"头像"</span><span class="token punctuation">,</span> type <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> imageType <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> String head<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>带图片导入代码</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+</code></pre><p>带图片导入代码</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testReadExcelImage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 加载Excel文件</span>
     FileInputStream inputStream <span class="token operator">=</span> <span class="token keyword">new</span> 
@@ -1779,11 +612,7 @@
     resultList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>obj <span class="token operator">-</span><span class="token operator">></span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-</code></pre>
-<p>效果</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127142.png" alt="image-20210808230314454"></p>
-<h3 id="2-5-集成Web实现导入导出"><a href="#2-5-集成Web实现导入导出" class="headerlink" title="2.5 集成Web实现导入导出"></a>2.5 集成Web实现导入导出</h3><h4 id="2-5-1-搭建springboot-mybatis项目环境"><a href="#2-5-1-搭建springboot-mybatis项目环境" class="headerlink" title="2.5.1 搭建springboot + mybatis项目环境"></a>2.5.1 搭建springboot + mybatis项目环境</h4><h5 id="创建springboot项目"><a href="#创建springboot项目" class="headerlink" title="创建springboot项目"></a>创建springboot项目</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121134390.png" alt="image-20210809200842265"></p>
-<h5 id="引入相关依赖"><a href="#引入相关依赖" class="headerlink" title="引入相关依赖"></a>引入相关依赖</h5><pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
+</code></pre><p>效果</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127142.png" alt="image-20210808230314454"></p><h3 id="2-5-集成Web实现导入导出"><a href="#2-5-集成Web实现导入导出" class="headerlink" title="2.5 集成Web实现导入导出"></a>2.5 集成Web实现导入导出</h3><h4 id="2-5-1-搭建springboot-mybatis项目环境"><a href="#2-5-1-搭建springboot-mybatis项目环境" class="headerlink" title="2.5.1 搭建springboot + mybatis项目环境"></a>2.5.1 搭建springboot + mybatis项目环境</h4><h5 id="创建springboot项目"><a href="#创建springboot项目" class="headerlink" title="创建springboot项目"></a>创建springboot项目</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121134390.png" alt="image-20210809200842265"></p><h5 id="引入相关依赖"><a href="#引入相关依赖" class="headerlink" title="引入相关依赖"></a>引入相关依赖</h5><pre class="language-java"><code class="language-java"><span class="token operator">&lt;</span>dependencies<span class="token operator">></span>
     <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
         <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
         <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>thymeleaf<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
@@ -1846,8 +675,7 @@
         <span class="token operator">&lt;</span>scope<span class="token operator">></span>test<span class="token operator">&lt;</span><span class="token operator">/</span>scope<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>dependencies<span class="token operator">></span>
-</code></pre>
-<h5 id="编写配置文件"><a href="#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h5><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8989</span>
+</code></pre><h5 id="编写配置文件"><a href="#编写配置文件" class="headerlink" title="编写配置文件"></a>编写配置文件</h5><pre class="language-properties"><code class="language-properties"><span class="token attr-name">server.port</span><span class="token punctuation">=</span><span class="token attr-value">8989</span>
 <span class="token attr-name">spring.application.name</span><span class="token punctuation">=</span><span class="token attr-value">easypoi-web</span>
 <span class="token comment" spellcheck="true">## 取消界面缓存</span>
 <span class="token attr-name">spring.thymeleaf.cache</span><span class="token punctuation">=</span><span class="token attr-value">false</span>
@@ -1865,11 +693,7 @@
 <span class="token comment" spellcheck="true">## 开启静态访问目录</span>
 <span class="token attr-name">upload.dir</span><span class="token punctuation">=</span><span class="token attr-value">D:\\develops\\workspace\\IdeaProjects\\easypoi-web\\src\\main\\resources\\static\\imgs</span>
 <span class="token attr-name">spring.web.resources.static-locations</span><span class="token punctuation">=</span><span class="token attr-value">file:${upload.dir}</span>
-</code></pre>
-<h5 id="创建包结构"><a href="#创建包结构" class="headerlink" title="创建包结构"></a>创建包结构</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127324.png" alt="image-20210809201146432"></p>
-<h5 id="检测环境是否搭建成功"><a href="#检测环境是否搭建成功" class="headerlink" title="检测环境是否搭建成功"></a>检测环境是否搭建成功</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121134851.png" alt="image-20210809201257576"></p>
-<h4 id="2-5-2-开发测试页面"><a href="#2-5-2-开发测试页面" class="headerlink" title="2.5.2 开发测试页面"></a>2.5.2 开发测试页面</h4><p>index.html</p>
-<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+</code></pre><h5 id="创建包结构"><a href="#创建包结构" class="headerlink" title="创建包结构"></a>创建包结构</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127324.png" alt="image-20210809201146432"></p><h5 id="检测环境是否搭建成功"><a href="#检测环境是否搭建成功" class="headerlink" title="检测环境是否搭建成功"></a>检测环境是否搭建成功</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121134851.png" alt="image-20210809201257576"></p><h4 id="2-5-2-开发测试页面"><a href="#2-5-2-开发测试页面" class="headerlink" title="2.5.2 开发测试页面"></a>2.5.2 开发测试页面</h4><p>index.html</p><pre class="language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>th</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.thymeleaf.org<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -1928,11 +752,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
-<p>启动应用, 访问主页</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121135581.png" alt="image-20210809231809188"></p>
-<h4 id="2-5-3-查询所有"><a href="#2-5-3-查询所有" class="headerlink" title="2.5.3 查询所有"></a>2.5.3 查询所有</h4><h5 id="Excel数据模板"><a href="#Excel数据模板" class="headerlink" title="Excel数据模板"></a>Excel数据模板</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127914.png" alt="image-20210809210512565"></p>
-<h5 id="根据Excel抽取表结构"><a href="#根据Excel抽取表结构" class="headerlink" title="根据Excel抽取表结构"></a>根据Excel抽取表结构</h5><pre class=" language-mysql"><code class="language-mysql">Create Table: CREATE TABLE `t_user` (
+</code></pre><p>启动应用, 访问主页</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121135581.png" alt="image-20210809231809188"></p><h4 id="2-5-3-查询所有"><a href="#2-5-3-查询所有" class="headerlink" title="2.5.3 查询所有"></a>2.5.3 查询所有</h4><h5 id="Excel数据模板"><a href="#Excel数据模板" class="headerlink" title="Excel数据模板"></a>Excel数据模板</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127914.png" alt="image-20210809210512565"></p><h5 id="根据Excel抽取表结构"><a href="#根据Excel抽取表结构" class="headerlink" title="根据Excel抽取表结构"></a>根据Excel抽取表结构</h5><pre class="language-mysql"><code class="language-mysql">Create Table: CREATE TABLE `t_user` (
   `id` int(4) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `name` varchar(80) DEFAULT NULL COMMENT '姓名',
   `age` int(3) DEFAULT NULL COMMENT '年龄',
@@ -1945,8 +765,7 @@
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙华','1.jpg',CURRENT_TIMESTAMP())
-</code></pre>
-<h5 id="创建实体类"><a href="#创建实体类" class="headerlink" title="创建实体类"></a>创建实体类</h5><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
+</code></pre><h5 id="创建实体类"><a href="#创建实体类" class="headerlink" title="创建实体类"></a>创建实体类</h5><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Builder</span>
@@ -1971,8 +790,7 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
            easypoi<span class="token operator">-</span>web\\src\\main\\resources\\<span class="token keyword">static</span>\\imgs"<span class="token punctuation">)</span>
     <span class="token keyword">private</span> String photo<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="开发mapper接口及映射"><a href="#开发mapper接口及映射" class="headerlink" title="开发mapper接口及映射"></a>开发mapper接口及映射</h5><pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
+</code></pre><h5 id="开发mapper接口及映射"><a href="#开发mapper接口及映射" class="headerlink" title="开发mapper接口及映射"></a>开发mapper接口及映射</h5><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
 <span class="token doctype">&lt;!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"></span>
@@ -1982,13 +800,10 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
         select id, name,age,hobbys,no,address,photo, birthday from t_user;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">></span></span>
-</code></pre>
-<h5 id="开发Service及实现"><a href="#开发Service及实现" class="headerlink" title="开发Service及实现"></a>开发Service及实现</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
+</code></pre><h5 id="开发Service及实现"><a href="#开发Service及实现" class="headerlink" title="开发Service及实现"></a>开发Service及实现</h5><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>impl实现</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+</code></pre><p>impl实现</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
 <span class="token annotation punctuation">@Transactional</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Autowired</span>
@@ -2000,8 +815,7 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
         <span class="token keyword">return</span> userMapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="开发Controller"><a href="#开发Controller" class="headerlink" title="开发Controller"></a>开发Controller</h5><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+</code></pre><h5 id="开发Controller"><a href="#开发Controller" class="headerlink" title="开发Controller"></a>开发Controller</h5><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
 <span class="token annotation punctuation">@Controller</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
@@ -2026,20 +840,15 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
         <span class="token keyword">return</span> e<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>界面如果要访问到图片, 加入将图片放在服务器resources/static/imgs下面, 需要在配置文件中指定静态资源访问路径.</p>
-<pre class=" language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">## 开启静态访问目录</span>
+</code></pre><p>界面如果要访问到图片, 加入将图片放在服务器resources/static/imgs下面, 需要在配置文件中指定静态资源访问路径.</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">## 开启静态访问目录</span>
 <span class="token attr-name">upload.dir</span><span class="token punctuation">=</span><span class="token attr-value">D:\\develops\\workspace\\IdeaProjects\\easypoi-web\\src\\main\\resources\\static\\imgs</span>
 <span class="token attr-name">spring.web.resources.static-locations</span><span class="token punctuation">=</span><span class="token attr-value">file:${upload.dir}</span>
-</code></pre>
-<h5 id="界面效果"><a href="#界面效果" class="headerlink" title="界面效果"></a>界面效果</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127918.png" alt="image-20210809232505479"></p>
-<h4 id="2-5-4-导入数据"><a href="#2-5-4-导入数据" class="headerlink" title="2.5.4 导入数据"></a>2.5.4 导入数据</h4><h5 id="开发mapper接口及映射-1"><a href="#开发mapper接口及映射-1" class="headerlink" title="开发mapper接口及映射"></a>开发mapper接口及映射</h5><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Mapper</span>
+</code></pre><h5 id="界面效果"><a href="#界面效果" class="headerlink" title="界面效果"></a>界面效果</h5><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127918.png" alt="image-20210809232505479"></p><h4 id="2-5-4-导入数据"><a href="#2-5-4-导入数据" class="headerlink" title="2.5.4 导入数据"></a>2.5.4 导入数据</h4><h5 id="开发mapper接口及映射-1"><a href="#开发mapper接口及映射-1" class="headerlink" title="开发mapper接口及映射"></a>开发mapper接口及映射</h5><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Mapper</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">void</span> <span class="token function">save</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
+</code></pre><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
 <span class="token doctype">&lt;!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd"></span>
@@ -2057,13 +866,11 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>insert</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">></span></span>
-</code></pre>
-<h5 id="开发Service接口及实现"><a href="#开发Service接口及实现" class="headerlink" title="开发Service接口及实现"></a>开发Service接口及实现</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
+</code></pre><h5 id="开发Service接口及实现"><a href="#开发Service接口及实现" class="headerlink" title="开发Service接口及实现"></a>开发Service接口及实现</h5><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">void</span> <span class="token function">saveAll</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>User<span class="token operator">></span> users<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+</code></pre><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
 <span class="token annotation punctuation">@Transactional</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
     <span class="token annotation punctuation">@Autowired</span>
@@ -2089,8 +896,7 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="开发Controller-1"><a href="#开发Controller-1" class="headerlink" title="开发Controller"></a>开发Controller</h5><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/importExcel"</span><span class="token punctuation">)</span>
+</code></pre><h5 id="开发Controller-1"><a href="#开发Controller-1" class="headerlink" title="开发Controller"></a>开发Controller</h5><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/importExcel"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> String <span class="token function">importExcel</span><span class="token punctuation">(</span>MultipartFile file<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -2108,12 +914,7 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
 
     <span class="token keyword">return</span> <span class="token string">"redirect:/user/findAll"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 上传完成后,跳转到查询所有的方法路径上</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>界面效果</p>
-<p>导入Excel后, 系统保存数据到db, 然后重定向到/user/findAll方法, 在index.html页面展示所有数据(包含刚导入的数据)</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127053.png" alt="image-20210809233742298"></p>
-<h4 id="2-5-5-导出数据"><a href="#2-5-5-导出数据" class="headerlink" title="2.5.5 导出数据"></a>2.5.5 导出数据</h4><h5 id="开发Controller-2"><a href="#开发Controller-2" class="headerlink" title="开发Controller"></a>开发Controller</h5><p>service可以复用上面的findAll方法.</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/exportExcel"</span><span class="token punctuation">)</span>
+</code></pre><p>界面效果</p><p>导入Excel后, 系统保存数据到db, 然后重定向到/user/findAll方法, 在index.html页面展示所有数据(包含刚导入的数据)</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127053.png" alt="image-20210809233742298"></p><h4 id="2-5-5-导出数据"><a href="#2-5-5-导出数据" class="headerlink" title="2.5.5 导出数据"></a>2.5.5 导出数据</h4><h5 id="开发Controller-2"><a href="#开发Controller-2" class="headerlink" title="开发Controller"></a>开发Controller</h5><p>service可以复用上面的findAll方法.</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/exportExcel"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">exportExcel</span><span class="token punctuation">(</span>HttpServletResponse response<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 查询所有数据</span>
     List<span class="token operator">&lt;</span>User<span class="token operator">></span> users <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2140,1241 +941,5 @@ INSERT INTO t_user VALUES(0,'admin',23,'看书','4430821199305058632','深圳龙
     workbook<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     workbook<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<h5 id="开发html页面"><a href="#开发html页面" class="headerlink" title="开发html页面"></a>开发html页面</h5><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@{/user/exportExcel}<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-info<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>导出excel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-</code></pre>
-<h5 id="导出效果"><a href="#导出效果" class="headerlink" title="导出效果"></a>导出效果</h5><p> 浏览器下载中</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121136509.png" alt="image-20210809234316625"></p>
-<p>写入的Excel效果</p>
-<p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127220.png" alt="image-20210809234236457"></p>
-<h2 id="3-模板导出"><a href="#3-模板导出" class="headerlink" title="3 模板导出"></a>3 模板导出</h2><p>模板导出自己去官方资料学习…</p>
-<link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script>
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/crystal-blog/about" rel="external nofollow noreferrer">王子</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/091235988.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/091235988.html</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/crystal-blog/about" target="_blank">王子</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/crystal-blog/tags/EasyPoi/">
-                                    <span class="chip bg-color">EasyPoi</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/crystal-blog/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/crystal-blog/libs/share/js/social-share.min.js"></script>
-    
-
-    
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script>
-    <div class="addthis_inline_share_toolbox"></div>
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
-    }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/crystal-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/crystal-blog/medias/reward/wechatPay.jpg" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-        <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments textarea {
-        box-sizing: border-box;
-        background: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp") 100% 100% no-repeat;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #4cbf30;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    .v[data-class="v"] .vwrap .vheader .vinput {
-        width: 32%;
-        border-bottom: 1px dashed #dedede;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling"
-         style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
-</div>
-
-<script src="/crystal-blog/libs/valine/av-min.js"></script>
-<script src="/crystal-blog/libs/valine2/Valine2.min.js"></script>
-<script>
-    let metaPlaceholder = {"nick":"昵称/QQ号(必填)","mail":"邮箱(必填)","link":"网址(https://)"} ;
-    //这里要换行
-    new Valine({
-        el: '#vcomments',
-        appId: 'NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI',
-        appKey: 'P7BGA1hMeBAFbHYz3dKY8doJ',
-        notify: 'false' === 'true',
-        verify: 'true' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'monsterid',
-        pageSize: '10',
-        lang: 'zh-CN',
-        placeholder: '填写QQ号就能评论，快来一发吧~',
-
-        meta: ["nick", "mail", "link"],
-        recordIP: 'true' === 'true',
-        enableQQ: 'monsterid',
-        requiredFields: ["nick", "mail", "link"],
-        master: ["e4de1f6da602d22e423d6dfb24611b6b"],
-        friends: ["410739a5ad278251b305dab085768c57", "410739a5ad278251b305dab085768c57", "410739a5ad278251b305dab085768c57"],
-        tagMeta: ["博主", "小伙伴", "访客"],
-        metaPlaceholder: metaPlaceholder,
-
-    });
-
-    document.body.addEventListener('click', function (e) {
-        if (e.target.classList.contains('vsubmit')) {
-            const email = document.querySelector('input[type=email]');
-            const nick = document.querySelector('input[name=nick]');
-            const reg = /^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-            if (!email.value || !nick.value || !reg.test(email.value)) {
-                const str = `<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
-                const vmark = document.querySelector('.vmark');
-                vmark.innerHTML = str;
-                vmark.style.display = 'block';
-
-                e.stopPropagation();
-
-                setTimeout(function () {
-                    vmark.style.display = 'none';
-                    vmark.innerHTML = '';
-                }, 2500);
-            }
-        }
-    }, true);
-</script>
-
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/crystal-blog/091235988.html">
-                    <div class="card-image">
-                        
-                        <img src="https://www.bing.com/th?id=OHR.SanJuanIslands_ZH-CN3763036819_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="EasyPoi学习笔记">
-                        
-                        <span class="card-title">EasyPoi学习笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Java实现Excel导入导出
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/crystal-blog/categories/EasyPoi/" class="post-category">
-                                    EasyPoi
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/crystal-blog/tags/EasyPoi/">
-                        <span class="chip bg-color">EasyPoi</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/crystal-blog/091227449.html">
-                    <div class="card-image">
-                        
-                        <img src="https://cn.bing.com/th?id=OHR.HainichBaumwipfelpfad_ZH-CN2635981561_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="EasyExcel学习笔记">
-                        
-                        <span class="card-title">EasyExcel学习笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Java实现Excel导入导出
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/crystal-blog/categories/EasyExcel/" class="post-category">
-                                    EasyExcel
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/crystal-blog/tags/EasyExcel/">
-                        <span class="chip bg-color">EasyExcel</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 王子的博客<br />'
-            + '文章作者: 王子<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/crystal-blog/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-<!-- 切换夜间/白天模式按钮 -->
-<a onclick="switchNightMode()" id="sma"> <i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i> </a>
-<!--添加尾部-->
-<footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="tencent"
-                   type="playlist"
-                   id="7278393642"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/crystal-blog/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
-
-    <div class="container row center-align"
-         style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2020-2021</span>
-            
-            <i class="fa fa-heart" style="color: #ff71a8"></i>
-            <a href="/crystal-blog/about" target="_blank">王子</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-
-            <!--站点总字数-->
-            
-            <span style="margin-left: -20px; display: inline">
-                &nbsp;  <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">36.8k</span>
-                <span/>
-                
-
-                
-                
-                    
-                
-
-                <!--总访问量-->
-                
-                    <span id="busuanzi_container_site_pv" style="display: inline">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span
-                                id="busuanzi_value_site_pv" class="white-color"></span>
-                </span>
-                
-
-                <!--总访问人数-->
-                
-                    <span id="busuanzi_container_site_uv" style="display: inline">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span
-                                id="busuanzi_value_site_uv" class="white-color"></span>
-                </span>
-                
-                <br>
-
-                <!-- 运行天数提醒. -->
-                
-                    <span id="sitetime"> Loading ...</span>
-                    <script>
-                    var calcSiteTime = function () {
-                        var seconds = 1000;
-                        var minutes = seconds * 60;
-                        var hours = minutes * 60;
-                        var days = hours * 24;
-                        var years = days * 365;
-                        var today = new Date();
-                        var startYear = "2020";
-                        var startMonth = "8";
-                        var startDate = "8";
-                        var startHour = "8";
-                        var startMinute = "8";
-                        var startSecond = "8";
-                        var todayYear = today.getFullYear();
-                        var todayMonth = today.getMonth() + 1;
-                        var todayDate = today.getDate();
-                        var todayHour = today.getHours();
-                        var todayMinute = today.getMinutes();
-                        var todaySecond = today.getSeconds();
-                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                        var diff = t2 - t1;
-                        var diffYears = Math.floor(diff / years);
-                        var diffDays = Math.floor((diff / days) - diffYears * 365);
-                        var diffHours = Math.floor((diff / hours) - diffYears * 365 * 24 - diffDays * 24);
-                        var diffMinutes = Math.floor((diff / minutes) - diffYears * 365 * 24 * 60 - diffDays * 24 * 60 - diffHours * 60);
-                        var diffSeconds = Math.floor((diff / seconds) - diffYears * 365 * 24 * 60 * 60 - diffDays * 24 * 60 * 60 - diffHours * 60 * 60 - diffMinutes * 60);
-
-                        // 区分是否有年份.
-                        var language = 'zh-CN';
-                        if (startYear === String(todayYear)) {
-                            document.getElementById("year").innerHTML = todayYear;
-                            var daysTip = 'This site has been running for ' + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                daysTip = '本站已运行 ' + diffDays + ' 天';
-                            } else if (language === 'zh-HK') {
-                                daysTip = '本站已運行 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = daysTip;
-                        } else {
-                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
-                                + diffDays + ' days';
-                            if (language === 'zh-CN') {
-                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天 ' + diffHours + ' 小时 ' + diffMinutes + ' 分钟 ' + diffSeconds + ' 秒';
-                            } else if (language === 'zh-HK') {
-                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
-                            }
-                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
-                        }
-                    }
-                    var timer = setInterval(calcSiteTime);
-                    // calcSiteTime();
-                </script>
-                
-                &nbsp;|&nbsp;
-                
-                    <span id="icp">
-                    <img src="/crystal-blog/medias/icp.png"
-                         style="vertical-align: text-bottom;"/>
-
-                    <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20002708号-8</a>
-                </span>
-                
-        </div>
-
-        <div class="col s12 m4 l4 social-link social-statis">
-            
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1848276756" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1848276756" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-    <a href="mailto:wang-qz@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我: wang-qz@foxmail.com" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-
-
-
-
-    <a href="https://gitee.com/wang-qz" class="tooltipped" target="_blank" data-tooltip="码云" data-position="top" data-delay="50">
-        <i class="fab fa-github-alt"></i>
-    </a>
-
-
-
-    <a href="https://blog.csdn.net/u013044713" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
-        <i class="fab fa-csdn">C</i>
-    </a>
-
-
-
-    <a href="/crystal-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
-
-
-        </div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-<script>
-    let _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?147475454185ebcf440a27cc35e793ef";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-<!--添加搜索框-->
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/crystal-blog/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-<!--添加回到顶部按钮-->
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-<script src="/crystal-blog/libs/materialize/materialize.min.js"></script>
-<script src="/crystal-blog/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="/crystal-blog/libs/aos/aos.js"></script>
-<script src="/crystal-blog/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="/crystal-blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/crystal-blog/js/matery.js"></script>
-<script src="/crystal-blog/js/funnyTitle.js"></script>
-
-<!-- Baidu Analytics -->
-
-<!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
-    <script src="/crystal-blog/libs/others/clicklove.js" async="async"></script>
-
-
-    <script async src="/crystal-blog/libs/others/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-<!--腾讯兔小巢-->
-
-
-<!--背景canvas-nest-->
-
-    <script type="text/javascript" color="0,0,255"
-            pointColor="0,0,255" opacity='0.7'
-            zIndex="-1" count="99"
-            src="/crystal-blog/libs/background/canvas-nest.js"></script>
-
-
-<!--背景静止彩带-->
-
-
-<!--背景动态彩带-->
-
-    <script type="text/javascript" src="/crystal-blog/libs/background/ribbon-dynamic.js"
-            async="async"></script>
-
-
-<!--网页预加载-->
-
-    <script src="/crystal-blog/libs/instantpage/instantpage.js" type="module"></script>
-
-
-<!-- 雪花特效 -->
-
-    <script src="/crystal-blog/js/snow.js"></script>
-
-
-<!-- 鼠标点击特效 -->
-
-    <script src="/crystal-blog/js/wenzi.js"></script>
-
-
-<!-- 樱花特效 -->
-
-    <script src="/crystal-blog/js/sakura.js"></script>
-
-
-<script src="/crystal-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/crystal-blog/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":190,"hOffset":50,"vOffset":-5},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
-
-</html>
+</code></pre><h5 id="开发html页面"><a href="#开发html页面" class="headerlink" title="开发html页面"></a>开发html页面</h5><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name"><span class="token namespace">th:</span>href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>@{/user/exportExcel}<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-info<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>导出excel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+</code></pre><h5 id="导出效果"><a href="#导出效果" class="headerlink" title="导出效果"></a>导出效果</h5><p>浏览器下载中</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121136509.png" alt="image-20210809234316625"></p><p>写入的Excel效果</p><p><img src="https://gitee.com/wang-qz/pictures/raw/master/master/202109121127220.png" alt="image-20210809234236457"></p><h2 id="3-模板导出"><a href="#3-模板导出" class="headerlink" title="3 模板导出"></a>3 模板导出</h2><p>模板导出自己去官方资料学习…</p><link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script></div><hr><div class="reprint" id="reprint-statement"><div class="reprint__author"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-user">文章作者: </i></span><span class="reprint-info"><a href="/crystal-blog/about" rel="external nofollow noreferrer">王子</a></span></div><div class="reprint__type"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-link">文章链接: </i></span><span class="reprint-info"><a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/091235988.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/091235988.html</a></span></div><div class="reprint__notice"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-copyright">版权声明: </i></span><span class="reprint-info">本博客所有文章除特別声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a> 许可协议。转载请注明来源 <a href="/crystal-blog/about" target="_blank">王子</a> !</span></div></div><script async defer>function navToReprintStatement(){$("html, body").animate({scrollTop:$("#reprint-statement").offset().top-80},800)}document.addEventListener("copy",function(t){M.toast({html:'<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>'})})</script><div class="tag_share" style="display:block"><div class="post-meta__tag-list" style="display:inline-block"><div class="article-tag"><a href="/crystal-blog/tags/EasyPoi/"><span class="chip bg-color">EasyPoi</span></a></div></div><div class="post_share" style="zoom:80%;width:fit-content;display:inline-block;float:right;margin:-.15rem 0"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/share/css/share.min.css"><div id="article-share"><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/crystal-blog/libs/share/js/social-share.min.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script><div class="addthis_inline_share_toolbox"></div></div></div></div><style>#reward{margin:40px 0;text-align:center}#reward .reward-link{font-size:1.4rem;line-height:38px}#reward .btn-floating:hover{box-shadow:0 6px 12px rgba(0,0,0,.2),0 5px 15px rgba(0,0,0,.2)}#rewardModal{width:320px;height:350px}#rewardModal .reward-title{margin:15px auto;padding-bottom:5px}#rewardModal .modal-content{padding:10px}#rewardModal .close{position:absolute;right:15px;top:15px;color:rgba(0,0,0,.5);font-size:1.3rem;line-height:20px;cursor:pointer}#rewardModal .close:hover{color:#ef5350;transform:scale(1.3);-moz-transform:scale(1.3);-webkit-transform:scale(1.3);-o-transform:scale(1.3)}#rewardModal .reward-tabs{margin:0 auto;width:210px}.reward-tabs .tabs{height:38px;margin:10px auto;padding-left:0}.reward-content ul{padding-left:0!important}.reward-tabs .tabs .tab{height:38px;line-height:38px}.reward-tabs .tab a{color:#fff;background-color:#ccc}.reward-tabs .tab a:hover{background-color:#ccc;color:#fff}.reward-tabs .wechat-tab .active{color:#fff!important;background-color:#22ab38!important}.reward-tabs .alipay-tab .active{color:#fff!important;background-color:#019fe8!important}.reward-tabs .reward-img{width:210px;height:210px}</style><div id="reward"><a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a><div id="rewardModal" class="modal"><div class="modal-content"><a class="close modal-close"><i class="fas fa-times"></i></a><h4 class="reward-title">你的赏识是我前进的动力</h4><div class="reward-content"><div class="reward-tabs"><ul class="tabs row"><li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li><li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li></ul><div id="alipay"><img src="/crystal-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码"></div><div id="wechat"><img src="/crystal-blog/medias/reward/wechatPay.jpg" class="reward-img" alt="微信打赏二维码"></div></div></div></div></div></div><script>$(function(){$(".tabs").tabs()})</script></div></div><style>.valine-card{margin:1.5rem auto}.valine-card .card-content{padding:20px 20px 5px 20px}#vcomments textarea{box-sizing:border-box;background:url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp) 100% 100% no-repeat}#vcomments p{margin:2px 2px 10px;font-size:1.05rem;line-height:1.78rem}#vcomments blockquote p{text-indent:.2rem}#vcomments a{padding:0 2px;color:#4cbf30;font-weight:500;text-decoration:none}#vcomments img{max-width:100%;height:auto;cursor:pointer}#vcomments ol li{list-style-type:decimal}#vcomments ol,ul{display:block;padding-left:2em;word-spacing:.05rem}#vcomments ul li,ol li{display:list-item;line-height:1.8rem;font-size:1rem}#vcomments ul li{list-style-type:disc}#vcomments ul ul li{list-style-type:circle}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}#vcomments table,td,th{border:0}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments h1{font-size:1.85rem;font-weight:700;line-height:2.2rem}#vcomments h2{font-size:1.65rem;font-weight:700;line-height:1.9rem}#vcomments h3{font-size:1.45rem;font-weight:700;line-height:1.7rem}#vcomments h4{font-size:1.25rem;font-weight:700;line-height:1.5rem}#vcomments h5{font-size:1.1rem;font-weight:700;line-height:1.4rem}#vcomments h6{font-size:1rem;line-height:1.3rem}#vcomments p{font-size:1rem;line-height:1.5rem}#vcomments hr{margin:12px 0;border:0;border-top:1px solid #ccc}#vcomments blockquote{margin:15px 0;border-left:5px solid #42b983;padding:1rem .8rem .3rem .8rem;color:#666;background-color:rgba(66,185,131,.1)}#vcomments pre{font-family:monospace,monospace;padding:1.2em;margin:.5em 0;background:#272822;overflow:auto;border-radius:.3em;tab-size:4}#vcomments code{font-family:monospace,monospace;padding:1px 3px;font-size:.92rem;color:#e96900;background-color:#f8f8f8;border-radius:2px}#vcomments pre code{font-family:monospace,monospace;padding:0;color:#e8eaf6;background-color:#272822}#vcomments pre[class*=language-]{padding:1.2em;margin:.5em 0}#vcomments code[class*=language-],pre[class*=language-]{color:#e8eaf6}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}#vcomments b,strong{font-weight:700}#vcomments dfn{font-style:italic}#vcomments small{font-size:85%}#vcomments cite{font-style:normal}#vcomments mark{background-color:#fcf8e3;padding:.2em}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}.v[data-class="v"] .vwrap .vheader .vinput{width:32%;border-bottom:1px dashed #dedede}</style><div class="card valine-card" data-aos="fade-up"><div class="comment_headling" style="font-size:20px;font-weight:700;position:relative;padding-left:20px;top:15px;padding-bottom:5px"><i class="fas fa-comments fa-fw" aria-hidden="true"></i> <span>评论</span></div><div id="vcomments" class="card-content" style="display:grid"></div></div><script src="/crystal-blog/libs/valine/av-min.js"></script><script src="/crystal-blog/libs/valine2/Valine2.min.js"></script><script>let metaPlaceholder={nick:"昵称/QQ号(必填)",mail:"邮箱(必填)",link:"网址(https://)"};new Valine({el:"#vcomments",appId:"NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI",appKey:"P7BGA1hMeBAFbHYz3dKY8doJ",notify:!1,verify:!0,visitor:!0,avatar:"monsterid",pageSize:"10",lang:"zh-CN",placeholder:"填写QQ号就能评论，快来一发吧~",meta:["nick","mail","link"],recordIP:!0,enableQQ:"monsterid",requiredFields:["nick","mail","link"],master:["e4de1f6da602d22e423d6dfb24611b6b"],friends:["410739a5ad278251b305dab085768c57","410739a5ad278251b305dab085768c57","410739a5ad278251b305dab085768c57"],tagMeta:["博主","小伙伴","访客"],metaPlaceholder:metaPlaceholder}),document.body.addEventListener("click",function(e){if(e.target.classList.contains("vsubmit")){var a=document.querySelector("input[type=email]"),t=document.querySelector("input[name=nick]");const i=/^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;if(!a.value||!t.value||!i.test(a.value)){const n=document.querySelector(".vmark");n.innerHTML='<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>',n.style.display="block",e.stopPropagation(),setTimeout(function(){n.style.display="none",n.innerHTML=""},2500)}}},!0)</script><article id="prenext-posts" class="prev-next articles"><div class="row article-row"><div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up"><div class="article-badge left-badge text-color"><i class="far fa-dot-circle"></i>&nbsp;本篇</div><div class="card"><a href="/crystal-blog/091235988.html"><div class="card-image"><img src="https://www.bing.com/th?id=OHR.SanJuanIslands_ZH-CN3763036819_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="EasyPoi学习笔记"> <span class="card-title">EasyPoi学习笔记</span></div></a><div class="card-content article-content"><div class="summary block-with-text">Java实现Excel导入导出</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2021-09-12 </span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/EasyPoi/" class="post-category">EasyPoi</a></span></div></div><div class="card-action article-tags"><a href="/crystal-blog/tags/EasyPoi/"><span class="chip bg-color">EasyPoi</span></a></div></div></div><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge right-badge text-color">下一篇&nbsp;<i class="fas fa-chevron-right"></i></div><div class="card"><a href="/crystal-blog/091227449.html"><div class="card-image"><img src="https://cn.bing.com/th?id=OHR.HainichBaumwipfelpfad_ZH-CN2635981561_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="EasyExcel学习笔记"> <span class="card-title">EasyExcel学习笔记</span></div></a><div class="card-content article-content"><div class="summary block-with-text">Java实现Excel导入导出</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2021-09-12 </span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/EasyExcel/" class="post-category">EasyExcel</a></span></div></div><div class="card-action article-tags"><a href="/crystal-blog/tags/EasyExcel/"><span class="chip bg-color">EasyExcel</span></a></div></div></div></div></article></div><script>$("#articleContent").on("copy",function(e){var n,t,o,i;void 0!==window.getSelection&&((""+(n=window.getSelection())).length<Number.parseInt("120")||(t=document.getElementsByTagName("body")[0],(o=document.createElement("div")).style.position="absolute",o.style.left="-99999px",t.appendChild(o),o.appendChild(n.getRangeAt(0).cloneContents()),"PRE"!==n.getRangeAt(0).commonAncestorContainer.nodeName&&"CODE"!==n.getRangeAt(0).commonAncestorContainer.nodeName||(o.innerHTML="<pre>"+o.innerHTML+"</pre>"),i=document.location.href,o.innerHTML+='<br />来源: 王子的博客<br />文章作者: 王子<br />文章链接: <a href="'+i+'">'+i+"</a><br />本文章著作权归作者所有，任何形式的转载都请注明出处。",n.selectAllChildren(o),window.setTimeout(function(){t.removeChild(o)},200)))})</script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeBlockFuction.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeLang.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeCopy.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeShrink.js"></script></div><div id="toc-aside" class="expanded col l3 hide-on-med-and-down"><div class="toc-widget card" style="background-color:#fff"><div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div><div id="toc-content"></div></div></div></div><div id="floating-toc-btn" class="hide-on-med-and-down"><a class="btn-floating btn-large bg-color"><i class="fas fa-list-ul"></i></a></div><script src="/crystal-blog/libs/tocbot/tocbot.min.js"></script><script>$(function(){tocbot.init({tocSelector:"#toc-content",contentSelector:"#articleContent",headingsOffset:-(.4*$(window).height()-45),collapseDepth:Number("0"),headingSelector:"h2, h3, h4"});let t=0,e="toc-heading-";$("#toc-content a").each(function(){$(this).attr("href","#"+e+ ++t)}),t=0,$("#articleContent").children("h2, h3, h4").each(function(){$(this).attr("id",e+ ++t)});let n=parseInt(.4*$(window).height()-64),o=$(".toc-widget");$(window).scroll(function(){$(window).scrollTop()>n?o.addClass("toc-fixed"):o.removeClass("toc-fixed")});const i="expanded";let c=$("#toc-aside"),l=$("#main-content");$("#floating-toc-btn .btn-floating").click(function(){c.hasClass(i)?(c.removeClass(i).hide(),l.removeClass("l9")):(c.addClass(i).show(),l.addClass("l9")),function(t,e){let n=$("#"+t);if(0!==n.length){let t=n.width();450<=t?t+=21:350<=t&&t<450?t+=18:300<=t&&t<350?t+=16:t+=14,$("#"+e).width(t)}}("artDetail","prenext-posts")})})</script></main><a onclick="switchNightMode()" id="sma"><i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i></a><footer class="page-footer bg-color"><link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css"><style>.aplayer .aplayer-lrc p{display:none;font-size:12px;font-weight:700;line-height:16px!important}.aplayer .aplayer-lrc p.aplayer-lrc-current{display:none;font-size:15px;color:#42b983}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><div><div class="row"><meting-js class="col l8 offset-l2 m10 offset-m1 s12" server="tencent" type="playlist" id="7278393642" fixed="true" autoplay theme="#42b983" loop order="random" preload="auto" volume="0.7" list-folded="true"></meting-js></div></div><script src="/crystal-blog/libs/aplayer/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><div class="container row center-align" style="margin-bottom:15px!important"><div class="col s12 m8 l8 copy-right">Copyright&nbsp;&copy; <span id="year">2020-2021</span> <i class="fa fa-heart" style="color:#ff71a8"></i> <a href="/crystal-blog/about" target="_blank">王子</a> |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a><br><span style="margin-left:-20px;display:inline">&nbsp; <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">36.8k</span> <span><span id="busuanzi_container_site_pv" style="display:inline">&nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span> </span><span id="busuanzi_container_site_uv" style="display:inline">&nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span></span><br><span id="sitetime">Loading ...</span><script>var calcSiteTime=function(){var e=new Date,t="2020",n=e.getFullYear(),a=e.getMonth()+1,r=e.getDate(),i=e.getHours(),o=e.getMinutes(),s=e.getSeconds(),e=Date.UTC(t,"8","8","8","8","8"),a=Date.UTC(n,a,r,i,o,s)-e,r=Math.floor(a/31536e6),i=Math.floor(a/864e5-365*r),o=Math.floor(a/36e5-365*r*24-24*i),s=Math.floor(a/6e4-365*r*24*60-24*i*60-60*o),e=Math.floor(a/1e3-365*r*24*60*60-24*i*60*60-60*o*60-60*s);t===String(n)?(document.getElementById("year").innerHTML=n,a="This site has been running for "+i+" days",a="本站已运行 "+i+" 天",document.getElementById("sitetime").innerHTML=a):(document.getElementById("year").innerHTML=t+" - "+n,n="This site has been running for "+r+" years and "+i+" days",n="本站已运行 "+r+" 年 "+i+" 天 "+o+" 小时 "+s+" 分钟 "+e+" 秒",document.getElementById("sitetime").innerHTML=n)},timer=setInterval(calcSiteTime)</script>&nbsp;|&nbsp; <span id="icp"><img src="/crystal-blog/medias/icp.png" style="vertical-align:text-bottom"> <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20002708号-8</a></span></span></div><div class="col s12 m4 l4 social-link social-statis"><a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1848276756" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1848276756" data-position="top" data-delay="50"><i class="fab fa-qq"></i> </a><a href="mailto:wang-qz@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我: wang-qz@foxmail.com" data-position="top" data-delay="50"><i class="fas fa-envelope-open"></i> </a><a href="https://gitee.com/wang-qz" class="tooltipped" target="_blank" data-tooltip="码云" data-position="top" data-delay="50"><i class="fab fa-github-alt"></i> </a><a href="https://blog.csdn.net/u013044713" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50"><i class="fab fa-csdn">C</i> </a><a href="/crystal-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50"><i class="fas fa-rss"></i></a></div></div></footer><div class="progress-bar"></div><script>let _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?147475454185ebcf440a27cc35e793ef";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div id="searchModal" class="modal"><div class="modal-content"><div class="search-header"><span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span> <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input"></div><div id="searchResult"></div></div></div><script type="text/javascript">$(function(){!function(t,r,s){"use strict";$.ajax({url:t,dataType:"xml",success:function(t){var e=$("entry",t).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),t=document.getElementById(r),n=document.getElementById(s);t.addEventListener("input",function(){var o='<ul class="search-result-list">',h=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length<=0||(e.forEach(function(t){var n,e,r,s=!0,l=t.title.trim().toLowerCase(),a=t.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),c=0===(c=t.url).indexOf("/")?t.url:"/"+c,i=-1,u=-1;""!==l&&""!==a&&h.forEach(function(t,e){n=l.indexOf(t),i=a.indexOf(t),n<0&&i<0?s=!1:(i<0&&(i=0),0===e&&(u=i))}),s&&(o+="<li><a href='"+c+"' class='search-result-title'>"+l+"</a>",e=t.content.trim().replace(/<[^>]+>/g,""),0<=u&&(c=u+80,(c=0===(t=(t=u-20)<0?0:t)?100:c)>e.length&&(c=e.length),r=e.substr(t,c),h.forEach(function(t){var e=new RegExp(t,"gi");r=r.replace(e,'<em class="search-keyword">'+t+"</em>")}),o+='<p class="search-result">'+r+"...</p>"),o+="</li>")}),o+="</ul>",n.innerHTML=o)})}})}("/crystal-blog/search.xml","searchInput","searchResult")})</script><div id="backTop" class="top-scroll"><a class="btn-floating btn-large waves-effect waves-light" href="#!"><i class="fas fa-arrow-up"></i></a></div><script src="/crystal-blog/libs/materialize/materialize.min.js"></script><script src="/crystal-blog/libs/masonry/masonry.pkgd.min.js"></script><script src="/crystal-blog/libs/aos/aos.js"></script><script src="/crystal-blog/libs/scrollprogress/scrollProgress.min.js"></script><script src="/crystal-blog/libs/lightGallery/js/lightgallery-all.min.js"></script><script src="/crystal-blog/js/matery.js"></script><script src="/crystal-blog/js/funnyTitle.js"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}()</script><script src="/crystal-blog/libs/others/clicklove.js" async></script><script async src="/crystal-blog/libs/others/busuanzi.pure.mini.js"></script><script type="text/javascript" color="0,0,255" pointcolor="0,0,255" opacity="0.7" zindex="-1" count="99" src="/crystal-blog/libs/background/canvas-nest.js"></script><script type="text/javascript" src="/crystal-blog/libs/background/ribbon-dynamic.js" async></script><script src="/crystal-blog/libs/instantpage/instantpage.js" type="module"></script><script src="/crystal-blog/js/snow.js"></script><script src="/crystal-blog/js/wenzi.js"></script><script src="/crystal-blog/js/sakura.js"></script><script src="/crystal-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/crystal-blog/live2dw/assets/miku.model.json"},display:{position:"right",width:150,height:190,hOffset:50,vOffset:-5},mobile:{show:!1,scale:.5},react:{opacityDefault:.7,opacityOnHover:.8},log:!1})</script></body></html>
