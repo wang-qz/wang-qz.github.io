@@ -1,0 +1,1205 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="keywords" content="SAX解析Excel"><meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="renderer" content="webkit|ie-stand|ie-comp"><meta name="mobile-web-app-capable" content="yes"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="baidu-site-verification" content="code-Fqqme2bKQz"><title>SAX方式实现Excel导入 | 王子的博客</title><link rel="icon" type="image/png" href="/crystal-blog/favicon.png"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/materialize/materialize.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/aos/aos.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/animate/animate.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/lightGallery/css/lightgallery.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/css/matery.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/css/my.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/artitalk/artitalk.min.css"><script src="/crystal-blog/libs/jquery/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><style>.github-emoji{position:relative;display:inline-block;width:1.2em;min-height:1.2em;overflow:hidden;vertical-align:top;color:transparent}.github-emoji>span{position:relative;z-index:10}.github-emoji .fancybox,.github-emoji img{margin:0!important;padding:0!important;border:none!important;outline:0!important;text-decoration:none!important;user-select:none!important;cursor:auto!important}.github-emoji img{height:1.2em!important;width:1.2em!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;user-select:none!important;cursor:auto!important}.github-emoji-fallback{color:inherit}.github-emoji-fallback img{opacity:0!important}</style><link rel="alternate" href="/crystal-blog/atom.xml" title="王子的博客" type="application/atom+xml"><link rel="stylesheet" href="/crystal-blog/css/prism-tomorrow.css" type="text/css"></head><style>body{background-image:url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);background-repeat:no-repeat;background-size:cover;background-attachment:fixed}</style><body><header class="navbar-fixed"><nav id="headNav" class="bg-color nav-transparent"><div id="navContainer" class="nav-wrapper container"><div class="brand-logo" style="margin-left:-50px"><a href="/crystal-blog/" class="waves-effect waves-light"><img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO"> <span class="logo-span">王子的博客</span></a></div><a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a><ul class="right nav-menu" style="margin-left:100px"><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/" class="waves-effect waves-light"><i class="fas fa-home" style="zoom:.6"></i> <span>首页</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/tags" class="waves-effect waves-light"><i class="fas fa-tags" style="zoom:.6"></i> <span>标签</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/categories" class="waves-effect waves-light"><i class="fas fa-bookmark" style="zoom:.6"></i> <span>分类</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/archives" class="waves-effect waves-light"><i class="fas fa-archive" style="zoom:.6"></i> <span>归档</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-list" style="zoom:.6"></i> <span>清单</span> <i class="fas fa-chevron-down" aria-hidden="true" style="zoom:.6"></i></a><ul class="sub-nav menus_item_child"><li><a href="/crystal-blog/musics"><i class="fas fa-music" style="margin-top:-20px;zoom:.6"></i> <span>音乐</span></a></li><li><a href="/crystal-blog/videos"><i class="fas fa-video" style="margin-top:-20px;zoom:.6"></i> <span>视频</span></a></li><li><a href="/crystal-blog/movies"><i class="fas fa-film" style="margin-top:-20px;zoom:.6"></i> <span>影集</span></a></li><li><a href="/crystal-blog/books"><i class="fas fa-book" style="margin-top:-20px;zoom:.6"></i> <span>阅读</span></a></li><li><a href="/crystal-blog/wallpaper"><i class="fas fa-image" style="margin-top:-20px;zoom:.6"></i> <span>壁纸</span></a></li><li><a href="/crystal-blog/galleries"><i class="fas fa-camera" style="margin-top:-20px;zoom:.6"></i> <span>相册</span></a></li></ul></li><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-rocket" style="zoom:.6"></i> <span>关于</span> <i class="fas fa-chevron-down" aria-hidden="true" style="zoom:.6"></i></a><ul class="sub-nav menus_item_child"><li><a href="/crystal-blog/about"><i class="fas fa-user-circle" style="margin-top:-20px;zoom:.6"></i> <span>关于我</span></a></li><li><a href="/crystal-blog/aboutgirl"><i class="fa fa-user-secret" style="margin-top:-20px;zoom:.6"></i> <span>关于她</span></a></li><li><a href="https://wang-qz.gitee.io/crystal-blog/"><i class="fab fa-github-alt" style="margin-top:-20px;zoom:.6"></i> <span>备用>></span></a></li><li><a href="/crystal-blog/artitalk"><i class="fas fa-pen-alt" style="margin-top:-20px;zoom:.6"></i> <span>artitalk</span></a></li><li><a href="/crystal-blog/bb"><i class="fas fa-comment" style="margin-top:-20px;zoom:.6"></i> <span>bbtalk</span></a></li></ul></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/contact" class="waves-effect waves-light"><i class="fas fa-comments" style="zoom:.6"></i> <span>留言板</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/friends" class="waves-effect waves-light"><i class="fas fa-address-book" style="zoom:.6"></i> <span>友情链接</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/navigate" class="waves-effect waves-light"><i class="fas fa-location-arrow" style="zoom:.6"></i> <span>快捷导航</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/atom.xml" class="waves-effect waves-light"><i class="fas fa-rss" style="zoom:.6"></i> <span>RSS</span></a></li><li><a href="#searchModal" class="modal-trigger waves-effect waves-light"><i id="searchIcon" class="fas fa-search" title="搜索" style="zoom:.85"></i></a></li></ul><div id="mobile-nav" class="side-nav sidenav"><div class="mobile-head bg-color"><img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img circle responsive-img"><div class="logo-name">王子的博客</div><div class="logo-desc">本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景</div></div><ul class="menu-list mobile-menu-list"><li class="m-nav-item"><a href="/crystal-blog/" class="waves-effect waves-light"><i class="fa-fw fas fa-home"></i> 首页</a></li><li class="m-nav-item"><a href="/crystal-blog/tags" class="waves-effect waves-light"><i class="fa-fw fas fa-tags"></i> 标签</a></li><li class="m-nav-item"><a href="/crystal-blog/categories" class="waves-effect waves-light"><i class="fa-fw fas fa-bookmark"></i> 分类</a></li><li class="m-nav-item"><a href="/crystal-blog/archives" class="waves-effect waves-light"><i class="fa-fw fas fa-archive"></i> 归档</a></li><li class="m-nav-item"><a href="javascript:;"><i class="fa-fw fas fa-list"></i> 清单 <span class="m-icon"><i class="fas fa-chevron-right"></i></span></a><ul><li><a href="/crystal-blog/musics" style="margin-left:50px"><i class="fa fas fa-music" style="position:absolute;left:28px"></i> <span>音乐</span></a></li><li><a href="/crystal-blog/videos" style="margin-left:50px"><i class="fa fas fa-video" style="position:absolute;left:28px"></i> <span>视频</span></a></li><li><a href="/crystal-blog/movies" style="margin-left:50px"><i class="fa fas fa-film" style="position:absolute;left:28px"></i> <span>影集</span></a></li><li><a href="/crystal-blog/books" style="margin-left:50px"><i class="fa fas fa-book" style="position:absolute;left:28px"></i> <span>阅读</span></a></li><li><a href="/crystal-blog/wallpaper" style="margin-left:50px"><i class="fa fas fa-image" style="position:absolute;left:28px"></i> <span>壁纸</span></a></li><li><a href="/crystal-blog/galleries" style="margin-left:50px"><i class="fa fas fa-camera" style="position:absolute;left:28px"></i> <span>相册</span></a></li></ul></li><li class="m-nav-item"><a href="javascript:;"><i class="fa-fw fas fa-rocket"></i> 关于 <span class="m-icon"><i class="fas fa-chevron-right"></i></span></a><ul><li><a href="/crystal-blog/about" style="margin-left:50px"><i class="fa fas fa-user-circle" style="position:absolute;left:28px"></i> <span>关于我</span></a></li><li><a href="/crystal-blog/aboutgirl" style="margin-left:50px"><i class="fa fa fa-user-secret" style="position:absolute;left:28px"></i> <span>关于她</span></a></li><li><a href="https://wang-qz.gitee.io/crystal-blog/" style="margin-left:50px"><i class="fa fab fa-github-alt" style="position:absolute;left:28px"></i> <span>备用>></span></a></li><li><a href="/crystal-blog/artitalk" style="margin-left:50px"><i class="fa fas fa-pen-alt" style="position:absolute;left:28px"></i> <span>artitalk</span></a></li><li><a href="/crystal-blog/bb" style="margin-left:50px"><i class="fa fas fa-comment" style="position:absolute;left:28px"></i> <span>bbtalk</span></a></li></ul></li><li class="m-nav-item"><a href="/crystal-blog/contact" class="waves-effect waves-light"><i class="fa-fw fas fa-comments"></i> 留言板</a></li><li class="m-nav-item"><a href="/crystal-blog/friends" class="waves-effect waves-light"><i class="fa-fw fas fa-address-book"></i> 友情链接</a></li><li class="m-nav-item"><a href="/crystal-blog/navigate" class="waves-effect waves-light"><i class="fa-fw fas fa-location-arrow"></i> 快捷导航</a></li><li class="m-nav-item"><a href="/crystal-blog/atom.xml" class="waves-effect waves-light"><i class="fa-fw fas fa-rss"></i> RSS</a></li><li><div class="divider"></div></li><li><a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="waves-effect waves-light" target="_blank"><i class="fab fa-github-square fa-fw"></i>Fork Me</a></li></ul></div></div><style>.nav-transparent .github-corner{display:none!important}.github-corner{position:absolute;z-index:10;top:0;right:0;border:0;transform:scale(1.1)}.github-corner svg{color:#0f9d58;fill:#fff;height:64px;width:64px}.github-corner:hover .octo-arm{animation:a .56s ease-in-out}.github-corner .octo-arm{animation:none}@keyframes a{0%,to{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}</style><a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a></nav></header><script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script><script></script><div class="bg-cover pd-header post-cover" style="background-image:url(https://cn.bing.com/th?id=OHR.MassachusettsHumpbacks_ZH-CN1239514789_1920x1080.jpg&rf=LaDigue_1920x1080.jpg)"><div class="container" style="right:0;left:0"><div class="row"><div class="col s12 m12 l12"><div class="brand"><h1 class="description center-align post-title">SAX方式实现Excel导入</h1></div></div></div></div></div><main class="post-container content"><link rel="stylesheet" href="/crystal-blog/libs/tocbot/tocbot.css"><style>#articleContent h1::before,#articleContent h2::before,#articleContent h3::before,#articleContent h4::before,#articleContent h5::before,#articleContent h6::before{display:block;content:" ";height:100px;margin-top:-100px;visibility:hidden}#articleContent :focus{outline:0}.toc-fixed{position:fixed;top:64px}.toc-widget{width:345px;padding-left:20px}.toc-widget .toc-title{padding:35px 0 15px 17px;font-size:1.5rem;font-weight:700;line-height:1.5rem}.toc-widget ol{padding:0;list-style:none}#toc-content{padding-bottom:30px;overflow:auto}#toc-content ol{padding-left:10px}#toc-content ol li{padding-left:10px}#toc-content .toc-link:hover{color:#42b983;font-weight:700;text-decoration:underline}#toc-content .toc-link::before{background-color:transparent;max-height:25px;position:absolute;right:23.5vw;display:block}#toc-content .is-active-link{color:#42b983}#floating-toc-btn{position:fixed;right:15px;bottom:76px;padding-top:15px;margin-bottom:0;z-index:998}#floating-toc-btn .btn-floating{width:48px;height:48px}#floating-toc-btn .btn-floating i{line-height:48px;font-size:1.4rem}</style><div class="row"><div id="main-content" class="col s12 m12 l9"><div id="artDetail"><div class="card"><div class="card-content article-info"><div class="row tag-cate"><div class="col s7"><div class="article-tag"><a href="/crystal-blog/tags/Poi/"><span class="chip bg-color">Poi</span> </a><a href="/crystal-blog/tags/SAX%E8%A7%A3%E6%9E%90/"><span class="chip bg-color">SAX解析</span></a></div></div><div class="col s5 right-align"><div class="post-cate"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="post-category">Excel导入导出</a></div></div></div><div class="post-info"><div class="post-date info-break-policy"><i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp; 2021-09-16</div><div class="post-date info-break-policy"><i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp; 2021-09-16</div><div class="info-break-policy"><i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp; 4.9k</div><div class="info-break-policy"><i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp; 23 分</div><div id="busuanzi_container_page_pv" class="info-break-policy"><i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv"></span></div></div></div><hr class="clearfix"><div class="card-content article-card-content"><div id="articleContent"><h1 id="SAX解析Excel"><a href="#SAX解析Excel" class="headerlink" title="SAX解析Excel"></a>SAX解析Excel</h1><p>上篇讲到了<a target="_blank" rel="noopener" href="https://www.crystalblog.xyz/15033.html">DOM解析Excel</a> , 这篇记录工作中用到的<code>SAX</code>方式解析Excel的封装实现,</p><blockquote><p>说明: 以下代码基于poi-3.17版本实现, poi-3.17及以上版本相比3.17以下版本样式设置的api改动比较大, 可能存在数据类型获取api过时或报错等, 请参考<a href="">poi版本升级问题优化</a></p></blockquote><h2 id="1-读取Excel公共方法"><a href="#1-读取Excel公共方法" class="headerlink" title="1. 读取Excel公共方法"></a>1. 读取Excel公共方法</h2><p><code>com.poi.util.PoiUtil#readExcel</code></p><pre class="language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 上传excel文件到服务器后，从服务器获取上传的文件并解析文件的数据
+ *
+ * @param parseType 解析类型 DOM SAX
+ * @param fileName 要解析的excel文件路径
+ * @param rowReader 扩展接口，方便对解析的每行数据做处理
+ * @return 返回解析的数据
+ * @throws Exception
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> <span class="token function">readExcel</span><span class="token punctuation">(</span>String parseType<span class="token punctuation">,</span> String fileName<span class="token punctuation">,</span> ExcelRowReader rowReader<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+
+    PoiUtil<span class="token punctuation">.</span><span class="token function">validatorExcel</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> rowsDataList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> totalRows <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 总行数</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>CSISCONSTANT<span class="token punctuation">.</span>EXCEL_PARSE_DOM<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>parseType<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// DOM解析</span>
+
+        ExcelReaderOfDom excelDom <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExcelReaderOfDom</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        rowsDataList <span class="token operator">=</span> excelDom<span class="token punctuation">.</span><span class="token function">readExcelByDom</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>CSISCONSTANT<span class="token punctuation">.</span>EXCEL_PARSE_SAX<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>parseType<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token comment" spellcheck="true">// SAX解析 2003版 excel</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>fileName<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span>CSISCONSTANT<span class="token punctuation">.</span>EXCEL03_EXTENSION<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            ExcelXlsReaderOfSax excelXls <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExcelXlsReaderOfSax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            excelXls<span class="token punctuation">.</span><span class="token function">setRowReader</span><span class="token punctuation">(</span>rowReader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            totalRows <span class="token operator">=</span> excelXls<span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            rowsDataList <span class="token operator">=</span> excelXls<span class="token punctuation">.</span><span class="token function">getRowsData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>fileName<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span>CSISCONSTANT<span class="token punctuation">.</span>EXCEL07_EXTENSION<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  
+            <span class="token comment" spellcheck="true">// SAX解析 2007版 excel</span>
+            ExcelXlsxReaderOfSax excelXlsx <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExcelXlsxReaderOfSax</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            excelXlsx<span class="token punctuation">.</span><span class="token function">setRowReader</span><span class="token punctuation">(</span>rowReader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            totalRows <span class="token operator">=</span> excelXlsx<span class="token punctuation">.</span><span class="token function">process</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            rowsDataList <span class="token operator">=</span> excelXlsx<span class="token punctuation">.</span><span class="token function">getRowsData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    totalRows <span class="token operator">=</span> rowsDataList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">">>>>总行数: {}"</span><span class="token punctuation">,</span> totalRows<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> rowsDataList<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="2-校验Excel文件格式"><a href="#2-校验Excel文件格式" class="headerlink" title="2. 校验Excel文件格式"></a>2. 校验Excel文件格式</h2><p><code>com.poi.util.PoiUtil#validatorExcel</code></p><pre class="language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 校验excel文件格式
+ * @param fileName
+ * @return
+ * @throws MyException
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">validatorExcel</span><span class="token punctuation">(</span>String fileName<span class="token punctuation">)</span> <span class="token keyword">throws</span> MyException <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">MyException</span><span class="token punctuation">(</span>CSISERRORCODE<span class="token punctuation">.</span>FILE_PATH_IS_NULL_ERROR_CODE<span class="token punctuation">,</span>
+                            CSISERRORCODE<span class="token punctuation">.</span>FILE_PATH_IS_NULL_ERROR_INFO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token function">isExcel2003</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">isExcel2007</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">MyException</span><span class="token punctuation">(</span>CSISERRORCODE<span class="token punctuation">.</span>UPLOAD_EXCEL_EXTENSION_ERROR_CODE<span class="token punctuation">,</span>
+                            CSISERRORCODE<span class="token punctuation">.</span>UPLOAD_EXCEL_EXTENSION_ERROR_INFO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    File file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>file <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token operator">!</span>file<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">MyException</span><span class="token punctuation">(</span>CSISERRORCODE<span class="token punctuation">.</span>FILE_NOT_EXIST_ERROR_CODE<span class="token punctuation">,</span>
+                            CSISERRORCODE<span class="token punctuation">.</span>FILE_NOT_EXIST_ERROR_INFO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="3-解析Excel的委托接口"><a href="#3-解析Excel的委托接口" class="headerlink" title="3. 解析Excel的委托接口"></a>3. 解析Excel的委托接口</h2><p>委托接口 <code>com.poi.service.ExcelRowReader</code></p><pre class="language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 读取excel文件的委托接口
+ * @author wang_qz
+ *
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ExcelRowReader</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * 读取每一行记录
+     * totalRows=curRow
+     * @param sheetIndex 当前sheet页索引
+     * @param totalRows 解析的行记录总数
+     * @param curRow 当前行
+     * @param rowList 当前行的数据记录
+     */</span>
+    <span class="token keyword">void</span> <span class="token function">readExcelData</span><span class="token punctuation">(</span><span class="token keyword">int</span> sheetIndex<span class="token punctuation">,</span> <span class="token keyword">int</span> totalRows<span class="token punctuation">,</span> <span class="token keyword">int</span> curRow<span class="token punctuation">,</span>
+                       List<span class="token operator">&lt;</span>String<span class="token operator">></span> rowList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>委托接口实现类 <code>com.poi.service.ExcelReaderImpl</code></p><pre class="language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/**
+ * 读取excel文件的委托接口实现类
+ * @author wang_qz
+ *
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExcelReaderImpl</span> <span class="token keyword">implements</span> <span class="token class-name">ExcelRowReader</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> Logger logger <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>ExcelReaderImpl<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">readExcelData</span><span class="token punctuation">(</span><span class="token keyword">int</span> sheetIndex<span class="token punctuation">,</span> <span class="token keyword">int</span> totalRows<span class="token punctuation">,</span> <span class="token keyword">int</span> curRow<span class="token punctuation">,</span>
+                              List<span class="token operator">&lt;</span>String<span class="token operator">></span> rowList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 因为解析的行记录是从索引0开始计数，我们习惯从1开始计数，所以打印的结果进行+1处理</span>
+        logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"解析第"</span> <span class="token operator">+</span> sheetIndex <span class="token operator">+</span> <span class="token string">"个sheet页的第"</span> <span class="token operator">+</span> curRow <span class="token operator">+</span> "行<span class="token punctuation">,</span> 
+                    已解析总行数：<span class="token string">" + totalRows + "</span><span class="token punctuation">,</span> 当前行数据：" <span class="token operator">+</span> rowList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="4-2003版SAX解析"><a href="#4-2003版SAX解析" class="headerlink" title="4. 2003版SAX解析"></a>4. 2003版SAX解析</h2><p><code>com.poi.service.ExcelXlsReaderOfSax</code></p><pre class="language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>hssf<span class="token punctuation">.</span>eventusermodel<span class="token punctuation">.</span>EventWorkbookBuilder<span class="token punctuation">.</span>
+   SheetRecordCollectingListener<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>hssf<span class="token punctuation">.</span>eventusermodel<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>hssf<span class="token punctuation">.</span>eventusermodel<span class="token punctuation">.</span>dummyrecord<span class="token punctuation">.</span>LastCellOfRowDummyRecord<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>hssf<span class="token punctuation">.</span>eventusermodel<span class="token punctuation">.</span>dummyrecord<span class="token punctuation">.</span>MissingCellDummyRecord<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>hssf<span class="token punctuation">.</span>model<span class="token punctuation">.</span>HSSFFormulaParser<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>hssf<span class="token punctuation">.</span>record<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>hssf<span class="token punctuation">.</span>usermodel<span class="token punctuation">.</span>HSSFWorkbook<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>poifs<span class="token punctuation">.</span>filesystem<span class="token punctuation">.</span>POIFSFileSystem<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>FileInputStream<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * sax解析2003版本的excel文件  xls
+ * 空行没用自动过滤掉，以后有时间再研究
+ * @author wang_qz
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExcelXlsReaderOfSax</span> <span class="token keyword">implements</span> <span class="token class-name">HSSFListener</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> Logger logger <span class="token operator">=</span>
+       LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>ExcelXlsReaderOfSax<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> minColumns <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 解析excel的文件系统api
+     */</span>
+    <span class="token keyword">private</span> POIFSFileSystem fs<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 上一行
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> lastRowNumber<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 上一列(单元格)
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> lastColumnNumber<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * should we ouput the formula(公式), or the value it has?
+     * true 输出公式的值
+     * false 输出公式
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> outputFormulaValue <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 监听器
+     */</span>
+    <span class="token keyword">private</span> SheetRecordCollectingListener workbookBuildingListener<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * excel2003工作簿
+     */</span>
+    <span class="token keyword">private</span> HSSFWorkbook stubWorkbook<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> SSTRecord sstRecord<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 监听器
+     */</span>
+    <span class="token keyword">private</span> FormatTrackingHSSFListener formatListener<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 表索引
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> sheetIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 存放sheet页的record容器
+     */</span>
+    <span class="token keyword">private</span> BoundSheetRecord<span class="token punctuation">[</span><span class="token punctuation">]</span> orderedBSRs<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> ArrayList boundSheetRecords <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 下一行
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> nextRow<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 下一列-单元格
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> nextColumn<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     *  输出下一个字符串记录
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> outputNextStringRecord<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 记录解析的当前行
+     */</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> curRow <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">/**
+     * 记录当前解析的总行数
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> totalRows <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 存储当前行记录的容器
+     */</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> rowList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 存储每行记录的数据集合
+     */</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> dataList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> temList <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 是否允许空行记录
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> allowNullRow <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * sheet表名称
+     */</span>
+    <span class="token keyword">private</span> String sheetName<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 委托读取excel数据的接口对象
+     */</span>
+    <span class="token keyword">private</span> ExcelRowReader rowReader<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setRowReader</span><span class="token punctuation">(</span>ExcelRowReader rowReader<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>rowReader <span class="token operator">=</span> rowReader<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> ExcelRowReader <span class="token function">getRowReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>rowReader<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取读取的excel数据
+     *
+     * @return
+     */</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> <span class="token function">getRowsData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>dataList<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 遍历excel下的所有sheet表
+     *
+     * @param filePath 要解析的excel文件路径
+     * @return 返回解析的总记录行数，包含标题行
+     * @throws IOException
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">process</span><span class="token punctuation">(</span>String filePath<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>fs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">POIFSFileSystem</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        MissingRecordAwareHSSFListener listener <span class="token operator">=</span> <span class="token keyword">new</span> 
+           <span class="token class-name">MissingRecordAwareHSSFListener</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        formatListener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormatTrackingHSSFListener</span><span class="token punctuation">(</span>listener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        HSSFEventFactory factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HSSFEventFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        HSSFRequest request <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HSSFRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 添加监听事件</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>outputFormulaValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            request<span class="token punctuation">.</span><span class="token function">addListenerForAllRecords</span><span class="token punctuation">(</span>formatListener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+            workbookBuildingListener <span class="token operator">=</span> <span class="token keyword">new</span> 
+               <span class="token class-name">SheetRecordCollectingListener</span><span class="token punctuation">(</span>formatListener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            request<span class="token punctuation">.</span><span class="token function">addListenerForAllRecords</span><span class="token punctuation">(</span>workbookBuildingListener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        factory<span class="token punctuation">.</span><span class="token function">processWorkbookEvents</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> fs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * {@link ExcelXlsReaderOfSax#processRecord} 解析完成后，返回总行数
+         */</span>
+        <span class="token keyword">return</span> totalRows<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * HSSFListener 监听方法, 处理Record
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processRecord</span><span class="token punctuation">(</span>Record record<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">int</span> thisRow <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 当前行数</span>
+
+        <span class="token keyword">int</span> thisColumn <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 当前列数（单元格）</span>
+
+        String thisStr <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 当前单元格的内容值</span>
+
+        String value <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 根据解析的当前行的记录类型，做不同方式的处理 （sax是一行一行解析）</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>record<span class="token punctuation">.</span><span class="token function">getSid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">case</span> BoundSheetRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 133</span>
+                boundSheetRecords<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> BOFRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 2057</span>
+                BOFRecord br <span class="token operator">=</span> <span class="token punctuation">(</span>BOFRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>br<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> BOFRecord<span class="token punctuation">.</span>TYPE_WORKSHEET<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 如果有需要, 则建立工作簿</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>workbookBuildingListener <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> stubWorkbook <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                        stubWorkbook <span class="token operator">=</span> 
+                           workbookBuildingListener<span class="token punctuation">.</span><span class="token function">getStubHSSFWorkbook</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+
+                    sheetIndex<span class="token operator">++</span><span class="token punctuation">;</span>
+
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>orderedBSRs <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                        orderedBSRs <span class="token operator">=</span> 
+                           BoundSheetRecord<span class="token punctuation">.</span><span class="token function">orderByBofPosition</span><span class="token punctuation">(</span>boundSheetRecords<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+
+                    sheetName <span class="token operator">=</span> orderedBSRs<span class="token punctuation">[</span>sheetIndex<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getSheetname</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> SSTRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 252</span>
+                sstRecord <span class="token operator">=</span> <span class="token punctuation">(</span>SSTRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> BlankRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 513  空行类型</span>
+                BlankRecord brec <span class="token operator">=</span> <span class="token punctuation">(</span>BlankRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                thisRow <span class="token operator">=</span> brec<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取当前行</span>
+                thisColumn <span class="token operator">=</span> brec<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取当前列</span>
+                thisStr <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 填充当前行列(单元格)数据到数据记录容器集合中</span>
+                rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> thisStr<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> BoolErrRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 517  布尔类型</span>
+                BoolErrRecord berec <span class="token operator">=</span> <span class="token punctuation">(</span>BoolErrRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                thisRow <span class="token operator">=</span> berec<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisColumn <span class="token operator">=</span> berec<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisStr <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>berec<span class="token punctuation">.</span><span class="token function">getBooleanValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 布尔值</span>
+                rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> thisStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> FormulaRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 6  公式类型</span>
+                FormulaRecord frec <span class="token operator">=</span> <span class="token punctuation">(</span>FormulaRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                thisRow <span class="token operator">=</span> frec<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisColumn <span class="token operator">=</span> frec<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>outputFormulaValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 输出公式的值</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>Double<span class="token punctuation">.</span><span class="token function">isNaN</span><span class="token punctuation">(</span>frec<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 当前记录值不是数字</span>
+                        outputNextStringRecord <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出下一个字符串记录</span>
+                        nextRow <span class="token operator">=</span> frec<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        nextColumn <span class="token operator">=</span> frec<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        thisStr <span class="token operator">=</span> formatListener<span class="token punctuation">.</span><span class="token function">formatNumberDateCell</span><span class="token punctuation">(</span>frec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 解析输出公式表达式</span>
+                    thisStr <span class="token operator">=</span> <span class="token string">'"'</span> <span class="token operator">+</span> HSSFFormulaParser<span class="token punctuation">.</span><span class="token function">toFormulaString</span><span class="token punctuation">(</span>stubWorkbook<span class="token punctuation">,</span>                                                 frec<span class="token punctuation">.</span><span class="token function">getParsedExpression</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> thisStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> StringRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 519 字符串类型</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>outputNextStringRecord<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    StringRecord srec <span class="token operator">=</span> <span class="token punctuation">(</span>StringRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                    thisStr <span class="token operator">=</span> srec<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    thisRow <span class="token operator">=</span> nextRow<span class="token punctuation">;</span>
+                    thisColumn <span class="token operator">=</span> nextColumn<span class="token punctuation">;</span>
+                    outputNextStringRecord <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> LabelRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 516 标签类型</span>
+                LabelRecord lrec <span class="token operator">=</span> <span class="token punctuation">(</span>LabelRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                curRow <span class="token operator">=</span> thisRow <span class="token operator">=</span> lrec<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisColumn <span class="token operator">=</span> lrec<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                value <span class="token operator">=</span> lrec<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">""</span> <span class="token operator">:</span> value<span class="token punctuation">;</span>
+                rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> LabelSSTRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 253</span>
+                LabelSSTRecord lsrec <span class="token operator">=</span> <span class="token punctuation">(</span>LabelSSTRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                curRow <span class="token operator">=</span> thisRow <span class="token operator">=</span> lsrec<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisColumn <span class="token operator">=</span> lsrec<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>sstRecord <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                    rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+                    value <span class="token operator">=</span> 
+                       sstRecord<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>lsrec<span class="token punctuation">.</span><span class="token function">getSSTIndex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">""</span> <span class="token operator">:</span> value<span class="token punctuation">;</span>
+                    rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> NumberRecord<span class="token punctuation">.</span>sid<span class="token operator">:</span> <span class="token comment" spellcheck="true">// short 515 数字类型</span>
+                NumberRecord numrec <span class="token operator">=</span> <span class="token punctuation">(</span>NumberRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+                curRow <span class="token operator">=</span> thisRow <span class="token operator">=</span> numrec<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisColumn <span class="token operator">=</span> numrec<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                value <span class="token operator">=</span> formatListener<span class="token punctuation">.</span><span class="token function">formatNumberDateCell</span><span class="token punctuation">(</span>numrec<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">""</span> <span class="token operator">:</span> value<span class="token punctuation">;</span>
+                rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 遇到新行的操作</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>thisRow <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> thisRow <span class="token operator">!=</span> lastRowNumber<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            lastColumnNumber <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 如果遇到空值的操作</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>record <span class="token keyword">instanceof</span> <span class="token class-name">MissingCellDummyRecord</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            MissingCellDummyRecord mc <span class="token operator">=</span> <span class="token punctuation">(</span>MissingCellDummyRecord<span class="token punctuation">)</span> record<span class="token punctuation">;</span>
+            curRow <span class="token operator">=</span> thisRow <span class="token operator">=</span> mc<span class="token punctuation">.</span><span class="token function">getRow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            thisColumn <span class="token operator">=</span> mc<span class="token punctuation">.</span><span class="token function">getColumn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>thisColumn<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 更新行和列的值</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>thisRow <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            lastRowNumber <span class="token operator">=</span> thisRow<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>thisColumn <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            lastColumnNumber <span class="token operator">=</span> thisColumn<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 行结束时的操作</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>record <span class="token keyword">instanceof</span> <span class="token class-name">LastCellOfRowDummyRecord</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>minColumns <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//列值重新置空</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>lastColumnNumber <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    lastColumnNumber <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 每行结束时调用readExcelData()方法, 可以在该方法中对每行记录的数据进行操作</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>rowReader <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                rowReader<span class="token punctuation">.</span><span class="token function">readExcelData</span><span class="token punctuation">(</span>sheetIndex<span class="token punctuation">,</span> totalRows<span class="token punctuation">,</span> curRow<span class="token punctuation">,</span> rowList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 将每一行记录的数据存入大集合中  因为解析完一行记录后会将rowList清空,</span>
+            <span class="token comment" spellcheck="true">// 需要用中间集合变量存已经解析的数据, 再添加到大集合</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>curRow <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 0-第一行是标题行，不添加到集合中</span>
+
+                temList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                temList<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>rowList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                dataList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>temList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 清空容器</span>
+            lastColumnNumber <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+            rowList<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 清空容器会将已经存入的数据也清空掉</span>
+            totalRows<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 当前行解析完毕，监听解析下一行，row++</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">isWriteRow</span><span class="token punctuation">(</span>List list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 记录为空的标志 false 空  ; true 不为空</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>allowNullRow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>flag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 允许为空</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> flag<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="5-2007版SAX解析"><a href="#5-2007版SAX解析" class="headerlink" title="5. 2007版SAX解析"></a>5. 2007版SAX解析</h2><p><code>com.poi.service.ExcelXlsxReaderOfSax</code></p><pre class="language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>lang3<span class="token punctuation">.</span>StringUtils<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>openxml4j<span class="token punctuation">.</span>exceptions<span class="token punctuation">.</span>OpenXML4JException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>openxml4j<span class="token punctuation">.</span>opc<span class="token punctuation">.</span>OPCPackage<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>ss<span class="token punctuation">.</span>usermodel<span class="token punctuation">.</span>BuiltinFormats<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>ss<span class="token punctuation">.</span>usermodel<span class="token punctuation">.</span>DataFormatter<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>xssf<span class="token punctuation">.</span>eventusermodel<span class="token punctuation">.</span>XSSFReader<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>xssf<span class="token punctuation">.</span>model<span class="token punctuation">.</span>SharedStringsTable<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>xssf<span class="token punctuation">.</span>model<span class="token punctuation">.</span>StylesTable<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>xssf<span class="token punctuation">.</span>usermodel<span class="token punctuation">.</span>XSSFCellStyle<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>poi<span class="token punctuation">.</span>xssf<span class="token punctuation">.</span>usermodel<span class="token punctuation">.</span>XSSFRichTextString<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>xml<span class="token punctuation">.</span>sax<span class="token punctuation">.</span>Attributes<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>xml<span class="token punctuation">.</span>sax<span class="token punctuation">.</span>InputSource<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>xml<span class="token punctuation">.</span>sax<span class="token punctuation">.</span>SAXException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>xml<span class="token punctuation">.</span>sax<span class="token punctuation">.</span>XMLReader<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>xml<span class="token punctuation">.</span>sax<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>DefaultHandler<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>xml<span class="token punctuation">.</span>sax<span class="token punctuation">.</span>helpers<span class="token punctuation">.</span>XMLReaderFactory<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>InputStream<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">/**
+ * sax事件驱动解析2007版本的excel文件  xlsx
+ * 继承{@link DefaultHandler}，重写里面的三个方法 {@link DefaultHandler#startElement}、
+ * {@link DefaultHandler#characters}、 {@link DefaultHandler#endElement}
+ * sax解析执行顺序{@link ExcelXlsxReaderOfSax#startElement}、
+ * {@link ExcelXlsxReaderOfSax#characters}、 {@link ExcelXlsxReaderOfSax#endElement}
+ *
+ * SAX全称Simple API for XML，它是一种XML解析的替代方法，不同于DOM解析XML文档时把所有内容一次性
+ * 加载到内存中的方式，它逐行扫描文档，一边扫描，一边解析。
+ * 所以那些只需要单遍读取内容的应用程序就可以从SAX解析中受益，这对大型文档的解析是个巨大优势。
+ *
+ * 空行和空单元格的问题都已经解决
+ * @author wang_qz
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExcelXlsxReaderOfSax</span> <span class="token keyword">extends</span> <span class="token class-name">DefaultHandler</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 共享字符串表
+     */</span>
+    <span class="token keyword">private</span> SharedStringsTable sst<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 上一次的内容或上一次的索引值
+     */</span>
+    <span class="token keyword">private</span> String lastContents<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * excel文件的绝对路径
+     */</span>
+    <span class="token keyword">private</span> String filePath<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 字符串标识
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> nextIsString<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * sheet工作表索引
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> sheetIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * sheet表名
+     */</span>
+    <span class="token keyword">private</span> String sheetName <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 总行数
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> totalRows <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 行集合
+     */</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> rowList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token comment" spellcheck="true">/**
+     * 判断整行是否为空行的标记 flase 空行 ; true: 不是空行
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 当前行
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> curRow <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 当前列
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> curCol <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * T元素标识
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> isTElement<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 异常信息, 如果为空则表示没有异常
+     */</span>
+    <span class="token keyword">private</span> String exceptionMessage<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 单元格的数据可能出现的数据类型
+     */</span>
+    <span class="token keyword">enum</span> CellDataType <span class="token punctuation">{</span>
+
+        BOOL<span class="token punctuation">,</span> ERROR<span class="token punctuation">,</span> INLINESTR<span class="token punctuation">,</span> SSTINDEX<span class="token punctuation">,</span> FORMULA<span class="token punctuation">,</span> NUMBER<span class="token punctuation">,</span> DATE<span class="token punctuation">,</span> NULL
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 单元格数据类型, 默认为字符串类型
+     */</span>
+    <span class="token keyword">private</span> CellDataType nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>SSTINDEX<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 数据格式
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> DataFormatter formatter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataFormatter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 单元格日期格式的索引
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">short</span> formatIndex<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 日期格式字符串
+     */</span>
+    <span class="token keyword">private</span> String formatString<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 定义前一个元素和当前元素的位置, 用来计算其中空的单元格数量, 如A6和A8等
+     */</span>
+    <span class="token keyword">private</span> String preRef <span class="token operator">=</span> null<span class="token punctuation">,</span> ref <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 定义该文档一行最大的单元格数, 用来补全一行最后可能缺失的单元格
+     */</span>
+    <span class="token keyword">private</span> String maxRef <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 单元格
+     */</span>
+    <span class="token keyword">private</span> StylesTable stylesTable<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 存储每行记录的数据集合
+     */</span>
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> dataList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>String<span class="token operator">></span> temList <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 委托读取excel数据的接口对象
+     */</span>
+    <span class="token keyword">private</span> ExcelRowReader rowReader<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setRowReader</span><span class="token punctuation">(</span>ExcelRowReader rowReader<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>rowReader <span class="token operator">=</span> rowReader<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> ExcelRowReader <span class="token function">getRowReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>rowReader<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取读取的excel数据
+     *
+     * @return
+     */</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> <span class="token function">getRowsData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>dataList<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 解析2007版本Excel的方法入口
+     * @param fileName 要解析的excel文件路径
+     * @return
+     * @throws IOException
+     * @throws OpenXML4JException
+     * @throws SAXException
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">process</span><span class="token punctuation">(</span>String fileName<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> OpenXML4JException<span class="token punctuation">,</span>
+       SAXException <span class="token punctuation">{</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>filePath <span class="token operator">=</span> fileName<span class="token punctuation">;</span>
+
+        OPCPackage pkg <span class="token operator">=</span> OPCPackage<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        XSSFReader xssfReader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XSSFReader</span><span class="token punctuation">(</span>pkg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        stylesTable <span class="token operator">=</span> xssfReader<span class="token punctuation">.</span><span class="token function">getStylesTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取单元格</span>
+            <span class="token comment" spellcheck="true">// 获取共享字符串表</span>
+        SharedStringsTable sst <span class="token operator">=</span> xssfReader<span class="token punctuation">.</span><span class="token function">getSharedStringsTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+        XMLReader parser <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fetchSheetParser</span><span class="token punctuation">(</span>sst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 两种方式都可以</span>
+         <span class="token comment" spellcheck="true">// 得到所有的sheet表格</span>
+        <span class="token comment" spellcheck="true">//  Iterator&lt;InputStream> sheets = xssfReader.getSheetsData(); </span>
+         <span class="token comment" spellcheck="true">// 得到所有的sheet表格</span>
+        XSSFReader<span class="token punctuation">.</span>SheetIterator sheets <span class="token operator">=</span> <span class="token punctuation">(</span>XSSFReader<span class="token punctuation">.</span>SheetIterator<span class="token punctuation">)</span> 
+           xssfReader<span class="token punctuation">.</span><span class="token function">getSheetsData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>sheets<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            curRow <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 当前行索引从0开始, 标记初始为第一行</span>
+
+            sheetIndex<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//　sheet工作表索引 ++</span>
+
+            InputStream sheetInputStream <span class="token operator">=</span> sheets<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 得到每一个sheet表的输入流对象</span>
+
+            sheetName <span class="token operator">=</span> sheets<span class="token punctuation">.</span><span class="token function">getSheetName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            InputSource sheetSource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">InputSource</span><span class="token punctuation">(</span>sheetInputStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">//解析excel的每条记录，在这个过程中startElement()、characters()、endElement()</span>
+           <span class="token comment" spellcheck="true">// 这三个函数会依次执行</span>
+            parser<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>sheetSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            sheetInputStream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> totalRows<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 返回excel文档的总行数</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取XMLReader解析流对象
+     *
+     * @param sst
+     * @return
+     * @throws SAXException
+     */</span>
+    <span class="token keyword">public</span> XMLReader <span class="token function">fetchSheetParser</span><span class="token punctuation">(</span>SharedStringsTable sst<span class="token punctuation">)</span> <span class="token keyword">throws</span> SAXException <span class="token punctuation">{</span>
+
+        String arg0 <span class="token operator">=</span> <span class="token string">"org.apache.xerces.parsers.SAXParser"</span><span class="token punctuation">;</span>
+
+        XMLReader parser <span class="token operator">=</span> XMLReaderFactory<span class="token punctuation">.</span><span class="token function">createXMLReader</span><span class="token punctuation">(</span>arg0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>sst <span class="token operator">=</span> sst<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 共享字符串表</span>
+
+        parser<span class="token punctuation">.</span><span class="token function">setContentHandler</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> parser<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * sax解析重写,第一个执行 , 解析一行的开始处理
+     * 因为底层不会解析空行和空单元格，会自动过滤掉；方法中的空单元格的问题被我解决了，心情爽啊； 
+     // 空行的问题不用考虑
+     * @param uri
+     * @param localName
+     * @param qName 解析的标签
+     * @param attributes 解析的标签属性
+     * @throws SAXException
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">startElement</span><span class="token punctuation">(</span>String uri<span class="token punctuation">,</span> String localName<span class="token punctuation">,</span> String qName<span class="token punctuation">,</span> Attributes attributes<span class="token punctuation">)</span> <span class="token keyword">throws</span> SAXException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 获取总行号 格式A1:B5 取最后一个值即可</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"dimension"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>qName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            String demensionStr <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"ref"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 这里放开会导致每次解析完的行数totalRows多加1</span>
+         <span class="token comment" spellcheck="true">//   totalRows = Integer.parseInt(demensionStr.substring(</span>
+         <span class="token comment" spellcheck="true">//    demensionStr.indexOf(":") + 2)) - 1;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 行开始</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"row"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>qName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 列-单元格-c</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"c"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>qName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// cell</span>
+
+            <span class="token comment" spellcheck="true">// 前一个单元格的位置  null表示是新的一行</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>preRef <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                preRef <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 因为 attributes.getValue("r") 会自动过滤掉空单元格，所以如果第一列</span>
+               <span class="token comment" spellcheck="true">// 是空单元格，那么取不到 A1/A2/A3..每行的第一列</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token string">"A"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>preRef<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token comment" spellcheck="true">// 第一列是空单元格，添加空字符串占位</span>
+                    rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>curCol<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    curCol<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// preRef不为null, 表示当前行解析到第1+N列(不是第一列)</span>
+                <span class="token comment" spellcheck="true">// 解析当前行的下一个单元格, 将刚刚在endElement解析完的单元格ref赋值给preRef,</span>
+               <span class="token comment" spellcheck="true">// 变为上一个单元格</span>
+                preRef <span class="token operator">=</span> ref<span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 当前单元格的位置</span>
+               <span class="token comment" spellcheck="true">// 如果中间没用空单元格 ref应该是preRef+1的位置</span>
+                ref <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+                <span class="token comment" spellcheck="true">//与上一单元格相差2, 说明中间有空单元格  A2 B2 C2  如果B2为空单元格, </span>
+               <span class="token comment" spellcheck="true">// 那么将A和C转换成char进行计算</span>
+                <span class="token keyword">int</span> gap <span class="token operator">=</span> ref<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">-</span> 
+                   preRef<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>gap <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    gap <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 中间的空单元格数量</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>gap <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment" spellcheck="true">// 空单元格，添加空字符串占位</span>
+                        rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>curCol<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        curCol<span class="token operator">++</span><span class="token punctuation">;</span>
+                        gap<span class="token operator">--</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment" spellcheck="true">// 当前单元格的位置</span>
+            ref <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 设定单元格类型</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setNextDataType</span><span class="token punctuation">(</span>attributes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// Figure out if the value is an index in the SST</span>
+            String cellType <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cellType <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> cellType<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"s"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                nextIsString <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 字符串标识</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                nextIsString <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"t"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>qName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            isTElement <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// T元素标识</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            isTElement <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// 上一次的内容置空 clear contents cache</span>
+        lastContents <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * sax解析重写,第二个执行
+     * 得到单元格对应的索引值或内容值（解析的标签体内容）
+     * 如果单元格类型是字符串/INLINESTR/数字/日期, 则lastIndex是索引值
+     * 如果单元格类型是布尔值/错误/公式类型, 则lastIndex是内容值
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">characters</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> ch<span class="token punctuation">,</span> <span class="token keyword">int</span> start<span class="token punctuation">,</span> <span class="token keyword">int</span> length<span class="token punctuation">)</span> <span class="token keyword">throws</span> SAXException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 得到单元格内容的值</span>
+        lastContents <span class="token operator">+=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>ch<span class="token punctuation">,</span> start<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">startPrefixMapping</span><span class="token punctuation">(</span>String prefix<span class="token punctuation">,</span> String uri<span class="token punctuation">)</span> <span class="token keyword">throws</span> SAXException <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">startPrefixMapping</span><span class="token punctuation">(</span>prefix<span class="token punctuation">,</span> uri<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * sax解析重写,最后执行, 解析一行的结束处理
+     *
+     * @param uri
+     * @param localName
+     * @param qName 解析的标签
+     * @throws SAXException
+     * @see ExcelXlsxReaderOfSax#characters(char[], int, int)
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">endElement</span><span class="token punctuation">(</span>String uri<span class="token punctuation">,</span> String localName<span class="token punctuation">,</span> String qName<span class="token punctuation">)</span> 
+       <span class="token keyword">throws</span> SAXException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 根据SST的索引值获取单元格真正想要存储的字符串</span>
+        <span class="token comment" spellcheck="true">// 这时characters()方法可能会被调用多次</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nextIsString <span class="token operator">&amp;&amp;</span> StringUtils<span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span>lastContents<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> 
+            StringUtils<span class="token punctuation">.</span><span class="token function">isNumeric</span><span class="token punctuation">(</span>lastContents<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">int</span> idx <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>lastContents<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 单元格内容转换</span>
+            lastContents <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XSSFRichTextString</span><span class="token punctuation">(</span>sst<span class="token punctuation">.</span><span class="token function">getEntryAt</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            nextIsString <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">/*if (!nextIsString &amp;&amp; StringUtils.isEmpty(lastContents)) {
+            // 如果当前单元格为空，用空字符串占位
+            rowList.add(curCol, "");
+            curCol++;
+            nextIsString = false;
+        }*/</span>
+
+        <span class="token comment" spellcheck="true">// t 元素也包含字符串</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>isTElement<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//将单元格内容加入行集合 rowList中,在这之前先去掉字符串前后的空白字符</span>
+            String value <span class="token operator">=</span> lastContents<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>curCol<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将当前列的值添加到当前单元格的位置</span>
+            curCol<span class="token operator">++</span><span class="token punctuation">;</span>
+            isTElement <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 如果里面某个单元格含有值, 则标识该行不为空</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 该行不为空</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"v"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>qName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// v-单元格的值, 如果单元格是字符串, 则v标签的值为该字符串在SST中的索引</span>
+            String value <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getDataValue</span><span class="token punctuation">(</span>lastContents<span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 补齐单元格之间的空单元格  要注释掉，否则正常含内容的单元格之间也会添加很多空单元格</span>
+            <span class="token comment" spellcheck="true">/*if (!ref.equals(preRef)) {
+
+                int len = countNullCell(ref, preRef);
+
+                for (int i = 0; i &lt; len; i++) {
+                    rowList.add(curCol, "");
+                    curCol++;
+                }
+            }*/</span>
+            rowList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>curCol<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            curCol<span class="token operator">++</span><span class="token punctuation">;</span>
+
+            <span class="token comment" spellcheck="true">// 如果里面某个单元格含有值, 则标识该行不为空</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token string">""</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 该行不为空</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 行结束  如果标签名称为row, 这说明已经到达行尾,调用optRows()方法</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"row"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>qName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">// 默认第一行为表头, 以该行单元格数目为最大数目</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>curRow <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    maxRef <span class="token operator">=</span> ref<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 最大单元格数等于当前单元格数</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token comment" spellcheck="true">// 补全一行尾部可能缺失的单元格  要注释掉，</span>
+               <span class="token comment" spellcheck="true">// 否则正常含内容的单元格之间也会添加很多空单元格</span>
+                <span class="token comment" spellcheck="true">/*if (maxRef != null) {
+
+                    int len = countNullCell(maxRef, ref);
+
+                    for (int i = 0; i &lt;= len; i++) {
+                        rowList.add(curCol, "");
+                        curCol++;
+                    }
+                }*/</span>
+
+                <span class="token comment" spellcheck="true">// 每行记录解析完后可以调用readExcelData()方法对每行数据进行操作</span>
+                rowReader<span class="token punctuation">.</span><span class="token function">readExcelData</span><span class="token punctuation">(</span>sheetIndex<span class="token punctuation">,</span> totalRows<span class="token punctuation">,</span> curRow<span class="token punctuation">,</span> rowList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token comment" spellcheck="true">// 将每一行记录的数据存入大集合中  因为解析完一行记录后会将rowList清空,</span>
+               <span class="token comment" spellcheck="true">// 需要用中间集合变量存已经解析的数据, 再添加到大集合</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>flag <span class="token operator">&amp;&amp;</span> curRow <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 0-第一行是标题行</span>
+
+                    temList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    temList<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span>rowList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    dataList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>temList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token comment" spellcheck="true">// 解析完每行记录后清空</span>
+                rowList<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                curRow<span class="token operator">++</span><span class="token punctuation">;</span>
+                curCol <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                preRef <span class="token operator">=</span> null<span class="token punctuation">;</span>
+                ref <span class="token operator">=</span> null<span class="token punctuation">;</span>
+                flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">// 下一行</span>
+                totalRows<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 对解析出来的数据进行类型处理
+     *
+     * @param value   单元格的值(这时候是一串数字)
+     *                value解析：   BOOL的为0或1
+     *                ERROR/FORMULA/NUMBER/DATE为内容值
+     *                INLINESTR/SSTINDEX的为索引值需要转换为内容值
+     * @param thisStr 一个空字符串
+     * @return
+     */</span>
+    <span class="token keyword">public</span> String <span class="token function">getDataValue</span><span class="token punctuation">(</span>String value<span class="token punctuation">,</span> String thisStr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>nextDataType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// 这几个顺序不能随便交换,交换了可能会导致数据错误</span>
+            <span class="token keyword">case</span> BOOL<span class="token operator">:</span> <span class="token comment" spellcheck="true">// 布尔值</span>
+                <span class="token keyword">char</span> first <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisStr <span class="token operator">=</span> <span class="token punctuation">(</span>first <span class="token operator">==</span> <span class="token string">'0'</span> <span class="token operator">?</span> <span class="token string">"FALSE"</span> <span class="token operator">:</span> <span class="token string">"TRUE"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> ERROR<span class="token operator">:</span> <span class="token comment" spellcheck="true">// 错误</span>
+                thisStr <span class="token operator">=</span> <span class="token string">"\"ERROR:"</span> <span class="token operator">+</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'"'</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> FORMULA<span class="token operator">:</span> <span class="token comment" spellcheck="true">// 公式</span>
+                thisStr <span class="token operator">=</span> <span class="token string">'"'</span> <span class="token operator">+</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'"'</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> INLINESTR<span class="token operator">:</span>
+                XSSFRichTextString rtsi <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XSSFRichTextString</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                thisStr <span class="token operator">=</span> rtsi<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                rtsi <span class="token operator">=</span> null<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> SSTINDEX<span class="token operator">:</span> <span class="token comment" spellcheck="true">// 字符串</span>
+                String sstIndex <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">int</span> idx <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>sstIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                   <span class="token comment" spellcheck="true">//根据idx索引值获取内容值</span>
+                    XSSFRichTextString rtss <span class="token operator">=</span> <span class="token keyword">new</span> 
+                       <span class="token class-name">XSSFRichTextString</span><span class="token punctuation">(</span>sst<span class="token punctuation">.</span><span class="token function">getEntryAt</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+                    thisStr <span class="token operator">=</span> rtss<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    rtss <span class="token operator">=</span> null<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NumberFormatException</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    thisStr <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> NUMBER<span class="token operator">:</span> <span class="token comment" spellcheck="true">// 数字</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>formatString <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    thisStr <span class="token operator">=</span> formatter<span class="token punctuation">.</span><span class="token function">formatRawCellContents</span><span class="token punctuation">(</span>
+                       Double<span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span> formatIndex<span class="token punctuation">,</span> formatString<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    thisStr <span class="token operator">=</span> value<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                thisStr <span class="token operator">=</span> thisStr<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"_"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">case</span> DATE<span class="token operator">:</span> <span class="token comment" spellcheck="true">// 日期</span>
+                thisStr <span class="token operator">=</span> formatter<span class="token punctuation">.</span><span class="token function">formatRawCellContents</span><span class="token punctuation">(</span>
+                   Double<span class="token punctuation">.</span><span class="token function">parseDouble</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span> formatIndex<span class="token punctuation">,</span> formatString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//对日期字符串做特殊处理 , 去掉T</span>
+                thisStr <span class="token operator">=</span> thisStr<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"T"</span><span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">default</span><span class="token operator">:</span>
+                thisStr <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> thisStr<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 计算两个单元格之间的单元格数目(同一行)
+     *
+     * @param ref
+     * @param preRef
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">countNullCell</span><span class="token punctuation">(</span>String ref<span class="token punctuation">,</span> String preRef<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// excel2007最大行数1048576 , 最大列数 16384 , 最后一列列名是 XFD</span>
+        String xfd <span class="token operator">=</span> ref<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"\\+d"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// \\+d 表示数字[0-9]出现1次或多次</span>
+
+        String xfd_1 <span class="token operator">=</span> preRef<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"\\+d"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        xfd <span class="token operator">=</span> <span class="token function">fillChar</span><span class="token punctuation">(</span>xfd<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'@'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        xfd_1 <span class="token operator">=</span> <span class="token function">fillChar</span><span class="token punctuation">(</span>xfd_1<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'@'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> letter <span class="token operator">=</span> xfd<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> letter_1 <span class="token operator">=</span> xfd_1<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token punctuation">(</span>letter<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> letter_1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">26</span> <span class="token operator">*</span> <span class="token number">26</span> <span class="token operator">+</span> <span class="token punctuation">(</span>
+           letter<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> letter_1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">26</span> <span class="token operator">+</span> <span class="token punctuation">(</span>letter<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">-</span> letter_1<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> res <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment" spellcheck="true">/**
+     * 字符串的填充
+     *
+     * @param str      str 要填充的原字符串
+     * @param len      要填充的字符串长度
+     * @param fillChar 要填充到原字符串的字符
+     * @param isPre
+     * @return
+     */</span>
+    <span class="token keyword">public</span> String <span class="token function">fillChar</span><span class="token punctuation">(</span>String str<span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">,</span> <span class="token keyword">char</span> fillChar<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isPre<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">int</span> len_1 <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>len_1 <span class="token operator">&lt;</span> len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>isPre<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> len_1<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                    str <span class="token operator">=</span> str <span class="token operator">+</span> fillChar<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> len_1<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                    str <span class="token operator">=</span> str <span class="token operator">+</span> fillChar<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> str<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 处理数据类型
+     *
+     * @param attributes
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNextDataType</span><span class="token punctuation">(</span>Attributes attributes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 单元格数据类型</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>NUMBER<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// cellType为空, 则表示该单元格数字</span>
+
+        formatIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+        formatString <span class="token operator">=</span> null<span class="token punctuation">;</span>
+
+        String cellType <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 单元格类型</span>
+
+        String cellStyleStr <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"s"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//</span>
+
+        String columData <span class="token operator">=</span> attributes<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取单元格的位置, 如A1, B1</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"b"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>cellType<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 布尔值</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>BOOL<span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>cellType<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 错误</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>ERROR<span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"inlineStr"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>cellType<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 字符串</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>INLINESTR<span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"s"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>cellType<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 字符串</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>SSTINDEX<span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"str"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>cellType<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//</span>
+
+            <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>FORMULA<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cellStyleStr <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 处理日期</span>
+
+            <span class="token keyword">int</span> styleIndex <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>cellStyleStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            XSSFCellStyle style <span class="token operator">=</span> stylesTable<span class="token punctuation">.</span><span class="token function">getStyleAt</span><span class="token punctuation">(</span>styleIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            formatIndex <span class="token operator">=</span> style<span class="token punctuation">.</span><span class="token function">getDataFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            formatString <span class="token operator">=</span> style<span class="token punctuation">.</span><span class="token function">getDataFormatString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>formatString<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token string">"m/d/yy"</span><span class="token punctuation">)</span> <span class="token operator">||</span> 
+                formatString<span class="token punctuation">.</span><span class="token function">contentEquals</span><span class="token punctuation">(</span><span class="token string">"yyyy/mm/dd"</span><span class="token punctuation">)</span> <span class="token operator">||</span> 
+                formatString<span class="token punctuation">.</span><span class="token function">contentEquals</span><span class="token punctuation">(</span><span class="token string">"yyyy/m/d"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>DATE<span class="token punctuation">;</span>
+
+                formatString <span class="token operator">=</span> <span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>formatString <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+                <span class="token keyword">this</span><span class="token punctuation">.</span>nextDataType <span class="token operator">=</span> CellDataType<span class="token punctuation">.</span>NULL<span class="token punctuation">;</span>
+
+                formatString <span class="token operator">=</span> BuiltinFormats<span class="token punctuation">.</span><span class="token function">getBuiltinFormat</span><span class="token punctuation">(</span>formatIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="6-测试SAX解析Excel"><a href="#6-测试SAX解析Excel" class="headerlink" title="6. 测试SAX解析Excel"></a>6. 测试SAX解析Excel</h2><p><code>com.poi.service.ExcelReaderImpl#readExcelData</code></p><pre class="language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 测试上传excel
+ * 一般场景是读取用户上传的excel文件，解析里面的数据，存入db
+ *
+ * @throws Exception
+ */</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testReadExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+
+    String filePath <span class="token operator">=</span> <span class="token string">"D:\\study\\excel/poi_my.xls"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2003版</span>
+<span class="token comment" spellcheck="true">// String filePath = "D:\\study\\excel/poi_my.xlsx"; // 2007版</span>
+
+<span class="token comment" spellcheck="true">//  String parseType = "DOM";</span>
+    String parseType <span class="token operator">=</span> <span class="token string">"SAX"</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">long</span> start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>List<span class="token operator">&lt;</span>String<span class="token operator">>></span> dataList <span class="token operator">=</span> PoiUtil<span class="token punctuation">.</span><span class="token function">readExcel</span><span class="token punctuation">(</span>parseType<span class="token punctuation">,</span> filePath<span class="token punctuation">,</span>
+                                                   <span class="token keyword">new</span> <span class="token class-name">ExcelReaderImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 65536行记录耗时、cpu利用率比较
+     * DOM 2003版 986ms  77%
+     * DOM 2007版 4429ms 80%
+     * SAX 2003版 417ms  63%
+     * SAX 2007版 5978ms 80%
+     */</span>
+    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"解析excel耗时："</span> <span class="token operator">+</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"ms！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"dataList size is:"</span> <span class="token operator">+</span> dataList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dataList<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script></div><hr><div class="reprint" id="reprint-statement"><div class="reprint__author"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-user">文章作者: </i></span><span class="reprint-info"><a href="/crystal-blog/about" rel="external nofollow noreferrer">王子</a></span></div><div class="reprint__type"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-link">文章链接: </i></span><span class="reprint-info"><a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/2021091645685.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/2021091645685.html</a></span></div><div class="reprint__notice"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-copyright">版权声明: </i></span><span class="reprint-info">本博客所有文章除特別声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a> 许可协议。转载请注明来源 <a href="/crystal-blog/about" target="_blank">王子</a> !</span></div></div><script async defer>function navToReprintStatement(){$("html, body").animate({scrollTop:$("#reprint-statement").offset().top-80},800)}document.addEventListener("copy",function(t){M.toast({html:'<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>'})})</script><div class="tag_share" style="display:block"><div class="post-meta__tag-list" style="display:inline-block"><div class="article-tag"><a href="/crystal-blog/tags/Poi/"><span class="chip bg-color">Poi</span> </a><a href="/crystal-blog/tags/SAX%E8%A7%A3%E6%9E%90/"><span class="chip bg-color">SAX解析</span></a></div></div><div class="post_share" style="zoom:80%;width:fit-content;display:inline-block;float:right;margin:-.15rem 0"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/share/css/share.min.css"><div id="article-share"><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/crystal-blog/libs/share/js/social-share.min.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script><div class="addthis_inline_share_toolbox"></div></div></div></div><style>#reward{margin:40px 0;text-align:center}#reward .reward-link{font-size:1.4rem;line-height:38px}#reward .btn-floating:hover{box-shadow:0 6px 12px rgba(0,0,0,.2),0 5px 15px rgba(0,0,0,.2)}#rewardModal{width:320px;height:350px}#rewardModal .reward-title{margin:15px auto;padding-bottom:5px}#rewardModal .modal-content{padding:10px}#rewardModal .close{position:absolute;right:15px;top:15px;color:rgba(0,0,0,.5);font-size:1.3rem;line-height:20px;cursor:pointer}#rewardModal .close:hover{color:#ef5350;transform:scale(1.3);-moz-transform:scale(1.3);-webkit-transform:scale(1.3);-o-transform:scale(1.3)}#rewardModal .reward-tabs{margin:0 auto;width:210px}.reward-tabs .tabs{height:38px;margin:10px auto;padding-left:0}.reward-content ul{padding-left:0!important}.reward-tabs .tabs .tab{height:38px;line-height:38px}.reward-tabs .tab a{color:#fff;background-color:#ccc}.reward-tabs .tab a:hover{background-color:#ccc;color:#fff}.reward-tabs .wechat-tab .active{color:#fff!important;background-color:#22ab38!important}.reward-tabs .alipay-tab .active{color:#fff!important;background-color:#019fe8!important}.reward-tabs .reward-img{width:210px;height:210px}</style><div id="reward"><a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a><div id="rewardModal" class="modal"><div class="modal-content"><a class="close modal-close"><i class="fas fa-times"></i></a><h4 class="reward-title">你的赏识是我前进的动力</h4><div class="reward-content"><div class="reward-tabs"><ul class="tabs row"><li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li><li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li></ul><div id="alipay"><img src="/crystal-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码"></div><div id="wechat"><img src="/crystal-blog/medias/reward/wechatPay.jpg" class="reward-img" alt="微信打赏二维码"></div></div></div></div></div></div><script>$(function(){$(".tabs").tabs()})</script></div></div><style>.valine-card{margin:1.5rem auto}.valine-card .card-content{padding:20px 20px 5px 20px}#vcomments textarea{box-sizing:border-box;background:url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp) 100% 100% no-repeat}#vcomments p{margin:2px 2px 10px;font-size:1.05rem;line-height:1.78rem}#vcomments blockquote p{text-indent:.2rem}#vcomments a{padding:0 2px;color:#4cbf30;font-weight:500;text-decoration:none}#vcomments img{max-width:100%;height:auto;cursor:pointer}#vcomments ol li{list-style-type:decimal}#vcomments ol,ul{display:block;padding-left:2em;word-spacing:.05rem}#vcomments ul li,ol li{display:list-item;line-height:1.8rem;font-size:1rem}#vcomments ul li{list-style-type:disc}#vcomments ul ul li{list-style-type:circle}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}#vcomments table,td,th{border:0}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments h1{font-size:1.85rem;font-weight:700;line-height:2.2rem}#vcomments h2{font-size:1.65rem;font-weight:700;line-height:1.9rem}#vcomments h3{font-size:1.45rem;font-weight:700;line-height:1.7rem}#vcomments h4{font-size:1.25rem;font-weight:700;line-height:1.5rem}#vcomments h5{font-size:1.1rem;font-weight:700;line-height:1.4rem}#vcomments h6{font-size:1rem;line-height:1.3rem}#vcomments p{font-size:1rem;line-height:1.5rem}#vcomments hr{margin:12px 0;border:0;border-top:1px solid #ccc}#vcomments blockquote{margin:15px 0;border-left:5px solid #42b983;padding:1rem .8rem .3rem .8rem;color:#666;background-color:rgba(66,185,131,.1)}#vcomments pre{font-family:monospace,monospace;padding:1.2em;margin:.5em 0;background:#272822;overflow:auto;border-radius:.3em;tab-size:4}#vcomments code{font-family:monospace,monospace;padding:1px 3px;font-size:.92rem;color:#e96900;background-color:#f8f8f8;border-radius:2px}#vcomments pre code{font-family:monospace,monospace;padding:0;color:#e8eaf6;background-color:#272822}#vcomments pre[class*=language-]{padding:1.2em;margin:.5em 0}#vcomments code[class*=language-],pre[class*=language-]{color:#e8eaf6}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}#vcomments b,strong{font-weight:700}#vcomments dfn{font-style:italic}#vcomments small{font-size:85%}#vcomments cite{font-style:normal}#vcomments mark{background-color:#fcf8e3;padding:.2em}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}.v[data-class="v"] .vwrap .vheader .vinput{width:32%;border-bottom:1px dashed #dedede}</style><div class="card valine-card" data-aos="fade-up"><div class="comment_headling" style="font-size:20px;font-weight:700;position:relative;padding-left:20px;top:15px;padding-bottom:5px"><i class="fas fa-comments fa-fw" aria-hidden="true"></i> <span>评论</span></div><div id="vcomments" class="card-content" style="display:grid"></div></div><script src="/crystal-blog/libs/valine/av-min.js"></script><script src="/crystal-blog/libs/valine2/Valine2.min.js"></script><script>let metaPlaceholder={nick:"昵称/QQ号(必填)",mail:"邮箱(必填)",link:"网址(https://)"};new Valine({el:"#vcomments",appId:"NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI",appKey:"P7BGA1hMeBAFbHYz3dKY8doJ",notify:!1,verify:!0,visitor:!0,avatar:"monsterid",pageSize:"10",lang:"zh-CN",placeholder:"填写QQ号就能评论，快来一发吧~",meta:["nick","mail","link"],recordIP:!0,enableQQ:"monsterid",requiredFields:["nick","mail","link"],master:["e4de1f6da602d22e423d6dfb24611b6b"],friends:["410739a5ad278251b305dab085768c57","410739a5ad278251b305dab085768c57","410739a5ad278251b305dab085768c57"],tagMeta:["博主","小伙伴","访客"],metaPlaceholder:metaPlaceholder}),document.body.addEventListener("click",function(e){if(e.target.classList.contains("vsubmit")){var a=document.querySelector("input[type=email]"),t=document.querySelector("input[name=nick]");const i=/^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;if(!a.value||!t.value||!i.test(a.value)){const n=document.querySelector(".vmark");n.innerHTML='<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>',n.style.display="block",e.stopPropagation(),setTimeout(function(){n.style.display="none",n.innerHTML=""},2500)}}},!0)</script><article id="prenext-posts" class="prev-next articles"><div class="row article-row"><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge left-badge text-color"><i class="fas fa-chevron-left"></i>&nbsp;上一篇</div><div class="card"><a href="/crystal-blog/202109168540.html"><div class="card-image"><img src="https://cn.bing.com/th?id=OHR.AsianElephants_ZH-CN2736490825_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="Poi模板技术"> <span class="card-title">Poi模板技术</span></div></a><div class="card-content article-content"><div class="summary block-with-text">Poi模板技术</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2021-09-16 </span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="post-category">Excel导入导出</a></span></div></div><div class="card-action article-tags"><a href="/crystal-blog/tags/Poi/"><span class="chip bg-color">Poi</span></a></div></div></div><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge right-badge text-color">下一篇&nbsp;<i class="fas fa-chevron-right"></i></div><div class="card"><a href="/crystal-blog/2021091515662.html"><div class="card-image"><img src="https://www.bing.com/th?id=OHR.VeniceBeach_ZH-CN9971532384_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="StringTemplate实现Excel导出"> <span class="card-title">StringTemplate实现Excel导出</span></div></a><div class="card-content article-content"><div class="summary block-with-text">StringTemplate模板技术</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2021-09-15 </span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="post-category">Excel导入导出</a></span></div></div><div class="card-action article-tags"><a href="/crystal-blog/tags/StringTemplate/"><span class="chip bg-color">StringTemplate</span></a></div></div></div></div></article></div><script>$("#articleContent").on("copy",function(e){var n,t,o,i;void 0!==window.getSelection&&((""+(n=window.getSelection())).length<Number.parseInt("120")||(t=document.getElementsByTagName("body")[0],(o=document.createElement("div")).style.position="absolute",o.style.left="-99999px",t.appendChild(o),o.appendChild(n.getRangeAt(0).cloneContents()),"PRE"!==n.getRangeAt(0).commonAncestorContainer.nodeName&&"CODE"!==n.getRangeAt(0).commonAncestorContainer.nodeName||(o.innerHTML="<pre>"+o.innerHTML+"</pre>"),i=document.location.href,o.innerHTML+='<br />来源: 王子的博客<br />文章作者: 王子<br />文章链接: <a href="'+i+'">'+i+"</a><br />本文章著作权归作者所有，任何形式的转载都请注明出处。",n.selectAllChildren(o),window.setTimeout(function(){t.removeChild(o)},200)))})</script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeBlockFuction.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeLang.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeCopy.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeShrink.js"></script></div><div id="toc-aside" class="expanded col l3 hide-on-med-and-down"><div class="toc-widget card" style="background-color:#fff"><div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div><div id="toc-content"></div></div></div></div><div id="floating-toc-btn" class="hide-on-med-and-down"><a class="btn-floating btn-large bg-color"><i class="fas fa-list-ul"></i></a></div><script src="/crystal-blog/libs/tocbot/tocbot.min.js"></script><script>$(function(){tocbot.init({tocSelector:"#toc-content",contentSelector:"#articleContent",headingsOffset:-(.4*$(window).height()-45),collapseDepth:Number("0"),headingSelector:"h2, h3, h4"});let t=0,e="toc-heading-";$("#toc-content a").each(function(){$(this).attr("href","#"+e+ ++t)}),t=0,$("#articleContent").children("h2, h3, h4").each(function(){$(this).attr("id",e+ ++t)});let n=parseInt(.4*$(window).height()-64),o=$(".toc-widget");$(window).scroll(function(){$(window).scrollTop()>n?o.addClass("toc-fixed"):o.removeClass("toc-fixed")});const i="expanded";let c=$("#toc-aside"),l=$("#main-content");$("#floating-toc-btn .btn-floating").click(function(){c.hasClass(i)?(c.removeClass(i).hide(),l.removeClass("l9")):(c.addClass(i).show(),l.addClass("l9")),function(t,e){let n=$("#"+t);if(0!==n.length){let t=n.width();450<=t?t+=21:350<=t&&t<450?t+=18:300<=t&&t<350?t+=16:t+=14,$("#"+e).width(t)}}("artDetail","prenext-posts")})})</script></main><a onclick="switchNightMode()" id="sma"><i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i></a><footer class="page-footer bg-color"><link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css"><style>.aplayer .aplayer-lrc p{display:none;font-size:12px;font-weight:700;line-height:16px!important}.aplayer .aplayer-lrc p.aplayer-lrc-current{display:none;font-size:15px;color:#42b983}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><div><div class="row"><meting-js class="col l8 offset-l2 m10 offset-m1 s12" server="tencent" type="playlist" id="7278393642" fixed="true" autoplay theme="#42b983" loop order="random" preload="auto" volume="0.7" list-folded="true"></meting-js></div></div><script src="/crystal-blog/libs/aplayer/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><div class="container row center-align" style="margin-bottom:15px!important"><div class="col s12 m8 l8 copy-right">Copyright&nbsp;&copy; <span id="year">2020-2021</span> <i class="fa fa-heart" style="color:#ff71a8"></i> <a href="/crystal-blog/about" target="_blank">王子</a> |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a><br><span style="margin-left:-20px;display:inline">&nbsp; <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">53.5k</span> <span><span id="busuanzi_container_site_pv" style="display:inline">&nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span> </span><span id="busuanzi_container_site_uv" style="display:inline">&nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span></span><br><span id="sitetime">Loading ...</span><script>var calcSiteTime=function(){var e=new Date,t="2020",n=e.getFullYear(),a=e.getMonth()+1,r=e.getDate(),i=e.getHours(),o=e.getMinutes(),s=e.getSeconds(),e=Date.UTC(t,"8","8","8","8","8"),a=Date.UTC(n,a,r,i,o,s)-e,r=Math.floor(a/31536e6),i=Math.floor(a/864e5-365*r),o=Math.floor(a/36e5-365*r*24-24*i),s=Math.floor(a/6e4-365*r*24*60-24*i*60-60*o),e=Math.floor(a/1e3-365*r*24*60*60-24*i*60*60-60*o*60-60*s);t===String(n)?(document.getElementById("year").innerHTML=n,a="This site has been running for "+i+" days",a="本站已运行 "+i+" 天",document.getElementById("sitetime").innerHTML=a):(document.getElementById("year").innerHTML=t+" - "+n,n="This site has been running for "+r+" years and "+i+" days",n="本站已运行 "+r+" 年 "+i+" 天 "+o+" 小时 "+s+" 分钟 "+e+" 秒",document.getElementById("sitetime").innerHTML=n)},timer=setInterval(calcSiteTime)</script>&nbsp;|&nbsp; <span id="icp"><img src="/crystal-blog/medias/icp.png" style="vertical-align:text-bottom"> <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20002108号</a></span></span></div><div class="col s12 m4 l4 social-link social-statis"><a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1848276756" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1848276756" data-position="top" data-delay="50"><i class="fab fa-qq"></i> </a><a href="mailto:wang-qz@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我: wang-qz@foxmail.com" data-position="top" data-delay="50"><i class="fas fa-envelope-open"></i> </a><a href="https://gitee.com/wang-qz" class="tooltipped" target="_blank" data-tooltip="码云" data-position="top" data-delay="50"><i class="fab fa-github-alt"></i> </a><a href="https://blog.csdn.net/u013044713" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50"><i class="fab fa-csdn">C</i> </a><a href="/crystal-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50"><i class="fas fa-rss"></i></a></div></div></footer><div class="progress-bar"></div><script>let _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?147475454185ebcf440a27cc35e793ef";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div id="searchModal" class="modal"><div class="modal-content"><div class="search-header"><span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span> <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input"></div><div id="searchResult"></div></div></div><script type="text/javascript">$(function(){!function(t,r,s){"use strict";$.ajax({url:t,dataType:"xml",success:function(t){var e=$("entry",t).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),t=document.getElementById(r),n=document.getElementById(s);t.addEventListener("input",function(){var o='<ul class="search-result-list">',h=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length<=0||(e.forEach(function(t){var n,e,r,s=!0,l=t.title.trim().toLowerCase(),a=t.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),c=0===(c=t.url).indexOf("/")?t.url:"/"+c,i=-1,u=-1;""!==l&&""!==a&&h.forEach(function(t,e){n=l.indexOf(t),i=a.indexOf(t),n<0&&i<0?s=!1:(i<0&&(i=0),0===e&&(u=i))}),s&&(o+="<li><a href='"+c+"' class='search-result-title'>"+l+"</a>",e=t.content.trim().replace(/<[^>]+>/g,""),0<=u&&(c=u+80,(c=0===(t=(t=u-20)<0?0:t)?100:c)>e.length&&(c=e.length),r=e.substr(t,c),h.forEach(function(t){var e=new RegExp(t,"gi");r=r.replace(e,'<em class="search-keyword">'+t+"</em>")}),o+='<p class="search-result">'+r+"...</p>"),o+="</li>")}),o+="</ul>",n.innerHTML=o)})}})}("/crystal-blog/search.xml","searchInput","searchResult")})</script><div id="backTop" class="top-scroll"><a class="btn-floating btn-large waves-effect waves-light" href="#!"><i class="fas fa-arrow-up"></i></a></div><script src="/crystal-blog/libs/materialize/materialize.min.js"></script><script src="/crystal-blog/libs/masonry/masonry.pkgd.min.js"></script><script src="/crystal-blog/libs/aos/aos.js"></script><script src="/crystal-blog/libs/scrollprogress/scrollProgress.min.js"></script><script src="/crystal-blog/libs/lightGallery/js/lightgallery-all.min.js"></script><script src="/crystal-blog/js/matery.js"></script><script src="/crystal-blog/js/funnyTitle.js"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}()</script><script src="/crystal-blog/libs/others/clicklove.js" async></script><script async src="/crystal-blog/libs/others/busuanzi.pure.mini.js"></script><script type="text/javascript" color="0,0,255" pointcolor="0,0,255" opacity="0.7" zindex="-1" count="99" src="/crystal-blog/libs/background/canvas-nest.js"></script><script type="text/javascript" src="/crystal-blog/libs/background/ribbon-dynamic.js" async></script><script src="/crystal-blog/libs/instantpage/instantpage.js" type="module"></script><script src="/crystal-blog/js/wenzi.js"></script><script src="/crystal-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/crystal-blog/live2dw/assets/miku.model.json"},display:{position:"right",width:150,height:190,hOffset:50,vOffset:-5},mobile:{show:!1,scale:.5},react:{opacityDefault:.7,opacityOnHover:.8},log:!1})</script></body></html>
