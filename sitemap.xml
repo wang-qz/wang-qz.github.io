@@ -2,14 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.crystalblog.xyz/about/index.html</loc>
-    
-    <lastmod>2021-09-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.crystalblog.xyz/2021091715662.html</loc>
+    <loc>https://www.crystalblog.xyz/2021091515033.html</loc>
     
     <lastmod>2021-09-19</lastmod>
     
@@ -58,7 +51,14 @@
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/2021091515033.html</loc>
+    <loc>https://www.crystalblog.xyz/about/index.html</loc>
+    
+    <lastmod>2021-09-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.crystalblog.xyz/2021091715662.html</loc>
     
     <lastmod>2021-09-19</lastmod>
     
@@ -305,14 +305,14 @@
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/tags/EasyPoi/</loc>
+    <loc>https://www.crystalblog.xyz/tags/SAX%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2021-09-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/tags/SAX%E8%A7%A3%E6%9E%90/</loc>
+    <loc>https://www.crystalblog.xyz/tags/EasyPoi/</loc>
     <lastmod>2021-09-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
