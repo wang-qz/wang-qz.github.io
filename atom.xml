@@ -6,7 +6,7 @@
   <link href="https://wang-qz.gitee.io/crystal-blog/atom.xml" rel="self"/>
   
   <link href="https://wang-qz.gitee.io/crystal-blog/"/>
-  <updated>2021-09-20T02:41:00.500Z</updated>
+  <updated>2021-09-21T11:56:55.259Z</updated>
   <id>https://wang-qz.gitee.io/crystal-blog/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VMWare安装CentOs7系统问题总结</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021092113667.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021092113667.html</id>
+    <published>2021-09-21T09:19:24.000Z</published>
+    <updated>2021-09-21T11:56:55.259Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://wang-qz.gitee.io/crystal-blog/categories/Linux/"/>
+    
+    
+    <category term="CentOs7" scheme="https://wang-qz.gitee.io/crystal-blog/tags/CentOs7/"/>
+    
+    <category term="VM虚拟机" scheme="https://wang-qz.gitee.io/crystal-blog/tags/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Poi版本升级优化</title>
