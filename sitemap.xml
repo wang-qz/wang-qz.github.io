@@ -298,13 +298,6 @@
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/tags/git/</loc>
-    <lastmod>2021-09-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.crystalblog.xyz/tags/CentOs7/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
@@ -313,6 +306,13 @@
   
   <url>
     <loc>https://www.crystalblog.xyz/tags/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
+    <lastmod>2021-09-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.crystalblog.xyz/tags/git/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -333,14 +333,14 @@
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/tags/Intellij-IDEA/</loc>
+    <loc>https://www.crystalblog.xyz/tags/%E6%88%90%E9%95%BF/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/tags/%E6%88%90%E9%95%BF/</loc>
+    <loc>https://www.crystalblog.xyz/tags/Intellij-IDEA/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -384,14 +384,14 @@
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/categories/git/</loc>
+    <loc>https://www.crystalblog.xyz/categories/Linux/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/categories/Linux/</loc>
+    <loc>https://www.crystalblog.xyz/categories/git/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -405,14 +405,14 @@
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/</loc>
+    <loc>https://www.crystalblog.xyz/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.crystalblog.xyz/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/</loc>
+    <loc>https://www.crystalblog.xyz/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/</loc>
     <lastmod>2021-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
