@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wang-qz.gitee.io/crystal-blog/2021100248650.html</loc>
+    
+    <lastmod>2021-10-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/2021091961304.html</loc>
     
     <lastmod>2021-09-27</lastmod>
@@ -277,7 +284,7 @@
 
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -285,91 +292,98 @@
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/Poi/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/DOM%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://wang-qz.gitee.io/crystal-blog/tags/CentOs7/</loc>
-    <lastmod>2021-09-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://wang-qz.gitee.io/crystal-blog/tags/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <loc>https://wang-qz.gitee.io/crystal-blog/tags/Mysql/</loc>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/git/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wang-qz.gitee.io/crystal-blog/tags/CentOs7/</loc>
+    <lastmod>2021-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wang-qz.gitee.io/crystal-blog/tags/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/hexo/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/matery/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/Intellij-IDEA/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/%E6%88%90%E9%95%BF/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/EasyPoi/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/SAX%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/EasyExcel/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/tags/StringTemplate/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -378,42 +392,49 @@
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://wang-qz.gitee.io/crystal-blog/categories/Linux/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <loc>https://wang-qz.gitee.io/crystal-blog/categories/MySql/</loc>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/categories/git/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wang-qz.gitee.io/crystal-blog/categories/Linux/</loc>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/categories/hexo%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wang-qz.gitee.io/crystal-blog/categories/%E6%88%90%E5%B9%B4%E6%95%85%E4%BA%8B/</loc>
-    <lastmod>2021-09-27</lastmod>
+    <lastmod>2021-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
