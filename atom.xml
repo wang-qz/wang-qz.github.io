@@ -3,11 +3,11 @@
   <title>王子的博客</title>
   
   <subtitle>be yourself , be better</subtitle>
-  <link href="https://www.crystalblog.xyz/atom.xml" rel="self"/>
+  <link href="https://wang-qz.gitee.io/crystal-blog/atom.xml" rel="self"/>
   
-  <link href="https://www.crystalblog.xyz/"/>
-  <updated>2021-11-07T03:42:58.996Z</updated>
-  <id>https://www.crystalblog.xyz/</id>
+  <link href="https://wang-qz.gitee.io/crystal-blog/"/>
+  <updated>2021-12-01T14:02:22.513Z</updated>
+  <id>https://wang-qz.gitee.io/crystal-blog/</id>
   
   <author>
     <name>王子</name>
@@ -17,138 +17,271 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>微服务-消息总线 SpringCloud Bus</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021120120161.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021120120161.html</id>
+    <published>2021-12-01T13:31:58.000Z</published>
+    <updated>2021-12-01T14:02:22.513Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
+    
+    <category term="SpringCloudBus" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloudBus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows系统安装RabbitMQ</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021120127699.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021120127699.html</id>
+    <published>2021-12-01T13:31:43.000Z</published>
+    <updated>2021-12-01T14:04:59.217Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="RabbitMQ" scheme="https://wang-qz.gitee.io/crystal-blog/categories/RabbitMQ/"/>
+    
+    
+    <category term="RabbitMQ" scheme="https://wang-qz.gitee.io/crystal-blog/tags/RabbitMQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务-API网关gateway</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021120160496.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021120160496.html</id>
+    <published>2021-12-01T13:31:20.000Z</published>
+    <updated>2021-12-01T13:52:31.343Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
+    
+    <category term="gateway" scheme="https://wang-qz.gitee.io/crystal-blog/tags/gateway/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务-声明式接口调用OpenFeign</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/202112014493.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/202112014493.html</id>
+    <published>2021-12-01T13:31:06.000Z</published>
+    <updated>2021-12-01T13:38:55.242Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
+    
+    <category term="OpenFeign" scheme="https://wang-qz.gitee.io/crystal-blog/tags/OpenFeign/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务-配置中心Spring Cloud Config</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021120159313.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021120159313.html</id>
+    <published>2021-12-01T13:30:17.000Z</published>
+    <updated>2021-12-01T13:57:24.222Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
+    
+    <category term="SpringCloudConfig" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloudConfig/"/>
+    
+  </entry>
+  
+  <entry>
     <title>微服务-API网关Zuul</title>
-    <link href="https://www.crystalblog.xyz/202111079164.html"/>
-    <id>https://www.crystalblog.xyz/202111079164.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/202111079164.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/202111079164.html</id>
     <published>2021-11-07T03:26:31.000Z</published>
-    <updated>2021-11-07T03:42:58.996Z</updated>
+    <updated>2021-12-01T13:28:08.890Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="SpringCloud" scheme="https://www.crystalblog.xyz/tags/SpringCloud/"/>
+    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
     
-    <category term="Zuul" scheme="https://www.crystalblog.xyz/tags/Zuul/"/>
+    <category term="Zuul" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Zuul/"/>
     
   </entry>
   
   <entry>
     <title>微服务-熔断器Hystrix</title>
-    <link href="https://www.crystalblog.xyz/2021110739141.html"/>
-    <id>https://www.crystalblog.xyz/2021110739141.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021110739141.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021110739141.html</id>
     <published>2021-11-07T03:25:59.000Z</published>
-    <updated>2021-11-07T03:42:58.998Z</updated>
+    <updated>2021-12-01T13:23:06.692Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="SpringCloud" scheme="https://www.crystalblog.xyz/tags/SpringCloud/"/>
+    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
     
-    <category term="Hystrix" scheme="https://www.crystalblog.xyz/tags/Hystrix/"/>
+    <category term="Hystrix" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Hystrix/"/>
     
   </entry>
   
   <entry>
     <title>微服务-负载均衡Ribbon</title>
-    <link href="https://www.crystalblog.xyz/2021103043999.html"/>
-    <id>https://www.crystalblog.xyz/2021103043999.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021103043999.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021103043999.html</id>
     <published>2021-10-30T05:40:14.000Z</published>
-    <updated>2021-10-30T05:53:06.812Z</updated>
+    <updated>2021-12-01T13:15:44.115Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Ribbon" scheme="https://www.crystalblog.xyz/tags/Ribbon/"/>
+    <category term="Ribbon" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Ribbon/"/>
     
   </entry>
   
   <entry>
     <title>搭建Eureka-Server集群</title>
-    <link href="https://www.crystalblog.xyz/202110306806.html"/>
-    <id>https://www.crystalblog.xyz/202110306806.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/202110306806.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/202110306806.html</id>
     <published>2021-10-30T05:35:28.000Z</published>
-    <updated>2021-10-30T05:53:53.901Z</updated>
+    <updated>2021-12-01T13:11:41.004Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Eureka" scheme="https://www.crystalblog.xyz/tags/Eureka/"/>
+    <category term="Eureka" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Eureka/"/>
     
   </entry>
   
   <entry>
     <title>Eureka控制台访问微服务暴露的info端点</title>
-    <link href="https://www.crystalblog.xyz/2021103027342.html"/>
-    <id>https://www.crystalblog.xyz/2021103027342.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021103027342.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021103027342.html</id>
     <published>2021-10-30T05:28:40.000Z</published>
-    <updated>2021-10-30T05:46:13.356Z</updated>
+    <updated>2021-12-01T13:09:48.871Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Eureka" scheme="https://www.crystalblog.xyz/tags/Eureka/"/>
+    <category term="Eureka" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Eureka/"/>
     
   </entry>
   
   <entry>
     <title>InteliJ-IDEA-高效技巧(三)</title>
-    <link href="https://www.crystalblog.xyz/2021103033532.html"/>
-    <id>https://www.crystalblog.xyz/2021103033532.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021103033532.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021103033532.html</id>
     <published>2021-10-30T05:17:45.000Z</published>
     <updated>2021-10-30T05:46:13.359Z</updated>
     
@@ -157,23 +290,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="工具篇" scheme="https://www.crystalblog.xyz/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
+    <category term="工具篇" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
     
     
-    <category term="Intellij-IDEA" scheme="https://www.crystalblog.xyz/tags/Intellij-IDEA/"/>
+    <category term="Intellij-IDEA" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Intellij-IDEA/"/>
     
   </entry>
   
   <entry>
     <title>InteliJ-IDEA-高效技巧(二)</title>
-    <link href="https://www.crystalblog.xyz/202110174702.html"/>
-    <id>https://www.crystalblog.xyz/202110174702.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/202110174702.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/202110174702.html</id>
     <published>2021-10-17T06:47:58.000Z</published>
     <updated>2021-10-17T08:58:52.428Z</updated>
     
@@ -182,23 +315,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="工具篇" scheme="https://www.crystalblog.xyz/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
+    <category term="工具篇" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
     
     
-    <category term="Intellij-IDEA" scheme="https://www.crystalblog.xyz/tags/Intellij-IDEA/"/>
+    <category term="Intellij-IDEA" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Intellij-IDEA/"/>
     
   </entry>
   
   <entry>
     <title>InteliJ IDEA 高效技巧(一)</title>
-    <link href="https://www.crystalblog.xyz/2021101746320.html"/>
-    <id>https://www.crystalblog.xyz/2021101746320.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021101746320.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021101746320.html</id>
     <published>2021-10-17T02:00:41.000Z</published>
     <updated>2021-10-17T06:42:28.798Z</updated>
     
@@ -207,23 +340,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="工具篇" scheme="https://www.crystalblog.xyz/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
+    <category term="工具篇" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
     
     
-    <category term="Intellij-IDEA" scheme="https://www.crystalblog.xyz/tags/Intellij-IDEA/"/>
+    <category term="Intellij-IDEA" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Intellij-IDEA/"/>
     
   </entry>
   
   <entry>
     <title>深入浅出SpringCloud</title>
-    <link href="https://www.crystalblog.xyz/2021100339866.html"/>
-    <id>https://www.crystalblog.xyz/2021100339866.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021100339866.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021100339866.html</id>
     <published>2021-10-03T02:24:21.000Z</published>
     <updated>2021-10-08T14:00:23.446Z</updated>
     
@@ -232,23 +365,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="SpringCloud" scheme="https://www.crystalblog.xyz/tags/SpringCloud/"/>
+    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
     
   </entry>
   
   <entry>
     <title>Windows系统中Mysql迁移</title>
-    <link href="https://www.crystalblog.xyz/2021100248650.html"/>
-    <id>https://www.crystalblog.xyz/2021100248650.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021100248650.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021100248650.html</id>
     <published>2021-10-02T03:15:28.000Z</published>
     <updated>2021-10-08T13:58:30.652Z</updated>
     
@@ -257,23 +390,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="MySql" scheme="https://www.crystalblog.xyz/categories/MySql/"/>
+    <category term="MySql" scheme="https://wang-qz.gitee.io/crystal-blog/categories/MySql/"/>
     
     
-    <category term="Mysql" scheme="https://www.crystalblog.xyz/tags/Mysql/"/>
+    <category term="Mysql" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Mysql/"/>
     
   </entry>
   
   <entry>
     <title>新版Intellij IDEA的Plugins搜索不了插件</title>
-    <link href="https://www.crystalblog.xyz/2021092325596.html"/>
-    <id>https://www.crystalblog.xyz/2021092325596.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021092325596.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021092325596.html</id>
     <published>2021-09-23T11:41:00.000Z</published>
     <updated>2021-09-23T12:02:45.809Z</updated>
     
@@ -282,23 +415,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="工具篇" scheme="https://www.crystalblog.xyz/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
+    <category term="工具篇" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
     
     
-    <category term="Intellij-IDEA" scheme="https://www.crystalblog.xyz/tags/Intellij-IDEA/"/>
+    <category term="Intellij-IDEA" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Intellij-IDEA/"/>
     
   </entry>
   
   <entry>
     <title>VMWare安装CentOs7系统及使用</title>
-    <link href="https://www.crystalblog.xyz/2021092113667.html"/>
-    <id>https://www.crystalblog.xyz/2021092113667.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021092113667.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021092113667.html</id>
     <published>2021-09-21T09:19:24.000Z</published>
     <updated>2021-09-21T12:17:25.828Z</updated>
     
@@ -307,25 +440,25 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="Linux" scheme="https://www.crystalblog.xyz/categories/Linux/"/>
+    <category term="Linux" scheme="https://wang-qz.gitee.io/crystal-blog/categories/Linux/"/>
     
     
-    <category term="CentOs7" scheme="https://www.crystalblog.xyz/tags/CentOs7/"/>
+    <category term="CentOs7" scheme="https://wang-qz.gitee.io/crystal-blog/tags/CentOs7/"/>
     
-    <category term="VM虚拟机" scheme="https://www.crystalblog.xyz/tags/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    <category term="VM虚拟机" scheme="https://wang-qz.gitee.io/crystal-blog/tags/VM%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
     
   </entry>
   
   <entry>
     <title>数据分流写入Excel</title>
-    <link href="https://www.crystalblog.xyz/2021091959753.html"/>
-    <id>https://www.crystalblog.xyz/2021091959753.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021091959753.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021091959753.html</id>
     <published>2021-09-19T13:50:00.000Z</published>
     <updated>2021-09-27T15:31:04.894Z</updated>
     
@@ -334,23 +467,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
+    <category term="Excel导入导出" scheme="https://wang-qz.gitee.io/crystal-blog/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
     
     
-    <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
+    <category term="Poi" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Poi/"/>
     
   </entry>
   
   <entry>
     <title>Poi版本升级优化</title>
-    <link href="https://www.crystalblog.xyz/2021091961304.html"/>
-    <id>https://www.crystalblog.xyz/2021091961304.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021091961304.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021091961304.html</id>
     <published>2021-09-19T02:21:20.000Z</published>
     <updated>2021-09-27T15:53:59.259Z</updated>
     
@@ -359,23 +492,23 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
+    <category term="Excel导入导出" scheme="https://wang-qz.gitee.io/crystal-blog/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
     
     
-    <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
+    <category term="Poi" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Poi/"/>
     
   </entry>
   
   <entry>
     <title>StringTemplate实现Excel导出</title>
-    <link href="https://www.crystalblog.xyz/2021091715662.html"/>
-    <id>https://www.crystalblog.xyz/2021091715662.html</id>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021091715662.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021091715662.html</id>
     <published>2021-09-17T11:44:54.000Z</published>
     <updated>2021-09-27T15:53:37.903Z</updated>
     
@@ -384,145 +517,16 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
         
       
     
     
     
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
+    <category term="Excel导入导出" scheme="https://wang-qz.gitee.io/crystal-blog/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
     
     
-    <category term="StringTemplate" scheme="https://www.crystalblog.xyz/tags/StringTemplate/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Poi模板技术</title>
-    <link href="https://www.crystalblog.xyz/202109168540.html"/>
-    <id>https://www.crystalblog.xyz/202109168540.html</id>
-    <published>2021-09-16T12:21:46.000Z</published>
-    <updated>2021-09-27T15:53:15.256Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
-    
-    
-    <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SAX方式实现Excel导入</title>
-    <link href="https://www.crystalblog.xyz/2021091645685.html"/>
-    <id>https://www.crystalblog.xyz/2021091645685.html</id>
-    <published>2021-09-16T11:33:00.000Z</published>
-    <updated>2021-09-27T15:53:31.342Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
-    
-    
-    <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
-    
-    <category term="SAX解析" scheme="https://www.crystalblog.xyz/tags/SAX%E8%A7%A3%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DOM方式实现Excel导入</title>
-    <link href="https://www.crystalblog.xyz/2021091515033.html"/>
-    <id>https://www.crystalblog.xyz/2021091515033.html</id>
-    <published>2021-09-15T11:43:48.000Z</published>
-    <updated>2021-09-27T15:52:35.039Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
-    
-    
-    <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
-    
-    <category term="DOM解析" scheme="https://www.crystalblog.xyz/tags/DOM%E8%A7%A3%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Poi实现Excel导出</title>
-    <link href="https://www.crystalblog.xyz/2021091541529.html"/>
-    <id>https://www.crystalblog.xyz/2021091541529.html</id>
-    <published>2021-09-15T11:43:28.000Z</published>
-    <updated>2021-09-27T15:53:21.422Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
-    
-    
-    <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EasyPoi学习笔记</title>
-    <link href="https://www.crystalblog.xyz/2021091235988.html"/>
-    <id>https://www.crystalblog.xyz/2021091235988.html</id>
-    <published>2021-09-12T03:24:28.000Z</published>
-    <updated>2021-09-27T15:52:53.765Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
-    
-    
-    <category term="EasyPoi" scheme="https://www.crystalblog.xyz/tags/EasyPoi/"/>
+    <category term="StringTemplate" scheme="https://wang-qz.gitee.io/crystal-blog/tags/StringTemplate/"/>
     
   </entry>
   
