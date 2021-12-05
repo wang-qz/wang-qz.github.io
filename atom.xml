@@ -6,7 +6,7 @@
   <link href="https://www.crystalblog.xyz/atom.xml" rel="self"/>
   
   <link href="https://www.crystalblog.xyz/"/>
-  <updated>2021-12-01T14:05:25.573Z</updated>
+  <updated>2021-12-05T07:50:32.068Z</updated>
   <id>https://www.crystalblog.xyz/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微服务-链路追踪Spring Cloud Sleuth</title>
+    <link href="https://www.crystalblog.xyz/2021120512642.html"/>
+    <id>https://www.crystalblog.xyz/2021120512642.html</id>
+    <published>2021-12-05T07:45:53.000Z</published>
+    <updated>2021-12-05T07:50:32.068Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloud" scheme="https://www.crystalblog.xyz/tags/SpringCloud/"/>
+    
+    <category term="Spring Cloud Sleuth" scheme="https://www.crystalblog.xyz/tags/Spring-Cloud-Sleuth/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务-消息驱动Spring Cloud Stream</title>
+    <link href="https://www.crystalblog.xyz/2021120446122.html"/>
+    <id>https://www.crystalblog.xyz/2021120446122.html</id>
+    <published>2021-12-04T14:02:38.000Z</published>
+    <updated>2021-12-04T14:10:06.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://www.crystalblog.xyz/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloud" scheme="https://www.crystalblog.xyz/tags/SpringCloud/"/>
+    
+    <category term="Spring Cloud Stream" scheme="https://www.crystalblog.xyz/tags/Spring-Cloud-Stream/"/>
+    
+  </entry>
   
   <entry>
     <title>微服务-消息总线 SpringCloud Bus</title>
@@ -48,7 +102,7 @@
     <link href="https://www.crystalblog.xyz/2021120127699.html"/>
     <id>https://www.crystalblog.xyz/2021120127699.html</id>
     <published>2021-12-01T13:31:43.000Z</published>
-    <updated>2021-12-01T14:05:25.567Z</updated>
+    <updated>2021-12-02T11:48:22.003Z</updated>
     
     
       
@@ -477,56 +531,6 @@
     
     
     <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Poi版本升级优化</title>
-    <link href="https://www.crystalblog.xyz/2021091961304.html"/>
-    <id>https://www.crystalblog.xyz/2021091961304.html</id>
-    <published>2021-09-19T02:21:20.000Z</published>
-    <updated>2021-09-27T15:53:59.259Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
-    
-    
-    <category term="Poi" scheme="https://www.crystalblog.xyz/tags/Poi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>StringTemplate实现Excel导出</title>
-    <link href="https://www.crystalblog.xyz/2021091715662.html"/>
-    <id>https://www.crystalblog.xyz/2021091715662.html</id>
-    <published>2021-09-17T11:44:54.000Z</published>
-    <updated>2021-09-27T15:53:37.903Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Excel导入导出" scheme="https://www.crystalblog.xyz/categories/Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/"/>
-    
-    
-    <category term="StringTemplate" scheme="https://www.crystalblog.xyz/tags/StringTemplate/"/>
     
   </entry>
   
