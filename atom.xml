@@ -6,7 +6,7 @@
   <link href="https://wang-qz.gitee.io/crystal-blog/atom.xml" rel="self"/>
   
   <link href="https://wang-qz.gitee.io/crystal-blog/"/>
-  <updated>2021-12-12T04:27:29.729Z</updated>
+  <updated>2021-12-31T14:30:14.492Z</updated>
   <id>https://wang-qz.gitee.io/crystal-blog/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微服务-Sentinel流控降级</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021123147034.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021123147034.html</id>
+    <published>2021-12-31T14:10:46.000Z</published>
+    <updated>2021-12-31T14:30:14.492Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloudAlibaba" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloudAlibaba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务-Nacos注册中心兼配置中心</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2021123165337.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2021123165337.html</id>
+    <published>2021-12-31T14:10:29.000Z</published>
+    <updated>2021-12-31T14:29:49.217Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+    <category term="SpringCloudAlibaba" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloudAlibaba/"/>
+    
+  </entry>
   
   <entry>
     <title>分布式任务调度 xxl-job</title>
@@ -479,56 +529,6 @@
     
     
     <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows系统中Mysql迁移</title>
-    <link href="https://wang-qz.gitee.io/crystal-blog/2021100248650.html"/>
-    <id>https://wang-qz.gitee.io/crystal-blog/2021100248650.html</id>
-    <published>2021-10-02T03:15:28.000Z</published>
-    <updated>2021-10-08T13:58:30.652Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
-        
-      
-    
-    
-    
-    <category term="MySql" scheme="https://wang-qz.gitee.io/crystal-blog/categories/MySql/"/>
-    
-    
-    <category term="Mysql" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新版Intellij IDEA的Plugins搜索不了插件</title>
-    <link href="https://wang-qz.gitee.io/crystal-blog/2021092325596.html"/>
-    <id>https://wang-qz.gitee.io/crystal-blog/2021092325596.html</id>
-    <published>2021-09-23T11:41:00.000Z</published>
-    <updated>2021-09-23T12:02:45.809Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
-        
-      
-    
-    
-    
-    <category term="工具篇" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%B7%A5%E5%85%B7%E7%AF%87/"/>
-    
-    
-    <category term="Intellij-IDEA" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Intellij-IDEA/"/>
     
   </entry>
   
