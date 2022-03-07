@@ -6,7 +6,7 @@
   <link href="https://wang-qz.gitee.io/crystal-blog/atom.xml" rel="self"/>
   
   <link href="https://wang-qz.gitee.io/crystal-blog/"/>
-  <updated>2022-02-20T08:52:10.851Z</updated>
+  <updated>2022-03-07T10:53:42.327Z</updated>
   <id>https://wang-qz.gitee.io/crystal-blog/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试题-消息中间件专题</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2022030714893.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2022030714893.html</id>
+    <published>2022-03-07T10:36:49.000Z</published>
+    <updated>2022-03-07T10:53:42.327Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="面试相关" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/"/>
+    
+    
+    <category term="消息中间件" scheme="https://wang-qz.gitee.io/crystal-blog/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis学习笔记1</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2022030759956.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2022030759956.html</id>
+    <published>2022-03-07T10:36:11.000Z</published>
+    <updated>2022-03-07T11:11:24.172Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="NoSQL" scheme="https://wang-qz.gitee.io/crystal-blog/categories/NoSQL/"/>
+    
+    
+    <category term="Redis" scheme="https://wang-qz.gitee.io/crystal-blog/tags/Redis/"/>
+    
+  </entry>
   
   <entry>
     <title>面试题-分布式</title>
@@ -196,7 +246,7 @@
     <link href="https://wang-qz.gitee.io/crystal-blog/202202132472.html"/>
     <id>https://wang-qz.gitee.io/crystal-blog/202202132472.html</id>
     <published>2022-02-13T13:31:38.000Z</published>
-    <updated>2022-02-13T15:12:35.914Z</updated>
+    <updated>2022-03-07T11:14:45.853Z</updated>
     
     
       
@@ -469,58 +519,6 @@
     <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
     
     <category term="SpringCloudBus" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloudBus/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Windows系统安装RabbitMQ</title>
-    <link href="https://wang-qz.gitee.io/crystal-blog/2021120127699.html"/>
-    <id>https://wang-qz.gitee.io/crystal-blog/2021120127699.html</id>
-    <published>2021-12-01T13:31:43.000Z</published>
-    <updated>2021-12-05T08:10:54.397Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
-        
-      
-    
-    
-    
-    <category term="RabbitMQ" scheme="https://wang-qz.gitee.io/crystal-blog/categories/RabbitMQ/"/>
-    
-    
-    <category term="RabbitMQ" scheme="https://wang-qz.gitee.io/crystal-blog/tags/RabbitMQ/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微服务-API网关gateway</title>
-    <link href="https://wang-qz.gitee.io/crystal-blog/2021120160496.html"/>
-    <id>https://wang-qz.gitee.io/crystal-blog/2021120160496.html</id>
-    <published>2021-12-01T13:31:20.000Z</published>
-    <updated>2021-12-01T14:05:25.577Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
-        
-      
-    
-    
-    
-    <category term="微服务" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-    
-    <category term="SpringCloud" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloud/"/>
-    
-    <category term="gateway" scheme="https://wang-qz.gitee.io/crystal-blog/tags/gateway/"/>
     
   </entry>
   
