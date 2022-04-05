@@ -1,0 +1,1043 @@
+<!DOCTYPE HTML><html lang="zh-CN"><head><meta charset="utf-8"><meta name="keywords" content="Redis"><meta name="description" content="本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="renderer" content="webkit|ie-stand|ie-comp"><meta name="mobile-web-app-capable" content="yes"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="baidu-site-verification" content="code-Fqqme2bKQz"><title>Redis高级1 | Crysw&#39;s Blog</title><link rel="icon" type="image/png" href="/crystal-blog/favicon.png"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/awesome/css/all.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/materialize/materialize.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/aos/aos.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/animate/animate.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/lightGallery/css/lightgallery.min.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/css/matery.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/css/my.css"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/artitalk/artitalk.min.css"><script src="/crystal-blog/libs/jquery/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><style>.github-emoji{position:relative;display:inline-block;width:1.2em;min-height:1.2em;overflow:hidden;vertical-align:top;color:transparent}.github-emoji>span{position:relative;z-index:10}.github-emoji .fancybox,.github-emoji img{margin:0!important;padding:0!important;border:none!important;outline:0!important;text-decoration:none!important;user-select:none!important;cursor:auto!important}.github-emoji img{height:1.2em!important;width:1.2em!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;user-select:none!important;cursor:auto!important}.github-emoji-fallback{color:inherit}.github-emoji-fallback img{opacity:0!important}</style><link rel="alternate" href="/crystal-blog/atom.xml" title="Crysw's Blog" type="application/atom+xml"><link rel="stylesheet" href="/crystal-blog/css/prism-tomorrow.css" type="text/css"></head><style>body{background-image:url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);background-repeat:no-repeat;background-size:cover;background-attachment:fixed}</style><body><header class="navbar-fixed"><nav id="headNav" class="bg-color nav-transparent"><div id="navContainer" class="nav-wrapper container"><div class="brand-logo" style="margin-left:-50px"><a href="/crystal-blog/" class="waves-effect waves-light"><img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img" alt="LOGO"> <span class="logo-span">Crysw&#39;s Blog</span></a></div><a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a><ul class="right nav-menu" style="margin-left:100px"><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/" class="waves-effect waves-light"><i class="fas fa-home" style="zoom:.6"></i> <span>首页</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/tags" class="waves-effect waves-light"><i class="fas fa-tags" style="zoom:.6"></i> <span>标签</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/categories" class="waves-effect waves-light"><i class="fas fa-bookmark" style="zoom:.6"></i> <span>分类</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/archives" class="waves-effect waves-light"><i class="fas fa-archive" style="zoom:.6"></i> <span>归档</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-list" style="zoom:.6"></i> <span>清单</span> <i class="fas fa-chevron-down" aria-hidden="true" style="zoom:.6"></i></a><ul class="sub-nav menus_item_child"><li><a href="/crystal-blog/musics"><i class="fas fa-music" style="margin-top:-20px;zoom:.6"></i> <span>音乐</span></a></li><li><a href="/crystal-blog/movies"><i class="fas fa-film" style="margin-top:-20px;zoom:.6"></i> <span>影集</span></a></li><li><a href="/crystal-blog/wallpaper"><i class="fas fa-image" style="margin-top:-20px;zoom:.6"></i> <span>壁纸</span></a></li><li><a href="/crystal-blog/galleries"><i class="fas fa-camera" style="margin-top:-20px;zoom:.6"></i> <span>相册</span></a></li></ul></li><li class="hide-on-med-and-down nav-item"><a href="/" class="waves-effect waves-light"><i class="fas fa-rocket" style="zoom:.6"></i> <span>关于</span> <i class="fas fa-chevron-down" aria-hidden="true" style="zoom:.6"></i></a><ul class="sub-nav menus_item_child"><li><a href="/crystal-blog/about"><i class="fas fa-user-circle" style="margin-top:-20px;zoom:.6"></i> <span>关于我</span></a></li><li><a target="_blank" rel="noopener" href="http://www.itsoku.com/"><i class="fab fa-github-alt" style="margin-top:-20px;zoom:.6"></i> <span>充电社</span></a></li><li><a href="/crystal-blog/artitalk"><i class="fas fa-pen-alt" style="margin-top:-20px;zoom:.6"></i> <span>artitalk</span></a></li></ul></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/contact" class="waves-effect waves-light"><i class="fas fa-comments" style="zoom:.6"></i> <span>留言板</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/friends" class="waves-effect waves-light"><i class="fas fa-address-book" style="zoom:.6"></i> <span>友情链接</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/navigate" class="waves-effect waves-light"><i class="fas fa-location-arrow" style="zoom:.6"></i> <span>快捷导航</span></a></li><li class="hide-on-med-and-down nav-item"><a href="/crystal-blog/atom.xml" class="waves-effect waves-light"><i class="fas fa-rss" style="zoom:.6"></i> <span>RSS</span></a></li><li><a href="#searchModal" class="modal-trigger waves-effect waves-light"><i id="searchIcon" class="fas fa-search" title="搜索" style="zoom:.85"></i></a></li></ul><div id="mobile-nav" class="side-nav sidenav"><div class="mobile-head bg-color"><img src="https://cdn.jsdelivr.net/gh/guixinchn/image/blog/logo.png" class="logo-img circle responsive-img"><div class="logo-name">Crysw&#39;s Blog</div><div class="logo-desc">本网站是个人兴趣爱好，总结分享经验，记录生活点滴的平台，希望在以后的学习旅途中，走出自己的风景</div></div><ul class="menu-list mobile-menu-list"><li class="m-nav-item"><a href="/crystal-blog/" class="waves-effect waves-light"><i class="fa-fw fas fa-home"></i> 首页</a></li><li class="m-nav-item"><a href="/crystal-blog/tags" class="waves-effect waves-light"><i class="fa-fw fas fa-tags"></i> 标签</a></li><li class="m-nav-item"><a href="/crystal-blog/categories" class="waves-effect waves-light"><i class="fa-fw fas fa-bookmark"></i> 分类</a></li><li class="m-nav-item"><a href="/crystal-blog/archives" class="waves-effect waves-light"><i class="fa-fw fas fa-archive"></i> 归档</a></li><li class="m-nav-item"><a href="javascript:;"><i class="fa-fw fas fa-list"></i> 清单 <span class="m-icon"><i class="fas fa-chevron-right"></i></span></a><ul><li><a href="/crystal-blog/musics" style="margin-left:50px"><i class="fa fas fa-music" style="position:absolute;left:28px"></i> <span>音乐</span></a></li><li><a href="/crystal-blog/movies" style="margin-left:50px"><i class="fa fas fa-film" style="position:absolute;left:28px"></i> <span>影集</span></a></li><li><a href="/crystal-blog/wallpaper" style="margin-left:50px"><i class="fa fas fa-image" style="position:absolute;left:28px"></i> <span>壁纸</span></a></li><li><a href="/crystal-blog/galleries" style="margin-left:50px"><i class="fa fas fa-camera" style="position:absolute;left:28px"></i> <span>相册</span></a></li></ul></li><li class="m-nav-item"><a href="javascript:;"><i class="fa-fw fas fa-rocket"></i> 关于 <span class="m-icon"><i class="fas fa-chevron-right"></i></span></a><ul><li><a href="/crystal-blog/about" style="margin-left:50px"><i class="fa fas fa-user-circle" style="position:absolute;left:28px"></i> <span>关于我</span></a></li><li><a target="_blank" rel="noopener" href="http://www.itsoku.com/" style="margin-left:50px"><i class="fa fab fa-github-alt" style="position:absolute;left:28px"></i> <span>充电社</span></a></li><li><a href="/crystal-blog/artitalk" style="margin-left:50px"><i class="fa fas fa-pen-alt" style="position:absolute;left:28px"></i> <span>artitalk</span></a></li></ul></li><li class="m-nav-item"><a href="/crystal-blog/contact" class="waves-effect waves-light"><i class="fa-fw fas fa-comments"></i> 留言板</a></li><li class="m-nav-item"><a href="/crystal-blog/friends" class="waves-effect waves-light"><i class="fa-fw fas fa-address-book"></i> 友情链接</a></li><li class="m-nav-item"><a href="/crystal-blog/navigate" class="waves-effect waves-light"><i class="fa-fw fas fa-location-arrow"></i> 快捷导航</a></li><li class="m-nav-item"><a href="/crystal-blog/atom.xml" class="waves-effect waves-light"><i class="fa-fw fas fa-rss"></i> RSS</a></li><li><div class="divider"></div></li><li><a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="waves-effect waves-light" target="_blank"><i class="fab fa-github-square fa-fw"></i>Fork Me</a></li></ul></div></div><style>.nav-transparent .github-corner{display:none!important}.github-corner{position:absolute;z-index:10;top:0;right:0;border:0;transform:scale(1.1)}.github-corner svg{color:#0f9d58;fill:#fff;height:64px;width:64px}.github-corner:hover .octo-arm{animation:a .56s ease-in-out}.github-corner .octo-arm{animation:none}@keyframes a{0%,to{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}</style><a href="https://gitee.com/wang-qz/hexo-blog-crystal" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50"><svg viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a></nav></header><script src="/crystal-blog/libs/cryptojs/crypto-js.min.js"></script><script></script><div class="bg-cover pd-header post-cover" style="background-image:url(https://cn.bing.com/th?id=OHR.BeltedGalloway_ZH-CN8570849064_1920x1080.jpg&rf=LaDigue_1920x1080.jpg)"><div class="container" style="right:0;left:0"><div class="row"><div class="col s12 m12 l12"><div class="brand"><h1 class="description center-align post-title">Redis高级1</h1></div></div></div></div></div><main class="post-container content"><link rel="stylesheet" href="/crystal-blog/libs/tocbot/tocbot.css"><style>#articleContent h1::before,#articleContent h2::before,#articleContent h3::before,#articleContent h4::before,#articleContent h5::before,#articleContent h6::before{display:block;content:" ";height:100px;margin-top:-100px;visibility:hidden}#articleContent :focus{outline:0}.toc-fixed{position:fixed;top:64px}.toc-widget{width:345px;padding-left:20px}.toc-widget .toc-title{padding:35px 0 15px 17px;font-size:1.5rem;font-weight:700;line-height:1.5rem}.toc-widget ol{padding:0;list-style:none}#toc-content{padding-bottom:30px;overflow:auto}#toc-content ol{padding-left:10px}#toc-content ol li{padding-left:10px}#toc-content .toc-link:hover{color:#42b983;font-weight:700;text-decoration:underline}#toc-content .toc-link::before{background-color:transparent;max-height:25px;position:absolute;right:23.5vw;display:block}#toc-content .is-active-link{color:#42b983}#floating-toc-btn{position:fixed;right:15px;bottom:76px;padding-top:15px;margin-bottom:0;z-index:998}#floating-toc-btn .btn-floating{width:48px;height:48px}#floating-toc-btn .btn-floating i{line-height:48px;font-size:1.4rem}</style><div class="row"><div id="main-content" class="col s12 m12 l9"><div id="artDetail"><div class="card"><div class="card-content article-info"><div class="row tag-cate"><div class="col s7"><div class="article-tag"><a href="/crystal-blog/tags/Redis/"><span class="chip bg-color">Redis</span></a></div></div><div class="col s5 right-align"><div class="post-cate"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/NoSQL/" class="post-category">NoSQL</a></div></div></div><div class="post-info"><div class="post-date info-break-policy"><i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp; 2022-04-05</div><div class="post-date info-break-policy"><i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp; 2022-04-05</div><div class="info-break-policy"><i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp; 15.2k</div><div class="info-break-policy"><i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp; 68 分</div><div id="busuanzi_container_page_pv" class="info-break-policy"><i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp; <span id="busuanzi_value_page_pv"></span></div></div></div><hr class="clearfix"><div class="card-content article-card-content"><div id="articleContent"><h2 id="个人博客"><a href="#个人博客" class="headerlink" title="个人博客"></a>个人博客</h2><p>欢迎访问个人博客: <a target="_blank" rel="noopener" href="https://www.crystalblog.xyz/">https://www.crystalblog.xyz/</a></p><p>备用地址: <a href="https://wang-qz.gitee.io/crystal-blog/">https://wang-qz.gitee.io/crystal-blog/</a></p><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Redis前面的基础部分此处不做记录 , 本篇记录周阳老师讲解的Redis配置及高级应用的知识.</p><p>尚硅谷-周阳思维导图<br>链接： <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1jY8bh8D0MN_4WN1hqwIQeQ">https://pan.baidu.com/s/1jY8bh8D0MN_4WN1hqwIQeQ</a><br>提取码： <code>ezog</code><br>课件，别感谢我！</p><p>B站视频: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oW411u75R?p=17">尚硅谷超经典Redis教程,redis实战,阳哥版从入门到精通</a></p><h2 id="1-解析Redis配置文件"><a href="#1-解析Redis配置文件" class="headerlink" title="1. 解析Redis配置文件"></a>1. 解析Redis配置文件</h2><p>解压后的Redis目录下有一个<code>redis.conf</code>文件, 里面是实现redis各种功能的配置项.</p><h3 id="1-1-Units单位"><a href="#1-1-Units单位" class="headerlink" title="1.1 Units单位"></a>1.1 Units单位</h3><p>配置大小单位，开头定义了一些基本的度量单位，只支持bytes，不支持bit. 对大小写不敏感.</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 1k => 1000 bytes</span>
+<span class="token comment" spellcheck="true"># 1kb => 1024 bytes</span>
+<span class="token comment" spellcheck="true"># 1m => 1000000 bytes</span>
+<span class="token comment" spellcheck="true"># 1mb => 1024*1024 bytes</span>
+<span class="token comment" spellcheck="true"># 1g => 1000000000 bytes</span>
+<span class="token comment" spellcheck="true"># 1gb => 1024*1024*1024 bytes</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># units are case insensitive so 1GB 1Gb 1gB are all the same.</span>
+</code></pre><h3 id="1-2-INCLUDES包含"><a href="#1-2-INCLUDES包含" class="headerlink" title="1.2 INCLUDES包含"></a>1.2 INCLUDES包含</h3><p>可以通过includes包含，redis.conf可以作为总闸，包含其他。</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true">################################### INCLUDES ###################################</span>
+
+<span class="token comment" spellcheck="true"># Include one or more other config files here.  This is useful if you</span>
+<span class="token comment" spellcheck="true"># have a standard template that goes to all Redis servers but also need</span>
+<span class="token comment" spellcheck="true"># to customize a few per-server settings.  Include files can include</span>
+<span class="token comment" spellcheck="true"># other files, so use this wisely.</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># Note that option "include" won't be rewritten by command "CONFIG REWRITE"</span>
+<span class="token comment" spellcheck="true"># from admin or Redis Sentinel. Since Redis always uses the last processed</span>
+<span class="token comment" spellcheck="true"># line as value of a configuration directive, you'd better put includes</span>
+<span class="token comment" spellcheck="true"># at the beginning of this file to avoid overwriting config change at runtime.</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># If instead you are interested in using includes to override configuration</span>
+<span class="token comment" spellcheck="true"># options, it is better to use include as the last line.</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># include /path/to/local.conf</span>
+<span class="token comment" spellcheck="true"># include /path/to/other.conf</span>
+</code></pre><h3 id="1-3-NETWORK网络"><a href="#1-3-NETWORK网络" class="headerlink" title="1.3 NETWORK网络"></a>1.3 NETWORK网络</h3><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 开启只能本机访问</span>
+<span class="token attr-name">bind</span> <span class="token attr-value">127.0.0.1 -::1</span>
+<span class="token comment" spellcheck="true"># 保护模式</span>
+<span class="token attr-name">protected-mode</span> <span class="token attr-value">yes</span>
+<span class="token comment" spellcheck="true"># http端口</span>
+<span class="token attr-name">port</span> <span class="token attr-value">6379</span>
+<span class="token comment" spellcheck="true"># 设置tcp的backlog，backlog其实是一个连接队列，backlog队列总和=未完成三次握手队列+已经完成三次握手队列。</span>
+<span class="token comment" spellcheck="true"># 在高并发环境下你需要一个高backlog值来避免慢客户端连接问题。</span>
+<span class="token comment" spellcheck="true"># 注意linux内核会将这个值减小到/proc/sys/net/core/somaxconn的值，所以需要确认增大somaxconn和tcp_max_syn_backing两个值来达到想要的效果。</span>
+<span class="token attr-name">tcp-backlog</span> <span class="token attr-value">511</span>
+<span class="token comment" spellcheck="true"># 超时关闭连接, 0不关闭</span>
+<span class="token attr-name">timeout</span> <span class="token attr-value">0</span>
+<span class="token comment" spellcheck="true"># 心跳机制！！！ 单位为秒，如果设置为0，则不会进行Keepalive检测，建议设置成60</span>
+<span class="token attr-name">tcp-keepalive</span> <span class="token attr-value">300</span>
+</code></pre><h3 id="1-4-GENERAL通用"><a href="#1-4-GENERAL通用" class="headerlink" title="1.4 GENERAL通用"></a>1.4 GENERAL通用</h3><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 守护线程启动</span>
+<span class="token attr-name">daemonize</span> <span class="token attr-value"> no</span>
+<span class="token comment" spellcheck="true"># 进程管道文件</span>
+<span class="token attr-name">pidfile</span> <span class="token attr-value">/var/run/redis_6379.pid</span>
+<span class="token comment" spellcheck="true"># 日志级别 debug verbose notice warning; 级别越高，日志越少</span>
+<span class="token comment" spellcheck="true"># 生产模式 warning</span>
+<span class="token attr-name">loglevel</span> <span class="token attr-value">notice</span>
+<span class="token comment" spellcheck="true"># 日志文件名称</span>
+<span class="token attr-name">logfile</span> <span class="token attr-value">""</span>
+<span class="token comment" spellcheck="true"># 是否把日志输出到syslog中</span>
+<span class="token attr-name">syslog-enabled</span> <span class="token attr-value">no</span>
+<span class="token comment" spellcheck="true"># 指定syslog里的日志标志</span>
+<span class="token attr-name">syslog-ident</span> <span class="token attr-value">redis</span>
+<span class="token comment" spellcheck="true"># 指定syslog设备，值可以是user或local0-local7 , 默认0</span>
+<span class="token attr-name">syslog-facility</span> <span class="token attr-value">local0</span>
+<span class="token comment" spellcheck="true"># 默认16个库</span>
+<span class="token attr-name">databases</span> <span class="token attr-value">16</span>
+</code></pre><h3 id="1-5-SNAPSHOTTING快照"><a href="#1-5-SNAPSHOTTING快照" class="headerlink" title="1.5 SNAPSHOTTING快照"></a>1.5 SNAPSHOTTING快照</h3><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># save 秒钟  写操作次数</span>
+<span class="token attr-name">save</span> <span class="token attr-value">&lt;seconds> &lt;changes></span>
+<span class="token comment" spellcheck="true"># 默认是yes，如果配置成no，表示不在乎数据不一致或者有其他的手段发现和控制。</span>
+<span class="token attr-name">stop-writes-on-bgsave-error</span> <span class="token attr-value">yes</span>
+<span class="token comment" spellcheck="true"># rdbcompression：对于存储到磁盘中的快照，可以设置是否进行压缩存储。如果是的话，redis会采用LZF算法进行压缩。</span>
+<span class="token comment" spellcheck="true"># 如果不想消耗CPU来进行压缩的话，可以设置为no关闭此功能。默认是yes</span>
+<span class="token attr-name">rdbcompression</span> <span class="token attr-value">yes</span>
+<span class="token comment" spellcheck="true"># rdbchecksum：在存储快照后，还可以让redis使用CRC64算法来进行数据校验，但是这样做会增加大约10%的性能消耗;</span>
+<span class="token comment" spellcheck="true"># 如果希望获取到最大的性能提升，可以关闭此功能。默认是yes</span>
+<span class="token attr-name">rdbchecksum</span> <span class="token attr-value">yes</span>
+<span class="token comment" spellcheck="true"># 快照文件名, 默认dump.rdb, 建议以dump-端口.rdb命名</span>
+<span class="token attr-name">dbfilename</span> <span class="token attr-value">dump.rdb</span>
+<span class="token comment" spellcheck="true"># 数据备份文件的目录; 日志文件的默认目录等</span>
+<span class="token attr-name">dir</span> <span class="token attr-value">./</span>
+</code></pre><h3 id="1-6-REPLICATION复制"><a href="#1-6-REPLICATION复制" class="headerlink" title="1.6 REPLICATION复制"></a>1.6 REPLICATION复制</h3><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 关闭保护模式,用于公网访问</span>
+protected-mode no
+<span class="token comment" spellcheck="true"># 端口</span>
+port 6380
+<span class="token comment" spellcheck="true"># 开启集群模式</span>
+cluster-enabled <span class="token function">yes</span>
+cluster-config-file nodes-6380.conf
+cluster-node-timeout 5000
+<span class="token comment" spellcheck="true"># 后台启动</span>
+daemonize <span class="token function">yes</span>
+pidfile /var/run/redis_6380.pid
+logfile <span class="token string">"6380.log"</span>
+<span class="token comment" spellcheck="true">#dir /redis/data</span>
+<span class="token comment" spellcheck="true"># 此处绑定ip可以是内网ip和本机ip, 也可以直接注释掉该项</span>
+<span class="token comment" spellcheck="true"># bind 127.0.0.1</span>
+<span class="token comment" spellcheck="true"># 用于连接主节点密码</span>
+masterauth 123456
+<span class="token comment" spellcheck="true"># 设置redis密码, 各个节点请保持密码一致</span>
+requirepass 123456
+</code></pre><h3 id="1-7-SECURITY安全"><a href="#1-7-SECURITY安全" class="headerlink" title="1.7 SECURITY安全"></a>1.7 SECURITY安全</h3><p>访问密码的查看, 设置和取消.</p><pre class="language-properties"><code class="language-properties"><span class="token attr-name">requirepass</span> <span class="token attr-value">foobared</span>
+</code></pre><p>客户端操作密码</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -p 6379</span>
+127.0.0.1:6379<span class="token operator">></span> <span class="token function">ping</span> <span class="token comment" spellcheck="true"># 测试连通性</span>
+PONG
+127.0.0.1:6379<span class="token operator">></span> config get requirepass  <span class="token comment" spellcheck="true"># 查看密码</span>
+1<span class="token punctuation">)</span> <span class="token string">"requirepass"</span>
+2<span class="token punctuation">)</span> <span class="token string">""</span> <span class="token comment" spellcheck="true"># 默认没有设置密码</span>
+
+127.0.0.1:6379<span class="token operator">></span> config <span class="token keyword">set</span> requirepass <span class="token string">"123456"</span> <span class="token comment" spellcheck="true"># 设置密码</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token function">ping</span> <span class="token comment" spellcheck="true"># 再次测试连通性</span>
+<span class="token punctuation">(</span>error<span class="token punctuation">)</span> NOAUTH Authentication required. <span class="token comment" spellcheck="true"># 没有授权, 需要密码授权</span>
+127.0.0.1:6379<span class="token operator">></span> config get requirepass 
+<span class="token punctuation">(</span>error<span class="token punctuation">)</span> NOAUTH Authentication required.
+127.0.0.1:6379<span class="token operator">></span> auth 123456 <span class="token comment" spellcheck="true"># 密码授权</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> config get requirepass <span class="token comment" spellcheck="true"># 查看密码</span>
+1<span class="token punctuation">)</span> <span class="token string">"requirepass"</span>
+2<span class="token punctuation">)</span> <span class="token string">"123456"</span>
+127.0.0.1:6379<span class="token operator">></span> <span class="token function">ping</span> <span class="token comment" spellcheck="true"># 测试连通性</span>
+PONG
+127.0.0.1:6379<span class="token operator">></span> config get <span class="token function">dir</span> <span class="token comment" spellcheck="true"># 查看redis启动目录</span>
+1<span class="token punctuation">)</span> <span class="token string">"dir"</span>
+2<span class="token punctuation">)</span> <span class="token string">"/usr/local/redis-6.x"</span>
+</code></pre><h3 id="1-8-LIMITS限制"><a href="#1-8-LIMITS限制" class="headerlink" title="1.8 LIMITS限制"></a>1.8 LIMITS限制</h3><p>设置redis同时可以与多少个客户端进行连接。默认情况下为10000个客户端。当你无法设置进程文件句柄限制时，redis会设置为当前的文件句柄限制值减去32，因为redis会为自身内部处理逻辑留一些句柄出来。如果达到了此限制，redis则会拒绝新的连接请求，并且向这些连接请求方发出“max number of clients reached”以作回应。</p><pre class="language-properties"><code class="language-properties"><span class="token attr-name">maxclients</span> <span class="token attr-value">10000</span>
+</code></pre><p>设置redis可以使用的内存量。一旦到达内存使用上限，redis将会试图移除内部数据，移除规则可以通过<code>maxmemory-policy</code>来指定。如果redis无法根据移除规则来移除内存中的数据，或者设置了“不允许移除”，那么redis则会针对那些需要申请内存的指令返回错误信息，比如SET、LPUSH等。</p><p>但是对于无内存申请的指令，仍然会正常响应，比如GET等。如果你的redis是master redis（说明你的redis有slave redis），那么在设置内存使用上限时，需要在系统中留出一些内存空间给同步队列缓存，只有在你设置的是“不移除”的情况下，才不用考虑这个因素.</p><pre class="language-properties"><code class="language-properties"><span class="token attr-name">maxmemory</span> <span class="token attr-value">&lt;bytes></span>
+</code></pre><p>内存淘汰策略</p><ul><li>volatile-lru：使用LRU算法移除key，从设置了过期时间的key中最近最少使用的数据淘汰.</li><li>allkeys-lru：使用LRU算法移除key， 从所有key中挑选最近最少使用的数据淘汰.</li><li>volatile-lfu : 使用LFU算法移除key，从设置了过期时间的key中挑选最近使用次数最少的数据淘汰</li><li>allkeys-lfu : 使用LFU算法移除key，从所有key中挑选最近使用次数最少的数据淘汰</li><li>volatile-random：从设置了过期时间的key中移除随机的key.</li><li>allkeys-random：从所有key中随机移除key.</li><li>volatile-ttl：移除那些TTL值最小的key，即那些即将要过期的key</li><li>noeviction：不进行移除。针对写操作，只是返回错误信息</li></ul><pre class="language-properties"><code class="language-properties"><span class="token attr-name">maxmemory-policy</span> <span class="token attr-value">noeviction</span>
+</code></pre><p>设置样本数量，LRU算法和最小TTL算法都并非是精确的算法，而是估算值，所以你可以设置样本的大小，redis默认会检查这么多个key并选择其中LRU的那个.</p><pre class="language-properties"><code class="language-properties"><span class="token attr-name">maxmemory-samples</span> <span class="token attr-value">5</span>
+</code></pre><h3 id="1-9-APPEND-ONLY-MODE追加"><a href="#1-9-APPEND-ONLY-MODE追加" class="headerlink" title="1.9 APPEND ONLY MODE追加"></a>1.9 APPEND ONLY MODE追加</h3><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># yes开启aof配置, 默认no </span>
+<span class="token attr-name">appendonly</span> <span class="token attr-value">no</span>
+<span class="token comment" spellcheck="true"># aof备份文件名</span>
+<span class="token attr-name">appendfilename</span> <span class="token attr-value">"appendonly.aof"</span>
+<span class="token comment" spellcheck="true"># appendfsync always|everysec|no  aof持久化策略</span>
+<span class="token comment" spellcheck="true"># always 同步持久化，每次发生数据变更会立即记录到磁盘，性能较差但数据完整性比较好</span>
+<span class="token comment" spellcheck="true"># everysec 出厂默认推荐，异步操作，每秒记录，如果一秒内宕机，有数据丢失</span>
+<span class="token comment" spellcheck="true"># no 不aof备份</span>
+<span class="token attr-name">appendfsync</span> <span class="token attr-value">everysec</span>
+<span class="token comment" spellcheck="true"># 重写时是否可以运行Appendfsync，用默认no即可，保证数据安全性。</span>
+<span class="token attr-name">no-appendfsync-on-rewrite</span> <span class="token attr-value">no</span>
+<span class="token comment" spellcheck="true"># 设置重写的基准值</span>
+<span class="token attr-name">auto-aof-rewrite-percentage</span> <span class="token attr-value">100</span>
+<span class="token comment" spellcheck="true"># 设置重写的基准值</span>
+<span class="token attr-name">auto-aof-rewrite-min-size</span> <span class="token attr-value">64mb</span>
+</code></pre><h3 id="1-10-常见配置redis-conf介绍"><a href="#1-10-常见配置redis-conf介绍" class="headerlink" title="1.10 常见配置redis.conf介绍"></a>1.10 常见配置redis.conf介绍</h3><p>工作中遇到不会的可以按照这份常用配置进行查阅.</p><p>redis.conf 配置项说明如下：</p><p>(1). Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程</p><blockquote><p>daemonize no</p></blockquote><p>(2). 当Redis以守护进程方式运行时，Redis默认会把pid写入/var/run/redis.pid文件，可以通过pidfile指定</p><blockquote><p>pidfile /var/run/redis.pid</p></blockquote><p>(3). 指定Redis监听端口，默认端口为6379，作者在自己的一篇博文中解释了为什么选用6379作为默认端口，因为6379在手机按键上MERZ对应的号码，而MERZ取自意大利歌女Alessia Merz的名字</p><blockquote><p>port 6379</p></blockquote><p>(4). 绑定的主机地址</p><blockquote><p>bind 127.0.0.1</p></blockquote><p>(5).当 客户端闲置多长时间后关闭连接，如果指定为0，表示关闭该功能</p><blockquote><p>timeout 300</p></blockquote><p>(6). 指定日志记录级别，Redis总共支持四个级别：debug、verbose、notice、warning，默认为verbose</p><blockquote><p>loglevel verbose</p></blockquote><p>(7). 日志记录方式，默认为标准输出，如果配置Redis为守护进程方式运行，而这里又配置为日志记录方式为标准输出，则日志将会发送给/dev/null</p><blockquote><p>logfile stdout</p></blockquote><p>(8). 设置数据库的数量，默认数据库为0，可以使用SELECT<dbid>命令在连接上指定数据库id</dbid></p><blockquote><p>databases 16</p></blockquote><p>(9). 指定在多长时间内，有多少次更新操作，就将数据同步到数据文件，可以多个条件配合 <code>save &lt;seconds&gt; &lt;changes&gt;</code><br>Redis默认配置文件中提供了三个条件：</p><blockquote><p>save 900 1<br>save 300 10<br>save 60 10000<br>分别表示900秒（15分钟）内有1个更改，300秒（5分钟）内有10个更改以及60秒内有10000个更改。</p></blockquote><p>(10). 指定存储至本地数据库时是否压缩数据，默认为yes，Redis采用LZF压缩，如果为了节省CPU时间，可以关闭该选项，但会导致数据库文件变的巨大</p><blockquote><p>rdbcompression yes</p></blockquote><p>(11). 指定本地数据库文件名，默认值为dump.rdb</p><blockquote><p>dbfilename dump.rdb</p></blockquote><p>(12). 指定本地数据库存放目录</p><blockquote><p>dir ./</p></blockquote><p>(13). 设置当本机为slav服务时，设置master服务的IP地址及端口，在Redis启动时，它会自动从master进行数据同步</p><blockquote><p>slaveof<masterip><masterport></masterport></masterip></p></blockquote><p>(14). 当master服务设置了密码保护时，slav服务连接master的密码</p><blockquote><p>masterauth<master-password></master-password></p></blockquote><p>(15). 设置Redis连接密码，如果配置了连接密码，客户端在连接Redis时需要通过AUTH<password>命令提供密码，默认关闭</password></p><blockquote><p>requirepass foobared</p></blockquote><p>(16). 设置同一时间最大客户端连接数，默认无限制，Redis可以同时打开的客户端连接数为Redis进程可以打开的最大文件描述符数，如果设置 maxclients 0，表示不作限制。当客户端连接数到达限制时，Redis会关闭新的连接并向客户端返回max number of clients reached错误信息</p><blockquote><p>maxclients 128</p></blockquote><p>(17). 指定Redis最大内存限制，Redis在启动时会把数据加载到内存中，达到最大内存后，Redis会先尝试清除已到期或即将到期的Key，当此方法处理 后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis新的vm机制，会把Key存放内存，Value会存放在swap区</p><blockquote><p>maxmemory<bytes></bytes></p></blockquote><p>(18). 指定是否在每次更新操作后进行日志记录，Redis在默认情况下是异步的把数据写入磁盘，如果不开启，可能会在断电时导致一段时间内的数据丢失。因为 redis本身同步数据文件是按上面save条件来同步的，所以有的数据会在一段时间内只存在于内存中。默认为no</p><blockquote><p>appendonly no</p></blockquote><p>(19). 指定更新日志文件名，默认为appendonly.aof</p><blockquote><p>appendfilename appendonly.aof</p></blockquote><p>(20). 指定更新日志条件，共有3个可选值：<br>no：表示等操作系统进行数据缓存同步到磁盘（快）<br>always：表示每次更新操作后手动调用fsync()将数据写到磁盘（慢，安全）<br>everysec：表示每秒同步一次（折衷，默认值）</p><blockquote><p>appendfsync everysec</p></blockquote><p>(21). 指定是否启用虚拟内存机制，默认值为no，简单的介绍一下，VM机制将数据分页存放，由Redis将访问量较少的页即冷数据swap到磁盘上，访问多的页面由磁盘自动换出到内存中（在后面的文章我会仔细分析Redis的VM机制）</p><blockquote><p>vm-enabled no</p></blockquote><p>(22). 虚拟内存文件路径，默认值为/tmp/redis.swap，不可多个Redis实例共享</p><blockquote><p>vm-swap-file /tmp/redis.swap</p></blockquote><p>(23). 将所有大于vm-max-memory的数据存入虚拟内存,无论vm-max-memory设置多小,所有索引数据都是内存存储的(Redis的索引数据 就是keys),也就是说,当vm-max-memory设置为0的时候,其实是所有value都存在于磁盘。默认值为0</p><blockquote><p>vm-max-memory 0</p></blockquote><p>(24). Redis swap文件分成了很多的page，一个对象可以保存在多个page上面，但一个page上不能被多个对象共享，vm-page-size是要根据存储的 数据大小来设定的，作者建议如果存储很多小对象，page大小最好设置为32或者64bytes；如果存储很大大对象，则可以使用更大的page，如果不 确定，就使用默认值</p><blockquote><p>vm-page-size 32</p></blockquote><p>(25). 设置swap文件中的page数量，由于页表（一种表示页面空闲或使用的bitmap）是在放在内存中的，，在磁盘上每8个pages将消耗1byte的内存。</p><blockquote><p>vm-pages 134217728</p></blockquote><p>(26). 设置访问swap文件的线程数,最好不要超过机器的核数,如果设置为0,那么所有对swap文件的操作都是串行的，可能会造成比较长时间的延迟。默认值为4</p><blockquote><p>vm-max-threads 4</p></blockquote><p>(27). 设置在向客户端应答时，是否把较小的包合并为一个包发送，默认为开启</p><blockquote><p>glueoutputbuf yes</p></blockquote><p>(28). 指定在超过一定的数量或者最大的元素超过某一临界值时，采用一种特殊的哈希算法</p><blockquote><p>hash-max-zipmap-entries 64<br>hash-max-zipmap-value 512</p></blockquote><p>(29). 指定是否激活重置哈希，默认为开启（后面在介绍Redis的哈希算法时具体介绍）</p><blockquote><p>activerehashing yes</p></blockquote><p>(30). 指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件</p><blockquote><p>include /path/to/local.conf</p></blockquote><h2 id="2-Redis持久化"><a href="#2-Redis持久化" class="headerlink" title="2. Redis持久化"></a>2. Redis持久化</h2><h3 id="2-1-RDB"><a href="#2-1-RDB" class="headerlink" title="2.1 RDB"></a>2.1 RDB</h3><h4 id="2-1-1-RDB介绍"><a href="#2-1-1-RDB介绍" class="headerlink" title="2.1.1 RDB介绍"></a>2.1.1 RDB介绍</h4><p>RDB (Redis DataBase), 在指定的时间间隔内将内存中的数据集快照写入磁盘，也就是Snapshot快照，它恢复时将快照文件直接读到内存里。</p><p>Redis会单独创建（Fork）一个子进程来进行持久化，会先将数据写入到一个临时文件中，待持久化过程都结束了，再用这个临时文件替换上次持久化好的文件。整个过程中，主进程是不进行任何IO操作的，这就确保了极高的性能. RDB保存的是<code>dump.rdb</code>文件.</p><p>如果要进行大规模数据恢复，且对于数据恢复的完整性不是非常敏感，那RDB方式要比AOF方式更加的高效。RDB的缺点是最后一次持久化后的数据可能丢失。</p><p><code>Fork</code>的作用是复制一个与当前进程一样的进程。新进程的所有数据（变量、环境变量‘程序计数器等）数值都和原进程一致，但是是一个全新的进程，并作为原进程的子进程。</p><blockquote><p><strong>优势:</strong> 适合大规模的数据恢复; 对数据完整性和一致性要求不高;</p><p><strong>劣势:</strong> Fork的时候，内存中的数据被克隆了一份，大约2倍的膨胀性需要考虑。</p><p><strong>关闭rdb:</strong> 动态停止RDB保存规则的方法：redis-cli config set save “”</p></blockquote><h4 id="2-1-2-如何触发RDB"><a href="#2-1-2-如何触发RDB" class="headerlink" title="2.1.2 如何触发RDB"></a>2.1.2 如何触发RDB</h4><p>开放配置文件中默认的快照配置, 也可以修改自定义数值. 命令save或者是bgsave, 高版本的redis优化为bgsave指令实现. 可以自行查阅save和bgsave指令备份的区别.</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># save 秒钟  写操作次数</span>
+<span class="token attr-name">save</span> <span class="token attr-value">&lt;seconds> &lt;changes></span>
+</code></pre><p><strong>save和bgsave</strong></p><blockquote><p>save : 只管保存，其他不管，全部zuse</p><p>bgsave ：Redis会在后台异步进行快照操作，快照操作同时还可以响应客户端请求。可以通过lastsave命令获取最后一次成功执行快照的时间。</p></blockquote><p>在客户端也可以手动执行<code>save</code>进行备份, 将数据写入dump.rdb文件, 相当于commit操作.</p><p>执行<code>flushall</code>命令，也会产生dump.rdb文件，但里面是空的，无意义。</p><p><strong>如果恢复数据</strong></p><p>将备份文件（dump.rdb）移动到redis安装目录并启动服务即可. 使用<code>config get dir</code>获取redis安装目录.</p><p>冷拷贝后重新使用, 可以cp dump.rdb dump_new.rdb, 等晚上业务停用时进行数据恢复.</p><h4 id="2-1-3-客户端演示"><a href="#2-1-3-客户端演示" class="headerlink" title="2.1.3 客户端演示"></a>2.1.3 客户端演示</h4><p>不直接在原来配置上做修改, 防止配置错误无法恢复, 首先将<code>redis.conf</code>的复制一份到启动目录下, 修改下面的配置项, 假设为60s内写操作5次就触发rdb备份.</p><p>确保关闭了aof配置, 否则aof持久化数据也会生效, 并在重启redis时以aof方式恢复数据, 达不到rdb恢复数据的效果.</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 60s内写操作5次就触发rdb备份</span>
+<span class="token attr-name">save</span> <span class="token attr-value">60 5</span>
+<span class="token comment" spellcheck="true"># 关闭aof持久化</span>
+<span class="token attr-name">appendonly</span> <span class="token attr-value">no</span>
+</code></pre><p>如果之前启动过redis, 先删除原来的dump.rdb文件, 再启动redis服务. 然后连接redis客户端, 写入数据达到上面的触发要求.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vi redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true">#</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf </span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456 </span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> keys *
+<span class="token punctuation">(</span>empty array<span class="token punctuation">)</span>
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> name cysw <span class="token comment" spellcheck="true"># 写次数1</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> name sdfs <span class="token comment" spellcheck="true"># 写次数2</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> name panda <span class="token comment" spellcheck="true"># 写次数3</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> age 55 <span class="token comment" spellcheck="true"># 写次数4</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> age 345 <span class="token comment" spellcheck="true"># 写次数5</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> age 29 <span class="token comment" spellcheck="true"># 写次数6</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> keys *
+1<span class="token punctuation">)</span> <span class="token string">"age"</span>
+2<span class="token punctuation">)</span> <span class="token string">"name"</span>
+127.0.0.1:6379<span class="token operator">></span> SHUTDOWN <span class="token comment" spellcheck="true"># 模拟宕机, 关闭redis服务</span>
+not connected<span class="token operator">></span> <span class="token keyword">exit</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll</span>
+total 96
+-rw-r--r--. 1 root root     0 Apr  3 17:18 appendonly.aof <span class="token comment" spellcheck="true"># 因为关闭了aof配置, 文件大小为0</span>
+drwxr-xr-x. 2 root root   150 Jan 17 21:49 bin
+-rw-r--r--. 1 root root   117 Apr  3 17:20 dump.rdb  <span class="token comment" spellcheck="true"># 触发rdb备份后, 数据备份到dump.rdb文件中</span>
+-rwxr-xr-x. 1 root root 93754 Apr  3 17:19 redis.conf
+<span class="token comment" spellcheck="true"># 用redis-check-rdb命令检查dump.rdb</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-check-rdb dump.rdb</span>
+<span class="token punctuation">[</span>offset 0<span class="token punctuation">]</span> Checking RDB <span class="token function">file</span> dump.rdb
+<span class="token punctuation">[</span>offset 26<span class="token punctuation">]</span> AUX FIELD redis-ver <span class="token operator">=</span> <span class="token string">'6.2.6'</span>
+<span class="token punctuation">[</span>offset 40<span class="token punctuation">]</span> AUX FIELD redis-bits <span class="token operator">=</span> <span class="token string">'64'</span>
+<span class="token punctuation">[</span>offset 52<span class="token punctuation">]</span> AUX FIELD ctime <span class="token operator">=</span> <span class="token string">'1648977645'</span>
+<span class="token punctuation">[</span>offset 67<span class="token punctuation">]</span> AUX FIELD used-mem <span class="token operator">=</span> <span class="token string">'872144'</span>
+<span class="token punctuation">[</span>offset 83<span class="token punctuation">]</span> AUX FIELD aof-preamble <span class="token operator">=</span> <span class="token string">'0'</span>
+<span class="token punctuation">[</span>offset 85<span class="token punctuation">]</span> Selecting DB ID 0
+<span class="token punctuation">[</span>offset 117<span class="token punctuation">]</span> Checksum OK
+<span class="token punctuation">[</span>offset 117<span class="token punctuation">]</span> \o/ RDB looks OK<span class="token operator">!</span> \o/
+<span class="token punctuation">[</span>info<span class="token punctuation">]</span> 2 keys <span class="token function">read</span>  <span class="token comment" spellcheck="true"># 两个key</span>
+<span class="token punctuation">[</span>info<span class="token punctuation">]</span> 0 expires
+<span class="token punctuation">[</span>info<span class="token punctuation">]</span> 0 already expired
+</code></pre><p>现在重启redis服务, redis会以rdb方式恢复数据.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ps -ef | grep  redis</span>
+root       3215   3035  0 15:50 pts/1    00:00:00 <span class="token function">less</span> redis.conf
+root       3444   2977  0 17:21 pts/0    00:00:00 <span class="token function">grep</span> --color<span class="token operator">=</span>auto redis
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> keys *
+1<span class="token punctuation">)</span> <span class="token string">"name"</span>
+2<span class="token punctuation">)</span> <span class="token string">"age"</span>
+127.0.0.1:6379<span class="token operator">></span> get name
+<span class="token string">"panda"</span>
+127.0.0.1:6379<span class="token operator">></span> get age
+<span class="token string">"29"</span>
+</code></pre><h4 id="2-1-4-RDB总结"><a href="#2-1-4-RDB总结" class="headerlink" title="2.1.4 RDB总结"></a>2.1.4 RDB总结</h4><p>内存中的数据对象<code>---</code>rdbsave<code>---&gt;</code> 磁盘中的RDB文件</p><p>内存中的数据对象 <code>&lt;---</code>rdbLoad<code>---</code>磁盘中的RDB文件</p><p><strong>优点:</strong></p><ul><li><p>RDB是一个非常紧凑的文件.</p></li><li><p>在保存RDB文件时父进程唯一需要做的就是<code>fork</code>出一个子进程，接下来的工作全部由子进程来做，父进程不需要再做其他IO操作，所有RDB持久化方式可以最大化redis的性能。</p></li><li><p>与AOF相比，在恢复大的数据集的时候，RDB方式会更快一些。</p></li></ul><p><strong>缺点：</strong></p><ul><li><p>数据丢失风险大. 可能丢失最后一次备份时间之后写入的数据.</p></li><li><p>RDB需要经常fork子进程来保存数据集到硬盘上，当数据集比较大的时候，fork的过程是非常耗时的，可能导致Redis在一些毫秒级不能响应客户端请求。</p></li></ul><h3 id="2-2-AOF"><a href="#2-2-AOF" class="headerlink" title="2.2 AOF"></a>2.2 AOF</h3><h4 id="2-2-1-AOF介绍"><a href="#2-2-1-AOF介绍" class="headerlink" title="2.2.1 AOF介绍"></a>2.2.1 AOF介绍</h4><p>AOF(Append Only File), 以日志的形式来记录每个<code>写操作</code>，将Redis执行过的所有<code>写指令</code>记录下来（<code>读操作不记录</code>），只许追加文件但不可以改写文件，redis启动之初会读取该文件重新构建数据，换言之，redis重启的话根据日志文件的内容将<code>写指令</code>从前到后执行一次已完成数据的恢复工作。AOF保存的是appendonly.aof文件。</p><h4 id="2-2-2-AOF启动-修复-恢复"><a href="#2-2-2-AOF启动-修复-恢复" class="headerlink" title="2.2.2 AOF启动/修复/恢复"></a>2.2.2 AOF启动/修复/恢复</h4><p><strong>正常恢复</strong></p><p>在<code>redis.conf</code>配置文件中配置<code>appendonly yes</code>开启aof持久化, 使用默认每秒备份策略:</p><p><code>appendfsync everysec</code></p><p>如果之前启动过, 先删除redis安装目录下的appendonly.aof文件, 再重启redis服务会重新加载数据.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll </span>
+total 92
+drwxr-xr-x. 2 root root   150 Jan 17 21:49 bin
+-rwxr-xr-x. 1 root root 93745 Apr  3 21:06 redis.conf
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span>
+127.0.0.1:6379<span class="token operator">></span> keys * <span class="token comment" spellcheck="true"># db空的</span>
+<span class="token punctuation">(</span>empty array<span class="token punctuation">)</span>
+127.0.0.1:6379<span class="token operator">></span> config get <span class="token function">dir</span> <span class="token comment" spellcheck="true"># 查看redis安装目录</span>
+1<span class="token punctuation">)</span> <span class="token string">"dir"</span>
+2<span class="token punctuation">)</span> <span class="token string">"/usr/local/redis-6.x"</span>
+127.0.0.1:6379<span class="token operator">></span>
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> k1 v2
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> k2 v2
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> k3 v3
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> k4 v4
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> k5 v5
+OK
+127.0.0.1:6379<span class="token operator">></span> flushdb
+OK
+127.0.0.1:6379<span class="token operator">></span> SHUTDOWN <span class="token comment" spellcheck="true"># 模拟redis服务宕机</span>
+not connected<span class="token operator">></span> <span class="token keyword">exit</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll</span>
+total 100
+-rw-r--r--. 1 root root   185 Apr  3 21:07 appendonly.aof <span class="token comment" spellcheck="true"># 可以看到aof文件有大小</span>
+drwxr-xr-x. 2 root root   150 Jan 17 21:49 bin
+-rw-r--r--. 1 root root    92 Apr  3 21:07 dump.rdb <span class="token comment" spellcheck="true"># rdb文件也有大小,这个后面说</span>
+-rwxr-xr-x. 1 root root 93745 Apr  3 21:06 redis.conf
+</code></pre><p>查看备份的命令日志文件<code>appendonly.aof</code>, 可以看到文件中记录了写操作的命令.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat appendonly.aof</span>
+*2
+<span class="token variable">$6</span>
+SELECT
+<span class="token variable">$1</span>
+0
+*3
+<span class="token variable">$3</span>
+<span class="token keyword">set</span>
+<span class="token variable">$2</span>
+k1
+<span class="token variable">$2</span>
+v2
+*3
+<span class="token variable">$3</span>
+<span class="token keyword">set</span>
+<span class="token variable">$2</span>
+k2
+<span class="token variable">$2</span>
+v2
+*3
+<span class="token variable">$3</span>
+<span class="token keyword">set</span>
+<span class="token variable">$2</span>
+k3
+<span class="token variable">$2</span>
+v3
+*3
+<span class="token variable">$3</span>
+<span class="token keyword">set</span>
+<span class="token variable">$2</span>
+k4
+<span class="token variable">$2</span>
+v4
+*3
+<span class="token variable">$3</span>
+<span class="token keyword">set</span>
+<span class="token variable">$2</span>
+k5
+<span class="token variable">$2</span>
+v5
+*1
+<span class="token variable">$7</span>
+flushdb
+</code></pre><p>因为appendonly.aof文件最后的指令是flushdb, 所以宕机重启服务后恢复的数据也是空的.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> keys *
+<span class="token punctuation">(</span>empty array<span class="token punctuation">)</span>
+</code></pre><p>现在我们重新写入数据, 再次模拟宕机, 然后重启看是否可以恢复数据.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span>
+127.0.0.1:6379<span class="token operator">></span> keys * <span class="token comment" spellcheck="true"># 查看db中的key, 空的</span>
+<span class="token punctuation">(</span>empty array<span class="token punctuation">)</span>
+127.0.0.1:6379<span class="token operator">></span>
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> k1 v1 <span class="token comment" spellcheck="true"># 写操作1</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> k2 v2 <span class="token comment" spellcheck="true"># 写操作2</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> SHUTDOWN <span class="token comment" spellcheck="true"># 模拟宕机</span>
+not connected<span class="token operator">></span> <span class="token keyword">exit</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll </span>
+total 100
+-rw-r--r--. 1 root root   266 Apr  3 21:14 appendonly.aof <span class="token comment" spellcheck="true"># 可以看到aof文件大小266,变大了</span>
+drwxr-xr-x. 2 root root   150 Jan 17 21:49 bin
+-rw-r--r--. 1 root root   111 Apr  3 21:14 dump.rdb
+-rwxr-xr-x. 1 root root 93745 Apr  3 21:06 redis.conf
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> keys * <span class="token comment" spellcheck="true"># 上面重启redis服务后, 数据正常恢复成功</span>
+1<span class="token punctuation">)</span> <span class="token string">"k1"</span>
+2<span class="token punctuation">)</span> <span class="token string">"k2"</span>
+</code></pre><blockquote><p>注意: 运维人员可以将有数据的aof文件复制一份保存到对应目录（config get dir）, 让数据从aof文件中恢复.</p></blockquote><p><strong>异常恢复</strong></p><p>在生产环境中, 可能会出现网络延迟等现象导致redis写操作没有完成, appendonly.aof文件中记录的写命令就是不完整的, 那么redis宕机后能从异常的aof文件中恢复数据吗? 下面我们通过实操验证, 先在appendonly.aof文件末尾手动添加一条错误的写命令模拟异常文件.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># vim appendonly.aof</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+<span class="token comment" spellcheck="true"># 无法连接到redis服务器, 说明6379的redis服务没有启动成功</span>
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+not connected<span class="token operator">></span>
+</code></pre><p>从上面的验证结果可以看出, 如果appendonly.aof文件中出现错误命令, 是无法正常启动redis服务的. 可以通过官方提供的<code>redis-check-aof</code>命令对损坏的appendonly.aof文件进行修复, 也就是将错误的命令删除.</p><p><code>./bin/redis-check-aof --fix appendonly.aof</code></p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-check-aof --fix appendonly.aof</span>
+0x             11a: Expected to <span class="token function">read</span> 2 bytes, got 0 bytes
+AOF analyzed: size<span class="token operator">=</span>282, ok_up_to<span class="token operator">=</span>266, ok_up_to_line<span class="token operator">=</span>67, diff<span class="token operator">=</span>16
+This will shrink the AOF from 282 bytes, with 16 bytes, to 266 bytes
+Continue? <span class="token punctuation">[</span>y/N<span class="token punctuation">]</span>: y
+Successfully truncated AOF <span class="token comment" spellcheck="true"># 错误命令被成功删除</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># less appendonly.aof</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-server redis.conf</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> keys * <span class="token comment" spellcheck="true"># 修复aof文件后重启redis成功, 数据也恢复成功.</span>
+1<span class="token punctuation">)</span> <span class="token string">"k1"</span>
+2<span class="token punctuation">)</span> <span class="token string">"k2"</span>
+</code></pre><h4 id="2-2-3-AOF重写"><a href="#2-2-3-AOF重写" class="headerlink" title="2.2.3 AOF重写"></a>2.2.3 AOF重写</h4><p>AOF采用文件追加方式，文件会越来越大，为避免出现此种情况，新增了重写机制，当AOF文件的大小超过所设定的阈值时，Redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集。</p><p>可以使用命令: <code>bgrewriteaof</code></p><pre class="language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">></span> BGREWRITEAOF <span class="token comment" spellcheck="true"># 手动执行aof命令重写</span>
+Background append only <span class="token function">file</span> rewriting started
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">exit</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat appendonly.aof # 重写被做了啥处理,看不懂</span>
+REDIS0009▒      redis-ver6.2.6▒
+▒edis-bits▒@▒ctime▒<span class="token punctuation">)</span>▒Ibused-mem▒▒N
+aof-preamble▒▒▒k1v1k2v2▒R▒▒▒▒<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># xterm-256colorxterm-256color</span>
+-bash: xterm-256colorxterm-256color: <span class="token function">command</span> not found
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll</span>
+total 100
+-rw-r--r--. 1 root root   111 Apr  3 21:42 appendonly.aof <span class="token comment" spellcheck="true"># aof重写后, 文件大小减少了.</span>
+drwxr-xr-x. 2 root root   150 Jan 17 21:49 bin
+-rw-r--r--. 1 root root   111 Apr  3 21:22 dump.rdb
+-rwxr-xr-x. 1 root root 93745 Apr  3 21:06 redis.conf
+</code></pre><p><strong>重写原理</strong></p><p>AOF文件持续膨胀而过大时，会<code>fork</code>出一条新进程将文件重写（也是先写临时文件最后在rename），遍历新进程的内存中数据，每条记录有一条Set语句。重写aof文件的操作，并没有读取旧的aof文件，而是将整个内存中的数据库内容用命令的方式重写了一个新的aof文件，这点和快照有点类似。</p><p><strong>重写触发机制</strong></p><p>Redis会记录上次重写时的AOF大小，默认配置是当AOF文件大小是上次rewrite后大小的一倍且文件大于64M时触发。</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 设置重写的基准值, AOF文件大小达到上次rewrite后大小的一倍</span>
+<span class="token attr-name">auto-aof-rewrite-percentage</span> <span class="token attr-value">100</span>
+<span class="token comment" spellcheck="true"># 设置重写的基准值, AOF文件大小大于64MB时</span>
+<span class="token attr-name">auto-aof-rewrite-min-size</span> <span class="token attr-value">64mb</span>
+</code></pre><p><code>redis.conf</code>文件中有这么一段话, 大概意思就是: <strong>RDB和AOF可以共存，但是恢复的时候找的是AOF，如果AOF文件异常，可以通过<code>redis-check-aof</code>进行AOF修复。这也就明白了上面aof备份时, 也同时产生了RDB文件.</strong></p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># AOF and RDB persistence can be enabled at the same time without problems.</span>
+<span class="token comment" spellcheck="true"># If the AOF is enabled on startup Redis will load the AOF, that is the file</span>
+<span class="token comment" spellcheck="true"># with the better durability guarantees.</span>
+</code></pre><p>​</p><h4 id="2-2-4-AOF总结"><a href="#2-2-4-AOF总结" class="headerlink" title="2.2.4 AOF总结"></a>2.2.4 AOF总结</h4><p><img src="https://img-blog.csdnimg.cn/61ec6a98722c4259a3e128287143c11e.png#pic_left" alt="在这里插入图片描述"></p><p><strong>优点:</strong></p><ul><li><p>appendfsync always 同步持久化 每次发生数据变更会被立即记录到磁盘 性能较差但数据完整性比较好.</p></li><li><p>appendfsync everysec 异步操作 ，每秒记录 如果一秒内宕机，有数据丢失。</p></li><li><p>appendfsync no 从不同步</p></li><li><p>AOF文件是一个只进行追加的日志文件</p></li><li><p>Redis可以在AOF文件体积变得过大时，自动地在后台对AOF进行重写</p></li><li><p>AOF文件有序地保存了对数据执行的所有写入操作，这些写入操作以Redis协议的格式保存，因此AOF文件的内容非常容易被人读懂，对文件进行分析也很轻松。</p></li></ul><p><strong>缺点:</strong></p><ul><li>相同数据集的数据而言, aof文件体积要远大于rdb文件，恢复速度慢于rdb</li><li>根据所使用的fsync策略，AOF的速度可能会慢于RDB, 不同步时效率和RDB相同 。</li></ul><h2 id="3-Redis事务"><a href="#3-Redis事务" class="headerlink" title="3. Redis事务"></a>3. Redis事务</h2><p>可以一次执行多个命令，本质是一组命令的集合。一个事务中的所有命令都会序列化，按顺序地串行化执行而不会被其他命令插入，不许加塞。 也就是一个队列中，一次性、顺序性、排他性地执行一系列命令.</p><h3 id="3-1-Redis事务常用命令"><a href="#3-1-Redis事务常用命令" class="headerlink" title="3.1 Redis事务常用命令"></a>3.1 Redis事务常用命令</h3><p>DISCARD：取消事务，放弃执行事务块内的所有命令。</p><p>EXEC：执行所有事务块的命令。</p><p>MULTI：标记一个事务块的开始。</p><p>UNWATCH：取消WATCH命令对多有key的监视。</p><p>WATCH key [key……]：监视一个或多个key，如果在事务执行前该key被其他命令所改动，那么事务将打断。</p><h3 id="3-2-Redis事务三阶段"><a href="#3-2-Redis事务三阶段" class="headerlink" title="3.2 Redis事务三阶段"></a>3.2 Redis事务三阶段</h3><ul><li>开启：以<code>MULTI</code>开始一个事务</li><li>入队：将多个命令入队到事务中，接到这些命令并不会立即执行，而是放到等待执行的<code>事务队列</code>里面。</li><li>执行：由<code>EXEC</code>命令触发事务提交</li></ul><h3 id="3-4-Redis事务三特性"><a href="#3-4-Redis事务三特性" class="headerlink" title="3.4 Redis事务三特性"></a>3.4 Redis事务三特性</h3><ul><li>单独的隔离操作：事务中的所有命令都会被序列化、按顺序地执行。事务在执行的构成中，不会被其他客户端发送来的命令请求所打断。</li><li>没有隔离级别的概念：队列中的命令没有提交之前都不会实际的被执行，因为事务提交前任何指令都不会被实际执行，也就不存在“事务内的查询要看到事务里的更新，在事务外查询不能看到”这个让人万分头痛的问题。</li><li>不保证原子性：redis同一个事务中如果有一条命令执行失败，其后的命令仍然会被执行，没有回滚。</li></ul><h3 id="3-5-Redis事务演示"><a href="#3-5-Redis事务演示" class="headerlink" title="3.5 Redis事务演示"></a>3.5 Redis事务演示</h3><h4 id="3-5-1-正常放行"><a href="#3-5-1-正常放行" class="headerlink" title="3.5.1 正常放行"></a>3.5.1 正常放行</h4><pre class="language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">></span> multi
+OK
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k1 v1
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k2 v2
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> get k2
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k3 v3
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token function">exec</span>
+1<span class="token punctuation">)</span> OK
+2<span class="token punctuation">)</span> OK
+3<span class="token punctuation">)</span> <span class="token string">"v2"</span>
+4<span class="token punctuation">)</span> OK
+</code></pre><h4 id="3-5-2-取消事务"><a href="#3-5-2-取消事务" class="headerlink" title="3.5.2 取消事务"></a>3.5.2 取消事务</h4><pre class="language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">></span> multi
+OK
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k1 v1
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k2 22
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k3 33
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> discard <span class="token comment" spellcheck="true"># 取消事务</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> get k2 <span class="token comment" spellcheck="true"># 事务被取消, k2还是原来的值</span>
+<span class="token string">"v2"</span>
+</code></pre><h4 id="3-5-3-全体连坐"><a href="#3-5-3-全体连坐" class="headerlink" title="3.5.3 全体连坐"></a>3.5.3 全体连坐</h4><pre class="language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">></span> multi
+OK
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k1 v1
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k2 v2
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k3 v4
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> getset k3 <span class="token comment" spellcheck="true"># 编译期错误, 会导致整个队列的命令执行失败</span>
+<span class="token punctuation">(</span>error<span class="token punctuation">)</span> ERR wrong number of arguments <span class="token keyword">for</span> <span class="token string">'getset'</span> <span class="token function">command</span>
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k4 v4
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token function">exec</span>
+<span class="token punctuation">(</span>error<span class="token punctuation">)</span> EXECABORT Transaction discarded because of previous errors.
+127.0.0.1:6379<span class="token operator">></span> get k4 <span class="token comment" spellcheck="true"># 因为上面的命令错误, 导致整个队列的命令执行失败</span>
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span>
+</code></pre><h4 id="3-5-4-冤有头债有主"><a href="#3-5-4-冤有头债有主" class="headerlink" title="3.5.4 冤有头债有主"></a>3.5.4 冤有头债有主</h4><pre class="language-bash"><code class="language-bash">127.0.0.1:6379<span class="token operator">></span> multi
+OK
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> incr k1 <span class="token comment" spellcheck="true"># 运行时异常, k1是非数字字符串, 不能计算</span>
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k2 22
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k3 33
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> k4 v4
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> get k4
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token function">exec</span>
+1<span class="token punctuation">)</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> ERR value is not an integer or out of range
+2<span class="token punctuation">)</span> OK
+3<span class="token punctuation">)</span> OK
+4<span class="token punctuation">)</span> OK
+5<span class="token punctuation">)</span> <span class="token string">"v4"</span>
+127.0.0.1:6379<span class="token operator">></span> get k4 <span class="token comment" spellcheck="true"># 上面的异常, 命令没有语法错误, 队列中其他命令正常执行</span>
+<span class="token string">"v4"</span>
+</code></pre><h4 id="3-5-5-watch监控"><a href="#3-5-5-watch监控" class="headerlink" title="3.5.5 watch监控"></a>3.5.5 watch监控</h4><p>在学习watch监控之前, 我们先来了解一下<code>悲观锁/乐观锁</code>相关知识.</p><p><strong>悲观锁</strong></p><p>顾名思义，每次去拿数据的时候都被认为别人<code>会修改</code>，所以每次在拿数据的时候都会被锁上，这样别人想拿这个数据就会block直到它拿到锁，传统的关系型数据库里边就用到了很多这种锁机制，比如行锁、表锁等，读锁、写锁等，都是在做操作之前先锁上。</p><p><strong>乐观锁</strong></p><p>每次去拿数据的时候都认为别人<code>不会修改</code>，<strong>所以不会上锁</strong>，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用<strong>版本号, CAS等机制</strong>。</p><p><strong>CAS机制</strong></p><p>CAS(Compare And Swap), 比较并替换. CAS属于乐观锁，乐观地认为程序中的并发情况不那么严重，所以让线程不断去尝试更新, 直到成功。</p><p>CAS机制当中使用了3个基本操作数：内存地址V，旧的预期值A，要修改的新值B。</p><p>更新一个变量的时候，只有当变量的预期值A和内存地址V当中的实际值相同时，才会将内存地址V对应的值修改为新值B。</p><p><strong>CAS的缺点</strong></p><p>(1). CPU开销较大<br>在并发量比较高的情况下，如果许多线程反复尝试更新某一个变量，却又一直更新不成功，循环往复，会给CPU带来很大的压力。</p><p>(2). 不能保证代码块的原子性<br>CAS机制所保证的只是一个变量的原子性操作，而不能保证整个代码块的原子性。比如需要保证3个变量共同进行原子性的更新，就不得不使用Synchronized了。</p><p>扣减余额操作, 无加塞篡改，先监控再开启multi，保证两笔金额变动在同一个事务内.</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 客户端1</span>
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> balance 100 <span class="token comment" spellcheck="true"># 余额</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> debt 0 <span class="token comment" spellcheck="true"># 消费合计</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> WATCH balance
+OK
+127.0.0.1:6379<span class="token operator">></span> MULTI <span class="token comment" spellcheck="true"># 开启事务</span>
+OK
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> DECRBY balance 20
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> INCRBY debt 20
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token function">exec</span>
+<span class="token punctuation">(</span>nil<span class="token punctuation">)</span>
+127.0.0.1:6379<span class="token operator">></span> get balance
+<span class="token string">"80"</span>
+127.0.0.1:6379<span class="token operator">></span> get debt
+<span class="token string">"20"</span>
+</code></pre><p>有加塞篡改: 被监控的数据, 在事务执行过程中, 其他客户端修改了被监控的数据.</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 客户端1</span>
+127.0.0.1:6379<span class="token operator">></span> WATCH balance <span class="token comment" spellcheck="true"># 监控balance</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> MULTI <span class="token comment" spellcheck="true"># 开启事务</span>
+OK
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> DECRBY balance 20 <span class="token comment" spellcheck="true"># 余额扣减20</span>
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> INCRBY debt 20 <span class="token comment" spellcheck="true"># 消费记账增加20</span>
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> EXEC <span class="token comment" spellcheck="true"># 提交事务失败, 因为在提交事务之前, 客户端2修改了被监控的balance</span>
+<span class="token punctuation">(</span>error<span class="token punctuation">)</span> EXECABORT Transaction discarded because of previous errors.
+127.0.0.1:6379<span class="token operator">></span> get balance <span class="token comment" spellcheck="true"># 查询balance已经被客户端2修改</span>
+<span class="token string">"800"</span>
+</code></pre><p>客户端2, 在客户端1开启对balance的监控后, 在客户端1事务提交之前, 修改balance值为800.</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 客户端2</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> get balance
+<span class="token string">"80"</span>
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> balance 800 <span class="token comment" spellcheck="true"># 修改balance值为800.</span>
+OK
+</code></pre><p>一定要取消监控后或者没有其他客户端修改被监控的key, 事务才能提交成功.</p><p>一旦执行了exec，之前加的监控锁watch都会被取消掉.</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 客户端1</span>
+127.0.0.1:6379<span class="token operator">></span> WATCH balance <span class="token comment" spellcheck="true"># 监控balance</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> <span class="token keyword">set</span> balance 500 <span class="token comment" spellcheck="true"># 修改balance</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> get balance 
+<span class="token string">"500"</span>
+127.0.0.1:6379<span class="token operator">></span> UNWATCH <span class="token comment" spellcheck="true"># 取消监控balance</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> WATCH balance <span class="token comment" spellcheck="true"># 再次监控balance</span>
+OK
+127.0.0.1:6379<span class="token operator">></span> MULTI <span class="token comment" spellcheck="true"># 开启事务</span>
+OK
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> balance 80
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> <span class="token keyword">set</span> debt 20
+QUEUED
+127.0.0.1:6379<span class="token punctuation">(</span>TX<span class="token punctuation">)</span><span class="token operator">></span> EXEC <span class="token comment" spellcheck="true"># 提交事务</span>
+1<span class="token punctuation">)</span> OK
+2<span class="token punctuation">)</span> OK
+<span class="token comment" spellcheck="true"># 客户端2, 查询到balance是客户端1修改后的80</span>
+127.0.0.1:6379<span class="token operator">></span> get balance
+<span class="token string">"80"</span>
+</code></pre><p><strong>总结</strong></p><p>watch指令，类似乐观锁，事务提交时，如果Key的值已经被别的客户端改变，比如某个list已经被别的客户端push/pop过了，整个事务队列都不会被执行。</p><p>通过WATCH命令在事务执行之前监控了多个keys，倘若在WATCH之后有任何key的值的变化，EXEC命令执行的事务都将被放弃，同时返回Nullmulti-bulk应答以通知调用者事务执行失败。</p><h2 id="4-Redis的发布订阅"><a href="#4-Redis的发布订阅" class="headerlink" title="4. Redis的发布订阅"></a>4. Redis的发布订阅</h2><h3 id="4-1-介绍"><a href="#4-1-介绍" class="headerlink" title="4.1 介绍"></a>4.1 介绍</h3><p>进程间的一种消息通信模式：发送者（publish）发送消息，订阅者（subscribe）接受消息。</p><p>下图展示了频道channel1, 以及订阅这个频道的三个客户端: client1, client2 和 client5 之间的关系.</p><p><img src="https://img-blog.csdnimg.cn/049d741bbf074db2965b7ab5ca141c72.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="发布订阅"></p><p>当有新消息通过publish命令发送给频道channel1时, 这个消息就会被发送给订阅它的三个客户端.</p><p><img src="https://img-blog.csdnimg.cn/0ab7c706ec3e4342a97da5faf09bb75d.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_18,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="发布订阅"></p><h3 id="4-2-常用命令"><a href="#4-2-常用命令" class="headerlink" title="4.2 常用命令"></a>4.2 常用命令</h3><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 订阅给定的一个或多个频道的信息</span>
+subscribe channel <span class="token punctuation">[</span>channel2 <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 订阅一个或多个符合给定模式的频道</span>
+psubscribe pattern <span class="token punctuation">[</span>pattern2 <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 将信息发送到指定的频道</span>
+publish channel message
+<span class="token comment" spellcheck="true"># 退订给指定的频道</span>
+unsubscribe channel <span class="token punctuation">[</span>channel2 <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 退订所有给定模式的频道</span>
+punsubscribe pattern <span class="token punctuation">[</span>pattern2 <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</code></pre><h3 id="4-3-案例"><a href="#4-3-案例" class="headerlink" title="4.3 案例"></a>4.3 案例</h3><p><strong>先订阅后发布才能收到信息</strong></p><p>可以一次性订阅多个，SUBSCRIBE c1 c2 c3</p><p>消息发布，PUBLISH c2 hello-redis</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 订阅消息的客户端</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> SUBSCRIBE c1 c2 c3
+Reading messages<span class="token punctuation">..</span>. <span class="token punctuation">(</span>press Ctrl-C to quit<span class="token punctuation">)</span>
+1<span class="token punctuation">)</span> <span class="token string">"subscribe"</span>
+2<span class="token punctuation">)</span> <span class="token string">"c1"</span>
+3<span class="token punctuation">)</span> <span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+1<span class="token punctuation">)</span> <span class="token string">"subscribe"</span>
+2<span class="token punctuation">)</span> <span class="token string">"c2"</span>
+3<span class="token punctuation">)</span> <span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 2
+1<span class="token punctuation">)</span> <span class="token string">"subscribe"</span>
+2<span class="token punctuation">)</span> <span class="token string">"c3"</span>
+3<span class="token punctuation">)</span> <span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 3
+<span class="token comment" spellcheck="true"># 收到发布的消息</span>
+1<span class="token punctuation">)</span> <span class="token string">"message"</span>
+2<span class="token punctuation">)</span> <span class="token string">"c1"</span>
+3<span class="token punctuation">)</span> <span class="token string">"hello-redis"</span>
+1<span class="token punctuation">)</span> <span class="token string">"message"</span>
+2<span class="token punctuation">)</span> <span class="token string">"c2"</span>
+3<span class="token punctuation">)</span> <span class="token string">"hello2-redis"</span>
+1<span class="token punctuation">)</span> <span class="token string">"message"</span>
+2<span class="token punctuation">)</span> <span class="token string">"c3"</span>
+3<span class="token punctuation">)</span> <span class="token string">"hello3-redis"</span>
+</code></pre><p>发布消息</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 发布消息的客户端</span>
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-cli -a 123456</span>
+Warning: Using a password with <span class="token string">'-a'</span> or <span class="token string">'-u'</span> option on the <span class="token function">command</span> line interface may not be safe.
+127.0.0.1:6379<span class="token operator">></span> PUBLISH c1 hello-redis
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127.0.0.1:6379<span class="token operator">></span> PUBLISH c2 hello2-redis
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+127.0.0.1:6379<span class="token operator">></span> PUBLISH c3 hello3-redis
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> 1
+</code></pre><p>订阅多个，通配符*，PSUBSCRIBE new*</p><p>收到消息，PUBLISH new1 hello1</p><p>这里就不演示了, 和上面的操作一样, 我是使用的redis-6.x的版本, 没有起到通配符的效果, 把new*当作一个频道了.</p><h2 id="5-Redis的主从复制（Master-Slave）"><a href="#5-Redis的主从复制（Master-Slave）" class="headerlink" title="5. Redis的主从复制（Master/Slave）"></a>5. Redis的主从复制（Master/Slave）</h2><h3 id="5-1-介绍"><a href="#5-1-介绍" class="headerlink" title="5.1 介绍"></a>5.1 介绍</h3><p>主从复制，主机数据更新后根据配置和策略，自动同步到备机的master/slver机制，Master以写为主，Slave以读为主。</p><p>可以进行读写分离, 容灾恢复等功能的实现.</p><h3 id="5-2-主从复制原理"><a href="#5-2-主从复制原理" class="headerlink" title="5.2 主从复制原理"></a>5.2 主从复制原理</h3><ul><li>Master接到命令启动后台的存盘进程，同时收集所有接收到的用于修改数据集命令，在后台进程执行完毕之后，master将传送整个数据文件到slave，以完成一次完全同步。</li><li>全量控制：slave服务在接收到master的数据库文件数据后，将其存盘并加载到内存中。</li><li>增量控制：master继续将新的所有收集到的修改命令一次传给slave，完成同步。</li><li>遇到slave停机后, 只要是重新连接master，一次完全同步（全量复制）将被自动执行。</li></ul><h3 id="5-3-主从复制演示"><a href="#5-3-主从复制演示" class="headerlink" title="5.3 主从复制演示"></a>5.3 主从复制演示</h3><h4 id="5-3-1-一主二从"><a href="#5-3-1-一主二从" class="headerlink" title="5.3.1 一主二从"></a>5.3.1 一主二从</h4><p>从库配置：<code>slaveof master_IP master_port</code></p><p>slave每次与master断开之后，都需要重新连接，除非你配置进redis.conf文件.</p><p><code>Info replication</code> 命令可以查看当前服务的角色信息, 是主库还是从库.</p><p>现在先做一主二从的机器准备, 将<code>redis.conf</code>配置文件复制出来三份, 并修改相关的配置信息, 修改配置文件细节操作:</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># 关闭保护模式,用于公网访问</span>
+<span class="token attr-name">protected-mode</span> <span class="token attr-value">no</span>
+<span class="token comment" spellcheck="true"># 修改端口</span>
+<span class="token attr-name">port</span> <span class="token attr-value">6380</span>
+<span class="token comment" spellcheck="true"># 后台启动</span>
+<span class="token attr-name">daemonize</span> <span class="token attr-value">yes</span>
+<span class="token attr-name">pidfile</span> <span class="token attr-value">/var/run/redis_6380.pid</span>
+<span class="token comment" spellcheck="true"># 防止在其他目录启动,最好写绝对路径的文件名 /usr/local/redis-6.x/data/6380.log</span>
+<span class="token attr-name">logfile</span> <span class="token attr-value">"./data/6380.log"</span>
+<span class="token comment" spellcheck="true"># 此处绑定ip可以是内网ip和本机ip, 也可以直接注释掉该项</span>
+<span class="token comment" spellcheck="true"># bind 127.0.0.1</span>
+<span class="token comment" spellcheck="true"># 用于连接主节点密码</span>
+<span class="token attr-name">masterauth</span> <span class="token attr-value">123456</span>
+<span class="token comment" spellcheck="true"># 设置redis密码, 各个节点请保持密码一致</span>
+<span class="token attr-name">requirepass</span> <span class="token attr-value">123456</span>
+<span class="token comment" spellcheck="true"># 修改rdb文件名称</span>
+<span class="token attr-name">dbfilename</span> <span class="token attr-value">dump_6380.rdb</span>
+<span class="token comment" spellcheck="true"># 数据备份文件的目录; 日志文件的默认目录等; 防止在其他目录启动,最好写绝对路径</span>
+<span class="token attr-name">dir</span> <span class="token attr-value">/usr/local/redis-6.x/data</span>
+</code></pre><p>准备的配置文件</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># pwd</span>
+/usr/local/redis-6.x
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ll</span>
+total 376
+drwxr-xr-x. 2 root root   150 Jan 17 21:49 bin
+drwxr-xr-x. 2 root root   118 Apr  4 16:59 data
+-rwxr-xr-x. 1 root root 93807 Apr  4 17:04 redis6379.conf <span class="token comment" spellcheck="true"># 6379配置</span>
+-rwxr-xr-x. 1 root root 93807 Apr  4 17:05 redis6380.conf <span class="token comment" spellcheck="true"># 6380配置</span>
+-rwxr-xr-x. 1 root root 93807 Apr  4 17:05 redis6381.conf <span class="token comment" spellcheck="true"># 6381配置</span>
+-rwxr-xr-x. 1 root root 93745 Apr  3 21:06 redis.conf
+</code></pre><p>三台服务的配置修改完成后, 分别启动三台服务进行初始化操作, 并查看三台服务各自的角色和状态信息, 发现此时的三台服务都是master, 因为没有指定主从关系.<br><img src="https://img-blog.csdnimg.cn/df42dec6a44e48aa81fb710a7da66cad.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>现在分配主从关系, 6379为master, 6380, 6381为slave. 通过客户端执行命令 <code>slaveof 127.0.0.1 6379</code>; 再次查看三台服务的主从关系, 以及数据同步情况.<br><img src="https://img-blog.csdnimg.cn/eab89b97fbc74cf99238351152e58c0f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>查看master主机6379.log日志.</p><pre class="language-bash"><code class="language-bash">DB loaded from append only file: 0.001 seconds
+5122:M 04 Apr 2022 18:02:31.255 * Ready to accept connections
+5122:M 04 Apr 2022 18:03:20.478 * Replica 127.0.0.1:6380 asks <span class="token keyword">for</span> synchronization  <span class="token comment" spellcheck="true"># slave从机6380向master主机请求数据同步</span>
+5122:M 04 Apr 2022 18:03:20.478 * Partial resynchronization not accepted: Replication ID mismatch <span class="token punctuation">(</span>Replica asked <span class="token keyword">for</span> <span class="token string">'39ab3c51e0304f13d9738e798332df54cc604a48'</span>, my replication IDs are <span class="token string">'7b7c05d015af0b045eb1f22c505464ffb51bb3ea'</span> and <span class="token string">'0000000000000000000000000000000000000000'</span><span class="token punctuation">)</span>
+5122:M 04 Apr 2022 18:03:20.478 * Replication backlog created, my new replication IDs are <span class="token string">'47715abc4fa6f05dbfacd1befe65bbab07e62b95'</span> and <span class="token string">'0000000000000000000000000000000000000000'</span>
+5122:M 04 Apr 2022 18:03:20.478 * Starting BGSAVE <span class="token keyword">for</span> SYNC with target: disk
+5122:M 04 Apr 2022 18:03:20.510 * Background saving started by pid 5143
+5143:C 04 Apr 2022 18:03:20.513 * DB saved on disk
+5143:C 04 Apr 2022 18:03:20.514 * RDB: 4 MB of memory used by copy-on-write
+5122:M 04 Apr 2022 18:03:20.535 * Background saving terminated with success
+5122:M 04 Apr 2022 18:03:20.535 * Synchronization with replica 127.0.0.1:6380 succeeded <span class="token comment" spellcheck="true"># master主机同步数据到6380从机成功</span>
+5122:M 04 Apr 2022 18:03:27.140 * Replica 127.0.0.1:6381 asks <span class="token keyword">for</span> synchronization  <span class="token comment" spellcheck="true"># slave从机6381向master主机请求数据同步</span>
+5122:M 04 Apr 2022 18:03:27.141 * Partial resynchronization not accepted: Replication ID mismatch <span class="token punctuation">(</span>Replica asked <span class="token keyword">for</span> <span class="token string">'6e958e46e653bf8aae144d6f45faff64cd675e00'</span>, my replication IDs are <span class="token string">'47715abc4fa6f05dbfacd1befe65bbab07e62b95'</span> and <span class="token string">'0000000000000000000000000000000000000000'</span><span class="token punctuation">)</span>
+5122:M 04 Apr 2022 18:03:27.141 * Starting BGSAVE <span class="token keyword">for</span> SYNC with target: disk
+5122:M 04 Apr 2022 18:03:27.144 * Background saving started by pid 5146
+5146:C 04 Apr 2022 18:03:27.149 * DB saved on disk
+5146:C 04 Apr 2022 18:03:27.150 * RDB: 4 MB of memory used by copy-on-write
+5122:M 04 Apr 2022 18:03:27.189 * Background saving terminated with success 
+5122:M 04 Apr 2022 18:03:27.189 * Synchronization with replica 127.0.0.1:6381 succeeded <span class="token comment" spellcheck="true"># master主机同步数据到6381从机成功</span>
+</code></pre><p>查看slave从机6380.log的日志</p><pre class="language-bash"><code class="language-bash">5130:S 04 Apr 2022 18:03:20.477 * Connecting to MASTER 127.0.0.1:6379 <span class="token comment" spellcheck="true"># 6380从机连接master主机(6379)</span>
+5130:S 04 Apr 2022 18:03:20.477 * MASTER <span class="token operator">&lt;</span>-<span class="token operator">></span> REPLICA <span class="token function">sync</span> started <span class="token comment" spellcheck="true"># 复制同步开始</span>
+5130:S 04 Apr 2022 18:03:20.477 * REPLICAOF 127.0.0.1:6379 enabled <span class="token punctuation">(</span>user request from <span class="token string">'id=3 addr=127.0.0.1:36190 laddr=127.0.0.1:6380 fd=9 name= age=31 idle=0 flags=N db=0 sub=0 psub=0 multi=-1 qbuf=42 qbuf-free=40912 argv-mem=20 obl=0 oll=0 omem=0 tot-mem=61484 events=r cmd=slaveof user=default redir=-1'</span><span class="token punctuation">)</span>
+5130:S 04 Apr 2022 18:03:20.477 * Non blocking connect <span class="token keyword">for</span> SYNC fired the event.
+5130:S 04 Apr 2022 18:03:20.477 * Master replied to PING, replication can continue<span class="token punctuation">..</span>.
+5130:S 04 Apr 2022 18:03:20.478 * Trying a partial resynchronization <span class="token punctuation">(</span>request 39ab3c51e0304f13d9738e798332df54cc604a48:1<span class="token punctuation">)</span>.
+5130:S 04 Apr 2022 18:03:20.511 * Full resync from master: 47715abc4fa6f05dbfacd1befe65bbab07e62b95:0
+5130:S 04 Apr 2022 18:03:20.511 * Discarding previously cached master state.
+5130:S 04 Apr 2022 18:03:20.535 * MASTER <span class="token operator">&lt;</span>-<span class="token operator">></span> REPLICA sync: receiving 175 bytes from master to disk <span class="token comment" spellcheck="true"># 从master主机同步数据中...</span>
+5130:S 04 Apr 2022 18:03:20.535 * MASTER <span class="token operator">&lt;</span>-<span class="token operator">></span> REPLICA sync: Flushing old data
+5130:S 04 Apr 2022 18:03:20.536 * MASTER <span class="token operator">&lt;</span>-<span class="token operator">></span> REPLICA sync: Loading DB <span class="token keyword">in</span> memory
+5130:S 04 Apr 2022 18:03:20.538 * Loading RDB produced by version 6.2.6
+5130:S 04 Apr 2022 18:03:20.540 * RDB age 0 seconds
+5130:S 04 Apr 2022 18:03:20.540 * RDB memory usage when created 1.85 Mb
+5130:S 04 Apr 2022 18:03:20.541 <span class="token comment" spellcheck="true"># Done loading RDB, keys loaded: 0, keys expired: 0.</span>
+5130:S 04 Apr 2022 18:03:20.542 * MASTER <span class="token operator">&lt;</span>-<span class="token operator">></span> REPLICA sync: Finished with success  <span class="token comment" spellcheck="true"># 6380从master主机(6379)同步完成</span>
+5130:S 04 Apr 2022 18:03:20.544 * Background append only <span class="token function">file</span> rewriting started by pid 5145
+5130:S 04 Apr 2022 18:03:20.618 * AOF rewrite child asks to stop sending diffs.
+5145:C 04 Apr 2022 18:03:20.618 * Parent agreed to stop sending diffs. Finalizing AOF<span class="token punctuation">..</span>.
+5145:C 04 Apr 2022 18:03:20.622 * Concatenating 0.00 MB of AOF <span class="token function">diff</span> received from parent.
+5145:C 04 Apr 2022 18:03:20.622 * SYNC append only <span class="token function">file</span> rewrite performed
+5145:C 04 Apr 2022 18:03:20.623 * AOF rewrite: 4 MB of memory used by copy-on-write
+5130:S 04 Apr 2022 18:03:20.636 * Background AOF rewrite terminated with success
+5130:S 04 Apr 2022 18:03:20.637 * Residual parent <span class="token function">diff</span> successfully flushed to the rewritten AOF <span class="token punctuation">(</span>0.00 MB<span class="token punctuation">)</span>
+5130:S 04 Apr 2022 18:03:20.637 * Background AOF rewrite finished successfully
+</code></pre><p><strong>主从问题演示</strong></p><p>(1) 切入点问题？slave1、slave2是从头开始复制还是从切入点开始复制?比如从k4进来，那之前的123是否也可以复制</p><p>​ 可以, 会先进行全量复制, 然后master主机的写命令会同步给slave从机更新数据.</p><p>(2) 从机是否可以写？set可否？</p><p>​ 读写分离, master负责写, slave负责读, slave不能写.</p><p><img src="https://img-blog.csdnimg.cn/d7b1263115614181a0ed210b1a76a244.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>(3) 主机shutdown后情况如何？从机是上位还是原地待命</p><p>​ 主机shutdown后, 从机不会上位到master, 仍然在原地待命, 后面的集群-哨兵机制可以解决这个问题.</p><p><img src="https://img-blog.csdnimg.cn/4e79380ae22945e4b08be66f6816fa03.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>(4) 主机又回来了后，主机新增记录，从机还能否顺利复制？</p><p>​ master主机重新启动后, 主机写数据, 从机会重新同步主机的数据, 可以顺利复制.</p><p><img src="https://img-blog.csdnimg.cn/f024d09850904ed08ce9074540ab1ff7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>(5) 其中一台从机down后情况如何？依照原有它能跟上大部队吗？</p><p>​ slave从机宕机后, 重新启动不会与master主机建立关系, slave重启后就是一个单例的独立master, 需要重新执行命令<code>slaveof 127.0.0.1 6379</code>与master主机6379建立主从关系.</p><p><img src="https://img-blog.csdnimg.cn/0b1c31164ba64c0280c6253022e72827.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><h4 id="5-3-2-薪火相传"><a href="#5-3-2-薪火相传" class="headerlink" title="5.3.2 薪火相传"></a>5.3.2 薪火相传</h4><p>上一个slave可以是下一个slave的Master，slave同样可以接受其他slaves的连接和同步请求，那么该slave作为链条中下一个的master，可以有效减轻master的写压力。</p><p>中途变更转向：会清除之前的数据，重新建立拷贝最新的。 slaveof 新主库IP 新主库端口.<br><img src="https://img-blog.csdnimg.cn/2640968bee334b969ea4885e23f33609.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>可以看到6379写的数据会同步6380, 然后6380再同步到6381, 在这个链条上一直传下去. 但注意6380虽然是6381的主机, 但6380本身是6379的从机, 所以6380从机是不能写操作的, 从下面的报错信息也可以验证.<br><img src="https://img-blog.csdnimg.cn/57d3ab3cdc6446ecb4f96144943fd993.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><h4 id="5-3-3-反客为主"><a href="#5-3-3-反客为主" class="headerlink" title="5.3.3 反客为主"></a>5.3.3 反客为主</h4><p>SLAVEOF no one：使当前数据库通知与其他数据库的同步，转成主数据库。</p><p><code>SLAVEOF no one</code> 实现的反客为主, 虽然能让当前slave服务转为master, 但是其他slave需要手动重新建立与新的master建立主从关系. 这个问题在下面的哨兵模式中可以解决, 哨兵模式就相当于将手动建立主从关系的操作改为自动选举和建立主从关系.<br><img src="https://img-blog.csdnimg.cn/e3d29d339e084378bfae70e2b4de7d9a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><h3 id="5-4-哨兵模式-sentinel"><a href="#5-4-哨兵模式-sentinel" class="headerlink" title="5.4 哨兵模式(sentinel)"></a>5.4 哨兵模式(sentinel)</h3><p>反客为主的自动版，能够后台监控主机是否故障，如果故障了根据投票数自动将从库转换为主库, 并让其他从库与新的主库建立主从关系.</p><p>现在重新调整redis服务的主从结果, 6379为master, 6380, 6382为slave.<br><img src="https://img-blog.csdnimg.cn/5d5c529b9ea44bc4b3bda547bd1c6e76.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>创建哨兵配置文件 , redis安装目录下新建<code>sentinel.conf</code>文件，名字决不能错。编辑sentinel.conf添加如下内容:</p><p><code>sentinel monitor 被监控数据库名字（自定义）127.0.0.1 6379 1</code></p><p>上面最后一个数字<code>1</code>，表示主机挂掉后slave投票数超过1后, 就让谁接替成为master主机，得票数多的成为主机.</p><pre class="language-properties"><code class="language-properties"><span class="token comment" spellcheck="true"># sentinel monitor 被监控数据库名字（自定义）127.0.0.1 6379 1</span>
+<span class="token attr-name">sentinel</span> <span class="token attr-value">monitor redis6379 127.0.0.1 6379 1</span>
+</code></pre><p>启动哨兵, 这里采用的是非守护进程的方式启动, 如果窗口关闭, 哨兵服务也就关闭了. 后面介绍后台运行的配置方式.</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ./bin/redis-sentinel sentinel.conf</span>
+5691:X 04 Apr 2022 22:46:17.937 <span class="token comment" spellcheck="true"># oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo</span>
+5691:X 04 Apr 2022 22:46:17.937 <span class="token comment" spellcheck="true"># Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=5691, just started</span>
+5691:X 04 Apr 2022 22:46:17.937 <span class="token comment" spellcheck="true"># Configuration loaded</span>
+5691:X 04 Apr 2022 22:46:17.938 * Increased maximum number of <span class="token function">open</span> files to 10032 <span class="token punctuation">(</span>it was originally <span class="token keyword">set</span> to 1024<span class="token punctuation">)</span>.
+5691:X 04 Apr 2022 22:46:17.938 * monotonic clock: POSIX clock_gettime
+                _._
+           _.-``__ <span class="token string">''</span>-._
+      _.-`<span class="token variable"><span class="token variable">`</span>    <span class="token variable">`</span></span><span class="token keyword">.</span>  `_.  <span class="token string">''</span>-._           Redis 6.2.6 <span class="token punctuation">(</span>00000000/0<span class="token punctuation">)</span> 64 bit
+  .-`<span class="token variable"><span class="token variable">`</span> .-<span class="token variable">`</span></span>`<span class="token variable"><span class="token variable">`</span><span class="token keyword">.</span>  <span class="token variable">`</span></span>``\/    _.,_ <span class="token string">''</span>-._
+ <span class="token punctuation">(</span>    <span class="token string">'      ,       .-<span class="token variable"><span class="token variable">`</span>  <span class="token operator">|</span> <span class="token variable">`</span></span>,    )     Running in sentinel mode
+ |<span class="token variable"><span class="token variable">`</span>-._<span class="token variable">`</span></span>-...-<span class="token variable"><span class="token variable">`</span> __<span class="token punctuation">..</span>.-.<span class="token variable">`</span></span>`-._|'</span>` _.-<span class="token string">'|     Port: 26379
+ |    <span class="token variable"><span class="token variable">`</span>-._   <span class="token variable">`</span></span>._    /     _.-'</span>    <span class="token operator">|</span>     PID: 5691
+  <span class="token variable"><span class="token variable">`</span>-._    <span class="token variable">`</span></span>-._  `-./  _.-<span class="token string">'    _.-'</span>
+ <span class="token operator">|</span><span class="token variable"><span class="token variable">`</span>-._<span class="token variable">`</span></span>-._    `-.__.-<span class="token string">'    _.-'</span>_.-<span class="token string">'|
+ |    <span class="token variable"><span class="token variable">`</span>-._<span class="token variable">`</span></span>-._        _.-'</span>_.-<span class="token string">'    |           https://redis.io
+  <span class="token variable"><span class="token variable">`</span>-._    <span class="token variable">`</span></span>-._`-.__.-'</span>_.-<span class="token string">'    _.-'</span>
+ <span class="token operator">|</span><span class="token variable"><span class="token variable">`</span>-._<span class="token variable">`</span></span>-._    `-.__.-<span class="token string">'    _.-'</span>_.-<span class="token string">'|
+ |    <span class="token variable"><span class="token variable">`</span>-._<span class="token variable">`</span></span>-._        _.-'</span>_.-<span class="token string">'    |
+  <span class="token variable"><span class="token variable">`</span>-._    <span class="token variable">`</span></span>-._`-.__.-'</span>_.-<span class="token string">'    _.-'</span>
+      <span class="token variable"><span class="token variable">`</span>-._    <span class="token variable">`</span></span>-.__.-<span class="token string">'    _.-'</span>
+          `-._        _.-<span class="token string">'
+              `-.__.-'</span>
+
+5691:X 04 Apr 2022 22:46:17.951 <span class="token comment" spellcheck="true"># WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.</span>
+5691:X 04 Apr 2022 22:46:17.959 <span class="token comment" spellcheck="true"># Sentinel ID is c34ca410b69366f5ec74d2e0b9e93e0213c94245</span>
+5691:X 04 Apr 2022 22:46:17.959 <span class="token comment" spellcheck="true"># +monitor master redis6379 127.0.0.1 6379 quorum 1</span>
+</code></pre><p>6379的master关闭后, 哨兵自动选举一个slave成为新的master.<br><img src="https://img-blog.csdnimg.cn/571bad0d9c8c4669a404f15ab64fd0ec.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>好奇怪, 我自己操作的过程中, slave一直重复投票给已经挂掉的6379服务, 具体原因不清楚, 可能是配置问题吧, 日志如下:</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 第1次投票</span>
+5691:X 04 Apr 2022 22:46:47.969 <span class="token comment" spellcheck="true"># +new-epoch 1</span>
+5691:X 04 Apr 2022 22:46:47.969 <span class="token comment" spellcheck="true"># +try-failover master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:46:47.977 <span class="token comment" spellcheck="true"># +vote-for-leader c34ca410b69366f5ec74d2e0b9e93e0213c94245 1</span>
+5691:X 04 Apr 2022 22:46:47.977 <span class="token comment" spellcheck="true"># +elected-leader master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:46:47.977 <span class="token comment" spellcheck="true"># +failover-state-select-slave master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:46:48.069 <span class="token comment" spellcheck="true"># -failover-abort-no-good-slave master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:46:48.138 <span class="token comment" spellcheck="true"># Next failover delay: I will not start a failover before Mon Apr  4 22:52:48 2022</span>
+<span class="token comment" spellcheck="true"># 第2次投票</span>
+5691:X 04 Apr 2022 22:52:48.601 <span class="token comment" spellcheck="true"># +new-epoch 2</span>
+5691:X 04 Apr 2022 22:52:48.601 <span class="token comment" spellcheck="true"># +try-failover master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:52:48.611 <span class="token comment" spellcheck="true"># +vote-for-leader c34ca410b69366f5ec74d2e0b9e93e0213c94245 2</span>
+5691:X 04 Apr 2022 22:52:48.611 <span class="token comment" spellcheck="true"># +elected-leader master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:52:48.611 <span class="token comment" spellcheck="true"># +failover-state-select-slave master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:52:48.679 <span class="token comment" spellcheck="true"># -failover-abort-no-good-slave master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:52:48.740 <span class="token comment" spellcheck="true"># Next failover delay: I will not start a failover before Mon Apr  4 22:58:49 2022</span>
+<span class="token comment" spellcheck="true"># 第3次投票</span>
+5691:X 04 Apr 2022 22:58:49.580 <span class="token comment" spellcheck="true"># +new-epoch 3</span>
+5691:X 04 Apr 2022 22:58:49.580 <span class="token comment" spellcheck="true"># +try-failover master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:58:49.584 <span class="token comment" spellcheck="true"># +vote-for-leader c34ca410b69366f5ec74d2e0b9e93e0213c94245 3</span>
+5691:X 04 Apr 2022 22:58:49.584 <span class="token comment" spellcheck="true"># +elected-leader master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:58:49.584 <span class="token comment" spellcheck="true"># +failover-state-select-slave master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:58:49.687 <span class="token comment" spellcheck="true"># -failover-abort-no-good-slave master redis6379 127.0.0.1 6379</span>
+5691:X 04 Apr 2022 22:58:49.754 <span class="token comment" spellcheck="true"># Next failover delay: I will not start a failover before Mon Apr  4 23:04:49 2022</span>
+</code></pre><p>这里附上周阳老师操作的自动选举结果截图<br><img src="https://img-blog.csdnimg.cn/54ab1473888048fc98ed08270803b2b8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p>选举成功后, 通过<code>info replication</code>查看状态, 6380被选举为新的master, 6381作为slave从机, 与6380建立了主从关系.<br><img src="https://img-blog.csdnimg.cn/7735a2094c8b434395f699374e3c99f3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAY3J5c3c=,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p><p><strong>问题：如果之前的master(6379)重启回来，会不会双master冲突？ 也就是6379会不会和6380冲突?</strong></p><blockquote><p>不会冲突，之前的master回来之后，哨兵会监测到，<strong>之前的master会变成slave</strong></p></blockquote><p><strong>注意:</strong></p><blockquote><p>由于所有的写操作都是先在Master上操作，然后同步更新到Slave上，所以Master同步到Slave机器有一定的延迟，当系统很繁忙的时候，延迟问题会更加严重，Slave机器数量的增加也会使这个问题更加严重。</p></blockquote><p>后台运行哨兵的配置</p><pre class="language-properties"><code class="language-properties"><span class="token attr-name">port</span> <span class="token attr-value">26379</span>
+<span class="token attr-name">daemonize</span> <span class="token attr-value">no</span>
+<span class="token attr-name">pidfile</span> <span class="token attr-value">/var/run/redis-sentinel.pid</span>
+<span class="token attr-name">logfile</span> <span class="token attr-value">""</span>
+<span class="token attr-name">dir</span> <span class="token attr-value">/tmp</span>
+<span class="token attr-name">sentinel</span> <span class="token attr-value">monitor mymaster 127.0.0.1 6379 2</span>
+<span class="token attr-name">sentinel</span> <span class="token attr-value">down-after-milliseconds mymaster 30000</span>
+<span class="token attr-name">acllog-max-len</span> <span class="token attr-value">128</span>
+<span class="token attr-name">sentinel</span> <span class="token attr-value">parallel-syncs mymaster 1</span>
+<span class="token attr-name">sentinel</span> <span class="token attr-value">failover-timeout mymaster 180000</span>
+<span class="token attr-name">sentinel</span> <span class="token attr-value">deny-scripts-reconfig yes</span>
+<span class="token attr-name">SENTINEL</span> <span class="token attr-value">resolve-hostnames no</span>
+<span class="token attr-name">SENTINEL</span> <span class="token attr-value">announce-hostnames no</span>
+</code></pre><h2 id="6-Redis的Java客户端Jedis"><a href="#6-Redis的Java客户端Jedis" class="headerlink" title="6. Redis的Java客户端Jedis"></a>6. Redis的Java客户端Jedis</h2><h3 id="6-1-测试连通性"><a href="#6-1-测试连通性" class="headerlink" title="6.1 测试连通性"></a>6.1 测试连通性</h3><p>创建SpringBoot项目, 导入Jedis相关的依赖.</p><pre class="language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">></span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.crys<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>boot-jedis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.0-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-parent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.2.2.RELEASE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+        <span class="token comment" spellcheck="true">&lt;!--jedis, springboot默认了jedis版本, jedis需要依赖commons-pool,已经自动依赖上了--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>redis.clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>jedis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span>
+</code></pre><p><code>application.yml</code>添加Jedis连接的配置, 下面列出单机的配置, 也支持集群配置.</p><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8081</span>
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">host</span><span class="token punctuation">:</span> 192.168.65.129
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token number">123456</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">6379</span>
+    <span class="token key atrule">jedis</span><span class="token punctuation">:</span>
+      <span class="token key atrule">pool</span><span class="token punctuation">:</span>
+        <span class="token key atrule">max-idle</span><span class="token punctuation">:</span> <span class="token number">50 </span><span class="token comment" spellcheck="true"># 连接池中最大空闲数</span>
+        <span class="token key atrule">max-active</span><span class="token punctuation">:</span> <span class="token number">100 </span><span class="token comment" spellcheck="true">#  连接池中最大连接数</span>
+        <span class="token key atrule">min-idle</span><span class="token punctuation">:</span> <span class="token number">10 </span><span class="token comment" spellcheck="true"># 连接池中最小空闲数</span>
+        <span class="token key atrule">max-wait</span><span class="token punctuation">:</span> <span class="token number">10000 </span><span class="token comment" spellcheck="true"># 连接池最大阻塞等待时间(使用负值表示没有限制)</span>
+    <span class="token key atrule">timeout</span><span class="token punctuation">:</span> <span class="token number">2000 </span><span class="token comment" spellcheck="true"># 连接超时时间</span>
+</code></pre><p>创建测试类, 测试Jedis操作Redis的连通性.</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisTest</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.host}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String host<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.port}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> port<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.password}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 1.连接redis</span>
+        Jedis jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>jedis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 授权</span>
+        jedis<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 2. 操作redis</span>
+        jedis<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">" crysw"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"name="</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"ping="</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">ping</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> keys <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"keys * : "</span> <span class="token operator">+</span> keys<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 关闭连接</span>
+        jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>   
+</code></pre><p>测试结果</p><pre class="language-bash"><code class="language-bash">redis.clients.jedis.Jedis@7e87ef9e
+name<span class="token operator">=</span> crysw
+ping<span class="token operator">=</span>PONG
+keys * <span class="token keyword">:</span> <span class="token punctuation">[</span>k3, name, k4, balance, debt, k1, k2<span class="token punctuation">]</span>
+</code></pre><h3 id="6-2-Jedis常用API"><a href="#6-2-Jedis常用API" class="headerlink" title="6.2 Jedis常用API"></a>6.2 Jedis常用API</h3><p>Jedis的API使用, 和Redis的原生命令一模一样, 按照Redis命令使用就可以了.</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisApiTest</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.host}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String host<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.port}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> port<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.password}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> Jedis jedis<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> keys <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"keys *: "</span> <span class="token operator">+</span> keys<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jedis.exists====>"</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token string">"k2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jedis.ttl: "</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">ttl</span><span class="token punctuation">(</span><span class="token string">"k1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jedis<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">"k1"</span><span class="token punctuation">,</span> <span class="token string">", myredis"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jedis.get(k1): "</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"k1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        jedis<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"k4"</span><span class="token punctuation">,</span> <span class="token string">"k4_redis"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"k4: "</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"k4"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        jedis<span class="token punctuation">.</span><span class="token function">mset</span><span class="token punctuation">(</span><span class="token string">"str1"</span><span class="token punctuation">,</span> <span class="token string">"v1"</span><span class="token punctuation">,</span> <span class="token string">"str2"</span><span class="token punctuation">,</span> <span class="token string">"v2"</span><span class="token punctuation">,</span> <span class="token string">"str3"</span><span class="token punctuation">,</span> <span class="token string">"v3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> mget <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">mget</span><span class="token punctuation">(</span><span class="token string">"str1"</span><span class="token punctuation">,</span> <span class="token string">"str2"</span><span class="token punctuation">,</span> <span class="token string">"str3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"jedis.mget: "</span> <span class="token operator">+</span> mget<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jedis<span class="token punctuation">.</span><span class="token function">lpush</span><span class="token punctuation">(</span><span class="token string">"mylist"</span><span class="token punctuation">,</span> <span class="token string">"v1"</span><span class="token punctuation">,</span> <span class="token string">"v2"</span><span class="token punctuation">,</span> <span class="token string">"v3"</span><span class="token punctuation">,</span> <span class="token string">"v4"</span><span class="token punctuation">,</span> <span class="token string">"v5"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> mylist <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">lrange</span><span class="token punctuation">(</span><span class="token string">"mylist"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"mylist: "</span> <span class="token operator">+</span> mylist<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jedis<span class="token punctuation">.</span><span class="token function">sadd</span><span class="token punctuation">(</span><span class="token string">"orders"</span><span class="token punctuation">,</span> <span class="token string">"jd001"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">sadd</span><span class="token punctuation">(</span><span class="token string">"orders"</span><span class="token punctuation">,</span> <span class="token string">"jd002"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">sadd</span><span class="token punctuation">(</span><span class="token string">"orders"</span><span class="token punctuation">,</span> <span class="token string">"jd003"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> orders <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">smembers</span><span class="token punctuation">(</span><span class="token string">"orders"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"orders: "</span> <span class="token operator">+</span> orders<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        jedis<span class="token punctuation">.</span><span class="token function">srem</span><span class="token punctuation">(</span><span class="token string">"orders"</span><span class="token punctuation">,</span> <span class="token string">"jd002"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> orders1 <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">smembers</span><span class="token punctuation">(</span><span class="token string">"orders"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"orders1: "</span> <span class="token operator">+</span> orders1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testHash</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jedis<span class="token punctuation">.</span><span class="token function">hset</span><span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span> <span class="token string">"userName"</span><span class="token punctuation">,</span> <span class="token string">"lisi"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"username: "</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">hget</span><span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span> <span class="token string">"userName"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"telphone"</span><span class="token punctuation">,</span> <span class="token string">"13811814763"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"address"</span><span class="token punctuation">,</span> <span class="token string">"atguigu"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"email"</span><span class="token punctuation">,</span> <span class="token string">"abc@163.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">hmset</span><span class="token punctuation">(</span><span class="token string">"hash2"</span><span class="token punctuation">,</span> map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> hmget <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">hmget</span><span class="token punctuation">(</span><span class="token string">"hash2"</span><span class="token punctuation">,</span> <span class="token string">"telphone"</span><span class="token punctuation">,</span> <span class="token string">"email"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hmget: "</span> <span class="token operator">+</span> hmget<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testZset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jedis<span class="token punctuation">.</span><span class="token function">zadd</span><span class="token punctuation">(</span><span class="token string">"zset01"</span><span class="token punctuation">,</span> <span class="token number">60d</span><span class="token punctuation">,</span> <span class="token string">"v1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">zadd</span><span class="token punctuation">(</span><span class="token string">"zset01"</span><span class="token punctuation">,</span> <span class="token number">70d</span><span class="token punctuation">,</span> <span class="token string">"v2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">zadd</span><span class="token punctuation">(</span><span class="token string">"zset01"</span><span class="token punctuation">,</span> <span class="token number">80d</span><span class="token punctuation">,</span> <span class="token string">"v3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">zadd</span><span class="token punctuation">(</span><span class="token string">"zset01"</span><span class="token punctuation">,</span> <span class="token number">90d</span><span class="token punctuation">,</span> <span class="token string">"v4"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> zset01 <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">zrange</span><span class="token punctuation">(</span><span class="token string">"zset01"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"zset01: "</span> <span class="token operator">+</span> zset01<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> zset011 <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">zrangeByScore</span><span class="token punctuation">(</span><span class="token string">"zset01"</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token number">70</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"zset011: "</span> <span class="token operator">+</span> zset011<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><h3 id="6-3-Jedis操作Redis事务"><a href="#6-3-Jedis操作Redis事务" class="headerlink" title="6.3 Jedis操作Redis事务"></a>6.3 Jedis操作Redis事务</h3><p>Jedis如何实现Redis事务的操作呢?</p><pre class="language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 描述：测试Redis事务
+ * @author crysw
+ * @date 2022/4/5 17:45
+ * @version 1.0
+ */</span>
+<span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestTx</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.host}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String host<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.port}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> port<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.password}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> Jedis jedis<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        jedis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * watch命令就是标记一个键
+     * 如果标记了一个键, 在提交事务前如果该键被别人修改过, 那事务就会失败, 这种情况通常可以在程序中重新再尝试一次.
+     * 首先标记键balance, 然后检查余额是否足够:
+     *                     不足就取消标记, 并不做余额的扣减;
+     *                     足够, 就启动事务进行更新操作.
+     * 如果在此期间键balance被其他人修改, 那在提交事务(执行exec)时就会报错, 程序中可以捕获这类错误再重新执行一次, 直到成功.
+     *
+     */</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testTx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">boolean</span> retValue <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">transMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"retValue: "</span> <span class="token operator">+</span> retValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">transMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 可用余额</span>
+        <span class="token keyword">int</span> balance<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 欠款</span>
+        <span class="token keyword">int</span> debt<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 实刷额度</span>
+        <span class="token keyword">int</span> amtToSubtract <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before modify, balance : "</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"balance"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"before modify, debt : "</span> <span class="token operator">+</span> jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"debt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 对可用余额添加监控</span>
+        jedis<span class="token punctuation">.</span><span class="token function">watch</span><span class="token punctuation">(</span><span class="token string">"balance"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 该操作不应该出现, 为了方便, 模拟其他客户端修改了被监控的可用余额</span>
+        <span class="token comment" spellcheck="true">// jedis.set("balance", "5");</span>
+        <span class="token comment" spellcheck="true">// jedis.set("balance", "50");</span>
+        balance <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"balance"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>balance <span class="token operator">&lt;</span> amtToSubtract<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            jedis<span class="token punctuation">.</span><span class="token function">unwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"the balance is not enough"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">">>>>>>transaction>>>>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// multi 开启事务</span>
+            Transaction transaction <span class="token operator">=</span> jedis<span class="token punctuation">.</span><span class="token function">multi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            transaction<span class="token punctuation">.</span><span class="token function">decrBy</span><span class="token punctuation">(</span><span class="token string">"balance"</span><span class="token punctuation">,</span> amtToSubtract<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            transaction<span class="token punctuation">.</span><span class="token function">incrBy</span><span class="token punctuation">(</span><span class="token string">"debt"</span><span class="token punctuation">,</span> amtToSubtract<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// exec 提交事务</span>
+            List<span class="token operator">&lt;</span>Object<span class="token operator">></span> exec <span class="token operator">=</span> transaction<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"exec: "</span> <span class="token operator">+</span> exec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token comment" spellcheck="true">// 执行失败, 被监控的balance被其他程序修改了</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>exec <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"modified by others"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            balance <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"balance"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            debt <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>jedis<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"debt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"balance: "</span> <span class="token operator">+</span> balance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"debt: "</span> <span class="token operator">+</span> debt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            jedis<span class="token punctuation">.</span><span class="token function">unwatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>测试场景1, 可用余额不足. 上面的程序放开 <code>jedis.set("balance", "5");</code></p><pre class="language-bash"><code class="language-bash">before modify, balance <span class="token keyword">:</span> 50
+before modify, debt <span class="token keyword">:</span> 40
+the balance is not enough <span class="token comment" spellcheck="true"># 余额不足, 取消监控</span>
+retValue: <span class="token boolean">false</span>
+</code></pre><p>测试场景2, 被监控的balance对象被其他程序修改了, 事务执行失败. 上面的程序放开 <code>jedis.set("balance", "50");</code></p><pre class="language-bash"><code class="language-bash">before modify, balance <span class="token keyword">:</span> 5
+before modify, debt <span class="token keyword">:</span> 40
+<span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span>transaction<span class="token operator">>></span><span class="token operator">>></span>
+exec: null <span class="token comment" spellcheck="true"># 事务执行失败,返回null</span>
+modified by others
+retValue: <span class="token boolean">false</span>
+</code></pre><p>测试场景3, 事务执行成功, 余额扣减, 债务增加成功. 先将balace重置到50.</p><pre class="language-bash"><code class="language-bash">before modify, balance <span class="token keyword">:</span> 50
+before modify, debt <span class="token keyword">:</span> 40
+<span class="token operator">>></span><span class="token operator">>></span><span class="token operator">>></span>transaction<span class="token operator">>></span><span class="token operator">>></span>
+exec: <span class="token punctuation">[</span>40, 50<span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># 事务执行成功, 返回执行结果; 并取消监控</span>
+balance: 40
+debt: 50
+retValue: <span class="token boolean">true</span>
+</code></pre><h3 id="6-4-Jedis操作主从复制"><a href="#6-4-Jedis操作主从复制" class="headerlink" title="6.4 Jedis操作主从复制"></a>6.4 Jedis操作主从复制</h3><p>测试Jedis操作Redis的主从复制, 6379设置为master主机, 6380为其slave从机, 同步6379的数据.</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span>SpringRunner<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@SpringBootTest</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestMS</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.host}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String host<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.port}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> port<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.password}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testMS</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        Jedis jedis_master <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Jedis jedis_slave <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Jedis</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> <span class="token number">6380</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis_master<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis_slave<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment" spellcheck="true">// 6380建立与master63789的主从关系</span>
+        jedis_slave<span class="token punctuation">.</span><span class="token function">slaveof</span><span class="token punctuation">(</span>host<span class="token punctuation">,</span> <span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 主机写数据</span>
+        jedis_master<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 从机读数据</span>
+        String result <span class="token operator">=</span> jedis_slave<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"class"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"result: "</span> <span class="token operator">+</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>第一次执行测试用例, 发现slave读取的数据为null, 但是在CentOS的服务器上连接slave查询是已经同步了数据的, 这是因为程序在JVM内存中运行太快导致, Redis主从还没有同步完成, Java程序就执行完成了. 只要第二次执行slave就可以正常读取到master的数据了.</p><blockquote><p>注意: 开始连接6380怎么操作都连接失败, 后面经过排查,发现是因为测试程序在Windows本机上, 而Redis服务在CentOS上, 需要开放对应的端口访问权限.</p><pre class="language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 开放端口</span>
+firewall-cmd --permanent --zone<span class="token operator">=</span>public --add-port<span class="token operator">=</span>6380/tcp
+<span class="token comment" spellcheck="true"># 查看端口开放情况</span>
+firewall-cmd --permanent --list-ports 
+<span class="token comment" spellcheck="true"># 查看单个端口开放情况</span>
+firewall-cmd --permanent --query-port<span class="token operator">=</span>6380/tcp
+<span class="token comment" spellcheck="true"># 重启防火墙</span>
+firewall-cmd --reload
+</code></pre></blockquote><p>开放6380端口访问权限</p><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --permanent --query-port=6380/tcp</span>
+no
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --permanent --zone=public --add-port=6381/tcp</span>
+success
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --permanent --zone=public --add-port=6380/tcp</span>
+success
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --reload</span>
+success
+<span class="token punctuation">[</span>root@centos7-01 redis-6.x<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --permanent --query-port=6380/tcp</span>
+<span class="token function">yes</span>
+</code></pre><h3 id="6-5-Jedis工具封装"><a href="#6-5-Jedis工具封装" class="headerlink" title="6.5 Jedis工具封装"></a>6.5 Jedis工具封装</h3><p>JedisConfig配置类, 实例化JedisPool池.</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisConfig</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.host}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String host<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.port}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> port<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.password}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.timeout}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> timeout<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.jedis.pool.max-active}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> maxActive<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.jedis.pool.max-idle}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> maxIdle<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.jedis.pool.min-idle}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> minIdle<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.jedis.pool.max-wait}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> maxWaitMillSeconds<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> JedisPool <span class="token function">jedisPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        JedisPoolConfig jedisPoolConfig <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPoolConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedisPoolConfig<span class="token punctuation">.</span><span class="token function">setMaxIdle</span><span class="token punctuation">(</span>maxIdle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedisPoolConfig<span class="token punctuation">.</span><span class="token function">setMinIdle</span><span class="token punctuation">(</span>minIdle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedisPoolConfig<span class="token punctuation">.</span><span class="token function">setMaxTotal</span><span class="token punctuation">(</span>maxActive<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedisPoolConfig<span class="token punctuation">.</span><span class="token function">setMaxWaitMillis</span><span class="token punctuation">(</span>maxWaitMillSeconds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        JedisPool jedisPool <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JedisPool</span><span class="token punctuation">(</span>jedisPoolConfig<span class="token punctuation">,</span> host<span class="token punctuation">,</span> port<span class="token punctuation">,</span> timeout<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"JedisPool连接成功: {}:{}"</span><span class="token punctuation">,</span>host<span class="token punctuation">,</span>port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> jedisPool<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>获取Jedis的简易工具封装</p><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JedisUtils</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> JedisPool jedisPool<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Value</span><span class="token punctuation">(</span><span class="token string">"${spring.redis.password}"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取Jedis资源
+     * @return
+     */</span>
+    <span class="token keyword">public</span> Jedis <span class="token function">getJedis</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Jedis jedis <span class="token operator">=</span> jedisPool<span class="token punctuation">.</span><span class="token function">getResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jedis<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> jedis<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 关闭jedis连接
+     * @param jedis
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span>Jedis jedis<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>jedis <span class="token operator">!=</span> null<span class="token punctuation">)</span> jedis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 为什么要封装工具类? Redis有很多指令, Jedis操作它需要针对业务场景做方法封装</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">calcTimeHour</span><span class="token punctuation">(</span><span class="token keyword">int</span> hours<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> seconds <span class="token operator">=</span> hours <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> seconds<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><link rel="stylesheet" href="/crystal-blog/css/spoiler.css" type="text/css"><script src="/crystal-blog/js/spoiler.js" type="text/javascript" async></script></div><hr><div class="reprint" id="reprint-statement"><div class="reprint__author"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-user">文章作者: </i></span><span class="reprint-info"><a href="/crystal-blog/about" rel="external nofollow noreferrer">王子</a></span></div><div class="reprint__type"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-link">文章链接: </i></span><span class="reprint-info"><a href="https://wang-qz.gitee.io/crystal-blog/crystal-blog/2022040548893.html">https://wang-qz.gitee.io/crystal-blog/crystal-blog/2022040548893.html</a></span></div><div class="reprint__notice"><span class="reprint-meta" style="font-weight:700"><i class="fas fa-copyright">版权声明: </i></span><span class="reprint-info">本博客所有文章除特別声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a> 许可协议。转载请注明来源 <a href="/crystal-blog/about" target="_blank">王子</a> !</span></div></div><script async defer>function navToReprintStatement(){$("html, body").animate({scrollTop:$("#reprint-statement").offset().top-80},800)}document.addEventListener("copy",function(t){M.toast({html:'<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>'})})</script><div class="tag_share" style="display:block"><div class="post-meta__tag-list" style="display:inline-block"><div class="article-tag"><a href="/crystal-blog/tags/Redis/"><span class="chip bg-color">Redis</span></a></div></div><div class="post_share" style="zoom:80%;width:fit-content;display:inline-block;float:right;margin:-.15rem 0"><link rel="stylesheet" type="text/css" href="/crystal-blog/libs/share/css/share.min.css"><div id="article-share"><div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div><script src="/crystal-blog/libs/share/js/social-share.min.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid="></script><div class="addthis_inline_share_toolbox"></div></div></div></div><style>#reward{margin:40px 0;text-align:center}#reward .reward-link{font-size:1.4rem;line-height:38px}#reward .btn-floating:hover{box-shadow:0 6px 12px rgba(0,0,0,.2),0 5px 15px rgba(0,0,0,.2)}#rewardModal{width:320px;height:350px}#rewardModal .reward-title{margin:15px auto;padding-bottom:5px}#rewardModal .modal-content{padding:10px}#rewardModal .close{position:absolute;right:15px;top:15px;color:rgba(0,0,0,.5);font-size:1.3rem;line-height:20px;cursor:pointer}#rewardModal .close:hover{color:#ef5350;transform:scale(1.3);-moz-transform:scale(1.3);-webkit-transform:scale(1.3);-o-transform:scale(1.3)}#rewardModal .reward-tabs{margin:0 auto;width:210px}.reward-tabs .tabs{height:38px;margin:10px auto;padding-left:0}.reward-content ul{padding-left:0!important}.reward-tabs .tabs .tab{height:38px;line-height:38px}.reward-tabs .tab a{color:#fff;background-color:#ccc}.reward-tabs .tab a:hover{background-color:#ccc;color:#fff}.reward-tabs .wechat-tab .active{color:#fff!important;background-color:#22ab38!important}.reward-tabs .alipay-tab .active{color:#fff!important;background-color:#019fe8!important}.reward-tabs .reward-img{width:210px;height:210px}</style><div id="reward"><a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a><div id="rewardModal" class="modal"><div class="modal-content"><a class="close modal-close"><i class="fas fa-times"></i></a><h4 class="reward-title">你的赏识是我前进的动力</h4><div class="reward-content"><div class="reward-tabs"><ul class="tabs row"><li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li><li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li></ul><div id="alipay"><img src="/crystal-blog/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码"></div><div id="wechat"><img src="/crystal-blog/medias/reward/wechatPay.jpg" class="reward-img" alt="微信打赏二维码"></div></div></div></div></div></div><script>$(function(){$(".tabs").tabs()})</script></div></div><style>.valine-card{margin:1.5rem auto}.valine-card .card-content{padding:20px 20px 5px 20px}#vcomments textarea{box-sizing:border-box;background:url(https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp) 100% 100% no-repeat}#vcomments p{margin:2px 2px 10px;font-size:1.05rem;line-height:1.78rem}#vcomments blockquote p{text-indent:.2rem}#vcomments a{padding:0 2px;color:#4cbf30;font-weight:500;text-decoration:none}#vcomments img{max-width:100%;height:auto;cursor:pointer}#vcomments ol li{list-style-type:decimal}#vcomments ol,ul{display:block;padding-left:2em;word-spacing:.05rem}#vcomments ul li,ol li{display:list-item;line-height:1.8rem;font-size:1rem}#vcomments ul li{list-style-type:disc}#vcomments ul ul li{list-style-type:circle}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}#vcomments table,td,th{border:0}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments h1{font-size:1.85rem;font-weight:700;line-height:2.2rem}#vcomments h2{font-size:1.65rem;font-weight:700;line-height:1.9rem}#vcomments h3{font-size:1.45rem;font-weight:700;line-height:1.7rem}#vcomments h4{font-size:1.25rem;font-weight:700;line-height:1.5rem}#vcomments h5{font-size:1.1rem;font-weight:700;line-height:1.4rem}#vcomments h6{font-size:1rem;line-height:1.3rem}#vcomments p{font-size:1rem;line-height:1.5rem}#vcomments hr{margin:12px 0;border:0;border-top:1px solid #ccc}#vcomments blockquote{margin:15px 0;border-left:5px solid #42b983;padding:1rem .8rem .3rem .8rem;color:#666;background-color:rgba(66,185,131,.1)}#vcomments pre{font-family:monospace,monospace;padding:1.2em;margin:.5em 0;background:#272822;overflow:auto;border-radius:.3em;tab-size:4}#vcomments code{font-family:monospace,monospace;padding:1px 3px;font-size:.92rem;color:#e96900;background-color:#f8f8f8;border-radius:2px}#vcomments pre code{font-family:monospace,monospace;padding:0;color:#e8eaf6;background-color:#272822}#vcomments pre[class*=language-]{padding:1.2em;margin:.5em 0}#vcomments code[class*=language-],pre[class*=language-]{color:#e8eaf6}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}#vcomments b,strong{font-weight:700}#vcomments dfn{font-style:italic}#vcomments small{font-size:85%}#vcomments cite{font-style:normal}#vcomments mark{background-color:#fcf8e3;padding:.2em}#vcomments table,td,th{padding:12px 13px;border:1px solid #dfe2e5}table tr:nth-child(2n),thead{background-color:#fafafa}#vcomments table th{background-color:#f2f2f2;min-width:80px}#vcomments table td{min-width:80px}#vcomments [type=checkbox]:not(:checked),[type=checkbox]:checked{position:inherit;margin-left:-1.3rem;margin-right:.4rem;margin-top:-1px;vertical-align:middle;left:unset;visibility:visible}.v[data-class="v"] .vwrap .vheader .vinput{width:32%;border-bottom:1px dashed #dedede}</style><div class="card valine-card" data-aos="fade-up"><div class="comment_headling" style="font-size:20px;font-weight:700;position:relative;padding-left:20px;top:15px;padding-bottom:5px"><i class="fas fa-comments fa-fw" aria-hidden="true"></i> <span>评论</span></div><div id="vcomments" class="card-content" style="display:grid"></div></div><script src="/crystal-blog/libs/valine/av-min.js"></script><script src="/crystal-blog/libs/valine2/Valine2.min.js"></script><script>let metaPlaceholder={nick:"昵称/QQ号(必填)",mail:"邮箱(必填)",link:"网址(https://)"};new Valine({el:"#vcomments",appId:"NiVMV7aR8ipVDy9EywBYtLwI-MdYXbMMI",appKey:"P7BGA1hMeBAFbHYz3dKY8doJ",notify:!1,verify:!0,visitor:!0,avatar:"monsterid",pageSize:"10",lang:"zh-CN",placeholder:"填写QQ号就能评论，快来一发吧~",meta:["nick","mail","link"],recordIP:!0,enableQQ:"monsterid",requiredFields:["nick","mail","link"],master:["e4de1f6da602d22e423d6dfb24611b6b"],friends:["410739a5ad278251b305dab085768c57","410739a5ad278251b305dab085768c57","410739a5ad278251b305dab085768c57"],tagMeta:["博主","小伙伴","访客"],metaPlaceholder:metaPlaceholder}),document.body.addEventListener("click",function(e){if(e.target.classList.contains("vsubmit")){var a=document.querySelector("input[type=email]"),t=document.querySelector("input[name=nick]");const i=/^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;if(!a.value||!t.value||!i.test(a.value)){const n=document.querySelector(".vmark");n.innerHTML='<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>',n.style.display="block",e.stopPropagation(),setTimeout(function(){n.style.display="none",n.innerHTML=""},2500)}}},!0)</script><article id="prenext-posts" class="prev-next articles"><div class="row article-row"><div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up"><div class="article-badge left-badge text-color"><i class="far fa-dot-circle"></i>&nbsp;本篇</div><div class="card"><a href="/crystal-blog/2022040548893.html"><div class="card-image"><img src="https://cn.bing.com/th?id=OHR.BeltedGalloway_ZH-CN8570849064_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="Redis高级1"> <span class="card-title">Redis高级1</span></div></a><div class="card-content article-content"><div class="summary block-with-text">Redis</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2022-04-05 </span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/NoSQL/" class="post-category">NoSQL</a></span></div></div><div class="card-action article-tags"><a href="/crystal-blog/tags/Redis/"><span class="chip bg-color">Redis</span></a></div></div></div><div class="article col s12 m6" data-aos="fade-up"><div class="article-badge right-badge text-color">下一篇&nbsp;<i class="fas fa-chevron-right"></i></div><div class="card"><a href="/crystal-blog/2022032060276.html"><div class="card-image"><img src="https://cn.bing.com/th?id=OHR.PandaDay_ZH-CN6584061291_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" class="responsive-img" alt="Redis学习笔记2"> <span class="card-title">Redis学习笔记2</span></div></a><div class="card-content article-content"><div class="summary block-with-text">Redis</div><div class="publish-info"><span class="publish-date"><i class="far fa-clock fa-fw icon-date"></i>2022-03-20 </span><span class="publish-author"><i class="fas fa-bookmark fa-fw icon-category"></i> <a href="/crystal-blog/categories/NoSQL/" class="post-category">NoSQL</a></span></div></div><div class="card-action article-tags"><a href="/crystal-blog/tags/Redis/"><span class="chip bg-color">Redis</span></a></div></div></div></div></article></div><script>$("#articleContent").on("copy",function(e){var n,t,o,i;void 0!==window.getSelection&&((""+(n=window.getSelection())).length<Number.parseInt("120")||(t=document.getElementsByTagName("body")[0],(o=document.createElement("div")).style.position="absolute",o.style.left="-99999px",t.appendChild(o),o.appendChild(n.getRangeAt(0).cloneContents()),"PRE"!==n.getRangeAt(0).commonAncestorContainer.nodeName&&"CODE"!==n.getRangeAt(0).commonAncestorContainer.nodeName||(o.innerHTML="<pre>"+o.innerHTML+"</pre>"),i=document.location.href,o.innerHTML+='<br />来源: Crysw&#39;s Blog<br />文章作者: 王子<br />文章链接: <a href="'+i+'">'+i+"</a><br />本文章著作权归作者所有，任何形式的转载都请注明出处。",n.selectAllChildren(o),window.setTimeout(function(){t.removeChild(o)},200)))})</script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeBlockFuction.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeLang.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeCopy.js"></script><script type="text/javascript" src="/crystal-blog/libs/codeBlock/codeShrink.js"></script></div><div id="toc-aside" class="expanded col l3 hide-on-med-and-down"><div class="toc-widget card" style="background-color:#fff"><div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div><div id="toc-content"></div></div></div></div><div id="floating-toc-btn" class="hide-on-med-and-down"><a class="btn-floating btn-large bg-color"><i class="fas fa-list-ul"></i></a></div><script src="/crystal-blog/libs/tocbot/tocbot.min.js"></script><script>$(function(){tocbot.init({tocSelector:"#toc-content",contentSelector:"#articleContent",headingsOffset:-(.4*$(window).height()-45),collapseDepth:Number("0"),headingSelector:"h2, h3, h4"});let t=0,e="toc-heading-";$("#toc-content a").each(function(){$(this).attr("href","#"+e+ ++t)}),t=0,$("#articleContent").children("h2, h3, h4").each(function(){$(this).attr("id",e+ ++t)});let n=parseInt(.4*$(window).height()-64),o=$(".toc-widget");$(window).scroll(function(){$(window).scrollTop()>n?o.addClass("toc-fixed"):o.removeClass("toc-fixed")});const i="expanded";let c=$("#toc-aside"),l=$("#main-content");$("#floating-toc-btn .btn-floating").click(function(){c.hasClass(i)?(c.removeClass(i).hide(),l.removeClass("l9")):(c.addClass(i).show(),l.addClass("l9")),function(t,e){let n=$("#"+t);if(0!==n.length){let t=n.width();450<=t?t+=21:350<=t&&t<450?t+=18:300<=t&&t<350?t+=16:t+=14,$("#"+e).width(t)}}("artDetail","prenext-posts")})})</script></main><a onclick="switchNightMode()" id="sma"><i class="fa fa-moon-o" id="nightMode" aria-hidden="true"></i></a><footer class="page-footer bg-color"><link rel="stylesheet" href="/crystal-blog/libs/aplayer/APlayer.min.css"><style>.aplayer .aplayer-lrc p{display:none;font-size:12px;font-weight:700;line-height:16px!important}.aplayer .aplayer-lrc p.aplayer-lrc-current{display:none;font-size:15px;color:#42b983}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{left:-66px!important}.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{left:0!important}</style><div><div class="row"><meting-js class="col l8 offset-l2 m10 offset-m1 s12" server="tencent" type="playlist" id="7278393642" fixed="true" autoplay theme="#42b983" loop order="random" preload="auto" volume="0.7" list-folded="true"></meting-js></div></div><script src="/crystal-blog/libs/aplayer/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script><div class="container row center-align" style="margin-bottom:15px!important"><div class="col s12 m8 l8 copy-right">Copyright&nbsp;&copy; <span id="year">2021-2022</span> <i class="fa fa-heart" style="color:#ff71a8"></i> <a href="/crystal-blog/about" target="_blank">王子</a> |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a> |&nbsp;&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a><br><span style="margin-left:-20px;display:inline">&nbsp; <i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">255.4k</span> <span><span id="busuanzi_container_site_pv" style="display:inline">&nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span> </span><span id="busuanzi_container_site_uv" style="display:inline">&nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span></span><br><span id="sitetime">Loading ...</span><script>var calcSiteTime=function(){var e=new Date,t="2021",n=e.getFullYear(),a=e.getMonth()+1,r=e.getDate(),i=e.getHours(),o=e.getMinutes(),s=e.getSeconds(),e=Date.UTC(t,"8","8","8","8","8"),a=Date.UTC(n,a,r,i,o,s)-e,r=Math.floor(a/31536e6),i=Math.floor(a/864e5-365*r),o=Math.floor(a/36e5-365*r*24-24*i),s=Math.floor(a/6e4-365*r*24*60-24*i*60-60*o),e=Math.floor(a/1e3-365*r*24*60*60-24*i*60*60-60*o*60-60*s);t===String(n)?(document.getElementById("year").innerHTML=n,a="This site has been running for "+i+" days",a="本站已运行 "+i+" 天",document.getElementById("sitetime").innerHTML=a):(document.getElementById("year").innerHTML=t+" - "+n,n="This site has been running for "+r+" years and "+i+" days",n="本站已运行 "+r+" 年 "+i+" 天 "+o+" 小时 "+s+" 分钟 "+e+" 秒",document.getElementById("sitetime").innerHTML=n)},timer=setInterval(calcSiteTime)</script>&nbsp;|&nbsp; <span id="icp"><img src="/crystal-blog/medias/icp.png" style="vertical-align:text-bottom"> <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备20002108号</a></span></span></div><div class="col s12 m4 l4 social-link social-statis"><a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1848276756" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1848276756" data-position="top" data-delay="50"><i class="fab fa-qq"></i> </a><a href="mailto:wang-qz@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我: wang-qz@foxmail.com" data-position="top" data-delay="50"><i class="fas fa-envelope-open"></i> </a><a href="https://gitee.com/wang-qz" class="tooltipped" target="_blank" data-tooltip="码云" data-position="top" data-delay="50"><i class="fab fa-github-alt"></i> </a><a href="https://blog.csdn.net/u013044713" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50"><i class="fab fa-csdn">C</i> </a><a href="/crystal-blog/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50"><i class="fas fa-rss"></i></a></div></div></footer><div class="progress-bar"></div><script>let _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?147475454185ebcf440a27cc35e793ef";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script><div id="searchModal" class="modal"><div class="modal-content"><div class="search-header"><span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span> <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input"></div><div id="searchResult"></div></div></div><script type="text/javascript">$(function(){!function(t,r,s){"use strict";$.ajax({url:t,dataType:"xml",success:function(t){var e=$("entry",t).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),t=document.getElementById(r),n=document.getElementById(s);t.addEventListener("input",function(){var o='<ul class="search-result-list">',h=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length<=0||(e.forEach(function(t){var n,e,r,s=!0,l=t.title.trim().toLowerCase(),a=t.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),c=0===(c=t.url).indexOf("/")?t.url:"/"+c,i=-1,u=-1;""!==l&&""!==a&&h.forEach(function(t,e){n=l.indexOf(t),i=a.indexOf(t),n<0&&i<0?s=!1:(i<0&&(i=0),0===e&&(u=i))}),s&&(o+="<li><a href='"+c+"' class='search-result-title'>"+l+"</a>",e=t.content.trim().replace(/<[^>]+>/g,""),0<=u&&(c=u+80,(c=0===(t=(t=u-20)<0?0:t)?100:c)>e.length&&(c=e.length),r=e.substr(t,c),h.forEach(function(t){var e=new RegExp(t,"gi");r=r.replace(e,'<em class="search-keyword">'+t+"</em>")}),o+='<p class="search-result">'+r+"...</p>"),o+="</li>")}),o+="</ul>",n.innerHTML=o)})}})}("/crystal-blog/search.xml","searchInput","searchResult")})</script><div id="backTop" class="top-scroll"><a class="btn-floating btn-large waves-effect waves-light" href="#!"><i class="fas fa-arrow-up"></i></a></div><script src="/crystal-blog/libs/materialize/materialize.min.js"></script><script src="/crystal-blog/libs/masonry/masonry.pkgd.min.js"></script><script src="/crystal-blog/libs/aos/aos.js"></script><script src="/crystal-blog/libs/scrollprogress/scrollProgress.min.js"></script><script src="/crystal-blog/libs/lightGallery/js/lightgallery-all.min.js"></script><script src="/crystal-blog/js/matery.js"></script><script src="/crystal-blog/js/funnyTitle.js"></script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}()</script><script src="/crystal-blog/libs/others/clicklove.js" async></script><script async src="/crystal-blog/libs/others/busuanzi.pure.mini.js"></script><script type="text/javascript" color="0,0,255" pointcolor="0,0,255" opacity="0.7" zindex="-1" count="99" src="/crystal-blog/libs/background/canvas-nest.js"></script><script type="text/javascript" src="/crystal-blog/libs/background/ribbon-dynamic.js" async></script><script src="/crystal-blog/libs/instantpage/instantpage.js" type="module"></script><script src="/crystal-blog/js/wenzi.js"></script><script src="/crystal-blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/crystal-blog/live2dw/assets/miku.model.json"},display:{position:"right",width:150,height:190,hOffset:50,vOffset:-5},mobile:{show:!1,scale:.5},react:{opacityDefault:.7,opacityOnHover:.8},log:!1})</script></body></html>
