@@ -6,7 +6,7 @@
   <link href="https://wang-qz.gitee.io/crystal-blog/atom.xml" rel="self"/>
   
   <link href="https://wang-qz.gitee.io/crystal-blog/"/>
-  <updated>2022-04-22T12:30:47.091Z</updated>
+  <updated>2022-05-24T14:03:24.448Z</updated>
   <id>https://wang-qz.gitee.io/crystal-blog/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入RocketMQ原理</title>
+    <link href="https://wang-qz.gitee.io/crystal-blog/2022052432114.html"/>
+    <id>https://wang-qz.gitee.io/crystal-blog/2022052432114.html</id>
+    <published>2022-05-24T13:44:48.000Z</published>
+    <updated>2022-05-24T14:03:24.448Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="消息中间件" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+    
+    <category term="RocketMQ" scheme="https://wang-qz.gitee.io/crystal-blog/tags/RocketMQ/"/>
+    
+  </entry>
   
   <entry>
     <title>JDK8新特性</title>
@@ -488,31 +513,6 @@
     
     
     <category term="SpringCloudAlibaba" scheme="https://wang-qz.gitee.io/crystal-blog/tags/SpringCloudAlibaba/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分布式任务调度 xxl-job</title>
-    <link href="https://wang-qz.gitee.io/crystal-blog/2021121231971.html"/>
-    <id>https://wang-qz.gitee.io/crystal-blog/2021121231971.html</id>
-    <published>2021-12-12T03:54:02.000Z</published>
-    <updated>2021-12-12T04:27:29.729Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\crystal-blog\assets\css\APlayer.min.css&quot;&gt;&lt;script</summary>
-        
-      
-    
-    
-    
-    <category term="任务调度" scheme="https://wang-qz.gitee.io/crystal-blog/categories/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/"/>
-    
-    
-    <category term="xxl-job" scheme="https://wang-qz.gitee.io/crystal-blog/tags/xxl-job/"/>
     
   </entry>
   
